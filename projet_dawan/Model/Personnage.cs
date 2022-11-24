@@ -4,7 +4,7 @@
     {
 		private int id;
 		private string nom;
-		private int acteur_id;
+		private Acteur acteur_id;
 		private int serie_id;
 
 		public int SerieId
@@ -14,7 +14,7 @@
 		}
 
 
-		public int ActeurId
+		public Acteur ActeurId
 		{
 			get { return acteur_id; }
 			set { acteur_id = value; }
