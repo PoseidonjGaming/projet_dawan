@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projet_dawan
+namespace projet_dawan.Repository
 {
-    public class Orm
+    public abstract class Orm
     {
         private string query;
 
@@ -43,16 +43,8 @@ namespace projet_dawan
         }
 
         //Ajoute form table à la query
-        public Orm From(string table)
-        {
-            query += " From " + table;
-            return this;
-        }
-        public Orm Where(string champ, int value)
-        {
-
-            return this;
-        }
+        public abstract Orm From();
+        
 
         //retourne la query
         public string Build()
@@ -61,6 +53,34 @@ namespace projet_dawan
             return query;
         }
 
+        public  Orm WhereById(string champ)
+        {
+            Query += " Where " + champ + "=@id";
+            return this;
+        }
 
+        public  Orm WhereByDate(string champ)
+        {
+            Query += " Where " + champ + "=@date";
+            return this;
+        }
+
+
+        public  Orm WhereByLike(string champ)
+        {
+            Query += " Where " + champ + " Like @text";
+            return this;
+        }
+
+        public Orm And()
+        {
+            query+= " And";
+            return this;
+        }
+        public Orm Or()
+        {
+            query += " Or";
+            return this;
+        }
     }
 }

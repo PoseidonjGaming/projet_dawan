@@ -32,3 +32,6 @@ C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-wind
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.pdb
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.genruntimeconfig.cache
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\ref\projet_dawan.dll
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\HtmlAgilityPack.dll
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.csproj.CopyComplete

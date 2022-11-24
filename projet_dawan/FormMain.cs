@@ -1,3 +1,5 @@
+using projet_dawan.Repository;
+
 namespace projet_dawan
 {
     public partial class FormMain : Form
@@ -9,8 +11,8 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Orm orm = new();
-            string query = orm.Select("*").From("serie").Build();
+            Orm orm = new SerieRepository();
+            string query = orm.Select("*").From().WhereByLike("resume").Build() ;
             MessageBox.Show(query);
         }
     }
