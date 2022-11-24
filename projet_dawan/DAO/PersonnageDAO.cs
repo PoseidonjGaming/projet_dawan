@@ -16,7 +16,7 @@ namespace projet_dawan.DAO
 {
     public class PersonnageDAO : IPersonnageDAO
     {
-        private string cnx;
+        private string cnx=string.Empty;
         private PersonnageRepository repo = new();
         private string table;
         private List<string> champs= new List<string>() { "nom","serie_id", "acteur_id" };
@@ -83,7 +83,6 @@ namespace projet_dawan.DAO
         {
             List<Personnage> list = new List<Personnage>();
             string query = repo.Select("*").From(table).WhereById("id").Build();
-            MessageBox.Show(query);
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -133,22 +132,22 @@ namespace projet_dawan.DAO
         private static List<Personnage> Get(SqlCommand cmd)
         {
             List<Personnage> list = new List<Personnage>();
+            SerieDAO repoSerie = new(Properties.Settings.Default.Connection);
+            ActeurDAO repoActeur = new(Properties.Settings.Default.Connection);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    /*Personnage serie = new()
+                    Personnage perso = new()
                     {
                         Id = reader.GetInt32(0),
-                        Name = reader.GetString(1),
-                        DateDiff = reader.GetDateTime(2),
-                        Resume = reader.GetString(3),
-                        Affiche = reader.GetString(4),
-                        UrlBa = reader.GetString(5)
+                        Nom = reader.GetString(1),
+                        SerieId = repoSerie.GetById(reader.GetInt32(2)),
+                        ActeurId= repoActeur.GetById(reader.GetInt32(2))
 
                     };
 
-                    list.Add(serie);*/
+                    list.Add(perso);
                 }
             }
             return list;

@@ -138,8 +138,7 @@ namespace projet_dawan.Repository
         {
             query = "Delete";
             From(table);
-            WhereById("id").Build();
-            MessageBox.Show(query);
+            WhereById("id");
             return this;
         }
 

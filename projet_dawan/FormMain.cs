@@ -13,9 +13,9 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Orm orm = new PersonnageRepository();
+            Orm orm = new ActeurRepository();
             
-            PersonnageDAO dao = new(Properties.Settings.Default.Connection);
+            ActeurDAO dao = new(Properties.Settings.Default.Connection);
             dao.GetById(1);
             
         }
