@@ -12,7 +12,8 @@ namespace projet_dawan
         private void button1_Click(object sender, EventArgs e)
         {
             Orm orm = new SerieRepository();
-            string query = orm.Select("*").From().WhereByLike("resume").Build() ;
+            string query = orm.Select("*").From()
+                .Join("serie","id","personnage","id").Build() ;
             MessageBox.Show(query);
         }
     }

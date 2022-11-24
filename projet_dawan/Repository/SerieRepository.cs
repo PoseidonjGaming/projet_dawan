@@ -15,6 +15,8 @@ namespace projet_dawan.Repository
             Query += " From serie";
             return this;
         }
+
+        
         
     }
 }

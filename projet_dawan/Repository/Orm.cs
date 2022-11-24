@@ -82,5 +82,12 @@ namespace projet_dawan.Repository
             query += " Or";
             return this;
         }
+
+        public Orm Join(string tableStart, string champStart, string tabletarget, string champTarget)
+        {
+            Query += $" Join {tableStart} On {tableStart}.{champStart}={tabletarget}.{champTarget}";
+            return this;
+        }
+
     }
 }
