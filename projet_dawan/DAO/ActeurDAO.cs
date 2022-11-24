@@ -42,8 +42,7 @@ namespace projet_dawan.DAO
             SqlCommand cmd = new(sql, cnx);
 
 
-            cmd = AddParam(cmd, "@nom", acteur.Nom);
-            cmd = AddParam(cmd, "@prenom", acteur.Prenom);
+            cmd = Bind(cmd, acteur);
 
 
             //Execute(sql, cnx, cmd);
