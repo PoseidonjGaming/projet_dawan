@@ -76,6 +76,8 @@ namespace projet_dawan.Model
             Personnages = personnages;
         }
 
-
+        public Serie()
+        {
+        }
     }
 }
