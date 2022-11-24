@@ -142,12 +142,13 @@ namespace projet_dawan.Repository
             return this;
         }
 
-        public Orm Update(string table, List<string> champs, List<string> values)
+        public Orm Update(string table, List<string> values, List<string> champs)
         {
             Query = "Update " + table + " Set ";
             foreach (string value in values)
             {
                 int index = values.IndexOf(value);
+                MessageBox.Show(value);
                 if (value == values.Last())
                 {
                     query += value + "=" + champs[index];
