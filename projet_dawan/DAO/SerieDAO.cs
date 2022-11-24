@@ -45,16 +45,27 @@ namespace projet_dawan.DAO
                 cnx.Open();
 
                 list = Get(cmd);
-                
+
             }
             return list;
         }
 
         public Serie GetById(int id)
         {
-            throw new NotImplementedException();
-        }
+            List<Serie> list = new List<Serie>();
+            string query = repo.Select("*").From().WhereById("id").Build();
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd = AddParam(cmd, "@id", id);
+                cnx.Open();
 
+                list = Get(cmd);
+
+            }
+
+            return list[0];
+        }
         public void Update(Serie serie)
         {
             throw new NotImplementedException();
@@ -78,8 +89,8 @@ namespace projet_dawan.DAO
                         Name = reader.GetString(1),
                         DateDiff = reader.GetDateTime(2),
                         Resume = reader.GetString(3),
-                        Affiche=reader.GetString(4),
-                        UrlBa=reader.GetString(5)
+                        Affiche = reader.GetString(4),
+                        UrlBa = reader.GetString(5)
 
                     };
 
@@ -88,5 +99,15 @@ namespace projet_dawan.DAO
             }
             return list;
         }
+
+        private SqlCommand AddParam(SqlCommand command,string champ, object value)
+        {
+            command.Parameters.AddWithValue(champ, value);
+            return command;
+        }
     }
+
+    
+
+    
 }
