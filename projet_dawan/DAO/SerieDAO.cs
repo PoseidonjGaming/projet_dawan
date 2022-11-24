@@ -106,6 +106,7 @@ namespace projet_dawan.DAO
             cmd = AddParam(cmd, "@url_ba", serie.UrlBa);
             cmd = AddParam(cmd, "@resume", serie.Resume);
             cmd = AddParam(cmd, "@affiche", serie.Affiche);
+            cmd = AddParam(cmd, "@id", serie.Id);
 
             //Execute(query, cnx, cmd);
             MessageBox.Show(query);
