@@ -148,7 +148,6 @@ namespace projet_dawan.Repository
             foreach (string value in values)
             {
                 int index = values.IndexOf(value);
-                MessageBox.Show(value);
                 if (value == values.Last())
                 {
                     query += value + "=" + champs[index];
@@ -157,7 +156,9 @@ namespace projet_dawan.Repository
                 {
                     query += value + "=" + champs[index] + ",";
                 }
+
             }
+            query += WhereById("id").Build();
             return this;
         }
 

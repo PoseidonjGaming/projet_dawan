@@ -37,7 +37,8 @@ namespace projet_dawan
             value.Add("@id");
             value.Add("@nom");
 
-            MessageBox.Show(orm.Update("serie", champs, value).Build());
+            //MessageBox.Show(orm.Update("serie", champs, value).Build());
+            dao.Update(new Serie());
 
         }
     }

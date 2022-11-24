@@ -17,6 +17,8 @@ namespace projet_dawan.DAO
         private string cnx;
         private SerieRepository repo = new();
         private string table;
+        private List<string> champs= new List<string>() { "nom","resume","affiche","url_ba", "date_diff"};
+        private List<string> values= new List<string>() { "@nom","@resume","@affiche","@url_ba", "@date_diff" };
 
         public string Cnx
         {
@@ -94,10 +96,23 @@ namespace projet_dawan.DAO
         }
         public void Update(Serie serie)
         {
-            
+            SqlConnection cnx = new(Cnx);
+
+            string query = repo.Update(table, champs, values).Build();
+            SqlCommand cmd = new(query, cnx);
+
+            cmd = AddParam(cmd, "@nom", serie.Name);
+            cmd = AddParam(cmd, "@date_diff", serie.DateDiff);
+            cmd = AddParam(cmd, "@url_ba", serie.UrlBa);
+            cmd = AddParam(cmd, "@resume", serie.Resume);
+            cmd = AddParam(cmd, "@affiche", serie.Affiche);
+
+            //Execute(query, cnx, cmd);
+            MessageBox.Show(query);
+
         }
 
-        public void Execute(string query, SqlConnection cnx, SqlCommand cmd)
+        public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
             {
@@ -116,7 +131,7 @@ namespace projet_dawan.DAO
             }
         }
 
-        private List<Serie> Get(SqlCommand cmd)
+        private static List<Serie> Get(SqlCommand cmd)
         {
             List<Serie> list = new List<Serie>();
             using (SqlDataReader reader = cmd.ExecuteReader())
@@ -140,7 +155,7 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        private SqlCommand AddParam(SqlCommand command, string champ, object value)
+        private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
