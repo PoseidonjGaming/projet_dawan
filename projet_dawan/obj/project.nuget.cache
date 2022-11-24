@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "3jhSpTmTGCvT4nSRZQlCW+LP+BORNmOEQr//bfLuJk/nMnFuxRsqCDOdA5ScTUhwdTPzYz9KeI5AYbkIiSxGug==",
+  "dgSpecHash": "X7Qphie/hF06DZRR8d9VuugfPvTC8e4HDOrTFYQbQgJ7kAv/S6i4Vr6l8zxDxv37bFIQsrgSB4Jk/g71mMBKmA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan\\projet_dawan.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\htmlagilitypack\\1.11.46\\htmlagilitypack.1.11.46.nupkg.sha512",
+    "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
