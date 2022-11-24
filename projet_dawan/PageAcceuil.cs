@@ -18,5 +18,21 @@ namespace projet_dawan
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
         }
+
+        private void toolStripAddSerie_Click(object sender, EventArgs e)
+        {
+            // ajouter If pour vérifier si le compte à les droits
+            AjouterSeries add = new();
+
+            add.ShowDialog();
+        }
+
+        private void toolStripDeleteSerie_Click(object sender, EventArgs e)
+        {
+            // ajouter If pour vérifier si le compte à les droits
+            SupprimerSeries supr = new();
+
+            supr.ShowDialog();
+        }
     }
 }
