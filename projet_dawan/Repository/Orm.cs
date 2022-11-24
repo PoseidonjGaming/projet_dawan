@@ -89,5 +89,11 @@ namespace projet_dawan.Repository
             return this;
         }
 
+        public Orm OrderBy(string champ, string direction)
+        {
+            Query += " Order by " + champ + " " + direction;
+            return this;
+        }
+
     }
 }

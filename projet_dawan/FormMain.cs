@@ -13,7 +13,7 @@ namespace projet_dawan
         {
             Orm orm = new SerieRepository();
             string query = orm.Select("*").From()
-                .Join("serie","id","personnage","id").Build() ;
+                .Join("serie","id","personnage","id").OrderBy("id", "desc").Build() ;
             MessageBox.Show(query);
         }
     }
