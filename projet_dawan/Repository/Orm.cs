@@ -133,5 +133,14 @@ namespace projet_dawan.Repository
             return this;
         }
 
+        public Orm Delete(string table)
+        {
+            query = "Delete";
+            From(table);
+            WhereById("id").Build();
+            MessageBox.Show(query);
+            return this;
+        }
+
     }
 }

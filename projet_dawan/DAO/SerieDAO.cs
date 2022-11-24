@@ -2,11 +2,13 @@
 using projet_dawan.Model;
 using projet_dawan.Repository;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {
@@ -33,14 +35,30 @@ namespace projet_dawan.DAO
 
             string sql = repo.Insert(table, "nom", "date_diff", "resume", "affiche", "url_ba")
                 .Values("@nom", "@dateDiff", "@resume", "@affiche", "@urlBa").Build();
+            SqlCommand cmd = new(sql, cnx);
 
-            Execute(sql, cnx, serie);
+
+            cmd = AddParam(cmd, "@nom", serie.Name);
+            cmd = AddParam(cmd, "@dateDiff", serie.DateDiff);
+            cmd = AddParam(cmd, "@urlBa", serie.UrlBa);
+            cmd = AddParam(cmd, "@resume", serie.Resume);
+            cmd = AddParam(cmd, "@affiche", serie.Affiche);
+
+            Execute(sql, cnx, cmd);
 
         }
 
-        public void Delete(Serie serie)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            string query = repo.Delete(table).Build();
+
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd.Parameters.AddWithValue("@id", id);
+                Execute(query, cnx, cmd);
+            }
+
         }
 
         public List<Serie> GetAll()
@@ -79,19 +97,11 @@ namespace projet_dawan.DAO
             throw new NotImplementedException();
         }
 
-        public void Execute(string query, SqlConnection cnx, Serie serie)
+        public void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
             {
-
-                SqlCommand cmd = new(query, cnx);
-
-
-                cmd = AddParam(cmd, "@nom", serie.Name);
-                cmd = AddParam(cmd, "@dateDiff", serie.DateDiff);
-                cmd = AddParam(cmd, "@urlBa", serie.UrlBa);
-                cmd = AddParam(cmd, "@resume", serie.Resume);
-                cmd = AddParam(cmd, "@affiche", serie.Affiche);
+               
 
                 cnx.Open();
                 cmd.ExecuteNonQuery();

@@ -13,12 +13,12 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*Orm orm = new SerieRepository();
-            string query = orm.Select("*").From("serie")
+            Orm orm = new SerieRepository();
+            /*string query = orm.Select("*").From("serie")
                 .Join("serie","id","personnage","id").OrderBy("id", "desc").Build() ;
             MessageBox.Show(query);*/
             SerieDAO dao = new("Data Source=P3570-7D6Q;Initial Catalog=serie_list;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
-            Serie serie = new()
+            /*Serie serie = new()
             {
                 Name = "test",
                 DateDiff = DateTime.Now,
@@ -27,9 +27,12 @@ namespace projet_dawan
                 UrlBa = "youtube.com"
             };
             dao.Add(serie);
+            MessageBox.Show(dao.GetAll().Count.ToString());*/
+
+            dao.Delete(5);
             MessageBox.Show(dao.GetAll().Count.ToString());
 
-            
+
         }
     }
 }

@@ -11,7 +11,7 @@ namespace projet_dawan.Interface
     {
         void Add(Serie serie);
         void Update(Serie serie);
-        void Delete(Serie serie);
+        void Delete(int id);
         List<Serie> GetAll();
         Serie GetById(int id);
     }
