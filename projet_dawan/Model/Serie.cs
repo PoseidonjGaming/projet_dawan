@@ -14,6 +14,14 @@ namespace projet_dawan.Model
         private string affiche;
         private DateTime date_diff;
         private string url_ba;
+        private List<Personnage> personnages;
+
+        public List<Personnage> Personnages
+        {
+            get { return personnages; }
+            set { personnages = value; }
+        }
+
 
         public string UrlBa
         {
@@ -56,14 +64,16 @@ namespace projet_dawan.Model
         }
 
         public Serie(int id, string nom, string resume,
-            string affiche, DateTime date_diff, string url_ba)
+            string affiche, DateTime date_diff, string url_ba,
+            List<Personnage> personnages)
         {
             this.id = id;
             Name = nom;
-            this.resume = resume;
-            this.affiche = affiche;
-            this.date_diff = date_diff;
-            this.url_ba = url_ba;
+            Resume = resume;
+            Affiche = affiche;
+            DateDiff = date_diff;
+            UrlBa = url_ba;
+            Personnages = personnages;
         }
 
 
