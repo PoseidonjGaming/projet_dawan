@@ -31,8 +31,11 @@ namespace projet_dawan.DAO
         {
             SqlConnection cnx = new(Cnx);
 
-            string sql = "INSERT INTO Serie(nom, prenom, email, telephone) VALUES (@nom, @prenom, @email, @telephone)";
-           
+            string sql = repo.Insert(table, "nom", "date_diff", "resume", "affiche", "url_ba")
+                .Values("@nom", "@dateDiff", "@resume", "@affiche", "@urlBa").Build();
+
+            Execute(sql, cnx, serie);
+
         }
 
         public void Delete(Serie serie)
@@ -76,7 +79,7 @@ namespace projet_dawan.DAO
             throw new NotImplementedException();
         }
 
-        public void Execute(string query, SqlConnection cnx,Serie serie)
+        public void Execute(string query, SqlConnection cnx, Serie serie)
         {
             try
             {
@@ -84,11 +87,11 @@ namespace projet_dawan.DAO
                 SqlCommand cmd = new(query, cnx);
 
 
-                cmd = AddParam(cmd, "@nom",serie.Name);
-                cmd = AddParam(cmd, "@dateDiff",serie.DateDiff);
-                cmd = AddParam(cmd, "@urlBa",serie.UrlBa);
-                cmd = AddParam(cmd, "@resume",serie.Resume);
-                cmd = AddParam(cmd, "@affiche",serie.Affiche);
+                cmd = AddParam(cmd, "@nom", serie.Name);
+                cmd = AddParam(cmd, "@dateDiff", serie.DateDiff);
+                cmd = AddParam(cmd, "@urlBa", serie.UrlBa);
+                cmd = AddParam(cmd, "@resume", serie.Resume);
+                cmd = AddParam(cmd, "@affiche", serie.Affiche);
 
                 cnx.Open();
                 cmd.ExecuteNonQuery();
