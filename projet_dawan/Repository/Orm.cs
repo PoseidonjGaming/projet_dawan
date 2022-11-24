@@ -45,10 +45,10 @@ namespace projet_dawan.Repository
         //Ajoute form table à la query
         public Orm From(string table)
         {
-            query+= " From " + table;
+            query += " From " + table;
             return this;
         }
-        
+
 
         //retourne la query
         public string Build()
@@ -57,20 +57,20 @@ namespace projet_dawan.Repository
             return query;
         }
 
-        public  Orm WhereById(string champ)
+        public Orm WhereById(string champ)
         {
             Query += " Where " + champ + "=@id";
             return this;
         }
 
-        public  Orm WhereByDate(string champ)
+        public Orm WhereByDate(string champ)
         {
             Query += " Where " + champ + "=@date";
             return this;
         }
 
 
-        public  Orm WhereByLike(string champ)
+        public Orm WhereByLike(string champ)
         {
             Query += " Where " + champ + " Like @text";
             return this;
@@ -78,7 +78,7 @@ namespace projet_dawan.Repository
 
         public Orm And()
         {
-            query+= " And";
+            query += " And";
             return this;
         }
         public Orm Or()
@@ -102,15 +102,15 @@ namespace projet_dawan.Repository
         public Orm Insert(string table, params string[] values)
         {
             query = $"Insert into {table} (";
-            foreach(string value in values)
+            foreach (string value in values)
             {
-                if(value== values.Last())
+                if (value == values.Last())
                 {
-                    query += value+") ";
+                    query += value + ") ";
                 }
                 else
                 {
-                    query += value +", ";
+                    query += value + ", ";
                 }
             }
             return this;
@@ -139,6 +139,24 @@ namespace projet_dawan.Repository
             From(table);
             WhereById("id").Build();
             MessageBox.Show(query);
+            return this;
+        }
+
+        public Orm Update(string table, List<string> champs, List<string> values)
+        {
+            Query = "Update " + table + " Set ";
+            foreach (string value in values)
+            {
+                int index = values.IndexOf(value);
+                if (value == values.Last())
+                {
+                    query += value + "=" + champs[index];
+                }
+                else
+                {
+                    query += value + "=" + champs[index] + ",";
+                }
+            }
             return this;
         }
 

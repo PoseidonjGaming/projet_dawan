@@ -94,7 +94,7 @@ namespace projet_dawan.DAO
         }
         public void Update(Serie serie)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Execute(string query, SqlConnection cnx, SqlCommand cmd)

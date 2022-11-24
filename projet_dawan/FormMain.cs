@@ -29,9 +29,15 @@ namespace projet_dawan
             dao.Add(serie);
             MessageBox.Show(dao.GetAll().Count.ToString());*/
 
-            dao.Delete(5);
-            MessageBox.Show(dao.GetAll().Count.ToString());
+            List<string> champs= new List<string>();
+            champs.Add("id");
+            champs.Add("nom");
 
+            List<string> value= new List<string>();
+            value.Add("@id");
+            value.Add("@nom");
+
+            MessageBox.Show(orm.Update("serie", champs, value).Build());
 
         }
     }
