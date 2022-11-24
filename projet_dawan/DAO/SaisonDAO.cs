@@ -31,7 +31,7 @@ namespace projet_dawan.DAO
         public SaisonDAO(string cnx)
         {
             Cnx = cnx;
-            table = "episode";
+            table = "saison";
         }
         public void Add(Saison saison)
         {

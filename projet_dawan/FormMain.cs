@@ -13,10 +13,10 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Orm orm = new EpisodeRepository();
+            Orm orm = new SaisonRepository();
             
-            EpisodeDAO dao = new(Properties.Settings.Default.Connection);
-            dao.Delete(1);
+            SaisonDAO dao = new(Properties.Settings.Default.Connection);
+            dao.GetById(1);
             
         }
     }
