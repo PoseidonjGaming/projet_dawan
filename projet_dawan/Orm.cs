@@ -21,6 +21,8 @@ namespace projet_dawan
 
         }
 
+        //Ajoute à l'attibut query la liste de champs et renvoie l'objet 
+        //appelant la méthode pour chainer les méthode
         public Orm Select(params string[] champs)
         {
             query = "Select ";
@@ -40,6 +42,7 @@ namespace projet_dawan
             return this;
         }
 
+        //Ajoute form table à la query
         public Orm From(string table)
         {
             query += " From " + table;
@@ -50,6 +53,8 @@ namespace projet_dawan
 
             return this;
         }
+
+        //retourne la query
         public string Build()
         {
             query += ";";
