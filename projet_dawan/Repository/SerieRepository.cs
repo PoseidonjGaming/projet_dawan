@@ -10,11 +10,7 @@ namespace projet_dawan.Repository
     public class SerieRepository : Orm
     {
         public SerieRepository() { }
-        public override Orm From()
-        {
-            Query += " From serie";
-            return this;
-        }
+        
 
         
         

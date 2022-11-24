@@ -14,6 +14,7 @@ namespace projet_dawan.DAO
     {
         private string cnx;
         private SerieRepository repo = new();
+        private string table;
 
         public string Cnx
         {
@@ -24,10 +25,14 @@ namespace projet_dawan.DAO
         public SerieDAO(string cnx)
         {
             Cnx = cnx;
+            table = "serie";
         }
         public void Add(Serie serie)
         {
-            throw new NotImplementedException();
+            SqlConnection cnx = new(Cnx);
+
+            string sql = "INSERT INTO Serie(nom, prenom, email, telephone) VALUES (@nom, @prenom, @email, @telephone)";
+           
         }
 
         public void Delete(Serie serie)
@@ -38,7 +43,7 @@ namespace projet_dawan.DAO
         public List<Serie> GetAll()
         {
             List<Serie> list = new List<Serie>();
-            string query = repo.Select("*").From().Build();
+            string query = repo.Select("*").From(table).Build();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -53,7 +58,7 @@ namespace projet_dawan.DAO
         public Serie GetById(int id)
         {
             List<Serie> list = new List<Serie>();
-            string query = repo.Select("*").From().WhereById("id").Build();
+            string query = repo.Select("*").From(table).WhereById("id").Build();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -71,9 +76,31 @@ namespace projet_dawan.DAO
             throw new NotImplementedException();
         }
 
-        public void Execute()
+        public void Execute(string query, SqlConnection cnx,Serie serie)
         {
+            try
+            {
 
+                SqlCommand cmd = new(query, cnx);
+
+
+                cmd = AddParam(cmd, "@nom",serie.Name);
+                cmd = AddParam(cmd, "@dateDiff",serie.DateDiff);
+                cmd = AddParam(cmd, "@urlBa",serie.UrlBa);
+                cmd = AddParam(cmd, "@resume",serie.Resume);
+                cmd = AddParam(cmd, "@affiche",serie.Affiche);
+
+                cnx.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                cnx.Close();
+            }
         }
 
         private List<Serie> Get(SqlCommand cmd)
@@ -100,14 +127,14 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        private SqlCommand AddParam(SqlCommand command,string champ, object value)
+        private SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
     }
 
-    
 
-    
+
+
 }

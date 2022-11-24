@@ -43,7 +43,11 @@ namespace projet_dawan.Repository
         }
 
         //Ajoute form table à la query
-        public abstract Orm From();
+        public Orm From(string table)
+        {
+            query+= " From " + table;
+            return this;
+        }
         
 
         //retourne la query
@@ -92,6 +96,40 @@ namespace projet_dawan.Repository
         public Orm OrderBy(string champ, string direction)
         {
             Query += " Order by " + champ + " " + direction;
+            return this;
+        }
+
+        public Orm Insert(string table, params string[] values)
+        {
+            query = $"Insert into {table} (";
+            foreach(string value in values)
+            {
+                if(value== values.Last())
+                {
+                    query += value+") ";
+                }
+                else
+                {
+                    query += value +", ";
+                }
+            }
+            return this;
+        }
+
+        public Orm Values(params string[] values)
+        {
+            query += $"Values (";
+            foreach (string value in values)
+            {
+                if (value == values.Last())
+                {
+                    query += value + ")";
+                }
+                else
+                {
+                    query += value + ", ";
+                }
+            }
             return this;
         }
 
