@@ -52,3 +52,4 @@ E:\Projet perso\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\unix
 E:\Projet perso\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 E:\Projet perso\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.PageAcceuil.resources
 E:\Projet perso\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.csproj.CopyComplete
+E:\Projet perso\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\projet_dawan.dll.config

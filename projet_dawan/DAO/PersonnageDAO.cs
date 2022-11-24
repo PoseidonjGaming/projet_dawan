@@ -5,20 +5,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {
-    public class SerieDAO : ISerieDAO
+    public class PersonnageDAO : IPersonnageDAO
     {
         private string cnx;
-        private SerieRepository repo = new();
+        private PersonnageRepository repo = new();
         private string table;
-        private List<string> champs= new List<string>() { "nom","resume","affiche","url_ba", "date_diff"};
-        private List<string> values= new List<string>() { "@nom","@resume","@affiche","@url_ba", "@date_diff" };
+        private List<string> champs= new List<string>() { "nom","serie_id", "acteur_id" };
+        private List<string> values= new List<string>() { "@nom", "@serie_id", "@acteur_id" };
 
         public string Cnx
         {
@@ -26,28 +28,27 @@ namespace projet_dawan.DAO
             set { cnx = value; }
         }
 
-        public SerieDAO(string cnx)
+        public PersonnageDAO(string cnx)
         {
             Cnx = cnx;
-            table = "serie";
+            table = "personnage";
         }
-        public void Add(Serie serie)
+        public void Add(Personnage perso)
         {
             SqlConnection cnx = new(Cnx);
 
-            string sql = repo.Insert(table,champs.ToArray())
+            string sql = repo.Insert(table, champs.ToArray())
                 .Values(values.ToArray()).Build();
             SqlCommand cmd = new(sql, cnx);
 
 
-            cmd = AddParam(cmd, "@nom", serie.Name);
-            cmd = AddParam(cmd, "@date_diff", serie.DateDiff);
-            cmd = AddParam(cmd, "@url_ba", serie.UrlBa);
-            cmd = AddParam(cmd, "@resume", serie.Resume);
-            cmd = AddParam(cmd, "@affiche", serie.Affiche);
+            cmd = AddParam(cmd, "@nom", perso.Nom);
+            cmd = AddParam(cmd, "@serie_id", perso.SerieId.Id);
+            cmd = AddParam(cmd, "@acteur_id", perso.ActeurId.Id);
+
 
             //Execute(sql, cnx, cmd);
-
+            //MessageBox.Show(sql);
         }
 
         public void Delete(int id)
@@ -58,14 +59,14 @@ namespace projet_dawan.DAO
             {
                 SqlCommand cmd = new(query, cnx);
                 cmd.Parameters.AddWithValue("@id", id);
-                Execute(query, cnx, cmd);
+                //Execute(query, cnx, cmd);
             }
 
         }
 
-        public List<Serie> GetAll()
+        public List<Personnage> GetAll()
         {
-            List<Serie> list = new List<Serie>();
+            List<Personnage> list = new List<Personnage>();
             string query = repo.Select("*").From(table).Build();
             using (SqlConnection cnx = new(Cnx))
             {
@@ -78,10 +79,11 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        public Serie GetById(int id)
+        public Personnage GetById(int id)
         {
-            List<Serie> list = new List<Serie>();
+            List<Personnage> list = new List<Personnage>();
             string query = repo.Select("*").From(table).WhereById("id").Build();
+            MessageBox.Show(query);
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -94,22 +96,18 @@ namespace projet_dawan.DAO
 
             return list[0];
         }
-        public void Update(Serie serie)
+        public void Update(Personnage perso)
         {
             SqlConnection cnx = new(Cnx);
 
             string query = repo.Update(table, champs, values).Build();
             SqlCommand cmd = new(query, cnx);
 
-            cmd = AddParam(cmd, "@nom", serie.Name);
-            cmd = AddParam(cmd, "@date_diff", serie.DateDiff);
-            cmd = AddParam(cmd, "@url_ba", serie.UrlBa);
-            cmd = AddParam(cmd, "@resume", serie.Resume);
-            cmd = AddParam(cmd, "@affiche", serie.Affiche);
-            cmd = AddParam(cmd, "@id", serie.Id);
+            cmd = Bind(cmd, perso);
+            
+            cmd = AddParam(cmd, "@id", perso.Id);
 
             //Execute(query, cnx, cmd);
-            MessageBox.Show(query);
 
         }
 
@@ -132,14 +130,14 @@ namespace projet_dawan.DAO
             }
         }
 
-        private static List<Serie> Get(SqlCommand cmd)
+        private static List<Personnage> Get(SqlCommand cmd)
         {
-            List<Serie> list = new List<Serie>();
+            List<Personnage> list = new List<Personnage>();
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Serie serie = new()
+                    /*Personnage serie = new()
                     {
                         Id = reader.GetInt32(0),
                         Name = reader.GetString(1),
@@ -150,7 +148,7 @@ namespace projet_dawan.DAO
 
                     };
 
-                    list.Add(serie);
+                    list.Add(serie);*/
                 }
             }
             return list;
@@ -160,6 +158,15 @@ namespace projet_dawan.DAO
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
+        }
+
+        private SqlCommand Bind(SqlCommand cmd, Personnage perso)
+        {
+            cmd = AddParam(cmd, "@nom", perso.Nom);
+            cmd = AddParam(cmd, "@serie_id", perso.SerieId.Id);
+            cmd = AddParam(cmd, "@acteur_id", perso.ActeurId.Id);
+
+            return cmd;
         }
     }
 

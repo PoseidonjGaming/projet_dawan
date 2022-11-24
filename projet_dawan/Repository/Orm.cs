@@ -57,6 +57,7 @@ namespace projet_dawan.Repository
             return query;
         }
 
+        //Ajoute Where id=@id à la query
         public Orm WhereById(string champ)
         {
             Query += " Where " + champ + "=@id";
@@ -69,10 +70,10 @@ namespace projet_dawan.Repository
             return this;
         }
 
-
+        //Ajoute la condition que le champs contient le texte passé en paramètre
         public Orm WhereByLike(string champ)
         {
-            Query += " Where " + champ + " Like @text";
+            Query += " Where " + champ + " Like %@text%";
             return this;
         }
 
@@ -158,7 +159,8 @@ namespace projet_dawan.Repository
                 }
 
             }
-            query += WhereById("id").Build();
+            WhereById("id");
+            
             return this;
         }
 
