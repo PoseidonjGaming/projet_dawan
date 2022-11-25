@@ -30,11 +30,14 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lstBxSerie = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRechercher = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxFiltrer = new System.Windows.Forms.ComboBox();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.btnDetail = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -49,12 +52,22 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lstBxSerie);
             this.groupBox1.Location = new System.Drawing.Point(12, 97);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(776, 341);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Liste des séries";
+            // 
+            // lstBxSerie
+            // 
+            this.lstBxSerie.FormattingEnabled = true;
+            this.lstBxSerie.ItemHeight = 20;
+            this.lstBxSerie.Location = new System.Drawing.Point(6, 26);
+            this.lstBxSerie.Name = "lstBxSerie";
+            this.lstBxSerie.Size = new System.Drawing.Size(764, 304);
+            this.lstBxSerie.TabIndex = 0;
             // 
             // label2
             // 
@@ -72,6 +85,7 @@
             this.txtRechercher.Name = "txtRechercher";
             this.txtRechercher.Size = new System.Drawing.Size(168, 27);
             this.txtRechercher.TabIndex = 3;
+            this.txtRechercher.TextChanged += new System.EventHandler(this.txtRechercher_TextChanged);
             // 
             // label3
             // 
@@ -101,11 +115,22 @@
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
+            // btnDetail
+            // 
+            this.btnDetail.Location = new System.Drawing.Point(391, 18);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(94, 29);
+            this.btnDetail.TabIndex = 7;
+            this.btnDetail.Text = "Détail";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
+            // 
             // PageBibliotheque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 452);
+            this.Controls.Add(this.btnDetail);
             this.Controls.Add(this.btnRetour);
             this.Controls.Add(this.comboBoxFiltrer);
             this.Controls.Add(this.label3);
@@ -115,6 +140,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PageBibliotheque";
             this.Text = "PageBibliotheque";
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +155,7 @@
         private Label label3;
         private ComboBox comboBoxFiltrer;
         private Button btnRetour;
+        private ListBox lstBxSerie;
+        private Button btnDetail;
     }
 }

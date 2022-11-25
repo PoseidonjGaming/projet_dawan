@@ -133,7 +133,7 @@ namespace projet_dawan.DAO
         private static List<Saison> Get(SqlCommand cmd)
         {
             List<Saison> list = new List<Saison>();
-            SerieDAO repoSerie= new(Properties.Settings.Default.Connection);
+            SerieDAO repoSerie = new(Properties.Settings.Default.Connection);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -141,9 +141,9 @@ namespace projet_dawan.DAO
                     Saison saison = new()
                     {
                         Id = reader.GetInt32(0),
-                        SerieId=repoSerie.GetById(reader.GetInt32(1)),
-                        Num=reader.GetInt16(2),
-                        NbEpisode=reader.GetInt32(3)
+                        SerieId = repoSerie.GetById(reader.GetInt32(1)),
+                        Num = reader.GetInt16(2),
+                        NbEpisode = reader.GetInt32(3)
                     };
 
                     list.Add(saison);
@@ -152,6 +152,22 @@ namespace projet_dawan.DAO
             return list;
         }
 
+        public List<Saison> GetSaisons(int id)
+        {
+            List<Saison> list = new List<Saison>();
+            string query = repo.Select("*").From(table).WhereById("serie_id").Build();
+            MessageBox.Show(query);
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd.Parameters.AddWithValue("@id", id);
+                cnx.Open();
+
+                list = Get(cmd);
+
+            }
+            return list;
+        }
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
