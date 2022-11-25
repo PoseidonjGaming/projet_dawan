@@ -15,6 +15,8 @@ namespace projet_dawan_WinForm.Forms
         public FormEpisode()
         {
             InitializeComponent();
+            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
         }
     }
 }

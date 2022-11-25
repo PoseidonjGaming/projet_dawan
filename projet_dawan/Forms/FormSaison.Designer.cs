@@ -35,8 +35,8 @@
             this.txtBoxResumeSaison = new System.Windows.Forms.TextBox();
             this.linkLblBASaison = new System.Windows.Forms.LinkLabel();
             this.lblDateSaison = new System.Windows.Forms.Label();
-            this.groupBoxEpisode = new System.Windows.Forms.GroupBox();
             this.pictureBoxSaison = new System.Windows.Forms.PictureBox();
+            this.lstBoxEpisode = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSaison)).BeginInit();
             this.SuspendLayout();
@@ -63,11 +63,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lstBoxEpisode);
             this.groupBox1.Controls.Add(this.btnCasting);
             this.groupBox1.Controls.Add(this.txtBoxResumeSaison);
             this.groupBox1.Controls.Add(this.linkLblBASaison);
             this.groupBox1.Controls.Add(this.lblDateSaison);
-            this.groupBox1.Controls.Add(this.groupBoxEpisode);
             this.groupBox1.Controls.Add(this.pictureBoxSaison);
             this.groupBox1.Location = new System.Drawing.Point(12, 62);
             this.groupBox1.Name = "groupBox1";
@@ -115,16 +115,6 @@
             this.lblDateSaison.TabIndex = 2;
             this.lblDateSaison.Text = "Date de 1ère diffusion";
             // 
-            // groupBoxEpisode
-            // 
-            this.groupBoxEpisode.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.groupBoxEpisode.Location = new System.Drawing.Point(9, 229);
-            this.groupBoxEpisode.Name = "groupBoxEpisode";
-            this.groupBoxEpisode.Size = new System.Drawing.Size(162, 137);
-            this.groupBoxEpisode.TabIndex = 1;
-            this.groupBoxEpisode.TabStop = false;
-            this.groupBoxEpisode.Text = "Episodes";
-            // 
             // pictureBoxSaison
             // 
             this.pictureBoxSaison.Location = new System.Drawing.Point(6, 22);
@@ -132,6 +122,15 @@
             this.pictureBoxSaison.Size = new System.Drawing.Size(165, 191);
             this.pictureBoxSaison.TabIndex = 0;
             this.pictureBoxSaison.TabStop = false;
+            // 
+            // lstBoxEpisode
+            // 
+            this.lstBoxEpisode.FormattingEnabled = true;
+            this.lstBoxEpisode.ItemHeight = 15;
+            this.lstBoxEpisode.Location = new System.Drawing.Point(6, 227);
+            this.lstBoxEpisode.Name = "lstBoxEpisode";
+            this.lstBoxEpisode.Size = new System.Drawing.Size(165, 139);
+            this.lstBoxEpisode.TabIndex = 7;
             // 
             // FormSaison
             // 
@@ -160,7 +159,7 @@
         private TextBox txtBoxResumeSaison;
         private LinkLabel linkLblBASaison;
         private Label lblDateSaison;
-        private GroupBox groupBoxEpisode;
         private PictureBox pictureBoxSaison;
+        private ListBox lstBoxEpisode;
     }
 }
