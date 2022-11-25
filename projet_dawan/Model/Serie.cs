@@ -79,5 +79,15 @@ namespace projet_dawan.Model
         public Serie()
         {
         }
+
+        public Serie(string name, string resume, string affiche, DateTime date_diff, string url_ba, List<Personnage> personnages, string urlBa)
+        {
+            Personnages = personnages;
+            UrlBa = urlBa;
+            DateDiff = date_diff;
+            Affiche = affiche;
+            Resume = resume;
+            Name = name;
+        }
     }
 }

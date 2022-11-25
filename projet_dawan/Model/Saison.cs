@@ -42,8 +42,17 @@ namespace projet_dawan.Model
 
         public Saison()
         {
-            serie_Id= new Serie();
+            serie_Id = new Serie();
         }
+        public Saison(short num_in, int nb_episode_in,
+            Serie serie_Id_in
+           )
+        {
+            
+            Num = num_in;
+            NbEpisode = nb_episode_in;
+            SerieId = serie_Id_in;
 
+        }
     }
 }

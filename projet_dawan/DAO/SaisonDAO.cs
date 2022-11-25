@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {
-    public class SaisonDAO 
+    public class SaisonDAO
     {
         private string cnx = string.Empty;
         private ActeurRepository repo = new();
@@ -45,8 +45,8 @@ namespace projet_dawan.DAO
             cmd = Bind(cmd, saison);
 
 
-            //Execute(sql, cnx, cmd);
-            MessageBox.Show(sql);
+            Execute(sql, cnx, cmd);
+            //MessageBox.Show(sql);
         }
 
         public void Delete(int id)
@@ -57,8 +57,8 @@ namespace projet_dawan.DAO
             {
                 SqlCommand cmd = new(query, cnx);
                 cmd.Parameters.AddWithValue("@id", id);
-                //Execute(query, cnx, cmd);
-                MessageBox.Show(query);
+                Execute(query, cnx, cmd);
+                //MessageBox.Show(query);
             }
 
         }
@@ -91,10 +91,10 @@ namespace projet_dawan.DAO
                 cnx.Open();
 
                 list = Get(cmd);
+                return list[0];
 
             }
 
-            return list[0];
         }
         public void Update(Saison saison)
         {
@@ -107,8 +107,8 @@ namespace projet_dawan.DAO
 
             cmd = AddParam(cmd, "@id", saison.Id);
 
-            //Execute(query, cnx, cmd);
-            MessageBox.Show(query);
+            Execute(query, cnx, cmd);
+            //MessageBox.Show(query);
         }
 
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
@@ -133,7 +133,7 @@ namespace projet_dawan.DAO
         private static List<Saison> Get(SqlCommand cmd)
         {
             List<Saison> list = new List<Saison>();
-            SaisonDAO repoSaison = new(Properties.Settings.Default.Connection);
+            SerieDAO repoSerie= new(Properties.Settings.Default.Connection);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -141,7 +141,9 @@ namespace projet_dawan.DAO
                     Saison saison = new()
                     {
                         Id = reader.GetInt32(0),
-
+                        SerieId=repoSerie.GetById(reader.GetInt32(1)),
+                        Num=reader.GetInt16(2),
+                        NbEpisode=reader.GetInt32(3)
                     };
 
                     list.Add(saison);
@@ -159,8 +161,8 @@ namespace projet_dawan.DAO
         private SqlCommand Bind(SqlCommand cmd, Saison saison)
         {
             cmd = AddParam(cmd, "@serie_id", saison.SerieId.Id);
-            cmd = AddParam(cmd, "@num", saison.Num);
-            cmd = AddParam(cmd, "@nb_episode", saison.Num);
+            cmd = AddParam(cmd, "@numero", saison.Num);
+            cmd = AddParam(cmd, "@nb_episode", saison.NbEpisode);
 
             return cmd;
         }

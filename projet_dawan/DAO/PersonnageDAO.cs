@@ -47,7 +47,7 @@ namespace projet_dawan.DAO
             cmd = AddParam(cmd, "@acteur_id", perso.ActeurId.Id);
 
 
-            //Execute(sql, cnx, cmd);
+            Execute(sql, cnx, cmd);
             //MessageBox.Show(sql);
         }
 
@@ -106,7 +106,7 @@ namespace projet_dawan.DAO
             
             cmd = AddParam(cmd, "@id", perso.Id);
 
-            //Execute(query, cnx, cmd);
+            Execute(query, cnx, cmd);
 
         }
 

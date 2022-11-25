@@ -45,8 +45,8 @@ namespace projet_dawan.DAO
             cmd = Bind(cmd, episode);
 
 
-            //Execute(sql, cnx, cmd);
-            MessageBox.Show(sql);
+            Execute(sql, cnx, cmd);
+            //MessageBox.Show(sql);
         }
 
         public void Delete(int id)
@@ -57,8 +57,8 @@ namespace projet_dawan.DAO
             {
                 SqlCommand cmd = new(query, cnx);
                 cmd.Parameters.AddWithValue("@id", id);
-                //Execute(query, cnx, cmd);
-                MessageBox.Show(query);
+                Execute(query, cnx, cmd);
+                //MessageBox.Show(query);
             }
 
         }
@@ -107,8 +107,8 @@ namespace projet_dawan.DAO
 
             cmd = AddParam(cmd, "@id", episode.Id);
 
-            //Execute(query, cnx, cmd);
-            MessageBox.Show(query);
+            Execute(query, cnx, cmd);
+            //MessageBox.Show(query);
         }
 
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)

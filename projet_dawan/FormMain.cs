@@ -16,8 +16,11 @@ namespace projet_dawan
             Orm orm = new SaisonRepository();
             
             SaisonDAO dao = new(Properties.Settings.Default.Connection);
-            dao.GetById(1);
-            
+            Saison saison=dao.GetById(5);
+            saison.NbEpisode = 5;
+            dao.Update(saison);
+            MessageBox.Show(saison.Num.ToString());
+
         }
     }
 }
