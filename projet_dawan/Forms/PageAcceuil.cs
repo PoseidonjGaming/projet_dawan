@@ -48,10 +48,10 @@ namespace projet_dawan
 
         private void toolStripBibli_Click(object sender, EventArgs e)
         {
-            // affiche la page de la bibliothéque des séries de la base de données
-            //PageBibliotheque bibli = new();
+            //affiche la page de la bibliothéque des séries de la base de données
+            PageBibliotheque bibli = new(serieDAO.GetAll(), string.Empty);
 
-            //bibli.ShowDialog();
+            bibli.ShowDialog(this);
         }
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)

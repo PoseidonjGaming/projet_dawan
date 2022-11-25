@@ -30,12 +30,12 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lstBxSerie = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtRechercher = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxFiltrer = new System.Windows.Forms.ComboBox();
             this.btnRetour = new System.Windows.Forms.Button();
-            this.lstBxSerie = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +59,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Liste des séries";
             // 
+            // lstBxSerie
+            // 
+            this.lstBxSerie.FormattingEnabled = true;
+            this.lstBxSerie.ItemHeight = 20;
+            this.lstBxSerie.Location = new System.Drawing.Point(6, 26);
+            this.lstBxSerie.Name = "lstBxSerie";
+            this.lstBxSerie.Size = new System.Drawing.Size(764, 304);
+            this.lstBxSerie.TabIndex = 0;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -75,6 +84,7 @@
             this.txtRechercher.Name = "txtRechercher";
             this.txtRechercher.Size = new System.Drawing.Size(168, 27);
             this.txtRechercher.TabIndex = 3;
+            this.txtRechercher.TextChanged += new System.EventHandler(this.txtRechercher_TextChanged);
             // 
             // label3
             // 
@@ -103,15 +113,6 @@
             this.btnRetour.Text = "<";
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
-            // 
-            // lstBxSerie
-            // 
-            this.lstBxSerie.FormattingEnabled = true;
-            this.lstBxSerie.ItemHeight = 20;
-            this.lstBxSerie.Location = new System.Drawing.Point(6, 26);
-            this.lstBxSerie.Name = "lstBxSerie";
-            this.lstBxSerie.Size = new System.Drawing.Size(764, 304);
-            this.lstBxSerie.TabIndex = 0;
             // 
             // PageBibliotheque
             // 

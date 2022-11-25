@@ -1,4 +1,5 @@
-﻿using projet_dawan.Model;
+﻿using projet_dawan.DAO;
+using projet_dawan.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,6 +15,7 @@ namespace projet_dawan
     public partial class PageBibliotheque : Form
     {
         private List<Serie> serieList = new List<Serie>();
+        private SerieDAO SerieDAO = new(Properties.Settings.Default.Connection);
         public PageBibliotheque(List<Serie> series, string text)
         {
             InitializeComponent();
@@ -35,6 +37,14 @@ namespace projet_dawan
             {
                 lstBxSerie.Items.Add(serie.Name);
             }
+        }
+
+        private void txtRechercher_TextChanged(object sender, EventArgs e)
+        {
+            serieList.Clear();
+            lstBxSerie.Items.Clear();
+            serieList=SerieDAO.GetByTxt(txtRechercher.Text);
+            Populate();
         }
     }
 }
