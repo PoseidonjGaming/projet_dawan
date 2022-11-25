@@ -1,4 +1,8 @@
-﻿using System;
+﻿using projet_dawan.Controls;
+using projet_dawan.DAO;
+using projet_dawan.Model;
+using projet_dawan_WinForm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +16,8 @@ namespace projet_dawan
 {
     public partial class PageAcceuil : Form
     {
+        private SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
+
         public PageAcceuil()
         {
             InitializeComponent();
@@ -80,6 +86,29 @@ namespace projet_dawan
             Watchlist watchlist = new();
 
             watchlist.ShowDialog();
+        }
+
+        private void btnNew2_Click(object sender, EventArgs e)
+        {
+            FormSerie formSerie=new(serieDAO.GetById(1));
+            formSerie.ShowDialog(this);
+
+        }
+
+        private void PageAcceuil_Load(object sender, EventArgs e)
+        {
+            int startPos = 27;
+            
+            List<Serie> series=serieDAO.GetAll();
+            for(int i=0; i<=4; i++)
+            {
+                PictureBox pictureBox= new PictureBox();
+                pictureBox.Location = new Point((100*i*2)+20, 75);
+                pictureBox.Size = new Size(143, 179);
+                pictureBox.SizeMode=PictureBoxSizeMode.StretchImage;
+                pictureBox.ImageLocation = "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan\\bin\\Debug\\net6.0-windows\\photo\\affiche wandavision.jpg";
+                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
+            }
         }
     }
 }
