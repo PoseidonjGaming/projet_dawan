@@ -1,4 +1,8 @@
-﻿using System;
+﻿using projet_dawan.Controls;
+using projet_dawan.DAO;
+using projet_dawan.Model;
+using projet_dawan_WinForm;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,12 +11,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using projet_dawan.DAO;
 
 namespace projet_dawan
 {
     public partial class PageAcceuil : Form
     {
+        private SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
+        private string path=Directory.GetCurrentDirectory()+"\\photo\\";
         public PageAcceuil()
         {
             InitializeComponent();
@@ -48,7 +53,7 @@ namespace projet_dawan
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var quitter = MessageBox.Show("Etes vous sur de vouloir quitter l'application ?", "Quitter ?",
+            var quitter = MessageBox.Show("Etes vous sur de vouloir vous quitter l'application ?", "Quitter ?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (quitter == DialogResult.Yes)
             {
@@ -58,13 +63,13 @@ namespace projet_dawan
 
         private void toolStripDeco_Click(object sender, EventArgs e)
         {
-            var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?", 
+            var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (deconnecter == DialogResult.Yes)
             {
                 Close();
             }
-            
+
         }
 
         private void toolStripGerer_Click(object sender, EventArgs e)
@@ -83,12 +88,35 @@ namespace projet_dawan
             watchlist.ShowDialog();
         }
 
-        private void btnNew1_Click(object sender, EventArgs e)
+        private void btnNew2_Click(object sender, EventArgs e)
         {
-            // affiche la dernière serie dans la base de données
-            PageTestSerie pageSerie = new();
+            FormSerie formSerie = new(serieDAO.GetById(1));
+            formSerie.ShowDialog(this);
 
-            pageSerie.ShowDialog();
+        }
+
+        private void PageAcceuil_Load(object sender, EventArgs e)
+        {
+            int startPos = 27;
+
+            List<Serie> series = serieDAO.GetAll();
+            for (int i = 0; i < 4; i++)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Location = new Point((100 * i * 2) + 20, 60);
+                pictureBox.Size = new Size(143, 179);
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                MessageBox.Show(path + series[i].Affiche);
+                pictureBox.ImageLocation = path + series[i].Affiche;
+
+                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
+
+                Button btnSerie = new Button();
+                btnSerie.Location = new Point((100 * i * 2) + 20, 245);
+                btnSerie.Size = new Size(143, 50);
+                btnSerie.Text= series[i].Name;
+                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
+            }
         }
     }
 }

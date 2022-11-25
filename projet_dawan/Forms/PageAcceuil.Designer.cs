@@ -42,21 +42,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtRechercher = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnNew4 = new System.Windows.Forms.Button();
-            this.btnNew3 = new System.Windows.Forms.Button();
-            this.btnNew2 = new System.Windows.Forms.Button();
-            this.btnNew1 = new System.Windows.Forms.Button();
-            this.newAffiche4 = new System.Windows.Forms.PictureBox();
-            this.newAffiche3 = new System.Windows.Forms.PictureBox();
-            this.newAffiche2 = new System.Windows.Forms.PictureBox();
-            this.newAffiche1 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.newAffiche4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newAffiche3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newAffiche2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newAffiche1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -170,89 +158,12 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnNew4);
-            this.groupBox1.Controls.Add(this.btnNew3);
-            this.groupBox1.Controls.Add(this.btnNew2);
-            this.groupBox1.Controls.Add(this.btnNew1);
-            this.groupBox1.Controls.Add(this.newAffiche4);
-            this.groupBox1.Controls.Add(this.newAffiche3);
-            this.groupBox1.Controls.Add(this.newAffiche2);
-            this.groupBox1.Controls.Add(this.newAffiche1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 138);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(776, 300);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            // 
-            // btnNew4
-            // 
-            this.btnNew4.Location = new System.Drawing.Point(597, 247);
-            this.btnNew4.Name = "btnNew4";
-            this.btnNew4.Size = new System.Drawing.Size(143, 29);
-            this.btnNew4.TabIndex = 8;
-            this.btnNew4.Text = "Titre 4";
-            this.btnNew4.UseVisualStyleBackColor = true;
-            // 
-            // btnNew3
-            // 
-            this.btnNew3.Location = new System.Drawing.Point(413, 247);
-            this.btnNew3.Name = "btnNew3";
-            this.btnNew3.Size = new System.Drawing.Size(143, 29);
-            this.btnNew3.TabIndex = 7;
-            this.btnNew3.Text = "Titre 3";
-            this.btnNew3.UseVisualStyleBackColor = true;
-            // 
-            // btnNew2
-            // 
-            this.btnNew2.Location = new System.Drawing.Point(220, 247);
-            this.btnNew2.Name = "btnNew2";
-            this.btnNew2.Size = new System.Drawing.Size(143, 29);
-            this.btnNew2.TabIndex = 6;
-            this.btnNew2.Text = "Titre 2";
-            this.btnNew2.UseVisualStyleBackColor = true;
-            // 
-            // btnNew1
-            // 
-            this.btnNew1.Location = new System.Drawing.Point(33, 247);
-            this.btnNew1.Name = "btnNew1";
-            this.btnNew1.Size = new System.Drawing.Size(143, 29);
-            this.btnNew1.TabIndex = 5;
-            this.btnNew1.Text = "Titre 1";
-            this.btnNew1.UseVisualStyleBackColor = true;
-            this.btnNew1.Click += new System.EventHandler(this.btnNew1_Click);
-            // 
-            // newAffiche4
-            // 
-            this.newAffiche4.Location = new System.Drawing.Point(597, 62);
-            this.newAffiche4.Name = "newAffiche4";
-            this.newAffiche4.Size = new System.Drawing.Size(143, 179);
-            this.newAffiche4.TabIndex = 4;
-            this.newAffiche4.TabStop = false;
-            // 
-            // newAffiche3
-            // 
-            this.newAffiche3.Location = new System.Drawing.Point(413, 62);
-            this.newAffiche3.Name = "newAffiche3";
-            this.newAffiche3.Size = new System.Drawing.Size(143, 179);
-            this.newAffiche3.TabIndex = 3;
-            this.newAffiche3.TabStop = false;
-            // 
-            // newAffiche2
-            // 
-            this.newAffiche2.Location = new System.Drawing.Point(220, 62);
-            this.newAffiche2.Name = "newAffiche2";
-            this.newAffiche2.Size = new System.Drawing.Size(143, 179);
-            this.newAffiche2.TabIndex = 2;
-            this.newAffiche2.TabStop = false;
-            // 
-            // newAffiche1
-            // 
-            this.newAffiche1.Location = new System.Drawing.Point(33, 62);
-            this.newAffiche1.Name = "newAffiche1";
-            this.newAffiche1.Size = new System.Drawing.Size(143, 179);
-            this.newAffiche1.TabIndex = 1;
-            this.newAffiche1.TabStop = false;
             // 
             // label3
             // 
@@ -277,14 +188,11 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "PageAcceuil";
             this.Text = "PageAcceuil";
+            this.Load += new System.EventHandler(this.PageAcceuil_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.newAffiche4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newAffiche3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newAffiche2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newAffiche1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,15 +212,7 @@
         private ToolStripMenuItem toolStripGerer;
         private ToolStripMenuItem toolStripDeco;
         private GroupBox groupBox1;
-        private PictureBox newAffiche4;
-        private PictureBox newAffiche3;
-        private PictureBox newAffiche2;
-        private PictureBox newAffiche1;
         private Label label3;
-        private Button btnNew4;
-        private Button btnNew3;
-        private Button btnNew2;
-        private Button btnNew1;
         private ToolStripMenuItem quitterToolStripMenuItem;
         private ToolStripMenuItem watchlistToolStripMenuItem;
     }
