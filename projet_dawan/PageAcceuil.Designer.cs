@@ -36,6 +36,7 @@
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripCompte = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripGerer = new System.Windows.Forms.ToolStripMenuItem();
+            this.watchlistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDeco = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -84,28 +85,28 @@
             // toolStripBibli
             // 
             this.toolStripBibli.Name = "toolStripBibli";
-            this.toolStripBibli.Size = new System.Drawing.Size(224, 26);
+            this.toolStripBibli.Size = new System.Drawing.Size(200, 26);
             this.toolStripBibli.Text = "&Bibliothéque";
             this.toolStripBibli.Click += new System.EventHandler(this.toolStripBibli_Click);
             // 
             // toolStripAddSerie
             // 
             this.toolStripAddSerie.Name = "toolStripAddSerie";
-            this.toolStripAddSerie.Size = new System.Drawing.Size(224, 26);
+            this.toolStripAddSerie.Size = new System.Drawing.Size(200, 26);
             this.toolStripAddSerie.Text = "&AjouterSéries";
             this.toolStripAddSerie.Click += new System.EventHandler(this.toolStripAddSerie_Click);
             // 
             // toolStripDeleteSerie
             // 
             this.toolStripDeleteSerie.Name = "toolStripDeleteSerie";
-            this.toolStripDeleteSerie.Size = new System.Drawing.Size(224, 26);
+            this.toolStripDeleteSerie.Size = new System.Drawing.Size(200, 26);
             this.toolStripDeleteSerie.Text = "&SupprimerSéries";
             this.toolStripDeleteSerie.Click += new System.EventHandler(this.toolStripDeleteSerie_Click);
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.quitterToolStripMenuItem.Text = "&Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
@@ -113,6 +114,7 @@
             // 
             this.toolStripCompte.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripGerer,
+            this.watchlistToolStripMenuItem,
             this.toolStripDeco});
             this.toolStripCompte.Name = "toolStripCompte";
             this.toolStripCompte.Size = new System.Drawing.Size(76, 24);
@@ -123,6 +125,14 @@
             this.toolStripGerer.Name = "toolStripGerer";
             this.toolStripGerer.Size = new System.Drawing.Size(224, 26);
             this.toolStripGerer.Text = "&Gérer";
+            this.toolStripGerer.Click += new System.EventHandler(this.toolStripGerer_Click);
+            // 
+            // watchlistToolStripMenuItem
+            // 
+            this.watchlistToolStripMenuItem.Name = "watchlistToolStripMenuItem";
+            this.watchlistToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.watchlistToolStripMenuItem.Text = "&Watchlist";
+            this.watchlistToolStripMenuItem.Click += new System.EventHandler(this.watchlistToolStripMenuItem_Click);
             // 
             // toolStripDeco
             // 
@@ -303,5 +313,6 @@
         private Button btnNew2;
         private Button btnNew1;
         private ToolStripMenuItem quitterToolStripMenuItem;
+        private ToolStripMenuItem watchlistToolStripMenuItem;
     }
 }

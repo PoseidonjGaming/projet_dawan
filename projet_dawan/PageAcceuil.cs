@@ -65,5 +65,21 @@ namespace projet_dawan
             }
             
         }
+
+        private void toolStripGerer_Click(object sender, EventArgs e)
+        {
+            // affiche la page de gestion du compte
+            GererCompte compte = new();
+
+            compte.ShowDialog();
+        }
+
+        private void watchlistToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // affiche la watchlist liée au compte actuel
+            Watchlist watchlist = new();
+
+            watchlist.ShowDialog();
+        }
     }
 }

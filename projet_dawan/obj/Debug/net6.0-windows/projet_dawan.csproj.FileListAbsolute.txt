@@ -61,3 +61,5 @@ C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj
 C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.SupprimerSeries.resources
 C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.PageBibliotheque.resources
 C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Properties.Resources.resources
+C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.GererCompte.resources
+C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Watchlist.resources
