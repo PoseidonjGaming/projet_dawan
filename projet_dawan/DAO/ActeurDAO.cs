@@ -160,7 +160,7 @@ namespace projet_dawan.DAO
         private SqlCommand Bind(SqlCommand cmd, Acteur acteur)
         {
             cmd = AddParam(cmd, "@nom", acteur.Nom);
-            cmd = AddParam(cmd, "@prenom", acteur.Nom);
+            cmd = AddParam(cmd, "@prenom", acteur.Prenom);
 
             return cmd;
         }

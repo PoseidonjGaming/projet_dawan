@@ -15,11 +15,10 @@ namespace projet_dawan
         {
             Orm orm = new SaisonRepository();
             
-            SaisonDAO dao = new(Properties.Settings.Default.Connection);
-            Saison saison=dao.GetById(5);
-            saison.NbEpisode = 5;
-            dao.Update(saison);
-            MessageBox.Show(saison.Num.ToString());
+            ActeurDAO dao = new(Properties.Settings.Default.Connection);
+            Acteur acteur=dao.GetById(21);
+            
+            dao.Delete(21);
 
         }
     }
