@@ -144,8 +144,8 @@ namespace projet_dawan
             for (int i = 0; i < I; i++)
             {
                 PictureBox pictureBox = new PictureBox();
-                pictureBox.Location = new Point((100 * i * 2) + 20, 60);
-                pictureBox.Size = new Size(143, 179);
+                pictureBox.Location = new Point((100 * i * 2) + 15, 60);
+                pictureBox.Size = new Size(143, 200);
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox.Name = serieList[i].Name;
                 pictureBox.ImageLocation = path + serieList[i].Affiche;
@@ -154,7 +154,7 @@ namespace projet_dawan
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
 
                 Button btnSerie = new Button();
-                btnSerie.Location = new Point((100 * i * 2) + 20, 245);
+                btnSerie.Location = new Point((100 * i * 2) + 15, 265);
                 btnSerie.Size = new Size(143, 50);
                 btnSerie.Text = serieList[i].Name;
                 btnSerie.Click += Serie_Click;

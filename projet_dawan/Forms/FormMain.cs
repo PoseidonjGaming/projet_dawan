@@ -13,15 +13,12 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Orm orm = new SaisonRepository();
-            
-            PersonnageDAO dao = new(Properties.Settings.Default.Connection);
-            ActeurDAO daoActeur = new(Properties.Settings.Default.Connection);
-            SerieDAO daoSerie = new(Properties.Settings.Default.Connection);
-            Personnage perso=new("Baron Zemo",daoActeur.GetById(18),daoSerie.GetById(3));
-            
-            dao.Add(perso);
+            //Orm orm = new SaisonRepository();
 
+            SaisonDAO dao = new(Properties.Settings.Default.Connection);
+
+            Saison serie = dao.GetById(1);
+            //MessageBox.Show(serie.Name);
         }
     }
 }

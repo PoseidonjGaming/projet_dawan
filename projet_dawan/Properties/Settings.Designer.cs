@@ -25,9 +25,9 @@ namespace projet_dawan.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=P3570-7D6Q;Initial Catalog=serie_list;Integrated Security=True;Connec" +
-            "t Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWr" +
-            "ite;MultiSubnetFailover=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BDDProjet;Integrated Security=" +
+            "True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIn" +
+            "tent=ReadWrite;MultiSubnetFailover=False")]
         public string Connection {
             get {
                 return ((string)(this["Connection"]));

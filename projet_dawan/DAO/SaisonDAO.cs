@@ -83,7 +83,6 @@ namespace projet_dawan.DAO
         {
             List<Saison> list = new List<Saison>();
             string query = repo.Select("*").From(table).WhereById("id").Build();
-            MessageBox.Show(query);
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -141,7 +140,7 @@ namespace projet_dawan.DAO
                     Saison saison = new()
                     {
                         Id = reader.GetInt32(0),
-                        SerieId = repoSerie.GetById(reader.GetInt32(1)),
+                        //SerieId = repoSerie.GetById(reader.GetInt32(1)),
                         Num = reader.GetInt16(2),
                         NbEpisode = reader.GetInt32(3)
                     };
