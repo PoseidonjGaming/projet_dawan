@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using projet_dawan.DAO;
 
 namespace projet_dawan
 {
@@ -47,7 +48,7 @@ namespace projet_dawan
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var quitter = MessageBox.Show("Etes vous sur de vouloir vous quitter l'application ?", "Quitter ?",
+            var quitter = MessageBox.Show("Etes vous sur de vouloir quitter l'application ?", "Quitter ?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (quitter == DialogResult.Yes)
             {
@@ -80,6 +81,14 @@ namespace projet_dawan
             Watchlist watchlist = new();
 
             watchlist.ShowDialog();
+        }
+
+        private void btnNew1_Click(object sender, EventArgs e)
+        {
+            // affiche la dernière serie dans la base de données
+            PageTestSerie pageSerie = new();
+
+            pageSerie.ShowDialog();
         }
     }
 }

@@ -123,21 +123,21 @@
             // toolStripGerer
             // 
             this.toolStripGerer.Name = "toolStripGerer";
-            this.toolStripGerer.Size = new System.Drawing.Size(224, 26);
+            this.toolStripGerer.Size = new System.Drawing.Size(179, 26);
             this.toolStripGerer.Text = "&Gérer";
             this.toolStripGerer.Click += new System.EventHandler(this.toolStripGerer_Click);
             // 
             // watchlistToolStripMenuItem
             // 
             this.watchlistToolStripMenuItem.Name = "watchlistToolStripMenuItem";
-            this.watchlistToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.watchlistToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.watchlistToolStripMenuItem.Text = "&Watchlist";
             this.watchlistToolStripMenuItem.Click += new System.EventHandler(this.watchlistToolStripMenuItem_Click);
             // 
             // toolStripDeco
             // 
             this.toolStripDeco.Name = "toolStripDeco";
-            this.toolStripDeco.Size = new System.Drawing.Size(224, 26);
+            this.toolStripDeco.Size = new System.Drawing.Size(179, 26);
             this.toolStripDeco.Text = "&Deconnexion";
             this.toolStripDeco.Click += new System.EventHandler(this.toolStripDeco_Click);
             // 
@@ -220,6 +220,7 @@
             this.btnNew1.TabIndex = 5;
             this.btnNew1.Text = "Titre 1";
             this.btnNew1.UseVisualStyleBackColor = true;
+            this.btnNew1.Click += new System.EventHandler(this.btnNew1_Click);
             // 
             // newAffiche4
             // 

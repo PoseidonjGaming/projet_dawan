@@ -23,5 +23,12 @@ namespace projet_dawan
             dao.Add(perso);
 
         }
+
+        private void btnConnexion_Click(object sender, EventArgs e)
+        {
+            PageAcceuil acceuil = new();
+
+            acceuil.ShowDialog();
+        }
     }
 }
