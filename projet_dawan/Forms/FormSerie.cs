@@ -6,7 +6,7 @@ namespace projet_dawan_WinForm
 {
     public partial class FormSerie : Form
     {
-        private Serie Serie;
+        private Serie Serie=new();
         private List<Saison> Saisons=new List<Saison>();
         
         public FormSerie(Serie serie)
@@ -17,6 +17,7 @@ namespace projet_dawan_WinForm
 
         private void FormSerie_Load(object sender, EventArgs e)
         {
+            
             lblSerie.Text = Serie.Name;
             lblDateSerie.Text=Serie.DateDiff.ToString();
             linkLblBASerie.Text = Serie.UrlBa;

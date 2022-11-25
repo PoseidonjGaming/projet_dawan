@@ -7,7 +7,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -18,6 +20,7 @@ namespace projet_dawan
     {
         private SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
         private string path=Directory.GetCurrentDirectory()+"\\photo\\";
+        private List<Serie> serieList = new List<Serie>();
         public PageAcceuil()
         {
             InitializeComponent();
@@ -99,24 +102,34 @@ namespace projet_dawan
         {
             int startPos = 27;
 
-            List<Serie> series = serieDAO.GetAll();
+            serieList = serieDAO.GetAll();
             for (int i = 0; i < 4; i++)
             {
                 PictureBox pictureBox = new PictureBox();
                 pictureBox.Location = new Point((100 * i * 2) + 20, 60);
                 pictureBox.Size = new Size(143, 179);
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                MessageBox.Show(path + series[i].Affiche);
-                pictureBox.ImageLocation = path + series[i].Affiche;
+                MessageBox.Show(path + serieList[i].Affiche);
+                pictureBox.ImageLocation = path + serieList[i].Affiche;
 
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
 
                 Button btnSerie = new Button();
                 btnSerie.Location = new Point((100 * i * 2) + 20, 245);
                 btnSerie.Size = new Size(143, 50);
-                btnSerie.Text= series[i].Name;
+                btnSerie.Text= serieList[i].Name;
+                btnSerie.Click += Serie_Click;
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
             }
+
+        }
+
+        private void Serie_Click(object sender, EventArgs e)
+        {
+            Button? button = sender as Button;
+            Serie serie = serieList.Find(s => s.Name == button.Text);
+            FormSerie formSerie = new(serie);
+            formSerie.ShowDialog(this);
         }
     }
 }
