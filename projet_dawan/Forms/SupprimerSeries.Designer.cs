@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnSupprimer = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.cmbBxSerie = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -42,13 +42,6 @@
             this.label1.Size = new System.Drawing.Size(160, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nom serie à supprimer";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(53, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(248, 27);
-            this.textBox1.TabIndex = 1;
             // 
             // btnSupprimer
             // 
@@ -70,17 +63,26 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
+            // cmbBxSerie
+            // 
+            this.cmbBxSerie.FormattingEnabled = true;
+            this.cmbBxSerie.Location = new System.Drawing.Point(53, 41);
+            this.cmbBxSerie.Name = "cmbBxSerie";
+            this.cmbBxSerie.Size = new System.Drawing.Size(248, 28);
+            this.cmbBxSerie.TabIndex = 4;
+            // 
             // SupprimerSeries
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 136);
+            this.Controls.Add(this.cmbBxSerie);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnSupprimer);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "SupprimerSeries";
             this.Text = "SupprimerSeries";
+            this.Load += new System.EventHandler(this.SupprimerSeries_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,8 +91,8 @@
         #endregion
 
         private Label label1;
-        private TextBox textBox1;
         private Button btnSupprimer;
         private Button btnAnnuler;
+        private ComboBox cmbBxSerie;
     }
 }
