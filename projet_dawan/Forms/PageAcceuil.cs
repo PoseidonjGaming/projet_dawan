@@ -17,7 +17,7 @@ namespace projet_dawan
     public partial class PageAcceuil : Form
     {
         private SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
-
+        private string path=Directory.GetCurrentDirectory()+"\\photo\\";
         public PageAcceuil()
         {
             InitializeComponent();
@@ -63,13 +63,13 @@ namespace projet_dawan
 
         private void toolStripDeco_Click(object sender, EventArgs e)
         {
-            var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?", 
+            var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (deconnecter == DialogResult.Yes)
             {
                 Close();
             }
-            
+
         }
 
         private void toolStripGerer_Click(object sender, EventArgs e)
@@ -90,7 +90,7 @@ namespace projet_dawan
 
         private void btnNew2_Click(object sender, EventArgs e)
         {
-            FormSerie formSerie=new(serieDAO.GetById(1));
+            FormSerie formSerie = new(serieDAO.GetById(1));
             formSerie.ShowDialog(this);
 
         }
@@ -98,16 +98,24 @@ namespace projet_dawan
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
             int startPos = 27;
-            
-            List<Serie> series=serieDAO.GetAll();
-            for(int i=0; i<=4; i++)
+
+            List<Serie> series = serieDAO.GetAll();
+            for (int i = 0; i < 4; i++)
             {
-                PictureBox pictureBox= new PictureBox();
-                pictureBox.Location = new Point((100*i*2)+20, 75);
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Location = new Point((100 * i * 2) + 20, 60);
                 pictureBox.Size = new Size(143, 179);
-                pictureBox.SizeMode=PictureBoxSizeMode.StretchImage;
-                pictureBox.ImageLocation = "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan\\bin\\Debug\\net6.0-windows\\photo\\affiche wandavision.jpg";
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                MessageBox.Show(path + series[i].Affiche);
+                pictureBox.ImageLocation = path + series[i].Affiche;
+
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
+
+                Button btnSerie = new Button();
+                btnSerie.Location = new Point((100 * i * 2) + 20, 245);
+                btnSerie.Size = new Size(143, 50);
+                btnSerie.Text= series[i].Name;
+                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
             }
         }
     }
