@@ -59,7 +59,7 @@ namespace projet_dawan.DAO
             {
                 SqlCommand cmd = new(query, cnx);
                 cmd.Parameters.AddWithValue("@id", id);
-                //Execute(query, cnx, cmd);
+                Execute(query, cnx, cmd);
             }
 
         }
@@ -141,8 +141,8 @@ namespace projet_dawan.DAO
                     Personnage perso = new()
                     {
                         Id = reader.GetInt32(0),
-                        Nom = reader.GetString(3),
-                        SerieId = repoSerie.GetById(reader.GetInt32(2)),
+                        Nom = reader.GetString(2),
+                        SerieId = repoSerie.GetById(reader.GetInt32(3)),
                         ActeurId= repoActeur.GetById(reader.GetInt32(1))
 
                     };

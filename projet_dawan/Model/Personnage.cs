@@ -40,5 +40,11 @@
 			acteur_id= new Acteur();
 		}
 
+		public Personnage(string nom, Acteur acteur, Serie serie)
+		{
+			Nom = nom;
+			ActeurId= acteur;
+			SerieId= serie;
+		}
 	}
 }
