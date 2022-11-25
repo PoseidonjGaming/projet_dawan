@@ -21,6 +21,7 @@ namespace projet_dawan
 
         private void toolStripAddSerie_Click(object sender, EventArgs e)
         {
+            // affiche la page pour ajouter des séries à la base de données
             // ajouter If pour vérifier si le compte à les droits
             AjouterSeries add = new();
 
@@ -29,10 +30,40 @@ namespace projet_dawan
 
         private void toolStripDeleteSerie_Click(object sender, EventArgs e)
         {
+            // affiche la page pour supprimer des séries à la base de données
             // ajouter If pour vérifier si le compte à les droits
             SupprimerSeries supr = new();
 
             supr.ShowDialog();
+        }
+
+        private void toolStripBibli_Click(object sender, EventArgs e)
+        {
+            // affiche la page de la bibliothéque des séries de la base de données
+            PageBibliotheque bibli = new();
+
+            bibli.ShowDialog();
+        }
+
+        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var quitter = MessageBox.Show("Etes vous sur de vouloir vous quitter l'application ?", "Quitter ?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (quitter == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void toolStripDeco_Click(object sender, EventArgs e)
+        {
+            var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (deconnecter == DialogResult.Yes)
+            {
+                Close();
+            }
+            
         }
     }
 }

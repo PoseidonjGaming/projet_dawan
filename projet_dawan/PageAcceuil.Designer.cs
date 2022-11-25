@@ -33,6 +33,7 @@
             this.toolStripBibli = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripAddSerie = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDeleteSerie = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripCompte = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripGerer = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDeco = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +75,8 @@
             this.toolStripMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripBibli,
             this.toolStripAddSerie,
-            this.toolStripDeleteSerie});
+            this.toolStripDeleteSerie,
+            this.quitterToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
             this.toolStripMenu.Text = "&Menu";
@@ -84,6 +86,7 @@
             this.toolStripBibli.Name = "toolStripBibli";
             this.toolStripBibli.Size = new System.Drawing.Size(224, 26);
             this.toolStripBibli.Text = "&Bibliothéque";
+            this.toolStripBibli.Click += new System.EventHandler(this.toolStripBibli_Click);
             // 
             // toolStripAddSerie
             // 
@@ -99,6 +102,13 @@
             this.toolStripDeleteSerie.Text = "&SupprimerSéries";
             this.toolStripDeleteSerie.Click += new System.EventHandler(this.toolStripDeleteSerie_Click);
             // 
+            // quitterToolStripMenuItem
+            // 
+            this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.quitterToolStripMenuItem.Text = "&Quitter";
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
+            // 
             // toolStripCompte
             // 
             this.toolStripCompte.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -111,14 +121,15 @@
             // toolStripGerer
             // 
             this.toolStripGerer.Name = "toolStripGerer";
-            this.toolStripGerer.Size = new System.Drawing.Size(179, 26);
+            this.toolStripGerer.Size = new System.Drawing.Size(224, 26);
             this.toolStripGerer.Text = "&Gérer";
             // 
             // toolStripDeco
             // 
             this.toolStripDeco.Name = "toolStripDeco";
-            this.toolStripDeco.Size = new System.Drawing.Size(179, 26);
+            this.toolStripDeco.Size = new System.Drawing.Size(224, 26);
             this.toolStripDeco.Text = "&Deconnexion";
+            this.toolStripDeco.Click += new System.EventHandler(this.toolStripDeco_Click);
             // 
             // label1
             // 
@@ -291,5 +302,6 @@
         private Button btnNew3;
         private Button btnNew2;
         private Button btnNew1;
+        private ToolStripMenuItem quitterToolStripMenuItem;
     }
 }

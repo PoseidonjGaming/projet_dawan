@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnSupprimer = new System.Windows.Forms.Button();
+            this.btnAnnuler = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -51,7 +52,7 @@
             // 
             // btnSupprimer
             // 
-            this.btnSupprimer.Location = new System.Drawing.Point(126, 90);
+            this.btnSupprimer.Location = new System.Drawing.Point(81, 95);
             this.btnSupprimer.Name = "btnSupprimer";
             this.btnSupprimer.Size = new System.Drawing.Size(94, 29);
             this.btnSupprimer.TabIndex = 2;
@@ -59,11 +60,22 @@
             this.btnSupprimer.UseVisualStyleBackColor = true;
             this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
             // 
+            // btnAnnuler
+            // 
+            this.btnAnnuler.Location = new System.Drawing.Point(181, 95);
+            this.btnAnnuler.Name = "btnAnnuler";
+            this.btnAnnuler.Size = new System.Drawing.Size(94, 29);
+            this.btnAnnuler.TabIndex = 3;
+            this.btnAnnuler.Text = "Annuler";
+            this.btnAnnuler.UseVisualStyleBackColor = true;
+            this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
+            // 
             // SupprimerSeries
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 136);
+            this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
@@ -79,5 +91,6 @@
         private Label label1;
         private TextBox textBox1;
         private Button btnSupprimer;
+        private Button btnAnnuler;
     }
 }

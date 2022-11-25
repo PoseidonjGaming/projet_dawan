@@ -24,5 +24,15 @@ namespace projet_dawan
             // vérifier si les champs sont valides puis ajouter la serie à la base de données
             Close();
         }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            var annuler = MessageBox.Show("Etes vous sur de vouloir annuler l'ajout ?", "Annuler ajout ?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (annuler == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
     }
 }

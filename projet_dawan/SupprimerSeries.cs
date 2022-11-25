@@ -24,5 +24,15 @@ namespace projet_dawan
             // supprimer la serie selectionner. Ajouter messagebox pour demander une validation
             Close();
         }
+
+        private void btnAnnuler_Click(object sender, EventArgs e)
+        {
+            var annuler = MessageBox.Show("Etes vous sur de vouloir annuler la suppression ?", "Annuler suppression ?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (annuler == DialogResult.Yes)
+            {
+                Close();
+            }
+        }
     }
 }

@@ -13,6 +13,9 @@
     <Compile Update="PageAcceuil.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="PageBibliotheque.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="SupprimerSeries.cs">
       <SubType>Form</SubType>
     </Compile>
