@@ -54,3 +54,13 @@ E:\Projet perso\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.
 E:\Projet perso\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.csproj.CopyComplete
 E:\Projet perso\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\projet_dawan.dll.config
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\projet_dawan.dll.config
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.AjouterSeries.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.CreerCompte.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.GererCompte.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.PageBibliotheque.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Properties.Resources.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.SupprimerSeries.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Watchlist.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan_WinForm.Forms.FormEpisode.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan_WinForm.FormSaison.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan_WinForm.FormSerie.resources
