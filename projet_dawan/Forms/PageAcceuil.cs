@@ -19,7 +19,7 @@ namespace projet_dawan
     public partial class PageAcceuil : Form
     {
         private SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
-        private string path=Directory.GetCurrentDirectory()+"\\photo\\";
+        private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
         public PageAcceuil()
         {
@@ -109,15 +109,16 @@ namespace projet_dawan
                 pictureBox.Location = new Point((100 * i * 2) + 20, 60);
                 pictureBox.Size = new Size(143, 179);
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                MessageBox.Show(path + serieList[i].Affiche);
+                pictureBox.Name = serieList[i].Name;
                 pictureBox.ImageLocation = path + serieList[i].Affiche;
+                pictureBox.Click += Serie_Click;
 
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
 
                 Button btnSerie = new Button();
                 btnSerie.Location = new Point((100 * i * 2) + 20, 245);
                 btnSerie.Size = new Size(143, 50);
-                btnSerie.Text= serieList[i].Name;
+                btnSerie.Text = serieList[i].Name;
                 btnSerie.Click += Serie_Click;
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
             }
@@ -127,9 +128,28 @@ namespace projet_dawan
         private void Serie_Click(object sender, EventArgs e)
         {
             Button? button = sender as Button;
-            Serie serie = serieList.Find(s => s.Name == button.Text);
-            FormSerie formSerie = new(serie);
-            formSerie.ShowDialog(this);
+            if (button != null)
+            {
+                Serie? serie = serieList.Find(s => s.Name == button.Text);
+                if (serie != null)
+                {
+                    FormSerie formSerie = new(serie);
+                    formSerie.ShowDialog(this);
+
+                }
+
+            }
+            else
+            {
+                PictureBox? pictureBox = sender as PictureBox;
+                Serie? serie = serieList.Find(s => s.Name == pictureBox.Name);
+                if (serie != null)
+                {
+                    FormSerie formSerie = new(serie);
+                    formSerie.ShowDialog(this);
+
+                }
+            }
         }
     }
 }
