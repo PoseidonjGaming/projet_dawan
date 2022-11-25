@@ -8,30 +8,35 @@ namespace projet_dawan.Model
 {
     public class Acteur
     {
-		private int id;
-		private string nom;
-		private string prenom;
+        private int id;
+        private string nom;
+        private string prenom;
 
-		public string Prenom
-		{
-			get { return prenom; }
-			set { prenom = value; }
-		}
-
-
-		public string Nom
-		{
-			get { return nom; }
-			set { nom = value; }
-		}
+        public string Prenom
+        {
+            get { return prenom; }
+            set { prenom = value; }
+        }
 
 
-		public int Id
-		{
-			get { return id; }
-			set { id = value; }
-		}
+        public string Nom
+        {
+            get { return nom; }
+            set { nom = value; }
+        }
 
-		public Acteur() { }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+        public Acteur() { }
+        public Acteur(string nom, string prenom)
+        {
+            this.nom = nom;
+            this.prenom = prenom;
+        }
     }
 }

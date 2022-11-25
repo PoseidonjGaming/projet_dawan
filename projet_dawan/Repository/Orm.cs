@@ -43,8 +43,12 @@ namespace projet_dawan.Repository
         }
 
         //Ajoute form table à la query
-        public abstract Orm From();
-        
+        public Orm From(string table)
+        {
+            query += " From " + table;
+            return this;
+        }
+
 
         //retourne la query
         public string Build()
@@ -53,28 +57,29 @@ namespace projet_dawan.Repository
             return query;
         }
 
-        public  Orm WhereById(string champ)
+        //Ajoute Where id=@id à la query
+        public Orm WhereById(string champ)
         {
             Query += " Where " + champ + "=@id";
             return this;
         }
 
-        public  Orm WhereByDate(string champ)
+        public Orm WhereByDate(string champ)
         {
             Query += " Where " + champ + "=@date";
             return this;
         }
 
-
-        public  Orm WhereByLike(string champ)
+        //Ajoute la condition que le champs contient le texte passé en paramètre
+        public Orm WhereByLike(string champ)
         {
-            Query += " Where " + champ + " Like @text";
+            Query += " Where " + champ + " Like %@text%";
             return this;
         }
 
         public Orm And()
         {
-            query+= " And";
+            query += " And";
             return this;
         }
         public Orm Or()
@@ -92,6 +97,69 @@ namespace projet_dawan.Repository
         public Orm OrderBy(string champ, string direction)
         {
             Query += " Order by " + champ + " " + direction;
+            return this;
+        }
+
+        public Orm Insert(string table, params string[] values)
+        {
+            query = $"Insert into {table} (";
+            foreach (string value in values)
+            {
+                if (value == values.Last())
+                {
+                    query += value + ") ";
+                }
+                else
+                {
+                    query += value + ", ";
+                }
+            }
+            return this;
+        }
+
+        public Orm Values(params string[] values)
+        {
+            query += $"Values (";
+            foreach (string value in values)
+            {
+                if (value == values.Last())
+                {
+                    query += value + ")";
+                }
+                else
+                {
+                    query += value + ", ";
+                }
+            }
+            return this;
+        }
+
+        public Orm Delete(string table)
+        {
+            query = "Delete";
+            From(table);
+            WhereById("id");
+            return this;
+        }
+
+        public Orm Update(string table, List<string> values, List<string> champs)
+        {
+            Query = "Update " + table + " Set ";
+            foreach (string value in values)
+            {
+                int index = values.IndexOf(value);
+                if (value == values.Last())
+                {
+                    query += value + "=" + champs[index];
+                }
+                else
+                {
+                    query += value + "=" + champs[index] + ",";
+                }
+
+            }
+            WhereById("id");
+            
             return this;
         }
 

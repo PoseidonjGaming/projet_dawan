@@ -1,3 +1,5 @@
+using projet_dawan.DAO;
+using projet_dawan.Model;
 using projet_dawan.Repository;
 
 namespace projet_dawan
@@ -11,10 +13,15 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Orm orm = new SerieRepository();
-            string query = orm.Select("*").From()
-                .Join("serie","id","personnage","id").OrderBy("id", "desc").Build() ;
-            MessageBox.Show(query);
+            Orm orm = new SaisonRepository();
+            
+            PersonnageDAO dao = new(Properties.Settings.Default.Connection);
+            ActeurDAO daoActeur = new(Properties.Settings.Default.Connection);
+            SerieDAO daoSerie = new(Properties.Settings.Default.Connection);
+            Personnage perso=new("Baron Zemo",daoActeur.GetById(18),daoSerie.GetById(3));
+            
+            dao.Add(perso);
+
         }
     }
 }
