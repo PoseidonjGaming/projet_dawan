@@ -20,7 +20,7 @@ namespace projet_dawan.DAO
         private ActeurRepository repo = new();
         private string table;
         private List<string> champs = new List<string>() { "saison_id", "nom", "resume", "date_prem_diff" };
-        private List<string> values = new List<string>() { "@saison_id", "@nom","@resume", "@date_prem_diff" };
+        private List<string> values = new List<string>() { "@saison_id", "@nom", "@resume", "@date_prem_diff" };
 
         public string Cnx
         {
@@ -46,7 +46,6 @@ namespace projet_dawan.DAO
 
 
             Execute(sql, cnx, cmd);
-            //MessageBox.Show(sql);
         }
 
         public void Delete(int id)
@@ -58,7 +57,6 @@ namespace projet_dawan.DAO
                 SqlCommand cmd = new(query, cnx);
                 cmd.Parameters.AddWithValue("@id", id);
                 Execute(query, cnx, cmd);
-                //MessageBox.Show(query);
             }
 
         }
@@ -108,7 +106,22 @@ namespace projet_dawan.DAO
             cmd = AddParam(cmd, "@id", episode.Id);
 
             Execute(query, cnx, cmd);
-            //MessageBox.Show(query);
+        }
+
+        public List<Episode> GetEpisodes(int id)
+        {
+            List<Episode> list = new List<Episode>();
+            string query = repo.Select("*").From(table).WhereById("saison_id").Build();
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd.Parameters.AddWithValue("@id", id);
+                cnx.Open();
+
+                list = Get(cmd);
+
+            }
+            return list;
         }
 
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
@@ -142,9 +155,9 @@ namespace projet_dawan.DAO
                     {
                         Id = reader.GetInt32(0),
                         Nom = reader.GetString(2),
-                        SaisonId=repoSaison.GetById(reader.GetInt32(1)),
-                        Resume=reader.GetString(3),
-                        DatePremDiff=reader.GetDateTime(4)
+                        SaisonId = repoSaison.GetById(reader.GetInt32(1)),
+                        Resume = reader.GetString(3),
+                        DatePremDiff = reader.GetDateTime(4)
                     };
 
                     list.Add(episode);

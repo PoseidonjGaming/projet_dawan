@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projet_dawan.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,13 @@ namespace projet_dawan_WinForm.Forms
 {
     public partial class FormEpisode : Form
     {
-        public FormEpisode()
+        private Episode episode;
+        public FormEpisode(Episode episode)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.episode = episode;
         }
     }
 }

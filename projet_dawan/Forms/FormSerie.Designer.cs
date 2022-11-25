@@ -44,9 +44,9 @@
             // 
             this.lblSerie.AutoSize = true;
             this.lblSerie.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblSerie.Location = new System.Drawing.Point(272, 12);
+            this.lblSerie.Location = new System.Drawing.Point(238, 9);
             this.lblSerie.Name = "lblSerie";
-            this.lblSerie.Size = new System.Drawing.Size(389, 67);
+            this.lblSerie.Size = new System.Drawing.Size(313, 54);
             this.lblSerie.TabIndex = 0;
             this.lblSerie.Text = "Titre de la série";
             // 
@@ -58,42 +58,39 @@
             this.groupBox1.Controls.Add(this.linkLblBASerie);
             this.groupBox1.Controls.Add(this.lblDateSerie);
             this.groupBox1.Controls.Add(this.pictureBoxSerie);
-            this.groupBox1.Location = new System.Drawing.Point(14, 88);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 66);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(887, 496);
+            this.groupBox1.Size = new System.Drawing.Size(776, 372);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
             // lstBoxSaison
             // 
             this.lstBoxSaison.FormattingEnabled = true;
-            this.lstBoxSaison.ItemHeight = 20;
-            this.lstBoxSaison.Location = new System.Drawing.Point(7, 304);
-            this.lstBoxSaison.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lstBoxSaison.ItemHeight = 15;
+            this.lstBoxSaison.Location = new System.Drawing.Point(6, 258);
             this.lstBoxSaison.Name = "lstBoxSaison";
-            this.lstBoxSaison.Size = new System.Drawing.Size(188, 184);
+            this.lstBoxSaison.Size = new System.Drawing.Size(165, 109);
             this.lstBoxSaison.TabIndex = 6;
+            this.lstBoxSaison.SelectedIndexChanged += new System.EventHandler(this.lstBoxSaison_SelectedIndexChanged);
             // 
             // btnCasting
             // 
             this.btnCasting.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnCasting.Location = new System.Drawing.Point(758, 153);
-            this.btnCasting.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnCasting.Location = new System.Drawing.Point(663, 115);
             this.btnCasting.Name = "btnCasting";
-            this.btnCasting.Size = new System.Drawing.Size(122, 51);
+            this.btnCasting.Size = new System.Drawing.Size(107, 38);
             this.btnCasting.TabIndex = 5;
             this.btnCasting.Text = "CASTING";
             this.btnCasting.UseVisualStyleBackColor = true;
+            this.btnCasting.Click += new System.EventHandler(this.btnCasting_Click);
             // 
             // txtBoxResumeSerie
             // 
-            this.txtBoxResumeSerie.Location = new System.Drawing.Point(230, 229);
-            this.txtBoxResumeSerie.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBoxResumeSerie.Location = new System.Drawing.Point(201, 172);
             this.txtBoxResumeSerie.Multiline = true;
             this.txtBoxResumeSerie.Name = "txtBoxResumeSerie";
-            this.txtBoxResumeSerie.Size = new System.Drawing.Size(650, 257);
+            this.txtBoxResumeSerie.Size = new System.Drawing.Size(569, 194);
             this.txtBoxResumeSerie.TabIndex = 4;
             this.txtBoxResumeSerie.Text = "Résumé";
             // 
@@ -101,9 +98,9 @@
             // 
             this.linkLblBASerie.AutoSize = true;
             this.linkLblBASerie.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.linkLblBASerie.Location = new System.Drawing.Point(230, 153);
+            this.linkLblBASerie.Location = new System.Drawing.Point(201, 115);
             this.linkLblBASerie.Name = "linkLblBASerie";
-            this.linkLblBASerie.Size = new System.Drawing.Size(189, 35);
+            this.linkLblBASerie.Size = new System.Drawing.Size(148, 28);
             this.linkLblBASerie.TabIndex = 3;
             this.linkLblBASerie.TabStop = true;
             this.linkLblBASerie.Text = "Bande Annonce";
@@ -112,31 +109,29 @@
             // 
             this.lblDateSerie.AutoSize = true;
             this.lblDateSerie.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDateSerie.Location = new System.Drawing.Point(230, 59);
+            this.lblDateSerie.Location = new System.Drawing.Point(201, 44);
             this.lblDateSerie.Name = "lblDateSerie";
-            this.lblDateSerie.Size = new System.Drawing.Size(261, 35);
+            this.lblDateSerie.Size = new System.Drawing.Size(204, 28);
             this.lblDateSerie.TabIndex = 2;
             this.lblDateSerie.Text = "Date de 1ère diffusion";
             // 
             // pictureBoxSerie
             // 
-            this.pictureBoxSerie.Location = new System.Drawing.Point(7, 29);
-            this.pictureBoxSerie.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBoxSerie.Location = new System.Drawing.Point(6, 22);
             this.pictureBoxSerie.Name = "pictureBoxSerie";
-            this.pictureBoxSerie.Size = new System.Drawing.Size(189, 255);
+            this.pictureBoxSerie.Size = new System.Drawing.Size(165, 230);
             this.pictureBoxSerie.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxSerie.TabIndex = 0;
             this.pictureBoxSerie.TabStop = false;
             // 
             // FormSerie
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblSerie);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormSerie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Serie";

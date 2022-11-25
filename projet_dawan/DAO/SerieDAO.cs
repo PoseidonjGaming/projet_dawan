@@ -105,7 +105,6 @@ namespace projet_dawan.DAO
             cmd = AddParam(cmd, "@id", serie.Id);
 
             Execute(query, cnx, cmd);
-            //MessageBox.Show(query);
 
         }
 
