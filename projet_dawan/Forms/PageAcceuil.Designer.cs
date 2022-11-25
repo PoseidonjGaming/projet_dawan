@@ -43,6 +43,7 @@
             this.txtRechercher = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -143,7 +144,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(376, 106);
+            this.label2.Location = new System.Drawing.Point(283, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 23);
             this.label2.TabIndex = 2;
@@ -151,7 +152,7 @@
             // 
             // txtRechercher
             // 
-            this.txtRechercher.Location = new System.Drawing.Point(486, 105);
+            this.txtRechercher.Location = new System.Drawing.Point(386, 99);
             this.txtRechercher.Name = "txtRechercher";
             this.txtRechercher.Size = new System.Drawing.Size(302, 27);
             this.txtRechercher.TabIndex = 3;
@@ -175,11 +176,22 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Dernières séries ajoutées :";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(694, 99);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(94, 29);
+            this.btnSearch.TabIndex = 5;
+            this.btnSearch.Text = "Rechercher";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // PageAcceuil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtRechercher);
             this.Controls.Add(this.label2);
@@ -215,5 +227,6 @@
         private Label label3;
         private ToolStripMenuItem quitterToolStripMenuItem;
         private ToolStripMenuItem watchlistToolStripMenuItem;
+        private Button btnSearch;
     }
 }

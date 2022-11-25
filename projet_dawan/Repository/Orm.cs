@@ -73,7 +73,7 @@ namespace projet_dawan.Repository
         //Ajoute la condition que le champs contient le texte passé en paramètre
         public Orm WhereByLike(string champ)
         {
-            Query += " Where " + champ + " Like %@text%";
+            Query += " Where " + champ + " Like @text";
             return this;
         }
 

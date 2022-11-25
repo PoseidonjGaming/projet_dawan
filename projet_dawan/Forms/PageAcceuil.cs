@@ -49,9 +49,9 @@ namespace projet_dawan
         private void toolStripBibli_Click(object sender, EventArgs e)
         {
             // affiche la page de la bibliothéque des séries de la base de données
-            PageBibliotheque bibli = new();
+            //PageBibliotheque bibli = new();
 
-            bibli.ShowDialog();
+            //bibli.ShowDialog();
         }
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -103,26 +103,8 @@ namespace projet_dawan
             int startPos = 27;
 
             serieList = serieDAO.GetAll();
-            for (int i = 0; i < 4; i++)
-            {
-                PictureBox pictureBox = new PictureBox();
-                pictureBox.Location = new Point((100 * i * 2) + 20, 60);
-                pictureBox.Size = new Size(143, 179);
-                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox.Name = serieList[i].Name;
-                pictureBox.ImageLocation = path + serieList[i].Affiche;
-                pictureBox.Click += Serie_Click;
 
-                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
-
-                Button btnSerie = new Button();
-                btnSerie.Location = new Point((100 * i * 2) + 20, 245);
-                btnSerie.Size = new Size(143, 50);
-                btnSerie.Text = serieList[i].Name;
-                btnSerie.Click += Serie_Click;
-                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
-            }
-
+            Populate(4);
         }
 
         private void Serie_Click(object sender, EventArgs e)
@@ -147,9 +129,46 @@ namespace projet_dawan
                 {
                     FormSerie formSerie = new(serie);
                     formSerie.ShowDialog(this);
-
                 }
             }
+        }
+
+        private void txtRechercher_TextChanged(object sender, EventArgs e)
+        {
+            
+           
+        }
+
+        private void Populate(int I)
+        {
+            for (int i = 0; i < I; i++)
+            {
+                PictureBox pictureBox = new PictureBox();
+                pictureBox.Location = new Point((100 * i * 2) + 20, 60);
+                pictureBox.Size = new Size(143, 179);
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBox.Name = serieList[i].Name;
+                pictureBox.ImageLocation = path + serieList[i].Affiche;
+                pictureBox.Click += Serie_Click;
+
+                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
+
+                Button btnSerie = new Button();
+                btnSerie.Location = new Point((100 * i * 2) + 20, 245);
+                btnSerie.Size = new Size(143, 50);
+                btnSerie.Text = serieList[i].Name;
+                btnSerie.Click += Serie_Click;
+                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            serieList.Clear();
+            serieList = serieDAO.GetByTxt(txtRechercher.Text);
+            PageBibliotheque pageBibliotheque = new(serieList, txtRechercher.Text);
+            pageBibliotheque.ShowDialog(this);
+
         }
     }
 }

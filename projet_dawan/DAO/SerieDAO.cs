@@ -17,8 +17,8 @@ namespace projet_dawan.DAO
         private string cnx;
         private SerieRepository repo = new();
         private string table;
-        private List<string> champs= new List<string>() { "nom","resume","affiche","url_ba", "date_diff"};
-        private List<string> values= new List<string>() { "@nom","@resume","@affiche","@url_ba", "@date_diff" };
+        private List<string> champs = new List<string>() { "nom", "resume", "affiche", "url_ba", "date_diff" };
+        private List<string> values = new List<string>() { "@nom", "@resume", "@affiche", "@url_ba", "@date_diff" };
 
         public string Cnx
         {
@@ -35,7 +35,7 @@ namespace projet_dawan.DAO
         {
             SqlConnection cnx = new(Cnx);
 
-            string sql = repo.Insert(table,champs.ToArray())
+            string sql = repo.Insert(table, champs.ToArray())
                 .Values(values.ToArray()).Build();
             SqlCommand cmd = new(sql, cnx);
 
@@ -101,7 +101,7 @@ namespace projet_dawan.DAO
             string query = repo.Update(table, champs, values).Build();
             SqlCommand cmd = new(query, cnx);
 
-            
+
             cmd = AddParam(cmd, "@id", serie.Id);
 
             Execute(query, cnx, cmd);
@@ -109,11 +109,30 @@ namespace projet_dawan.DAO
 
         }
 
+        public List<Serie> GetByTxt(string text)
+        {
+            List<Serie> list = new List<Serie>();
+            string query = repo.Select("*").From(table).WhereByLike("nom").Build();
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd = AddParam(cmd, "@text", "%"+text+"%");
+                
+                cnx.Open();
+
+                list = Get(cmd);
+
+            }
+
+            return list;
+
+        }
+
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
             {
-               
+
 
                 cnx.Open();
                 cmd.ExecuteNonQuery();
@@ -152,7 +171,7 @@ namespace projet_dawan.DAO
             return list;
         }
 
-       
+
 
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {

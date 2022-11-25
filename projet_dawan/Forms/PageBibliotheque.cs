@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projet_dawan.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,16 +13,28 @@ namespace projet_dawan
 {
     public partial class PageBibliotheque : Form
     {
-        public PageBibliotheque()
+        private List<Serie> serieList = new List<Serie>();
+        public PageBibliotheque(List<Serie> series, string text)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            serieList = series;
+            txtRechercher.Text = text;
+            Populate();
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void Populate()
+        {
+            foreach(Serie serie in serieList)
+            {
+                lstBxSerie.Items.Add(serie.Name);
+            }
         }
     }
 }

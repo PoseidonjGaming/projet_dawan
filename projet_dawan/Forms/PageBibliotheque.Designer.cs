@@ -35,6 +35,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxFiltrer = new System.Windows.Forms.ComboBox();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.lstBxSerie = new System.Windows.Forms.ListBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -49,6 +51,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lstBxSerie);
             this.groupBox1.Location = new System.Drawing.Point(12, 97);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(776, 341);
@@ -101,6 +104,15 @@
             this.btnRetour.UseVisualStyleBackColor = true;
             this.btnRetour.Click += new System.EventHandler(this.btnRetour_Click);
             // 
+            // lstBxSerie
+            // 
+            this.lstBxSerie.FormattingEnabled = true;
+            this.lstBxSerie.ItemHeight = 20;
+            this.lstBxSerie.Location = new System.Drawing.Point(6, 26);
+            this.lstBxSerie.Name = "lstBxSerie";
+            this.lstBxSerie.Size = new System.Drawing.Size(764, 304);
+            this.lstBxSerie.TabIndex = 0;
+            // 
             // PageBibliotheque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -115,6 +127,7 @@
             this.Controls.Add(this.label1);
             this.Name = "PageBibliotheque";
             this.Text = "PageBibliotheque";
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,5 +142,6 @@
         private Label label3;
         private ComboBox comboBoxFiltrer;
         private Button btnRetour;
+        private ListBox lstBxSerie;
     }
 }
