@@ -8,5 +8,8 @@
     <Setting Name="ToWatch" Type="System.Collections.Generic.List&lt;projet_dawan.Model.Serie&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="token" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
