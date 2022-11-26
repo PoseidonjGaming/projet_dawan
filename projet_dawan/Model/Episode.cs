@@ -1,17 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace projet_dawan.Model
 {
+    [Serializable]
+    [DataContract]
     public class Episode
     {
+        [DataMember]
         private int id;
+        [DataMember]
         private Saison saison_id;
+        [DataMember]
         private string nom;
+        [DataMember]
         private string resume;
+        [DataMember]
         private DateTime date_prem_diff;
 
         public DateTime DatePremDiff

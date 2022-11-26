@@ -36,6 +36,7 @@
             this.linkLblBASerie = new System.Windows.Forms.LinkLabel();
             this.lblDateSerie = new System.Windows.Forms.Label();
             this.pictureBoxSerie = new System.Windows.Forms.PictureBox();
+            this.buttonToWatch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSerie)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buttonToWatch);
             this.groupBox1.Controls.Add(this.lstBoxSaison);
             this.groupBox1.Controls.Add(this.btnCasting);
             this.groupBox1.Controls.Add(this.txtBoxResumeSerie);
@@ -124,6 +126,16 @@
             this.pictureBoxSerie.TabIndex = 0;
             this.pictureBoxSerie.TabStop = false;
             // 
+            // buttonToWatch
+            // 
+            this.buttonToWatch.Location = new System.Drawing.Point(430, 92);
+            this.buttonToWatch.Name = "buttonToWatch";
+            this.buttonToWatch.Size = new System.Drawing.Size(75, 23);
+            this.buttonToWatch.TabIndex = 7;
+            this.buttonToWatch.Text = "button1";
+            this.buttonToWatch.UseVisualStyleBackColor = true;
+            this.buttonToWatch.Click += new System.EventHandler(this.buttonToWatch_Click);
+            // 
             // FormSerie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -154,5 +166,6 @@
         private Label lblDateSerie;
         private Button btnCasting;
         private ListBox lstBoxSaison;
+        private Button buttonToWatch;
     }
 }

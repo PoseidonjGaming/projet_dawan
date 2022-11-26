@@ -23,7 +23,7 @@ namespace projet_dawan_WinForm
             linkLblBASerie.Text = Serie.UrlBa;
             txtBoxResumeSerie.Text = Serie.Resume;
             pictureBoxSerie.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche;
-            SaisonDAO dao = new(Settings.Default.Connection);
+            SaisonDAO dao = new(projet_dawan.Properties.Settings.Default.Connection);
             foreach (Saison saison in dao.GetSaisons(Serie.Id))
             {
                 Saisons.Add(saison);
@@ -44,6 +44,14 @@ namespace projet_dawan_WinForm
                 FormSaison formSaison = new(saison);
                 formSaison.ShowDialog(this);
             }
+        }
+
+        private void buttonToWatch_Click(object sender, EventArgs e)
+        {
+            List<Serie> series= new List<Serie>();
+            series.Add(Serie);
+            projet_dawan.Properties.Settings.Default.ToWatch= series;
+            projet_dawan.Properties.Settings.Default.Save();
         }
     }
 }

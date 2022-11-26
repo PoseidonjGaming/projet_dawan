@@ -18,5 +18,16 @@ namespace projet_dawan
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ToWatch.Clear();
+            Properties.Settings.Default.Save();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(Properties.Settings.Default.ToWatch.Count.ToString());
+        }
     }
 }

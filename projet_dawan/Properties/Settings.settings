@@ -5,5 +5,8 @@
     <Setting Name="Connection" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BDDProjet;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</Value>
     </Setting>
+    <Setting Name="ToWatch" Type="System.Collections.Generic.List&lt;projet_dawan.Model.Serie&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

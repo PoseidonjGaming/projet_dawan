@@ -1,10 +1,18 @@
-﻿namespace projet_dawan.Model
+﻿using System.Runtime.Serialization;
+
+namespace projet_dawan.Model
 {
+	[Serializable]
+	[DataContract]
     public class Personnage
     {
+		[DataMember]
 		private int id;
+		[DataMember]
 		private string nom;
+		[DataMember]
 		private Acteur acteur_id;
+		[DataMember]
 		private Serie serie_id;
 
 		public Serie SerieId

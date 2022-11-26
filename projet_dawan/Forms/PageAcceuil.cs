@@ -1,18 +1,6 @@
-﻿using projet_dawan.Controls;
-using projet_dawan.DAO;
+﻿using projet_dawan.DAO;
 using projet_dawan.Model;
 using projet_dawan_WinForm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan
 {
@@ -32,7 +20,7 @@ namespace projet_dawan
         {
             // affiche la page pour ajouter des séries à la base de données
             // ajouter If pour vérifier si le compte à les droits
-            AjouterSeries add = new();
+            AjouterSeries add = new(new Serie());
 
             add.ShowDialog();
         }

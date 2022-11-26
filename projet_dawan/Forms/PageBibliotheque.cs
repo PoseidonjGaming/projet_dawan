@@ -57,5 +57,15 @@ namespace projet_dawan
                 formSerie.ShowDialog(this);
             }
         }
+
+        private void buttonAddWich_Click(object sender, EventArgs e)
+        {
+            if(lstBxSerie.SelectedIndex != -1)
+            {
+                Serie serie = serieList[lstBxSerie.SelectedIndex];
+                Properties.Settings.Default.ToWatch.Add(serie);
+                Properties.Settings.Default.Save();
+            }
+        }
     }
 }

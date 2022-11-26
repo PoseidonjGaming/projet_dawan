@@ -80,7 +80,6 @@ E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win-
 E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.csproj.AssemblyReference.cache
-E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Controls.LastSerieAdd.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.AjouterSeries.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.CreerCompte.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan_WinForm.Forms.FormEpisode.resources
@@ -92,7 +91,6 @@ E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.PageBibliotheque.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.SupprimerSeries.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Watchlist.resources
-E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Properties.Resources.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.csproj.GenerateResource.cache
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.GeneratedMSBuildEditorConfig.editorconfig
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.AssemblyInfoInputs.cache
