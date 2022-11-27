@@ -1,3 +1,4 @@
+using Microsoft.VisualBasic.ApplicationServices;
 using projet_dawan.DAO;
 using projet_dawan.Model;
 using projet_dawan.Repository;
@@ -12,14 +13,15 @@ namespace projet_dawan
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        
+    
+
+        private void btnConnexion_Click(object sender, EventArgs e)
         {
-            //Orm orm = new SaisonRepository();
             UserAppDAO dao = new(Properties.Settings.Default.Connection);
 
-            UserApp user = dao.GetByLogin(textBox2.Text);
-            /*user.Password=UserApp.HashPassword("P@ssw0rd");
-            dao.Update(user);*/
+            UserApp? user = dao.GetByLogin(textBox2.Text);
+           
             if (user != null)
             {
                 if (user.Password == UserApp.HashPassword(textBox1.Text))
@@ -34,22 +36,19 @@ namespace projet_dawan
 
                     }
 
+                    if (Properties.Settings.Default.token != string.Empty)
+                    {
+                        FormAccueil pageAcceuil = new FormAccueil();
+                        pageAcceuil.FormClosing += pageAcceuil_FormClosing;
+                        this.Hide();
+                        pageAcceuil.ShowDialog();
+
+                    }
+
 
                 }
             }
-
-        }
-
-        private void btnConnexion_Click(object sender, EventArgs e)
-        {
-            if (Properties.Settings.Default.token != string.Empty)
-            {
-                FormAccueil pageAcceuil = new FormAccueil();
-                pageAcceuil.FormClosing += pageAcceuil_FormClosing;
-                this.Hide();
-                pageAcceuil.ShowDialog();
-
-            }
+            
         }
         private void pageAcceuil_FormClosing(object sender, FormClosingEventArgs e)
         {

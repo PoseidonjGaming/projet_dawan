@@ -105,7 +105,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère le user avec le login passé en paramètre
-        public UserApp GetByLogin(string text)
+        public UserApp? GetByLogin(string text)
         {
             List<UserApp> list = new List<UserApp>();
             string query = repo.Select("*").From(table).WhereByLike("login").Build();
@@ -119,8 +119,14 @@ namespace projet_dawan.DAO
                 list = Get(cmd);
 
             }
-
-            return list[0];
+            if (list.Count > 0)
+            {
+                return list[0];
+            }
+            else
+            {
+                return null;
+            }
 
         }
 
