@@ -1,27 +1,15 @@
-﻿using projet_dawan.Controls;
-using projet_dawan.DAO;
+﻿using projet_dawan.DAO;
 using projet_dawan.Model;
 using projet_dawan_WinForm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan
 {
-    public partial class PageAcceuil : Form
+    public partial class FormAccueil : Form
     {
         private SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
         private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
-        public PageAcceuil()
+        public FormAccueil()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -32,7 +20,7 @@ namespace projet_dawan
         {
             // affiche la page pour ajouter des séries à la base de données
             // ajouter If pour vérifier si le compte à les droits
-            AjouterSeries add = new();
+            FormAjoutSerie add = new(new Serie());
 
             add.ShowDialog();
         }
@@ -41,7 +29,7 @@ namespace projet_dawan
         {
             // affiche la page pour supprimer des séries à la base de données
             // ajouter If pour vérifier si le compte à les droits
-            SupprimerSeries supr = new();
+            FormSupprimerSeries supr = new();
 
             supr.ShowDialog();
         }
@@ -49,9 +37,7 @@ namespace projet_dawan
         private void toolStripBibli_Click(object sender, EventArgs e)
         {
             //affiche la page de la bibliothéque des séries de la base de données
-            PageBibliotheque bibli = new(serieDAO.GetAll(), string.Empty);
-
-            bibli.ShowDialog(this);
+            OpenFormBibli(string.Empty);
         }
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -70,7 +56,8 @@ namespace projet_dawan
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (deconnecter == DialogResult.Yes)
             {
-                Close();
+                Properties.Settings.Default.token = string.Empty;
+                this.Close();
             }
 
         }
@@ -78,7 +65,7 @@ namespace projet_dawan
         private void toolStripGerer_Click(object sender, EventArgs e)
         {
             // affiche la page de gestion du compte
-            GererCompte compte = new();
+            FormGererCompte compte = new();
 
             compte.ShowDialog();
         }
@@ -86,7 +73,7 @@ namespace projet_dawan
         private void watchlistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // affiche la watchlist liée au compte actuel
-            Watchlist watchlist = new();
+            FormWatchlist watchlist = new();
 
             watchlist.ShowDialog();
         }
@@ -100,7 +87,6 @@ namespace projet_dawan
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
-            int startPos = 27;
 
             serieList = serieDAO.GetAll();
 
@@ -133,19 +119,15 @@ namespace projet_dawan
             }
         }
 
-        private void txtRechercher_TextChanged(object sender, EventArgs e)
-        {
-            
-           
-        }
+     
 
         private void Populate(int I)
         {
             for (int i = 0; i < I; i++)
             {
                 PictureBox pictureBox = new PictureBox();
-                pictureBox.Location = new Point((100 * i * 2) + 20, 60);
-                pictureBox.Size = new Size(143, 179);
+                pictureBox.Location = new Point((100 * i * 2) + 15, 60);
+                pictureBox.Size = new Size(143, 200);
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox.Name = serieList[i].Name;
                 pictureBox.ImageLocation = path + serieList[i].Affiche;
@@ -154,7 +136,7 @@ namespace projet_dawan
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
 
                 Button btnSerie = new Button();
-                btnSerie.Location = new Point((100 * i * 2) + 20, 245);
+                btnSerie.Location = new Point((100 * i * 2) + 15, 265);
                 btnSerie.Size = new Size(143, 50);
                 btnSerie.Text = serieList[i].Name;
                 btnSerie.Click += Serie_Click;
@@ -164,11 +146,25 @@ namespace projet_dawan
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            OpenFormBibli(txtRechercher.Text);
+        }
+
+        private void form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void OpenFormBibli(string text)
+        {
             serieList.Clear();
             serieList = serieDAO.GetByTxt(txtRechercher.Text);
-            PageBibliotheque pageBibliotheque = new(serieList, txtRechercher.Text);
-            pageBibliotheque.ShowDialog(this);
-
+            MessageBox.Show(serieList.Count.ToString());
+            FormBibliotheque formBibliotheque = new(serieList, text);
+            formBibliotheque.FormClosing += form_FormClosing;
+            this.Hide();
+            formBibliotheque.ShowDialog(this);
         }
+
+
     }
 }

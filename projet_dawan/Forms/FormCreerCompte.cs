@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace projet_dawan
 {
-    public partial class CreerCompte : Form
+    public partial class FormCreerCompte : Form
     {
-        public CreerCompte()
+        public FormCreerCompte()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

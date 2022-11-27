@@ -576,19 +576,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\": {}
+    "C:\\Users\\lucas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan\\projet_dawan.csproj",
+      "projectUniqueName": "E:\\Projet perso\\Projet dawan\\projet_dawan\\projet_dawan.csproj",
       "projectName": "projet_dawan",
-      "projectPath": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan\\projet_dawan.csproj",
-      "packagesPath": "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan\\obj\\",
+      "projectPath": "E:\\Projet perso\\Projet dawan\\projet_dawan\\projet_dawan.csproj",
+      "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
+      "outputPath": "E:\\Projet perso\\Projet dawan\\projet_dawan\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin Stagiaire\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

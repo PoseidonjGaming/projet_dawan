@@ -14,11 +14,11 @@ using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {
-    public class ActeurDAO : IActeurDAO
+    public class RoleDAO : IRoleDAO
     {
         private string cnx = string.Empty;
-        private ActeurRepository repo = new();
-        
+        private RoleRepository repo = new();
+       
 
         public string Cnx
         {
@@ -26,14 +26,12 @@ namespace projet_dawan.DAO
             set { cnx = value; }
         }
 
-        public ActeurDAO(string cnx)
+        public RoleDAO(string cnx)
         {
             Cnx = cnx;
-            
         }
-
-        //Ajoute un acteur dans la base
-        public void Add(Acteur acteur)
+        //Ajoute un role dans la base
+        public void Add(Role role)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -41,16 +39,17 @@ namespace projet_dawan.DAO
             SqlCommand cmd = new(sql, cnx);
 
 
-            cmd = Bind(cmd, acteur);
+            cmd = Bind(cmd, role);
 
 
             Execute(sql, cnx, cmd);
         }
 
-        //Supprime l'acteur avec l'id spécifié
+        //Supprime le role avec l'id spécifié
         public void Delete(int id)
         {
-            string query =  repo.Remove();
+            string query = repo.Remove();
+
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -60,10 +59,10 @@ namespace projet_dawan.DAO
 
         }
 
-        //Récupère tous les acteurs
-        public List<Acteur> GetAll()
+        //Récupère tous les roles
+        public List<Role> GetAll()
         {
-            List<Acteur> list = new List<Acteur>();
+            List<Role> list = new List<Role>();
             string query = repo.SelectAll();
             using (SqlConnection cnx = new(Cnx))
             {
@@ -75,11 +74,10 @@ namespace projet_dawan.DAO
             }
             return list;
         }
-
-        //Récupère l'acteur qui a l'id spécifié
-        public Acteur GetById(int id)
+        //Récupère le role qui a l'id spécifié
+        public Role GetById(int id)
         {
-            List<Acteur> list = new List<Acteur>();
+            List<Role> list = new List<Role>();
             string query = repo.SelectById();
             using (SqlConnection cnx = new(Cnx))
             {
@@ -94,20 +92,37 @@ namespace projet_dawan.DAO
             return list[0];
         }
 
-        //Met à jour l'acteur avec l'id spécifié avec les nouvelles valeurs 
-        public void Update(Acteur acteur)
+        //Récupère les roles liés à un user
+        public List<Role> GetRolesUser(UserApp user)
+        {
+            List<Role> list = new List<Role>();
+            string query = repo.SelectByUser();
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd = AddParam(cmd, "@id", user.Id);
+                cnx.Open();
+
+                list = Get(cmd);
+
+            }
+
+            return list;
+        }
+
+        //Met à jour le role avec l'id spécifié avec les nouvelles valeurs
+        public void Update(Role role)
         {
             SqlConnection cnx = new(Cnx);
 
             string query = repo.Modify();
             SqlCommand cmd = new(query, cnx);
 
-            cmd = Bind(cmd, acteur);
+            cmd = Bind(cmd, role);
 
-            cmd = AddParam(cmd, "@id", acteur.Id);
+            cmd = AddParam(cmd, "@id", role.Id);
 
             Execute(query, cnx, cmd);
-            //MessageBox.Show(query);
         }
 
         //Exécute les commandes de type insert, delete et update
@@ -128,20 +143,18 @@ namespace projet_dawan.DAO
             }
         }
 
-        //Récupère les acteurs en fonction de la requète passée dans la commande
-        private static List<Acteur> Get(SqlCommand cmd)
+        //Récupère les roles en fonction de la requète passée dans la commande
+        private static List<Role> Get(SqlCommand cmd)
         {
-            List<Acteur> list = new List<Acteur>();
+            List<Role> list = new List<Role>();
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Acteur acteur = new()
+                    Role acteur = new()
                     {
                         Id = reader.GetInt32(0),
-                        Nom = reader.GetString(1),
-                        Prenom = reader.GetString(2),
-
+                        Titre = reader.GetString(1)
                     };
 
                     list.Add(acteur);
@@ -150,18 +163,18 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        //Remplace le champ par la valeur passée en paralètre dans la requète
+
+        //Remplace le champ par la valeur passée en paramètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
-        //Remplace les champs nom et prenom par leur valeur correspondante
-        private static SqlCommand Bind(SqlCommand cmd, Acteur acteur)
+        //Remplace le champ titre par la valeur correspondante
+        private SqlCommand Bind(SqlCommand cmd, Role role)
         {
-            cmd = AddParam(cmd, "@nom", acteur.Nom);
-            cmd = AddParam(cmd, "@prenom", acteur.Prenom);
+            cmd = AddParam(cmd, "@titre", role.Titre);
 
             return cmd;
         }
