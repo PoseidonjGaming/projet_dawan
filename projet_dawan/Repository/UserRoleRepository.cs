@@ -65,6 +65,11 @@ namespace projet_dawan.Repository
         }
 
 
+        public string SelectId()
+        {
+            return Select("id").From(table).Where("user_id", "@user_id").And().Where("role_id","@role_id").Build();
+        }
+
 
 
         //Génère update userRoles set login=@login, password=@password where id=@id
