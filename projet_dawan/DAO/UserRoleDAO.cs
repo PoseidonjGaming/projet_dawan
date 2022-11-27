@@ -1,4 +1,5 @@
-﻿using projet_dawan.Interface;
+﻿using Microsoft.VisualBasic.ApplicationServices;
+using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
 using System;
@@ -18,9 +19,7 @@ namespace projet_dawan.DAO
     {
         private string cnx = string.Empty;
         private UserRoleRepository repo = new();
-        private string table;
-        private List<string> champs = new List<string>() { "userApp_id", "role_id" };
-        private List<string> values = new List<string>() { "@userApp_id", "@role_id" };
+
 
         public string Cnx
         {
@@ -31,49 +30,42 @@ namespace projet_dawan.DAO
         public UserRoleDAO(string cnx)
         {
             Cnx = cnx;
-            table = "userRoles";
         }
+
+        //Associe un user à un role
         public void Add(UserApp user, Role role)
         {
             SqlConnection cnx = new(Cnx);
-
-            string sql = repo.Insert(table, champs.ToArray())
-                .Values(values.ToArray()).Build();
-            SqlCommand cmd = new(sql, cnx);
-
-
+            string query = repo.Add();
+            SqlCommand cmd = new(query, cnx);
             cmd = Bind(cmd, user, role);
-
-
-            Execute(sql, cnx, cmd);
-            // MessageBox.Show(sql);
+            Execute(query, cnx, cmd);
         }
 
-        public void Delete(int id)
+        //Supprime un role d'un user
+        public void Delete(UserApp user, Role role)
         {
-            string query = repo.Delete(table).Build();
+            string query = repo.Remove();
 
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
-                cmd.Parameters.AddWithValue("@id", id);
+                cmd = Bind(cmd, user, role);
                 Execute(query, cnx, cmd);
-                //MessageBox.Show(query);
             }
-
         }
 
 
-
+        //Récupère tous les users qui possèdent un role précis
         public List<UserApp> GetAllUser(int id)
         {
             List<UserApp> list = new List<UserApp>();
-            string query = repo.Select("*").From(table).WhereById("userApp_id").Build();
+            string query = repo.SelectByRole();
 
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
-                cmd = AddParam(cmd, "userApp_id", id);
+                cmd = AddParam(cmd, "@role_id", id);
 
                 cnx.Open();
 
@@ -83,7 +75,7 @@ namespace projet_dawan.DAO
                     UserAppDAO dao = new(Cnx);
                     while (reader.Read())
                     {
-                        UserApp user = dao.GetById(reader.GetInt32(0));
+                        UserApp user = dao.GetById(reader.GetInt32(1));
 
                         list.Add(user);
                     }
@@ -92,10 +84,12 @@ namespace projet_dawan.DAO
 
             return list;
         }
+
+        //Récupère tous les roles d'un user
         public List<Role> GetAllRole(int id)
         {
             List<Role> list = new List<Role>();
-            string query = repo.Select("*").From(table).WhereById("role_id").Build();
+            string query = repo.SelectByUser();
 
             using (SqlConnection cnx = new(Cnx))
             {
@@ -120,19 +114,36 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        public void Update(UserApp user, Role role, int id)
+        //Modifie le role du user
+        public void Update(UserApp user, Role role, Role oldRole)
         {
-            SqlConnection cnx = new(Cnx);
+            
+            string query = repo.SelectId();
+            int id = 0;
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd = Bind(cmd, user, oldRole);
 
-            string query = repo.Update(table, champs, values).Build();
-            SqlCommand cmd = new(query, cnx);
+                cnx.Open();
 
-            cmd = Bind(cmd, user, role);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    
+                    while (reader.Read())
+                    {
+                        id = reader.GetInt32(0);
+                    }
+                }
 
-            cmd = AddParam(cmd, "@id", id);
+                query= repo.Modify();
+                cmd.CommandText = query;
+                cmd = AddParam(cmd, "id", id);
+                cmd = Bind(cmd, user, role);
 
-            Execute(query, cnx, cmd);
-            //MessageBox.Show(query);
+                cmd.ExecuteNonQuery();
+            }
+
         }
 
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
@@ -152,7 +163,7 @@ namespace projet_dawan.DAO
             }
         }
 
-        
+
 
 
 

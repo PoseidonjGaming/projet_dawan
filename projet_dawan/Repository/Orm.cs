@@ -18,7 +18,7 @@ namespace projet_dawan.Repository
 
         public Orm()
         {
-
+            query = string.Empty;
         }
 
         //Ajoute à l'attibut query la liste de champs et renvoie l'objet 
@@ -55,6 +55,12 @@ namespace projet_dawan.Repository
         {
             query += ";";
             return query;
+        }
+
+        public Orm Where(string champ, string param)
+        {
+            query += "Where" + champ + "=" + param;
+            return this;
         }
 
         //Ajoute Where id=@id à la query
@@ -141,6 +147,13 @@ namespace projet_dawan.Repository
             WhereById("id");
             return this;
         }
+        public Orm DeleteWhere(string table, string champ, string param)
+        {
+            query = "Delete";
+            From(table);
+            Where(champ, param);
+            return this;
+        }
 
         public Orm Update(string table, List<string> values, List<string> champs)
         {
@@ -159,7 +172,7 @@ namespace projet_dawan.Repository
 
             }
             WhereById("id");
-            
+
             return this;
         }
 

@@ -18,9 +18,7 @@ namespace projet_dawan.DAO
     {
         private string cnx = string.Empty;
         private ActeurRepository repo = new();
-        private string table;
-        private List<string> champs = new List<string>() { "nom", "prenom" };
-        private List<string> values = new List<string>() { "@nom", "@prenom" };
+        
 
         public string Cnx
         {
@@ -31,14 +29,15 @@ namespace projet_dawan.DAO
         public ActeurDAO(string cnx)
         {
             Cnx = cnx;
-            table = "acteur";
+            
         }
+
+        //Ajoute un acteur dans la base
         public void Add(Acteur acteur)
         {
             SqlConnection cnx = new(Cnx);
 
-            string sql = repo.Insert(table, champs.ToArray())
-                .Values(values.ToArray()).Build();
+            string sql = repo.Add();
             SqlCommand cmd = new(sql, cnx);
 
 
@@ -46,28 +45,26 @@ namespace projet_dawan.DAO
 
 
             Execute(sql, cnx, cmd);
-           // MessageBox.Show(sql);
         }
 
+        //Supprime l'acteur avec l'id spécifié
         public void Delete(int id)
         {
-            string query = repo.Delete(table).Build();
-
+            string query =  repo.Remove();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
                 cmd.Parameters.AddWithValue("@id", id);
                 Execute(query, cnx, cmd);
-                //MessageBox.Show(query);
             }
 
         }
 
+        //Récupère tous les acteurs
         public List<Acteur> GetAll()
         {
             List<Acteur> list = new List<Acteur>();
-            string query = repo.Select("*").From(table).Build();
-            MessageBox.Show(query);
+            string query = repo.SelectAll();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -79,11 +76,11 @@ namespace projet_dawan.DAO
             return list;
         }
 
+        //Récupère l'acteur qui a l'id spécifié
         public Acteur GetById(int id)
         {
             List<Acteur> list = new List<Acteur>();
-            string query = repo.Select("*").From(table).WhereById("id").Build();
-            MessageBox.Show(query);
+            string query = repo.SelectById();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -96,11 +93,13 @@ namespace projet_dawan.DAO
 
             return list[0];
         }
+
+        //Met à jour l'acteur avec l'id spécifié avec les nouvelles valeurs 
         public void Update(Acteur acteur)
         {
             SqlConnection cnx = new(Cnx);
 
-            string query = repo.Update(table, champs, values).Build();
+            string query = repo.Modify();
             SqlCommand cmd = new(query, cnx);
 
             cmd = Bind(cmd, acteur);
@@ -111,12 +110,11 @@ namespace projet_dawan.DAO
             //MessageBox.Show(query);
         }
 
+        //Exécute les commandes de type insert, delete et update
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
             {
-
-
                 cnx.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -130,6 +128,7 @@ namespace projet_dawan.DAO
             }
         }
 
+        //Récupère les acteurs en fonction de la requète passée dans la commande
         private static List<Acteur> Get(SqlCommand cmd)
         {
             List<Acteur> list = new List<Acteur>();
@@ -151,13 +150,15 @@ namespace projet_dawan.DAO
             return list;
         }
 
+        //Remplace le champ par la valeur passée en paralètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
-        private SqlCommand Bind(SqlCommand cmd, Acteur acteur)
+        //Remplace les champs nom et prenom par leur valeur correspondante
+        private static SqlCommand Bind(SqlCommand cmd, Acteur acteur)
         {
             cmd = AddParam(cmd, "@nom", acteur.Nom);
             cmd = AddParam(cmd, "@prenom", acteur.Prenom);

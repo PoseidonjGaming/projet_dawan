@@ -16,9 +16,7 @@ namespace projet_dawan.DAO
     {
         private string cnx;
         private SerieRepository repo = new();
-        private string table;
-        private List<string> champs = new List<string>() { "nom", "resume", "affiche", "url_ba", "date_diff" };
-        private List<string> values = new List<string>() { "@nom", "@resume", "@affiche", "@url_ba", "@date_diff" };
+       
 
         public string Cnx
         {
@@ -29,30 +27,27 @@ namespace projet_dawan.DAO
         public SerieDAO(string cnx)
         {
             Cnx = cnx;
-            table = "serie";
         }
+
+        //Ajoute une série dans la base
         public void Add(Serie serie)
         {
             SqlConnection cnx = new(Cnx);
 
-            string sql = repo.Insert(table, champs.ToArray())
-                .Values(values.ToArray()).Build();
+            string sql = repo.Add();
             SqlCommand cmd = new(sql, cnx);
 
 
-            cmd = AddParam(cmd, "@nom", serie.Name);
-            cmd = AddParam(cmd, "@date_diff", serie.DateDiff);
-            cmd = AddParam(cmd, "@url_ba", serie.UrlBa);
-            cmd = AddParam(cmd, "@resume", serie.Resume);
-            cmd = AddParam(cmd, "@affiche", serie.Affiche);
+            cmd = Bind(cmd, serie);
 
             Execute(sql, cnx, cmd);
 
         }
 
+        //Supprime une séire avec l'id spécifié
         public void Delete(int id)
         {
-            string query = repo.Delete(table).Build();
+            string query = repo.Remove();
 
             using (SqlConnection cnx = new(Cnx))
             {
@@ -63,10 +58,11 @@ namespace projet_dawan.DAO
 
         }
 
+        //Récupère toutes les séries
         public List<Serie> GetAll()
         {
             List<Serie> list = new List<Serie>();
-            string query = repo.Select("*").From(table).Build();
+            string query = repo.SelectAll();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -78,10 +74,11 @@ namespace projet_dawan.DAO
             return list;
         }
 
+        //Récupère une série avec l'id spécifié
         public Serie GetById(int id)
         {
             List<Serie> list = new List<Serie>();
-            string query = repo.Select("*").From(table).WhereById("id").Build();
+            string query = repo.SelectById();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -94,24 +91,12 @@ namespace projet_dawan.DAO
 
             return list[0];
         }
-        public void Update(Serie serie)
-        {
-            SqlConnection cnx = new(Cnx);
 
-            string query = repo.Update(table, champs, values).Build();
-            SqlCommand cmd = new(query, cnx);
-
-
-            cmd = AddParam(cmd, "@id", serie.Id);
-
-            Execute(query, cnx, cmd);
-
-        }
-
+        //Récupère une série avec où le champ nom contient le text passé en paramètre
         public List<Serie> GetByTxt(string text)
         {
             List<Serie> list = new List<Serie>();
-            string query = repo.Select("*").From(table).WhereByLike("nom").Build();
+            string query = repo.SelectByNom();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -127,12 +112,26 @@ namespace projet_dawan.DAO
 
         }
 
+        //Met à jour la série avec l'id spécifié avec les nouvelles valeurs
+        public void Update(Serie serie)
+        {
+            SqlConnection cnx = new(Cnx);
+
+            string query = repo.Modify();
+            SqlCommand cmd = new(query, cnx);
+
+
+            cmd = AddParam(cmd, "@id", serie.Id);
+
+            Execute(query, cnx, cmd);
+
+        }
+
+        //Exécute les commandes de type insert, delete et update
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
             {
-
-
                 cnx.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -146,6 +145,7 @@ namespace projet_dawan.DAO
             }
         }
 
+        //Récupère les séries en fonction de la requète passée dans la commande
         private static List<Serie> Get(SqlCommand cmd)
         {
             List<Serie> list = new List<Serie>();
@@ -171,13 +171,14 @@ namespace projet_dawan.DAO
         }
 
 
-
+        //Remplace le champ par la valeur passée en paramètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
+        //Remplace les champ nom, date_diff, url_ba, resume et affiche par leur valeur correspondante
         private SqlCommand Bind(SqlCommand cmd, Serie serie)
         {
             cmd = AddParam(cmd, "@nom", serie.Name);

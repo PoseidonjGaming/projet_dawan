@@ -18,9 +18,7 @@ namespace projet_dawan.DAO
     {
         private string cnx = string.Empty;
         private RoleRepository repo = new();
-        private string table;
-        private List<string> champs = new List<string>() { "titre", "password" };
-        private List<string> values = new List<string>() { "@login", "@password" };
+       
 
         public string Cnx
         {
@@ -31,14 +29,13 @@ namespace projet_dawan.DAO
         public RoleDAO(string cnx)
         {
             Cnx = cnx;
-            table = "roles";
         }
+        //Ajoute un role dans la base
         public void Add(Role role)
         {
             SqlConnection cnx = new(Cnx);
 
-            string sql = repo.Insert(table, champs.ToArray())
-                .Values(values.ToArray()).Build();
+            string sql = repo.Add();
             SqlCommand cmd = new(sql, cnx);
 
 
@@ -46,28 +43,27 @@ namespace projet_dawan.DAO
 
 
             Execute(sql, cnx, cmd);
-            // MessageBox.Show(sql);
         }
 
+        //Supprime le role avec l'id spécifié
         public void Delete(int id)
         {
-            string query = repo.Delete(table).Build();
+            string query = repo.Remove();
 
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
                 cmd.Parameters.AddWithValue("@id", id);
                 Execute(query, cnx, cmd);
-                //MessageBox.Show(query);
             }
 
         }
 
+        //Récupère tous les roles
         public List<Role> GetAll()
         {
             List<Role> list = new List<Role>();
-            string query = repo.Select("*").From(table).Build();
-            MessageBox.Show(query);
+            string query = repo.SelectAll();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -78,12 +74,11 @@ namespace projet_dawan.DAO
             }
             return list;
         }
-
+        //Récupère le role qui a l'id spécifié
         public Role GetById(int id)
         {
             List<Role> list = new List<Role>();
-            string query = repo.Select("*").From(table).WhereById("id").Build();
-            MessageBox.Show(query);
+            string query = repo.SelectById();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -97,11 +92,11 @@ namespace projet_dawan.DAO
             return list[0];
         }
 
+        //Récupère les roles liés à un user
         public List<Role> GetRolesUser(UserApp user)
         {
             List<Role> list = new List<Role>();
-            string query = repo.Select("*").From("userRoles").WhereById("userApp_id").Build();
-            MessageBox.Show(query);
+            string query = repo.SelectByUser();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -114,11 +109,13 @@ namespace projet_dawan.DAO
 
             return list;
         }
+
+        //Met à jour le role avec l'id spécifié avec les nouvelles valeurs
         public void Update(Role role)
         {
             SqlConnection cnx = new(Cnx);
 
-            string query = repo.Update(table, champs, values).Build();
+            string query = repo.Modify();
             SqlCommand cmd = new(query, cnx);
 
             cmd = Bind(cmd, role);
@@ -126,9 +123,9 @@ namespace projet_dawan.DAO
             cmd = AddParam(cmd, "@id", role.Id);
 
             Execute(query, cnx, cmd);
-            //MessageBox.Show(query);
         }
 
+        //Exécute les commandes de type insert, delete et update
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
@@ -146,6 +143,7 @@ namespace projet_dawan.DAO
             }
         }
 
+        //Récupère les roles en fonction de la requète passée dans la commande
         private static List<Role> Get(SqlCommand cmd)
         {
             List<Role> list = new List<Role>();
@@ -165,14 +163,15 @@ namespace projet_dawan.DAO
             return list;
         }
 
-       
 
+        //Remplace le champ par la valeur passée en paramètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
+        //Remplace le champ titre par la valeur correspondante
         private SqlCommand Bind(SqlCommand cmd, Role role)
         {
             cmd = AddParam(cmd, "@titre", role.Titre);

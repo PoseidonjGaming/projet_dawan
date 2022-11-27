@@ -59,6 +59,9 @@ namespace projet_dawan.Model
         public Episode()
         {
             saison_id= new Saison();
+            resume = string.Empty;
+            Id = 0;
+            nom = string.Empty;
         }
 
     }

@@ -18,9 +18,7 @@ namespace projet_dawan.DAO
     {
         private string cnx=string.Empty;
         private PersonnageRepository repo = new();
-        private string table;
-        private List<string> champs= new List<string>() { "nom","serie_id", "acteur_id" };
-        private List<string> values= new List<string>() { "@nom", "@serie_id", "@acteur_id" };
+       
 
         public string Cnx
         {
@@ -31,29 +29,27 @@ namespace projet_dawan.DAO
         public PersonnageDAO(string cnx)
         {
             Cnx = cnx;
-            table = "personnage";
         }
+
+        //Ajoute un personnage dans la base
         public void Add(Personnage perso)
         {
             SqlConnection cnx = new(Cnx);
 
-            string sql = repo.Insert(table, champs.ToArray())
-                .Values(values.ToArray()).Build();
+            string sql = repo.Add();
             SqlCommand cmd = new(sql, cnx);
 
 
-            cmd = AddParam(cmd, "@nom", perso.Nom);
-            cmd = AddParam(cmd, "@serie_id", perso.SerieId.Id);
-            cmd = AddParam(cmd, "@acteur_id", perso.ActeurId.Id);
+            cmd = Bind(cmd, perso);
 
 
             Execute(sql, cnx, cmd);
-            //MessageBox.Show(sql);
         }
 
+        //Supprime le personnage avec l'id spécifié
         public void Delete(int id)
         {
-            string query = repo.Delete(table).Build();
+            string query = repo.Remove();
 
             using (SqlConnection cnx = new(Cnx))
             {
@@ -64,10 +60,11 @@ namespace projet_dawan.DAO
 
         }
 
+        //Récupère tous les personnages
         public List<Personnage> GetAll()
         {
             List<Personnage> list = new List<Personnage>();
-            string query = repo.Select("*").From(table).Build();
+            string query = repo.SelectAll();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -79,10 +76,11 @@ namespace projet_dawan.DAO
             return list;
         }
 
+        //Récupère le personnage qui a l'id spécifié
         public Personnage GetById(int id)
         {
             List<Personnage> list = new List<Personnage>();
-            string query = repo.Select("*").From(table).WhereById("id").Build();
+            string query = repo.SelectById();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -95,11 +93,14 @@ namespace projet_dawan.DAO
 
             return list[0];
         }
+
+
+        //Met à jour le personnage avec l'id spécifié avec les nouvelles valeurs 
         public void Update(Personnage perso)
         {
             SqlConnection cnx = new(Cnx);
 
-            string query = repo.Update(table, champs, values).Build();
+            string query = repo.Modify();
             SqlCommand cmd = new(query, cnx);
 
             cmd = Bind(cmd, perso);
@@ -110,12 +111,11 @@ namespace projet_dawan.DAO
 
         }
 
+        //Exécute les commandes de type insert, delete et update
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
             {
-               
-
                 cnx.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -129,6 +129,7 @@ namespace projet_dawan.DAO
             }
         }
 
+        //Récupère les personnages en fonction de la requète passée dans la commande
         private static List<Personnage> Get(SqlCommand cmd)
         {
             List<Personnage> list = new List<Personnage>();
@@ -153,12 +154,14 @@ namespace projet_dawan.DAO
             return list;
         }
 
+        //Remplace le champ par la valeur passée en paramètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
+        //Remplace les champs nom, serie_id, et acteur_id par leur valeur correspondante
         private SqlCommand Bind(SqlCommand cmd, Personnage perso)
         {
             cmd = AddParam(cmd, "@nom", perso.Nom);

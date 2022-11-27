@@ -38,7 +38,12 @@ namespace projet_dawan.Model
             set { id = value; }
         }
 
-        public Acteur() { }
+        public Acteur()
+        {
+            id= 0;
+            nom=string.Empty; 
+            prenom=string.Empty;
+        }
         public Acteur(string nom, string prenom)
         {
             this.nom = nom;

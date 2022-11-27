@@ -31,24 +31,26 @@ namespace projet_dawan.DAO
         public UserAppDAO(string cnx)
         {
             Cnx = cnx;
-            table = "userApp";
         }
+
+        //Ajoute un user dans la base avec ses roles
         public void Add(UserApp user)
         {
-            SqlConnection cnx = new(Cnx);
+           /* SqlConnection cnx = new(Cnx);
 
-            string sql = repo.Insert(table, champs.ToArray())
-                .Values(values.ToArray()).Build();
+            string sql = repo.Add();
+
+            
+
             SqlCommand cmd = new(sql, cnx);
-
-
             cmd = Bind(cmd, user);
 
-
             Execute(sql, cnx, cmd);
-            // MessageBox.Show(sql);
+            UserRoleDAO dao = new(Cnx);
+            dao.Add(user);*/
         }
 
+        //Supprime un user de la base avec ses role
         public void Delete(int id)
         {
             string query = repo.Delete(table).Build();
@@ -56,18 +58,18 @@ namespace projet_dawan.DAO
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
+                UserRoleDAO dao = new(Cnx);
                 cmd.Parameters.AddWithValue("@id", id);
                 Execute(query, cnx, cmd);
-                //MessageBox.Show(query);
             }
 
         }
 
+        //Récupère tous les users
         public List<UserApp> GetAll()
         {
             List<UserApp> list = new List<UserApp>();
             string query = repo.Select("*").From(table).Build();
-            MessageBox.Show(query);
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -79,11 +81,11 @@ namespace projet_dawan.DAO
             return list;
         }
 
+        //Récupère le user avec l'id passé em paramètre
         public UserApp GetById(int id)
         {
             List<UserApp> list = new List<UserApp>();
             string query = repo.Select("*").From(table).WhereById("id").Build();
-            MessageBox.Show(query);
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -97,6 +99,7 @@ namespace projet_dawan.DAO
             return list[0];
         }
 
+        //Récupère le user avec le login passé en paramètre
         public UserApp GetByLogin(string text)
         {
             List<UserApp> list = new List<UserApp>();
@@ -116,7 +119,7 @@ namespace projet_dawan.DAO
 
         }
 
-       
+        //Met à jour le user avec l'id spécifié avec les nouvelles valeurs
         public void Update(UserApp user)
         {
             SqlConnection cnx = new(Cnx);
@@ -129,9 +132,9 @@ namespace projet_dawan.DAO
             cmd = AddParam(cmd, "@id", user.Id);
 
             Execute(query, cnx, cmd);
-            //MessageBox.Show(query);
         }
 
+        //Exécute les commandes de type insert, delete et update
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
@@ -149,6 +152,7 @@ namespace projet_dawan.DAO
             }
         }
 
+        //Récupère les users en fonction de la requète passée dans la commande
         private static List<UserApp> Get(SqlCommand cmd)
         {
             List<UserApp> list = new List<UserApp>();
@@ -172,14 +176,15 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        
 
+        //Remplace le champ par la valeur passée en paramètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
+        //Remplace les champ login, password par leur valeur correspondante
         private SqlCommand Bind(SqlCommand cmd, UserApp user)
         {
             cmd = AddParam(cmd, "@login", user.Login);

@@ -17,10 +17,8 @@ namespace projet_dawan.DAO
     public class SaisonDAO
     {
         private string cnx = string.Empty;
-        private ActeurRepository repo = new();
-        private string table;
-        private List<string> champs = new List<string>() { "serie_id", "numero", "nb_episode" };
-        private List<string> values = new List<string>() { "@serie_id", "@numero", "@nb_episode" };
+        private readonly SaisonRepository repo = new();
+       
 
         public string Cnx
         {
@@ -31,14 +29,14 @@ namespace projet_dawan.DAO
         public SaisonDAO(string cnx)
         {
             Cnx = cnx;
-            table = "saison";
         }
+
+        //Ajoute une saison dans la base
         public void Add(Saison saison)
         {
             SqlConnection cnx = new(Cnx);
 
-            string sql = repo.Insert(table, champs.ToArray())
-                .Values(values.ToArray()).Build();
+            string sql = repo.Add();
             SqlCommand cmd = new(sql, cnx);
 
 
@@ -46,27 +44,27 @@ namespace projet_dawan.DAO
 
 
             Execute(sql, cnx, cmd);
-            //MessageBox.Show(sql);
         }
 
+        //Supprime une saison avec l'id spécifié
         public void Delete(int id)
         {
-            string query = repo.Delete(table).Build();
+            string query = repo.Remove();
 
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
                 cmd.Parameters.AddWithValue("@id", id);
                 Execute(query, cnx, cmd);
-                //MessageBox.Show(query);
             }
 
         }
 
+        //Récupère toutes les saisons
         public List<Saison> GetAll()
         {
             List<Saison> list = new List<Saison>();
-            string query = repo.Select("*").From(table).Build();
+            string query = repo.SelectAll();
             MessageBox.Show(query);
             using (SqlConnection cnx = new(Cnx))
             {
@@ -79,10 +77,11 @@ namespace projet_dawan.DAO
             return list;
         }
 
+        //Récupère une saison avec l'id spécifié
         public Saison GetById(int id)
         {
             List<Saison> list = new List<Saison>();
-            string query = repo.Select("*").From(table).WhereById("id").Build();
+            string query = repo.SelectById();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -95,11 +94,29 @@ namespace projet_dawan.DAO
             }
 
         }
+
+        //Récupère toutes les sainsons d'une série avec l'id spécifié
+        public List<Saison> GetSaisons(int id)
+        {
+            List<Saison> list = new List<Saison>();
+            string query = repo.SelectBySaisons();
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd.Parameters.AddWithValue("@id", id);
+                cnx.Open();
+
+                list = Get(cmd);
+
+            }
+            return list;
+        }
+
+        //Met à jour la saison avec l'id spécifié avec les nouvelles valeurs
         public void Update(Saison saison)
         {
             SqlConnection cnx = new(Cnx);
-
-            string query = repo.Update(table, champs, values).Build();
+            string query = repo.Modify();
             SqlCommand cmd = new(query, cnx);
 
             cmd = Bind(cmd, saison);
@@ -107,15 +124,13 @@ namespace projet_dawan.DAO
             cmd = AddParam(cmd, "@id", saison.Id);
 
             Execute(query, cnx, cmd);
-            //MessageBox.Show(query);
         }
 
+        //Exécute les commandes de type insert, delete et update
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
             {
-
-
                 cnx.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -129,6 +144,7 @@ namespace projet_dawan.DAO
             }
         }
 
+        //Récupère les saisons en fonction de la requète passée dans la commande
         private static List<Saison> Get(SqlCommand cmd)
         {
             List<Saison> list = new List<Saison>();
@@ -151,27 +167,14 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        public List<Saison> GetSaisons(int id)
-        {
-            List<Saison> list = new List<Saison>();
-            string query = repo.Select("*").From(table).WhereById("serie_id").Build();
-            using (SqlConnection cnx = new(Cnx))
-            {
-                SqlCommand cmd = new(query, cnx);
-                cmd.Parameters.AddWithValue("@id", id);
-                cnx.Open();
-
-                list = Get(cmd);
-
-            }
-            return list;
-        }
+        //Remplace le champ par la valeur passée en paramètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
+        //Remplace le champ titre par la valeur correspondante
         private SqlCommand Bind(SqlCommand cmd, Saison saison)
         {
             cmd = AddParam(cmd, "@serie_id", saison.SerieId.Id);

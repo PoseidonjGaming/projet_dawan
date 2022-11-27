@@ -88,7 +88,6 @@ namespace projet_dawan
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
-            int startPos = 27;
 
             serieList = serieDAO.GetAll();
 
