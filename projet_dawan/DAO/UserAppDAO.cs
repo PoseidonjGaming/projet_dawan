@@ -5,18 +5,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {
-    public class SerieDAO : ISerieDAO
+    public class UserAppDAO : IUserAppDAO
     {
-        private string cnx;
-        private SerieRepository repo = new();
-       
+        private string cnx = string.Empty;
+        private UserAppRepository repo = new();
+        private string table;
+        private List<string> champs = new List<string>() { "login", "password" };
+        private List<string> values = new List<string>() { "@login", "@password" };
 
         public string Cnx
         {
@@ -24,45 +28,53 @@ namespace projet_dawan.DAO
             set { cnx = value; }
         }
 
-        public SerieDAO(string cnx)
+        public UserAppDAO(string cnx)
         {
             Cnx = cnx;
+            table = "userApp";
         }
 
-        //Ajoute une série dans la base
-        public void Add(Serie serie)
+        //Ajoute un user dans la base avec ses roles
+        public void Add(UserApp user)
         {
             SqlConnection cnx = new(Cnx);
 
             string sql = repo.Add();
+
+
+
             SqlCommand cmd = new(sql, cnx);
-
-
-            cmd = Bind(cmd, serie);
+            cmd = Bind(cmd, user);
 
             Execute(sql, cnx, cmd);
 
+            UserRoleDAO dao = new(Cnx);
+            foreach (Role role in user.Roles)
+            {
+                dao.Add(user, role);
+            }
         }
 
-        //Supprime une séire avec l'id spécifié
+        //Supprime un user de la base avec ses role
         public void Delete(int id)
         {
-            string query = repo.Remove();
+            string query = repo.Delete(table).Build();
 
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
+                UserRoleDAO dao = new(Cnx);
                 cmd.Parameters.AddWithValue("@id", id);
                 Execute(query, cnx, cmd);
             }
 
         }
 
-        //Récupère toutes les séries
-        public List<Serie> GetAll()
+        //Récupère tous les users
+        public List<UserApp> GetAll()
         {
-            List<Serie> list = new List<Serie>();
-            string query = repo.SelectAll();
+            List<UserApp> list = new List<UserApp>();
+            string query = repo.Select("*").From(table).Build();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -74,11 +86,11 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        //Récupère une série avec l'id spécifié
-        public Serie GetById(int id)
+        //Récupère le user avec l'id passé em paramètre
+        public UserApp GetById(int id)
         {
-            List<Serie> list = new List<Serie>();
-            string query = repo.SelectById();
+            List<UserApp> list = new List<UserApp>();
+            string query = repo.Select("*").From(table).WhereById("id").Build();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -92,39 +104,39 @@ namespace projet_dawan.DAO
             return list[0];
         }
 
-        //Récupère une série avec où le champ nom contient le text passé en paramètre
-        public List<Serie> GetByTxt(string text)
+        //Récupère le user avec le login passé en paramètre
+        public UserApp GetByLogin(string text)
         {
-            List<Serie> list = new List<Serie>();
-            string query = repo.SelectByNom();
+            List<UserApp> list = new List<UserApp>();
+            string query = repo.Select("*").From(table).WhereByLike("login").Build();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
-                cmd = AddParam(cmd, "@text", "%"+text+"%");
-                
+                cmd = AddParam(cmd, "@text", text);
+
                 cnx.Open();
 
                 list = Get(cmd);
 
             }
 
-            return list;
+            return list[0];
 
         }
 
-        //Met à jour la série avec l'id spécifié avec les nouvelles valeurs
-        public void Update(Serie serie)
+        //Met à jour le user avec l'id spécifié avec les nouvelles valeurs
+        public void Update(UserApp user)
         {
             SqlConnection cnx = new(Cnx);
 
-            string query = repo.Modify();
+            string query = repo.Update(table, champs, values).Build();
             SqlCommand cmd = new(query, cnx);
 
+            cmd = Bind(cmd, user);
 
-            cmd = AddParam(cmd, "@id", serie.Id);
+            cmd = AddParam(cmd, "@id", user.Id);
 
             Execute(query, cnx, cmd);
-
         }
 
         //Exécute les commandes de type insert, delete et update
@@ -145,26 +157,25 @@ namespace projet_dawan.DAO
             }
         }
 
-        //Récupère les séries en fonction de la requète passée dans la commande
-        private static List<Serie> Get(SqlCommand cmd)
+        //Récupère les users en fonction de la requète passée dans la commande
+        private static List<UserApp> Get(SqlCommand cmd)
         {
-            List<Serie> list = new List<Serie>();
+            List<UserApp> list = new List<UserApp>();
+            UserRoleDAO dao = new UserRoleDAO(Properties.Settings.Default.Connection);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Serie serie = new()
+                    UserApp user = new()
                     {
                         Id = reader.GetInt32(0),
-                        Name = reader.GetString(1),
-                        DateDiff = reader.GetDateTime(2),
-                        Resume = reader.GetString(3),
-                        Affiche = reader.GetString(4),
-                        UrlBa = reader.GetString(5)
+                        Login = reader.GetString(1),
+                        Password = reader.GetString(2),
+                        Roles = dao.GetAllRole(reader.GetInt32(0))
 
                     };
 
-                    list.Add(serie);
+                    list.Add(user);
                 }
             }
             return list;
@@ -178,14 +189,11 @@ namespace projet_dawan.DAO
             return command;
         }
 
-        //Remplace les champ nom, date_diff, url_ba, resume et affiche par leur valeur correspondante
-        private SqlCommand Bind(SqlCommand cmd, Serie serie)
+        //Remplace les champ login, password par leur valeur correspondante
+        private SqlCommand Bind(SqlCommand cmd, UserApp user)
         {
-            cmd = AddParam(cmd, "@nom", serie.Name);
-            cmd = AddParam(cmd, "@date_diff", serie.DateDiff);
-            cmd = AddParam(cmd, "@url_ba", serie.UrlBa);
-            cmd = AddParam(cmd, "@resume", serie.Resume);
-            cmd = AddParam(cmd, "@affiche", serie.Affiche);
+            cmd = AddParam(cmd, "@login", user.Login);
+            cmd = AddParam(cmd, "@password", user.Password);
 
             return cmd;
         }

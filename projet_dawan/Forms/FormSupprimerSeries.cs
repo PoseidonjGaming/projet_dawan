@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace projet_dawan
 {
-    public partial class SupprimerSeries : Form
+    public partial class FormSupprimerSeries : Form
     {
         private SerieDAO SerieDAO = new(Properties.Settings.Default.Connection);
         private List<Serie> SerieList = new List<Serie>();
-        public SupprimerSeries()
+        public FormSupprimerSeries()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -28,7 +28,12 @@ namespace projet_dawan
             // supprimer la serie selectionner. Ajouter messagebox pour demander une validation
             if (cmbBxSerie.SelectedIndex != -1)
             {
-                MessageBox.Show(SerieList[cmbBxSerie.SelectedIndex].Name);
+                var annuler = MessageBox.Show("Etes vous sur de vouloir annuler l'ajout ?", "Annuler ajout ?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (annuler == DialogResult.Yes)
+                {
+                    SerieDAO.Delete(SerieList[cmbBxSerie.SelectedIndex].Id);
+                }
             }
             Close();
         }

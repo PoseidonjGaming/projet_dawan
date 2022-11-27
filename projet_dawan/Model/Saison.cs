@@ -1,16 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace projet_dawan.Model
 {
+    [Serializable]
+    [DataContract]
     public class Saison
     {
+        [DataMember]
         private int id;
+        [DataMember]
         private Int16 num;
+        [DataMember]
         private int nb_episode;
+        [DataMember]
         private Serie serie_Id;
 
         public Serie SerieId

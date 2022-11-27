@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace projet_dawan.Model
 {
+    [Serializable]
+    [DataContract]
     public class Acteur
     {
+        [DataMember]
         private int id;
+        [DataMember]
         private string nom;
+        [DataMember]
         private string prenom;
 
         public string Prenom
@@ -32,7 +38,12 @@ namespace projet_dawan.Model
             set { id = value; }
         }
 
-        public Acteur() { }
+        public Acteur()
+        {
+            id= 0;
+            nom=string.Empty; 
+            prenom=string.Empty;
+        }
         public Acteur(string nom, string prenom)
         {
             this.nom = nom;

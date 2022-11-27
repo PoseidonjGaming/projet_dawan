@@ -1,6 +1,6 @@
 ﻿namespace projet_dawan
 {
-    partial class SupprimerSeries
+    partial class FormSupprimerSeries
     {
         /// <summary>
         /// Required designer variable.

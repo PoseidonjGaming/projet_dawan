@@ -1,19 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace projet_dawan.Model
 {
+    [Serializable]
+    [DataContract]
     public class Serie
     {
+        [DataMember]
         private int id;
+        [DataMember]
         private string name;
+        [DataMember]
         private string resume;
+        [DataMember]
         private string affiche;
+        [DataMember]
         private DateTime date_diff;
+        [DataMember]
         private string url_ba;
+        [DataMember]
         private List<Personnage> personnages;
 
         public List<Personnage> Personnages

@@ -13,18 +13,19 @@ using System.Windows.Forms;
 
 namespace projet_dawan
 {
-    public partial class PageBibliotheque : Form
+    public partial class FormBibliotheque : Form
     {
         private List<Serie> serieList = new List<Serie>();
         private SerieDAO SerieDAO = new(Properties.Settings.Default.Connection);
-        public PageBibliotheque(List<Serie> series, string text)
+        public FormBibliotheque(List<Serie> series, string text)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             serieList = series;
+            
             txtRechercher.Text = text;
-            Populate();
+            
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -55,6 +56,16 @@ namespace projet_dawan
                 Serie serie = serieList[lstBxSerie.SelectedIndex];
                 FormSerie formSerie = new(serie);
                 formSerie.ShowDialog(this);
+            }
+        }
+
+        private void buttonAddWich_Click(object sender, EventArgs e)
+        {
+            if(lstBxSerie.SelectedIndex != -1)
+            {
+                Serie serie = serieList[lstBxSerie.SelectedIndex];
+                Properties.Settings.Default.ToWatch.Add(serie);
+                Properties.Settings.Default.Save();
             }
         }
     }
