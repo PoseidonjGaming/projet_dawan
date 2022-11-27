@@ -1,23 +1,14 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {
-    public class EpisodeDAO : IEpisodeDAO
+    public class SerieDAO : ISerieDAO
     {
-        private string cnx = string.Empty;
-        private EpisodeRepository repo = new();
+        private string cnx;
+        private SerieRepository repo = new();
        
 
         public string Cnx
@@ -26,13 +17,13 @@ namespace projet_dawan.DAO
             set { cnx = value; }
         }
 
-        public EpisodeDAO(string cnx)
+        public SerieDAO(string cnx)
         {
             Cnx = cnx;
         }
 
-        //Ajoute un épisode dans la base
-        public void Add(Episode episode)
+        //Ajoute une série dans la base
+        public void Add(Serie serie)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -40,13 +31,13 @@ namespace projet_dawan.DAO
             SqlCommand cmd = new(sql, cnx);
 
 
-            cmd = Bind(cmd, episode);
-
+            cmd = Bind(cmd, serie);
 
             Execute(sql, cnx, cmd);
+
         }
 
-        //Supprime l'épisode avec l'id spécifié
+        //Supprime une séire avec l'id spécifié
         public void Delete(int id)
         {
             string query = repo.Remove();
@@ -60,12 +51,11 @@ namespace projet_dawan.DAO
 
         }
 
-        //Récupère tous les épisodes
-        public List<Episode> GetAll()
+        //Récupère toutes les séries
+        public List<Serie> GetAll()
         {
-            List<Episode> list = new List<Episode>();
+            List<Serie> list = new List<Serie>();
             string query = repo.SelectAll();
-            MessageBox.Show(query);
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -77,10 +67,10 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        //Récupère l'épisode qui a l'id spécifié
-        public Episode GetById(int id)
+        //Récupère une série avec l'id spécifié
+        public Serie GetById(int id)
         {
-            List<Episode> list = new List<Episode>();
+            List<Serie> list = new List<Serie>();
             string query = repo.SelectById();
             using (SqlConnection cnx = new(Cnx))
             {
@@ -95,36 +85,39 @@ namespace projet_dawan.DAO
             return list[0];
         }
 
-        //Met à jour l'épisode avec l'id spécifié avec les nouvelles valeurs 
-        public void Update(Episode episode)
+        //Récupère une série avec où le champ nom contient le text passé en paramètre
+        public List<Serie> GetByTxt(string text)
+        {
+            List<Serie> list = new List<Serie>();
+            string query = repo.SelectByNom();
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd = AddParam(cmd, "@text", "%"+text+"%");
+                
+                cnx.Open();
+
+                list = Get(cmd);
+
+            }
+
+            return list;
+
+        }
+
+        //Met à jour la série avec l'id spécifié avec les nouvelles valeurs
+        public void Update(Serie serie)
         {
             SqlConnection cnx = new(Cnx);
 
             string query = repo.Modify();
             SqlCommand cmd = new(query, cnx);
 
-            cmd = Bind(cmd, episode);
 
-            cmd = AddParam(cmd, "@id", episode.Id);
+            cmd = AddParam(cmd, "@id", serie.Id);
 
             Execute(query, cnx, cmd);
-        }
 
-        //Récupère les épisodes qui appartiennent à la saison spécifiée
-        public List<Episode> GetEpisodes(int id)
-        {
-            List<Episode> list = new List<Episode>();
-            string query = repo.SelectBySaison();
-            using (SqlConnection cnx = new(Cnx))
-            {
-                SqlCommand cmd = new(query, cnx);
-                cmd.Parameters.AddWithValue("@id", id);
-                cnx.Open();
-
-                list = Get(cmd);
-
-            }
-            return list;
         }
 
         //Exécute les commandes de type insert, delete et update
@@ -145,44 +138,47 @@ namespace projet_dawan.DAO
             }
         }
 
-        //Récupère les épisodes en fonction de la requète passée dans la commande
-        private static List<Episode> Get(SqlCommand cmd)
+        //Récupère les séries en fonction de la requète passée dans la commande
+        private static List<Serie> Get(SqlCommand cmd)
         {
-            List<Episode> list = new List<Episode>();
-            SaisonDAO repoSaison = new(Properties.Settings.Default.Connection);
+            List<Serie> list = new List<Serie>();
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Episode episode = new()
+                    Serie serie = new()
                     {
                         Id = reader.GetInt32(0),
-                        Nom = reader.GetString(2),
-                        SaisonId = repoSaison.GetById(reader.GetInt32(1)),
+                        Name = reader.GetString(1),
+                        DateDiff = reader.GetDateTime(2),
                         Resume = reader.GetString(3),
-                        DatePremDiff = reader.GetDateTime(4)
+                        Affiche = reader.GetString(4),
+                        UrlBa = reader.GetString(5)
+
                     };
 
-                    list.Add(episode);
+                    list.Add(serie);
                 }
             }
             return list;
         }
 
-        //Remplace le champ par la valeur passée en paralètre dans la requète
+
+        //Remplace le champ par la valeur passée en paramètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
-        //Remplace les champs saison_id, nom, date_prem_diff et resume par leur valeur correspondante
-        private SqlCommand Bind(SqlCommand cmd, Episode episode)
+        //Remplace les champ nom, date_diff, url_ba, resume et affiche par leur valeur correspondante
+        private SqlCommand Bind(SqlCommand cmd, Serie serie)
         {
-            cmd = AddParam(cmd, "@saison_id", episode.SaisonId.Id);
-            cmd = AddParam(cmd, "@nom", episode.Nom);
-            cmd = AddParam(cmd, "@date_prem_dif", episode.DatePremDiff);
-            cmd = AddParam(cmd, "@resume", episode.Resume);
+            cmd = AddParam(cmd, "@nom", serie.Name);
+            cmd = AddParam(cmd, "@date_diff", serie.DateDiff);
+            cmd = AddParam(cmd, "@url_ba", serie.UrlBa);
+            cmd = AddParam(cmd, "@resume", serie.Resume);
+            cmd = AddParam(cmd, "@affiche", serie.Affiche);
 
             return cmd;
         }

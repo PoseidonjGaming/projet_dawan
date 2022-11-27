@@ -1,17 +1,7 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using projet_dawan.Interface;
+﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {

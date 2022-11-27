@@ -1,24 +1,14 @@
-﻿using projet_dawan.Interface;
-using projet_dawan.Model;
+﻿using projet_dawan.Model;
 using projet_dawan.Repository;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {
-    public class ActeurDAO : IActeurDAO
+    public class SaisonDAO
     {
         private string cnx = string.Empty;
-        private ActeurRepository repo = new();
-        
+        private readonly SaisonRepository repo = new();
+       
 
         public string Cnx
         {
@@ -26,14 +16,13 @@ namespace projet_dawan.DAO
             set { cnx = value; }
         }
 
-        public ActeurDAO(string cnx)
+        public SaisonDAO(string cnx)
         {
             Cnx = cnx;
-            
         }
 
-        //Ajoute un acteur dans la base
-        public void Add(Acteur acteur)
+        //Ajoute une saison dans la base
+        public void Add(Saison saison)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -41,16 +30,17 @@ namespace projet_dawan.DAO
             SqlCommand cmd = new(sql, cnx);
 
 
-            cmd = Bind(cmd, acteur);
+            cmd = Bind(cmd, saison);
 
 
             Execute(sql, cnx, cmd);
         }
 
-        //Supprime l'acteur avec l'id spécifié
+        //Supprime une saison avec l'id spécifié
         public void Delete(int id)
         {
-            string query =  repo.Remove();
+            string query = repo.Remove();
+
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -60,10 +50,10 @@ namespace projet_dawan.DAO
 
         }
 
-        //Récupère tous les acteurs
-        public List<Acteur> GetAll()
+        //Récupère toutes les saisons
+        public List<Saison> GetAll()
         {
-            List<Acteur> list = new List<Acteur>();
+            List<Saison> list = new List<Saison>();
             string query = repo.SelectAll();
             using (SqlConnection cnx = new(Cnx))
             {
@@ -76,10 +66,10 @@ namespace projet_dawan.DAO
             return list;
         }
 
-        //Récupère l'acteur qui a l'id spécifié
-        public Acteur GetById(int id)
+        //Récupère une saison avec l'id spécifié
+        public Saison GetById(int id)
         {
-            List<Acteur> list = new List<Acteur>();
+            List<Saison> list = new List<Saison>();
             string query = repo.SelectById();
             using (SqlConnection cnx = new(Cnx))
             {
@@ -88,26 +78,41 @@ namespace projet_dawan.DAO
                 cnx.Open();
 
                 list = Get(cmd);
+                return list[0];
 
             }
 
-            return list[0];
         }
 
-        //Met à jour l'acteur avec l'id spécifié avec les nouvelles valeurs 
-        public void Update(Acteur acteur)
+        //Récupère toutes les sainsons d'une série avec l'id spécifié
+        public List<Saison> GetSaisons(int id)
+        {
+            List<Saison> list = new List<Saison>();
+            string query = repo.SelectBySaisons();
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd.Parameters.AddWithValue("@id", id);
+                cnx.Open();
+
+                list = Get(cmd);
+
+            }
+            return list;
+        }
+
+        //Met à jour la saison avec l'id spécifié avec les nouvelles valeurs
+        public void Update(Saison saison)
         {
             SqlConnection cnx = new(Cnx);
-
             string query = repo.Modify();
             SqlCommand cmd = new(query, cnx);
 
-            cmd = Bind(cmd, acteur);
+            cmd = Bind(cmd, saison);
 
-            cmd = AddParam(cmd, "@id", acteur.Id);
+            cmd = AddParam(cmd, "@id", saison.Id);
 
             Execute(query, cnx, cmd);
-            //MessageBox.Show(query);
         }
 
         //Exécute les commandes de type insert, delete et update
@@ -128,40 +133,42 @@ namespace projet_dawan.DAO
             }
         }
 
-        //Récupère les acteurs en fonction de la requète passée dans la commande
-        private static List<Acteur> Get(SqlCommand cmd)
+        //Récupère les saisons en fonction de la requète passée dans la commande
+        private List<Saison> Get(SqlCommand cmd)
         {
-            List<Acteur> list = new List<Acteur>();
+            List<Saison> list = new List<Saison>();
+            SerieDAO repoSerie = new(Cnx);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    Acteur acteur = new()
+                    Saison saison = new()
                     {
                         Id = reader.GetInt32(0),
-                        Nom = reader.GetString(1),
-                        Prenom = reader.GetString(2),
-
+                        SerieId = repoSerie.GetById(reader.GetInt32(1)),
+                        Num = reader.GetInt16(2),
+                        NbEpisode = reader.GetInt32(3)
                     };
 
-                    list.Add(acteur);
+                    list.Add(saison);
                 }
             }
             return list;
         }
 
-        //Remplace le champ par la valeur passée en paralètre dans la requète
+        //Remplace le champ par la valeur passée en paramètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
-        //Remplace les champs nom et prenom par leur valeur correspondante
-        private static SqlCommand Bind(SqlCommand cmd, Acteur acteur)
+        //Remplace le champ titre par la valeur correspondante
+        private SqlCommand Bind(SqlCommand cmd, Saison saison)
         {
-            cmd = AddParam(cmd, "@nom", acteur.Nom);
-            cmd = AddParam(cmd, "@prenom", acteur.Prenom);
+            cmd = AddParam(cmd, "@serie_id", saison.SerieId.Id);
+            cmd = AddParam(cmd, "@numero", saison.Num);
+            cmd = AddParam(cmd, "@nb_episode", saison.NbEpisode);
 
             return cmd;
         }

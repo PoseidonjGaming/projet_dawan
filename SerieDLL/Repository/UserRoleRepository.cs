@@ -1,14 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-using projet_dawan.Model;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.DirectoryServices;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace projet_dawan.Repository
+﻿namespace projet_dawan.Repository
 {
     public class UserRoleRepository : Orm
     {
