@@ -146,6 +146,7 @@ namespace projet_dawan.DAO
 
         }
 
+        //Exécute les commandes de type insert, delete
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
@@ -163,16 +164,14 @@ namespace projet_dawan.DAO
             }
         }
 
-
-
-
-
+        //Remplace le champ par la valeur passée en paramètre dans la requète
         private static SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
         }
 
+        //Remplace les champ user_id, role_id par leur valeur correspondante
         private SqlCommand Bind(SqlCommand cmd, UserApp user, Role role)
         {
             cmd = AddParam(cmd, "@userApp_id", user.Id);
