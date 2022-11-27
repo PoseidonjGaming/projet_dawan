@@ -4,12 +4,12 @@ using projet_dawan_WinForm;
 
 namespace projet_dawan
 {
-    public partial class PageAcceuil : Form
+    public partial class FormAccueil : Form
     {
         private SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
         private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
-        public PageAcceuil()
+        public FormAccueil()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -20,7 +20,7 @@ namespace projet_dawan
         {
             // affiche la page pour ajouter des séries à la base de données
             // ajouter If pour vérifier si le compte à les droits
-            AjouterSeries add = new(new Serie());
+            FormAjoutSerie add = new(new Serie());
 
             add.ShowDialog();
         }
@@ -29,7 +29,7 @@ namespace projet_dawan
         {
             // affiche la page pour supprimer des séries à la base de données
             // ajouter If pour vérifier si le compte à les droits
-            SupprimerSeries supr = new();
+            FormSupprimerSeries supr = new();
 
             supr.ShowDialog();
         }
@@ -37,7 +37,7 @@ namespace projet_dawan
         private void toolStripBibli_Click(object sender, EventArgs e)
         {
             //affiche la page de la bibliothéque des séries de la base de données
-            PageBibliotheque bibli = new(serieDAO.GetAll(), string.Empty);
+            FormBibliotheque bibli = new(serieDAO.GetAll(), string.Empty);
 
             bibli.ShowDialog(this);
         }
@@ -66,7 +66,7 @@ namespace projet_dawan
         private void toolStripGerer_Click(object sender, EventArgs e)
         {
             // affiche la page de gestion du compte
-            GererCompte compte = new();
+            FormGererCompte compte = new();
 
             compte.ShowDialog();
         }
@@ -74,7 +74,7 @@ namespace projet_dawan
         private void watchlistToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // affiche la watchlist liée au compte actuel
-            Watchlist watchlist = new();
+            FormWatchlist watchlist = new();
 
             watchlist.ShowDialog();
         }
@@ -153,7 +153,7 @@ namespace projet_dawan
         {
             serieList.Clear();
             serieList = serieDAO.GetByTxt(txtRechercher.Text);
-            PageBibliotheque pageBibliotheque = new(serieList, txtRechercher.Text);
+            FormBibliotheque pageBibliotheque = new(serieList, txtRechercher.Text);
             pageBibliotheque.ShowDialog(this);
 
         }

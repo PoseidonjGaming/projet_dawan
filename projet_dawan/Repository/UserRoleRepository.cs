@@ -13,8 +13,8 @@ namespace projet_dawan.Repository
     public class UserRoleRepository : Orm
     {
         private string table;
-        private List<string> champs = new List<string>() { "userRoles_id", "role_id" };
-        private List<string> values = new List<string>() { "@userRoles_id", "@role_id" };
+        private List<string> champs = new List<string>() { "userApp_id", "role_id" };
+        private List<string> values = new List<string>() { "@userApp_id", "@role_id" };
         public UserRoleRepository()
         {
             table = "userRoles";
@@ -38,7 +38,7 @@ namespace projet_dawan.Repository
         //Génère Delete from userRoles where user_id=@id
         public string RemoveByUser()
         {
-            return Delete(table).Where("user_id", "@user_id").Build();
+            return Delete(table).Where("userApp_id", "@user_id").Build();
 
         }
         //Génère select * from userRoles
@@ -61,13 +61,13 @@ namespace projet_dawan.Repository
         //Génère select * from userRoles where user_id=@id
         public string SelectByUser()
         {
-            return Select("*").From(table).WhereById("user_id").Build();
+            return Select("*").From(table).WhereById("userApp_id").Build();
         }
 
 
         public string SelectId()
         {
-            return Select("id").From(table).Where("user_id", "@user_id").And().Where("role_id","@role_id").Build();
+            return Select("id").From(table).Where("userApp_id", "@user_id").And().Where("role_id","@role_id").Build();
         }
 
 

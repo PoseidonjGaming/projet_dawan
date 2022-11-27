@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace projet_dawan
 {
-    public partial class Watchlist : Form
+    public partial class FormWatchlist : Form
     {
-        public Watchlist()
+        public FormWatchlist()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

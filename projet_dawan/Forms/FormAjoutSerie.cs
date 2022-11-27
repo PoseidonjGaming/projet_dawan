@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace projet_dawan
 {
-    public partial class AjouterSeries : Form
+    public partial class FormAjoutSerie : Form
     {
         private Serie serie;
         private bool ajout = true;
-        public AjouterSeries(Serie serie)
+        public FormAjoutSerie(Serie serie)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

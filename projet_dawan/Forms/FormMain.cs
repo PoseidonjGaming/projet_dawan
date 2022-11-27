@@ -45,7 +45,7 @@ namespace projet_dawan
         {
             if(Properties.Settings.Default.token!= string.Empty)
             {
-                PageAcceuil pageAcceuil=new PageAcceuil();
+                FormAccueil pageAcceuil=new FormAccueil();
                 pageAcceuil.FormClosing += pageAcceuil_FormClosing;
                 this.Hide();
                 pageAcceuil.ShowDialog();

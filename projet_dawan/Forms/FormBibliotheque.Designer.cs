@@ -1,6 +1,6 @@
 ﻿namespace projet_dawan
 {
-    partial class PageBibliotheque
+    partial class FormBibliotheque
     {
         /// <summary>
         /// Required designer variable.

@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace projet_dawan
 {
-    public partial class PageBibliotheque : Form
+    public partial class FormBibliotheque : Form
     {
         private List<Serie> serieList = new List<Serie>();
         private SerieDAO SerieDAO = new(Properties.Settings.Default.Connection);
-        public PageBibliotheque(List<Serie> series, string text)
+        public FormBibliotheque(List<Serie> series, string text)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

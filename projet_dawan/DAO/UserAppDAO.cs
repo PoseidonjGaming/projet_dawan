@@ -31,6 +31,7 @@ namespace projet_dawan.DAO
         public UserAppDAO(string cnx)
         {
             Cnx = cnx;
+            table = "userApp";
         }
 
         //Ajoute un user dans la base avec ses roles
@@ -104,6 +105,7 @@ namespace projet_dawan.DAO
         {
             List<UserApp> list = new List<UserApp>();
             string query = repo.Select("*").From(table).WhereByLike("login").Build();
+            MessageBox.Show(query);
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);

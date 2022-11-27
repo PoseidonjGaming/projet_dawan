@@ -1,6 +1,6 @@
 ﻿namespace projet_dawan
 {
-    partial class AjouterSeries
+    partial class FormAjoutSerie
     {
         /// <summary>
         /// Required designer variable.

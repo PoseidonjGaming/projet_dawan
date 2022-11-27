@@ -1,6 +1,6 @@
 ﻿namespace projet_dawan
 {
-    partial class Watchlist
+    partial class FormWatchlist
     {
         /// <summary>
         /// Required designer variable.

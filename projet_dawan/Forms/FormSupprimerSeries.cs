@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace projet_dawan
 {
-    public partial class SupprimerSeries : Form
+    public partial class FormSupprimerSeries : Form
     {
         private SerieDAO SerieDAO = new(Properties.Settings.Default.Connection);
         private List<Serie> SerieList = new List<Serie>();
-        public SupprimerSeries()
+        public FormSupprimerSeries()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

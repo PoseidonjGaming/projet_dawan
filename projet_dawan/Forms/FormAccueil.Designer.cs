@@ -1,6 +1,6 @@
 ﻿namespace projet_dawan
 {
-    partial class PageAcceuil
+    partial class FormAccueil
     {
         /// <summary>
         /// Required designer variable.
