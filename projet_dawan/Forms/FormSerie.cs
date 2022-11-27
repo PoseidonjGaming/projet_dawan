@@ -42,8 +42,15 @@ namespace projet_dawan_WinForm
             {
                 Saison saison = Saisons[lstBoxSaison.SelectedIndex];
                 FormSaison formSaison = new(saison);
+                formSaison.FormClosed += OpenForm;
+                this.Hide();
                 formSaison.ShowDialog(this);
             }
+        }
+
+        private void OpenForm(object sender, EventArgs e)
+        {
+            this.Show();
         }
 
         private void buttonToWatch_Click(object sender, EventArgs e)

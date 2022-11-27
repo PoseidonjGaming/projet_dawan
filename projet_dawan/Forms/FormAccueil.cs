@@ -37,9 +37,7 @@ namespace projet_dawan
         private void toolStripBibli_Click(object sender, EventArgs e)
         {
             //affiche la page de la bibliothéque des séries de la base de données
-            FormBibliotheque bibli = new(serieDAO.GetAll(), string.Empty);
-
-            bibli.ShowDialog(this);
+            OpenFormBibli(string.Empty);
         }
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,7 +56,8 @@ namespace projet_dawan
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (deconnecter == DialogResult.Yes)
             {
-                Close();
+                Properties.Settings.Default.token = string.Empty;
+                this.Close();
             }
 
         }
@@ -120,11 +119,7 @@ namespace projet_dawan
             }
         }
 
-        private void txtRechercher_TextChanged(object sender, EventArgs e)
-        {
-            
-           
-        }
+     
 
         private void Populate(int I)
         {
@@ -151,11 +146,25 @@ namespace projet_dawan
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+            OpenFormBibli(txtRechercher.Text);
+        }
+
+        private void form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Show();
+        }
+
+        private void OpenFormBibli(string text)
+        {
             serieList.Clear();
             serieList = serieDAO.GetByTxt(txtRechercher.Text);
-            FormBibliotheque pageBibliotheque = new(serieList, txtRechercher.Text);
-            pageBibliotheque.ShowDialog(this);
-
+            MessageBox.Show(serieList.Count.ToString());
+            FormBibliotheque formBibliotheque = new(serieList, text);
+            formBibliotheque.FormClosing += form_FormClosing;
+            this.Hide();
+            formBibliotheque.ShowDialog(this);
         }
+
+
     }
 }

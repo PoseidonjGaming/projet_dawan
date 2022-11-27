@@ -37,18 +37,22 @@ namespace projet_dawan.DAO
         //Ajoute un user dans la base avec ses roles
         public void Add(UserApp user)
         {
-           /* SqlConnection cnx = new(Cnx);
+            SqlConnection cnx = new(Cnx);
 
             string sql = repo.Add();
 
-            
+
 
             SqlCommand cmd = new(sql, cnx);
             cmd = Bind(cmd, user);
 
             Execute(sql, cnx, cmd);
+
             UserRoleDAO dao = new(Cnx);
-            dao.Add(user);*/
+            foreach (Role role in user.Roles)
+            {
+                dao.Add(user, role);
+            }
         }
 
         //Supprime un user de la base avec ses role
@@ -105,11 +109,10 @@ namespace projet_dawan.DAO
         {
             List<UserApp> list = new List<UserApp>();
             string query = repo.Select("*").From(table).WhereByLike("login").Build();
-            MessageBox.Show(query);
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
-                cmd = AddParam(cmd, "@text",  text);
+                cmd = AddParam(cmd, "@text", text);
 
                 cnx.Open();
 
@@ -168,10 +171,10 @@ namespace projet_dawan.DAO
                         Id = reader.GetInt32(0),
                         Login = reader.GetString(1),
                         Password = reader.GetString(2),
-                        Roles=dao.GetAllRole(reader.GetInt32(0))
+                        Roles = dao.GetAllRole(reader.GetInt32(0))
 
                     };
-                    
+
                     list.Add(user);
                 }
             }

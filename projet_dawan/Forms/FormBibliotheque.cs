@@ -23,8 +23,9 @@ namespace projet_dawan
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             serieList = series;
+            
             txtRechercher.Text = text;
-            Populate();
+            
         }
 
         private void btnRetour_Click(object sender, EventArgs e)

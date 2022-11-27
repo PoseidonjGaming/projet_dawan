@@ -15,13 +15,12 @@ namespace projet_dawan
         private void button1_Click(object sender, EventArgs e)
         {
             //Orm orm = new SaisonRepository();
-            MessageBox.Show(Properties.Settings.Default.token);
             UserAppDAO dao = new(Properties.Settings.Default.Connection);
 
             UserApp user = dao.GetByLogin(textBox2.Text);
             /*user.Password=UserApp.HashPassword("P@ssw0rd");
             dao.Update(user);*/
-            if(user != null)
+            if (user != null)
             {
                 if (user.Password == UserApp.HashPassword(textBox1.Text))
                 {
@@ -38,23 +37,32 @@ namespace projet_dawan
 
                 }
             }
-           
+
         }
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            if(Properties.Settings.Default.token!= string.Empty)
+            if (Properties.Settings.Default.token != string.Empty)
             {
-                FormAccueil pageAcceuil=new FormAccueil();
+                FormAccueil pageAcceuil = new FormAccueil();
                 pageAcceuil.FormClosing += pageAcceuil_FormClosing;
                 this.Hide();
                 pageAcceuil.ShowDialog();
-                
+
             }
         }
         private void pageAcceuil_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Close();
+            if (Properties.Settings.Default.token != string.Empty)
+            {
+                this.Close();
+            }
+            else
+            {
+                textBox1.Text =string.Empty; 
+                textBox2.Text = string.Empty;
+                this.Show();
+            }
         }
     }
 }

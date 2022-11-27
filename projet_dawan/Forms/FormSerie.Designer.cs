@@ -30,13 +30,13 @@
         {
             this.lblSerie = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonToWatch = new System.Windows.Forms.Button();
             this.lstBoxSaison = new System.Windows.Forms.ListBox();
             this.btnCasting = new System.Windows.Forms.Button();
             this.txtBoxResumeSerie = new System.Windows.Forms.TextBox();
             this.linkLblBASerie = new System.Windows.Forms.LinkLabel();
             this.lblDateSerie = new System.Windows.Forms.Label();
             this.pictureBoxSerie = new System.Windows.Forms.PictureBox();
-            this.buttonToWatch = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSerie)).BeginInit();
             this.SuspendLayout();
@@ -65,6 +65,16 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 372);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // buttonToWatch
+            // 
+            this.buttonToWatch.Location = new System.Drawing.Point(683, 86);
+            this.buttonToWatch.Name = "buttonToWatch";
+            this.buttonToWatch.Size = new System.Drawing.Size(75, 23);
+            this.buttonToWatch.TabIndex = 7;
+            this.buttonToWatch.Text = "To Watch";
+            this.buttonToWatch.UseVisualStyleBackColor = true;
+            this.buttonToWatch.Click += new System.EventHandler(this.buttonToWatch_Click);
             // 
             // lstBoxSaison
             // 
@@ -125,16 +135,6 @@
             this.pictureBoxSerie.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxSerie.TabIndex = 0;
             this.pictureBoxSerie.TabStop = false;
-            // 
-            // buttonToWatch
-            // 
-            this.buttonToWatch.Location = new System.Drawing.Point(430, 92);
-            this.buttonToWatch.Name = "buttonToWatch";
-            this.buttonToWatch.Size = new System.Drawing.Size(75, 23);
-            this.buttonToWatch.TabIndex = 7;
-            this.buttonToWatch.Text = "button1";
-            this.buttonToWatch.UseVisualStyleBackColor = true;
-            this.buttonToWatch.Click += new System.EventHandler(this.buttonToWatch_Click);
             // 
             // FormSerie
             // 

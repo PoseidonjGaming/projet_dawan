@@ -47,8 +47,15 @@ namespace projet_dawan_WinForm
             {
                 Episode episode = episodes[lstBoxEpisode.SelectedIndex];
                 FormEpisode formEpisode = new(episode);
+                formEpisode.FormClosed += OpenForm;
+                this.Hide();
                 formEpisode.ShowDialog(this);
             }
+        }
+
+        private void OpenForm(object sender, EventArgs e)
+        {
+            this.Show();
         }
     }
 }
