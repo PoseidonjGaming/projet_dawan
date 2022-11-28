@@ -31,12 +31,12 @@
             this.lblSerie = new System.Windows.Forms.Label();
             this.lblSaison = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lstBoxEpisode = new System.Windows.Forms.ListBox();
             this.btnCasting = new System.Windows.Forms.Button();
             this.txtBoxResumeSaison = new System.Windows.Forms.TextBox();
             this.linkLblBASaison = new System.Windows.Forms.LinkLabel();
             this.lblDateSaison = new System.Windows.Forms.Label();
             this.pictureBoxSaison = new System.Windows.Forms.PictureBox();
-            this.lstBoxEpisode = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSaison)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +74,16 @@
             this.groupBox1.Size = new System.Drawing.Size(776, 372);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // lstBoxEpisode
+            // 
+            this.lstBoxEpisode.FormattingEnabled = true;
+            this.lstBoxEpisode.ItemHeight = 15;
+            this.lstBoxEpisode.Location = new System.Drawing.Point(6, 257);
+            this.lstBoxEpisode.Name = "lstBoxEpisode";
+            this.lstBoxEpisode.Size = new System.Drawing.Size(165, 109);
+            this.lstBoxEpisode.TabIndex = 7;
+            this.lstBoxEpisode.SelectedIndexChanged += new System.EventHandler(this.lstBoxEpisode_SelectedIndexChanged);
             // 
             // btnCasting
             // 
@@ -119,18 +129,10 @@
             // 
             this.pictureBoxSaison.Location = new System.Drawing.Point(6, 22);
             this.pictureBoxSaison.Name = "pictureBoxSaison";
-            this.pictureBoxSaison.Size = new System.Drawing.Size(165, 191);
+            this.pictureBoxSaison.Size = new System.Drawing.Size(165, 230);
+            this.pictureBoxSaison.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxSaison.TabIndex = 0;
             this.pictureBoxSaison.TabStop = false;
-            // 
-            // lstBoxEpisode
-            // 
-            this.lstBoxEpisode.FormattingEnabled = true;
-            this.lstBoxEpisode.ItemHeight = 15;
-            this.lstBoxEpisode.Location = new System.Drawing.Point(6, 227);
-            this.lstBoxEpisode.Name = "lstBoxEpisode";
-            this.lstBoxEpisode.Size = new System.Drawing.Size(165, 139);
-            this.lstBoxEpisode.TabIndex = 7;
             // 
             // FormSaison
             // 
@@ -142,6 +144,7 @@
             this.Controls.Add(this.lblSerie);
             this.Name = "FormSaison";
             this.Text = "Saison";
+            this.Load += new System.EventHandler(this.FormSaison_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSaison)).EndInit();

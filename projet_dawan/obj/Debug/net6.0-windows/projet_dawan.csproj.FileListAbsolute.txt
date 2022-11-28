@@ -65,3 +65,42 @@ C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-wind
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan_WinForm.FormSaison.resources
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan_WinForm.FormSerie.resources
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Controls.LastSerieAdd.resources
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\projet_dawan.exe
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\projet_dawan.dll.config
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\projet_dawan.deps.json
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\projet_dawan.runtimeconfig.json
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\projet_dawan.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\projet_dawan.pdb
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\HtmlAgilityPack.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Newtonsoft.Json.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.csproj.AssemblyReference.cache
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan_WinForm.Forms.FormEpisode.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormMain.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan_WinForm.FormSaison.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan_WinForm.FormSerie.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.csproj.GenerateResource.cache
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.AssemblyInfoInputs.cache
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.AssemblyInfo.cs
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.csproj.CoreCompileInputs.cache
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.csproj.CopyComplete
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.dll
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\refint\projet_dawan.dll
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.pdb
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.genruntimeconfig.cache
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\ref\projet_dawan.dll
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormAccueil.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormAjoutSerie.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormBibliotheque.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormCreerCompte.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormGererCompte.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormSupprimerSeries.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormWatchlist.resources
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL.pdb

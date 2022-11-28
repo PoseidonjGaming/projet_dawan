@@ -1,13 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Controls\LastSerieAdd.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="Forms\AjouterSeries.cs">
+    <Compile Update="Forms\FormAjoutSerie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\CreerCompte.cs">
+    <Compile Update="Forms\FormCreerCompte.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FormMain.cs">
@@ -22,19 +19,19 @@
     <Compile Update="Forms\FormSerie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\GererCompte.cs">
+    <Compile Update="Forms\FormGererCompte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\PageAcceuil.cs">
+    <Compile Update="Forms\FormAccueil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\PageBibliotheque.cs">
+    <Compile Update="Forms\FormBibliotheque.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\SupprimerSeries.cs">
+    <Compile Update="Forms\FormSupprimerSeries.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Watchlist.cs">
+    <Compile Update="Forms\FormWatchlist.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
