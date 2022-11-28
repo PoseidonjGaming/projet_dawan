@@ -58,6 +58,8 @@ namespace projet_dawan
             if (deconnecter == DialogResult.Yes)
             {
                 Properties.Settings.Default.token = string.Empty;
+                Properties.Settings.Default.UserRemain = null;
+                Properties.Settings.Default.Save();
                 this.Close();
             }
 
@@ -90,10 +92,7 @@ namespace projet_dawan
         {
 
             serieList = serieDAO.GetAll();
-            if(Properties.Settings.Default.ToWatch is null)
-            {
-                Properties.Settings.Default.ToWatch = new List<Serie>();
-            }
+            
             Populate(4);
         }
 
@@ -127,25 +126,29 @@ namespace projet_dawan
 
         private void Populate(int I)
         {
-            for (int i = 0; i < I; i++)
+            if(serieList.Count > 0)
             {
-                PictureBox pictureBox = new PictureBox();
-                pictureBox.Location = new Point((95 * i * 2) + 25, 50);
-                pictureBox.Size = new Size(138, 170);
-                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox.Name = serieList[i].Name;
-                pictureBox.ImageLocation = path + serieList[i].Affiche;
-                pictureBox.Click += Serie_Click;
+                for (int i = 0; i < I; i++)
+                {
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.Location = new Point((95 * i * 2) + 25, 50);
+                    pictureBox.Size = new Size(138, 170);
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.Name = serieList[i].Name;
+                    pictureBox.ImageLocation = path + serieList[i].Affiche;
+                    pictureBox.Click += Serie_Click;
 
-                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
+                    this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
 
-                Button btnSerie = new Button();
-                btnSerie.Location = new Point((95 * i * 2) + 25, 225);
-                btnSerie.Size = new Size(138, 50);
-                btnSerie.Text = serieList[i].Name;
-                btnSerie.Click += Serie_Click;
-                this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
+                    Button btnSerie = new Button();
+                    btnSerie.Location = new Point((95 * i * 2) + 25, 225);
+                    btnSerie.Size = new Size(138, 50);
+                    btnSerie.Text = serieList[i].Name;
+                    btnSerie.Click += Serie_Click;
+                    this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
+                }
             }
+            
         }
 
         private void btnSearch_Click(object sender, EventArgs e)

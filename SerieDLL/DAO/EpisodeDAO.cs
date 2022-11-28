@@ -69,7 +69,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère l'épisode qui a l'id spécifié
-        Episode IDAOBase<Episode>.GetById(int id)
+        Episode? IDAOBase<Episode>.GetById(int id)
         {
             List<Episode> list = new List<Episode>();
             string query = repo.SelectById();
@@ -83,7 +83,12 @@ namespace projet_dawan.DAO
 
             }
 
-            return list[0];
+            if (list.Count == 1)
+            {
+                return list[0];
+            }
+
+            return null;
         }
 
         //Met à jour l'épisode avec l'id spécifié avec les nouvelles valeurs 

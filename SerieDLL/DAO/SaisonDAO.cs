@@ -68,7 +68,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère une saison avec l'id spécifié
-        public Saison GetById(int id)
+        public Saison? GetById(int id)
         {
             List<Saison> list = new List<Saison>();
             string query = repo.SelectById();

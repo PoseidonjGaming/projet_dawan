@@ -69,7 +69,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère une série avec l'id spécifié
-        Serie IDAOBase<Serie>.GetById(int id)
+        Serie? IDAOBase<Serie>.GetById(int id)
         {
             List<Serie> list = new List<Serie>();
             string query = repo.SelectById();
@@ -83,7 +83,12 @@ namespace projet_dawan.DAO
 
             }
 
-            return list[0];
+            if (list.Count == 1)
+            {
+                return list[0];
+            }
+
+            return null;
         }
 
         //Récupère une série avec où le champ nom contient le text passé en paramètre

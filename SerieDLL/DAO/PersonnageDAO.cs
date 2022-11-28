@@ -69,7 +69,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère le personnage qui a l'id spécifié
-        Personnage IDAOBase<Personnage>.GetById(int id)
+        Personnage? IDAOBase<Personnage>.GetById(int id)
         {
             List<Personnage> list = new List<Personnage>();
             string query = repo.SelectById();
@@ -83,7 +83,12 @@ namespace projet_dawan.DAO
 
             }
 
-            return list[0];
+            if (list.Count == 1)
+            {
+                return list[0];
+            }
+
+            return null;
         }
 
 

@@ -83,7 +83,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère l'acteur qui a l'id spécifié
-        Acteur IDAOBase<Acteur>.GetById(int id)
+        Acteur? IDAOBase<Acteur>.GetById(int id)
         {
             List<Acteur> list = new List<Acteur>();
             string query = repo.SelectById();
@@ -96,8 +96,12 @@ namespace projet_dawan.DAO
                 list = Get(cmd);
 
             }
-
-            return list[0];
+            if (list.Count == 1)
+            {
+                return list[0];
+            }
+            
+            return null;
         }
        
         //Exécute les commandes de type insert, delete et update

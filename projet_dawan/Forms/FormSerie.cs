@@ -55,10 +55,9 @@ namespace projet_dawan_WinForm
 
         private void buttonToWatch_Click(object sender, EventArgs e)
         {
-            List<Serie> series= new List<Serie>();
-            series.Add(Serie);
-            projet_dawan.Properties.Settings.Default.ToWatch= series;
-            projet_dawan.Properties.Settings.Default.Save();
+            
+            Settings.Default.UserRemain.Towatch.Add(Serie);
+            Settings.Default.Save();
         }
     }
 }

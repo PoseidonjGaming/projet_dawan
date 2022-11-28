@@ -76,7 +76,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère le user avec l'id passé em paramètre
-        public UserApp GetById(int id)
+        public UserApp? GetById(int id)
         {
             List<UserApp> list = new List<UserApp>();
             string query = repo.SelectById();
@@ -90,7 +90,12 @@ namespace projet_dawan.DAO
 
             }
 
-            return list[0];
+            if (list.Count == 1)
+            {
+                return list[0];
+            }
+
+            return null;
         }
 
         //Récupère le user avec le login passé en paramètre

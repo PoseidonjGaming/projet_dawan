@@ -13,6 +13,14 @@ namespace projet_dawan.Model
         private string login;
         private string password;
         private List<Role> roles;
+        private List<Serie> toWatch;
+
+        public List<Serie> Towatch
+        {
+            get { return toWatch; }
+            set { toWatch = value; }
+        }
+
 
 
         public List<Role> Roles
@@ -30,6 +38,7 @@ namespace projet_dawan.Model
         public UserApp()
         {
             roles = new List<Role>();
+            toWatch = new List<Serie>();
         }
 
         public UserApp(string login, string password, List<Role> roles)
@@ -37,6 +46,7 @@ namespace projet_dawan.Model
             this.login = login;
             this.password = HashPassword(password);
             this.roles = roles;
+            toWatch = new List<Serie>();
         }
 
 

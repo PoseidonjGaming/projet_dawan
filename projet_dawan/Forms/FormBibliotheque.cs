@@ -64,7 +64,9 @@ namespace projet_dawan
             if(lstBxSerie.SelectedIndex != -1)
             {
                 Serie serie = serieList[lstBxSerie.SelectedIndex];
-                Properties.Settings.Default.ToWatch.Add(serie);
+                UserApp userApp= Properties.Settings.Default.UserRemain;
+                userApp.Towatch.Add(serie);
+                Properties.Settings.Default.UserRemain = userApp;
                 Properties.Settings.Default.Save();
             }
         }

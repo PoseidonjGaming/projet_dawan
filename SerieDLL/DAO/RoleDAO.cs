@@ -67,7 +67,7 @@ namespace projet_dawan.DAO
             return list;
         }
         //Récupère le role qui a l'id spécifié
-        Role IDAOBase<Role>.GetById(int id)
+        Role? IDAOBase<Role>.GetById(int id)
         {
             List<Role> list = new List<Role>();
             string query = repo.SelectById();
@@ -81,7 +81,12 @@ namespace projet_dawan.DAO
 
             }
 
-            return list[0];
+            if (list.Count == 1)
+            {
+                return list[0];
+            }
+
+            return null;
         }
 
         //Récupère les roles liés à un user
