@@ -1,11 +1,12 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
+using SerieDLL.Interface;
 using System.Data.SqlClient;
 
 namespace projet_dawan.DAO
 {
-    public class UserRoleDAO : IUserRoleDAO
+    public class UserRoleDAO :  IUserRoleDAO
     {
         private string cnx = string.Empty;
         private UserRoleRepository repo = new();
@@ -91,7 +92,7 @@ namespace projet_dawan.DAO
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    RoleDAO dao = new(Cnx);
+                    IDAOBase<Role> dao = new RoleDAO(Cnx);
                     while (reader.Read())
                     {
                         Role role = dao.GetById(reader.GetInt32(0));

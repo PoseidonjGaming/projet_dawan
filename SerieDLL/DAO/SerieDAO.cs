@@ -1,11 +1,12 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
+using SerieDLL.Interface;
 using System.Data.SqlClient;
 
 namespace projet_dawan.DAO
 {
-    public class SerieDAO : ISerieDAO
+    public class SerieDAO : IDAOBase<Serie>, ISerieDAO
     {
         private string cnx;
         private SerieRepository repo = new();
@@ -23,7 +24,7 @@ namespace projet_dawan.DAO
         }
 
         //Ajoute une série dans la base
-        public void Add(Serie serie)
+        void IDAOBase<Serie>.Add(Serie serie)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -38,7 +39,7 @@ namespace projet_dawan.DAO
         }
 
         //Supprime une séire avec l'id spécifié
-        public void Delete(int id)
+        void IDAOBase<Serie>.Delete(int id)
         {
             string query = repo.Remove();
 
@@ -52,7 +53,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère toutes les séries
-        public List<Serie> GetAll()
+        List<Serie> IDAOBase<Serie>.GetAll()
         {
             List<Serie> list = new List<Serie>();
             string query = repo.SelectAll();
@@ -68,7 +69,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère une série avec l'id spécifié
-        public Serie GetById(int id)
+        Serie IDAOBase<Serie>.GetById(int id)
         {
             List<Serie> list = new List<Serie>();
             string query = repo.SelectById();
@@ -106,7 +107,7 @@ namespace projet_dawan.DAO
         }
 
         //Met à jour la série avec l'id spécifié avec les nouvelles valeurs
-        public void Update(Serie serie)
+        void IDAOBase<Serie>.Update(Serie serie)
         {
             SqlConnection cnx = new(Cnx);
 

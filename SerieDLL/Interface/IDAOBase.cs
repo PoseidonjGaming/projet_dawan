@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace SerieDLL.Interface
 {
-    internal interface ISerieDAO
+    public interface IDAOBase<T>
     {
-        List<Serie> GetByTxt(string txt);
+        void Add(T obj);
+        void Update(T obj);
+        void Delete(int id);
+        List<T> GetAll();
+        T GetById(int id);
     }
 }

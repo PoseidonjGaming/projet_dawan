@@ -1,15 +1,16 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
+using SerieDLL.Interface;
 using System.Data.SqlClient;
 
 namespace projet_dawan.DAO
 {
-    public class PersonnageDAO : IPersonnageDAO
+    public class PersonnageDAO : IDAOBase<Personnage>
     {
         private string cnx;
         private PersonnageRepository repo = new();
-       
+
 
         public string Cnx
         {
@@ -23,7 +24,7 @@ namespace projet_dawan.DAO
         }
 
         //Ajoute un personnage dans la base
-        public void Add(Personnage perso)
+        void IDAOBase<Personnage>.Add(Personnage perso)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -38,7 +39,7 @@ namespace projet_dawan.DAO
         }
 
         //Supprime le personnage avec l'id spécifié
-        public void Delete(int id)
+        void IDAOBase<Personnage>.Delete(int id)
         {
             string query = repo.Remove();
 
@@ -52,7 +53,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère tous les personnages
-        public List<Personnage> GetAll()
+        List<Personnage> IDAOBase<Personnage>.GetAll()
         {
             List<Personnage> list = new List<Personnage>();
             string query = repo.SelectAll();
@@ -68,7 +69,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère le personnage qui a l'id spécifié
-        public Personnage GetById(int id)
+        Personnage IDAOBase<Personnage>.GetById(int id)
         {
             List<Personnage> list = new List<Personnage>();
             string query = repo.SelectById();
@@ -87,7 +88,7 @@ namespace projet_dawan.DAO
 
 
         //Met à jour le personnage avec l'id spécifié avec les nouvelles valeurs 
-        public void Update(Personnage perso)
+        void IDAOBase<Personnage>.Update(Personnage perso)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -95,7 +96,7 @@ namespace projet_dawan.DAO
             SqlCommand cmd = new(query, cnx);
 
             cmd = Bind(cmd, perso);
-            
+
             cmd = AddParam(cmd, "@id", perso.Id);
 
             Execute(query, cnx, cmd);
@@ -124,8 +125,8 @@ namespace projet_dawan.DAO
         private List<Personnage> Get(SqlCommand cmd)
         {
             List<Personnage> list = new List<Personnage>();
-            SerieDAO repoSerie = new (Cnx);
-            ActeurDAO repoActeur = new(Cnx);
+            IDAOBase<Serie> repoSerie = new SerieDAO(Cnx);
+            IDAOBase<Acteur> repoActeur = new ActeurDAO(Cnx);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -135,7 +136,7 @@ namespace projet_dawan.DAO
                         Id = reader.GetInt32(0),
                         Nom = reader.GetString(2),
                         SerieId = repoSerie.GetById(reader.GetInt32(3)),
-                        ActeurId= repoActeur.GetById(reader.GetInt32(1))
+                        ActeurId = repoActeur.GetById(reader.GetInt32(1))
 
                     };
 
