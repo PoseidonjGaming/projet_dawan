@@ -1,22 +1,13 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {
     public class PersonnageDAO : IPersonnageDAO
     {
-        private string cnx=string.Empty;
+        private string cnx;
         private PersonnageRepository repo = new();
        
 
@@ -130,11 +121,11 @@ namespace projet_dawan.DAO
         }
 
         //Récupère les personnages en fonction de la requète passée dans la commande
-        private static List<Personnage> Get(SqlCommand cmd)
+        private List<Personnage> Get(SqlCommand cmd)
         {
             List<Personnage> list = new List<Personnage>();
-            SerieDAO repoSerie = new(Properties.Settings.Default.Connection);
-            ActeurDAO repoActeur = new(Properties.Settings.Default.Connection);
+            SerieDAO repoSerie = new (Cnx);
+            ActeurDAO repoActeur = new(Cnx);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())

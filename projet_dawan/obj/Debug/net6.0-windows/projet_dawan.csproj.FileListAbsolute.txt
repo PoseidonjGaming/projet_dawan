@@ -102,3 +102,5 @@ E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormGererCompte.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormSupprimerSeries.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormWatchlist.resources
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL.pdb

@@ -1,16 +1,7 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan.DAO
 {
@@ -18,9 +9,7 @@ namespace projet_dawan.DAO
     {
         private string cnx = string.Empty;
         private UserAppRepository repo = new();
-        private string table;
-        private List<string> champs = new List<string>() { "login", "password" };
-        private List<string> values = new List<string>() { "@login", "@password" };
+       
 
         public string Cnx
         {
@@ -31,7 +20,6 @@ namespace projet_dawan.DAO
         public UserAppDAO(string cnx)
         {
             Cnx = cnx;
-            table = "userApp";
         }
 
         //Ajoute un user dans la base avec ses roles
@@ -58,7 +46,7 @@ namespace projet_dawan.DAO
         //Supprime un user de la base avec ses role
         public void Delete(int id)
         {
-            string query = repo.Delete(table).Build();
+            string query = repo.Remove();
 
             using (SqlConnection cnx = new(Cnx))
             {
@@ -74,7 +62,7 @@ namespace projet_dawan.DAO
         public List<UserApp> GetAll()
         {
             List<UserApp> list = new List<UserApp>();
-            string query = repo.Select("*").From(table).Build();
+            string query = repo.SelectAll();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -90,7 +78,7 @@ namespace projet_dawan.DAO
         public UserApp GetById(int id)
         {
             List<UserApp> list = new List<UserApp>();
-            string query = repo.Select("*").From(table).WhereById("id").Build();
+            string query = repo.SelectById();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -108,7 +96,7 @@ namespace projet_dawan.DAO
         public UserApp? GetByLogin(string text)
         {
             List<UserApp> list = new List<UserApp>();
-            string query = repo.Select("*").From(table).WhereByLike("login").Build();
+            string query = repo.SelectByLogin();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
@@ -135,7 +123,7 @@ namespace projet_dawan.DAO
         {
             SqlConnection cnx = new(Cnx);
 
-            string query = repo.Update(table, champs, values).Build();
+            string query = repo.Modify();
             SqlCommand cmd = new(query, cnx);
 
             cmd = Bind(cmd, user);
@@ -164,10 +152,10 @@ namespace projet_dawan.DAO
         }
 
         //Récupère les users en fonction de la requète passée dans la commande
-        private static List<UserApp> Get(SqlCommand cmd)
+        private List<UserApp> Get(SqlCommand cmd)
         {
             List<UserApp> list = new List<UserApp>();
-            UserRoleDAO dao = new UserRoleDAO(Properties.Settings.Default.Connection);
+            UserRoleDAO dao = new UserRoleDAO(Cnx);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())

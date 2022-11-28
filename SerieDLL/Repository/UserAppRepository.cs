@@ -41,7 +41,11 @@ namespace projet_dawan.Repository
             return Select("*").From(table).WhereById("id").Build();
         }
 
-      
+        //Génère select * from userApp where Like=@id
+        public string SelectByLogin()
+        {
+            return Select("*").From(table).WhereByLike("login").Build();
+        }
 
         //Génère update userApp set login=@login, password=@password where id=@id
         public string Modify()

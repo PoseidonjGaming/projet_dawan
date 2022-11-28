@@ -1,10 +1,4 @@
-﻿using Microsoft.VisualBasic.ApplicationServices;
-using projet_dawan.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using projet_dawan.Model;
 
 namespace projet_dawan.Interface
 {
