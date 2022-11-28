@@ -1,15 +1,16 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
+using SerieDLL.Interface;
 using System.Data.SqlClient;
 
 namespace projet_dawan.DAO
 {
-    public class RoleDAO : IRoleDAO
+    public class RoleDAO : IDAOBase<Role>, IRoleDAO
     {
         private string cnx = string.Empty;
         private RoleRepository repo = new();
-       
+
 
         public string Cnx
         {
@@ -22,7 +23,7 @@ namespace projet_dawan.DAO
             Cnx = cnx;
         }
         //Ajoute un role dans la base
-        public void Add(Role role)
+        void IDAOBase<Role>.Add(Role role)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -37,7 +38,7 @@ namespace projet_dawan.DAO
         }
 
         //Supprime le role avec l'id spécifié
-        public void Delete(int id)
+        void IDAOBase<Role>.Delete(int id)
         {
             string query = repo.Remove();
 
@@ -51,7 +52,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère tous les roles
-        public List<Role> GetAll()
+        List<Role> IDAOBase<Role>.GetAll()
         {
             List<Role> list = new List<Role>();
             string query = repo.SelectAll();
@@ -66,7 +67,7 @@ namespace projet_dawan.DAO
             return list;
         }
         //Récupère le role qui a l'id spécifié
-        public Role GetById(int id)
+        Role IDAOBase<Role>.GetById(int id)
         {
             List<Role> list = new List<Role>();
             string query = repo.SelectById();
@@ -102,7 +103,7 @@ namespace projet_dawan.DAO
         }
 
         //Met à jour le role avec l'id spécifié avec les nouvelles valeurs
-        public void Update(Role role)
+        void IDAOBase<Role>.Update(Role role)
         {
             SqlConnection cnx = new(Cnx);
 

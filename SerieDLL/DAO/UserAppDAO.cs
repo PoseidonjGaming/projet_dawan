@@ -1,6 +1,7 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
+using SerieDLL.Interface;
 using System.Data.SqlClient;
 
 namespace projet_dawan.DAO

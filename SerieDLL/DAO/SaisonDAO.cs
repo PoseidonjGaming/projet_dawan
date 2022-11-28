@@ -1,5 +1,6 @@
 ﻿using projet_dawan.Model;
 using projet_dawan.Repository;
+using SerieDLL.Interface;
 using System.Data.SqlClient;
 
 namespace projet_dawan.DAO
@@ -137,7 +138,7 @@ namespace projet_dawan.DAO
         private List<Saison> Get(SqlCommand cmd)
         {
             List<Saison> list = new List<Saison>();
-            SerieDAO repoSerie = new(Cnx);
+            IDAOBase<Serie> repoSerie = new SerieDAO(Cnx);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())

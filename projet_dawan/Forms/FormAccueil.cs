@@ -1,12 +1,13 @@
 ﻿using projet_dawan.DAO;
 using projet_dawan.Model;
 using projet_dawan_WinForm;
+using SerieDLL.Interface;
 
 namespace projet_dawan
 {
     public partial class FormAccueil : Form
     {
-        private SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
+        private IDAOBase<Serie> serieDAO = new SerieDAO(Properties.Settings.Default.Connection);
         private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
         public FormAccueil()
@@ -89,7 +90,10 @@ namespace projet_dawan
         {
 
             serieList = serieDAO.GetAll();
-
+            if(Properties.Settings.Default.ToWatch is null)
+            {
+                Properties.Settings.Default.ToWatch = new List<Serie>();
+            }
             Populate(4);
         }
 
@@ -157,6 +161,7 @@ namespace projet_dawan
         private void OpenFormBibli(string text)
         {
             serieList.Clear();
+            SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
             serieList = serieDAO.GetByTxt(txtRechercher.Text);
             MessageBox.Show(serieList.Count.ToString());
             FormBibliotheque formBibliotheque = new(serieList, text);

@@ -25,7 +25,7 @@ namespace projet_dawan
             serieList = series;
             
             txtRechercher.Text = text;
-            
+            Populate();
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
