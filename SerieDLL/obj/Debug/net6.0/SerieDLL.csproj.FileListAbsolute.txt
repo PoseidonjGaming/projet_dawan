@@ -10,3 +10,15 @@ E:\Projet perso\Projet dawan\SerieDLL\obj\Debug\net6.0\SerieDLL.dll
 E:\Projet perso\Projet dawan\SerieDLL\obj\Debug\net6.0\refint\SerieDLL.dll
 E:\Projet perso\Projet dawan\SerieDLL\obj\Debug\net6.0\SerieDLL.pdb
 E:\Projet perso\Projet dawan\SerieDLL\obj\Debug\net6.0\ref\SerieDLL.dll
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\bin\Debug\net6.0\SerieDLL.deps.json
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\bin\Debug\net6.0\SerieDLL.dll
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\bin\Debug\net6.0\SerieDLL.pdb
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\obj\Debug\net6.0\SerieDLL.csproj.AssemblyReference.cache
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\obj\Debug\net6.0\SerieDLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\obj\Debug\net6.0\SerieDLL.AssemblyInfoInputs.cache
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\obj\Debug\net6.0\SerieDLL.AssemblyInfo.cs
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\obj\Debug\net6.0\SerieDLL.csproj.CoreCompileInputs.cache
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\obj\Debug\net6.0\SerieDLL.dll
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\obj\Debug\net6.0\refint\SerieDLL.dll
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\obj\Debug\net6.0\SerieDLL.pdb
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\SerieDLL\obj\Debug\net6.0\ref\SerieDLL.dll
