@@ -89,7 +89,10 @@ namespace projet_dawan
         {
 
             serieList = serieDAO.GetAll();
-
+            if(Properties.Settings.Default.ToWatch is null)
+            {
+                Properties.Settings.Default.ToWatch = new List<Serie>();
+            }
             Populate(4);
         }
 
