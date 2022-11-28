@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projet perso\\Projet dawan\\projet_dawan_WPF\\projet_dawan_WPF.csproj": {}
+    "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan_WPF\\projet_dawan_WPF.csproj": {}
   },
   "projects": {
-    "E:\\Projet perso\\Projet dawan\\projet_dawan_WPF\\projet_dawan_WPF.csproj": {
+    "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan_WPF\\projet_dawan_WPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projet perso\\Projet dawan\\projet_dawan_WPF\\projet_dawan_WPF.csproj",
+        "projectUniqueName": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan_WPF\\projet_dawan_WPF.csproj",
         "projectName": "projet_dawan_WPF",
-        "projectPath": "E:\\Projet perso\\Projet dawan\\projet_dawan_WPF\\projet_dawan_WPF.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "E:\\Projet perso\\Projet dawan\\projet_dawan_WPF\\obj\\",
+        "projectPath": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan_WPF\\projet_dawan_WPF.csproj",
+        "packagesPath": "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\projet_dawan_WPF\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin Stagiaire\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

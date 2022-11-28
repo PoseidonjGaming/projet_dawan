@@ -1,12 +1,13 @@
 ﻿using projet_dawan.DAO;
 using projet_dawan.Model;
 using projet_dawan_WinForm;
+using SerieDLL.Interface;
 
 namespace projet_dawan
 {
     public partial class FormAccueil : Form
     {
-        private SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
+        private IDAOBase<Serie> serieDAO = new SerieDAO(Properties.Settings.Default.Connection);
         private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
         public FormAccueil()
@@ -89,7 +90,10 @@ namespace projet_dawan
         {
 
             serieList = serieDAO.GetAll();
-
+            if(Properties.Settings.Default.ToWatch is null)
+            {
+                Properties.Settings.Default.ToWatch = new List<Serie>();
+            }
             Populate(4);
         }
 
@@ -126,8 +130,8 @@ namespace projet_dawan
             for (int i = 0; i < I; i++)
             {
                 PictureBox pictureBox = new PictureBox();
-                pictureBox.Location = new Point((100 * i * 2) + 15, 60);
-                pictureBox.Size = new Size(143, 200);
+                pictureBox.Location = new Point((95 * i * 2) + 25, 50);
+                pictureBox.Size = new Size(138, 170);
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox.Name = serieList[i].Name;
                 pictureBox.ImageLocation = path + serieList[i].Affiche;
@@ -136,8 +140,8 @@ namespace projet_dawan
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(pictureBox);
 
                 Button btnSerie = new Button();
-                btnSerie.Location = new Point((100 * i * 2) + 15, 265);
-                btnSerie.Size = new Size(143, 50);
+                btnSerie.Location = new Point((95 * i * 2) + 25, 225);
+                btnSerie.Size = new Size(138, 50);
                 btnSerie.Text = serieList[i].Name;
                 btnSerie.Click += Serie_Click;
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
@@ -157,6 +161,7 @@ namespace projet_dawan
         private void OpenFormBibli(string text)
         {
             serieList.Clear();
+            SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
             serieList = serieDAO.GetByTxt(txtRechercher.Text);
             MessageBox.Show(serieList.Count.ToString());
             FormBibliotheque formBibliotheque = new(serieList, text);

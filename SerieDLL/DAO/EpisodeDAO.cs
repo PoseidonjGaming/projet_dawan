@@ -1,15 +1,16 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
+using SerieDLL.Interface;
 using System.Data.SqlClient;
 
 namespace projet_dawan.DAO
 {
-    public class EpisodeDAO : IEpisodeDAO
+    public class EpisodeDAO : IDAOBase<Episode>, IEpisodeDAO
     {
         private string cnx = string.Empty;
         private EpisodeRepository repo = new();
-       
+
 
         public string Cnx
         {
@@ -23,7 +24,7 @@ namespace projet_dawan.DAO
         }
 
         //Ajoute un épisode dans la base
-        public void Add(Episode episode)
+        void IDAOBase<Episode>.Add(Episode episode)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -38,7 +39,7 @@ namespace projet_dawan.DAO
         }
 
         //Supprime l'épisode avec l'id spécifié
-        public void Delete(int id)
+        void IDAOBase<Episode>.Delete(int id)
         {
             string query = repo.Remove();
 
@@ -52,7 +53,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère tous les épisodes
-        public List<Episode> GetAll()
+        List<Episode> IDAOBase<Episode>.GetAll()
         {
             List<Episode> list = new List<Episode>();
             string query = repo.SelectAll();
@@ -68,7 +69,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère l'épisode qui a l'id spécifié
-        public Episode GetById(int id)
+        Episode IDAOBase<Episode>.GetById(int id)
         {
             List<Episode> list = new List<Episode>();
             string query = repo.SelectById();
@@ -86,7 +87,7 @@ namespace projet_dawan.DAO
         }
 
         //Met à jour l'épisode avec l'id spécifié avec les nouvelles valeurs 
-        public void Update(Episode episode)
+        void IDAOBase<Episode>.Update(Episode episode)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -136,7 +137,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère les épisodes en fonction de la requète passée dans la commande
-        private  List<Episode> Get(SqlCommand cmd)
+        private List<Episode> Get(SqlCommand cmd)
         {
             List<Episode> list = new List<Episode>();
             SaisonDAO repoSaison = new(Cnx);

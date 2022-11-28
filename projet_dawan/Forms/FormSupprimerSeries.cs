@@ -1,5 +1,6 @@
 ﻿using projet_dawan.DAO;
 using projet_dawan.Model;
+using SerieDLL.Interface;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +15,7 @@ namespace projet_dawan
 {
     public partial class FormSupprimerSeries : Form
     {
-        private SerieDAO SerieDAO = new(Properties.Settings.Default.Connection);
+        private IDAOBase<Serie> SerieDAO = new SerieDAO(Properties.Settings.Default.Connection);
         private List<Serie> SerieList = new List<Serie>();
         public FormSupprimerSeries()
         {

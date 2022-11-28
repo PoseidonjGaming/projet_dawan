@@ -1,11 +1,12 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
 using projet_dawan.Repository;
+using SerieDLL.Interface;
 using System.Data.SqlClient;
 
 namespace projet_dawan.DAO
 {
-    public class ActeurDAO : IActeurDAO
+    public class ActeurDAO : IDAOBase<Acteur>
     {
         private string cnx = string.Empty;
         private ActeurRepository repo = new();
@@ -24,7 +25,7 @@ namespace projet_dawan.DAO
         }
 
         //Ajoute un acteur dans la base
-        public void Add(Acteur acteur)
+        void IDAOBase<Acteur>.Add(Acteur obj)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -32,27 +33,41 @@ namespace projet_dawan.DAO
             SqlCommand cmd = new(sql, cnx);
 
 
-            cmd = Bind(cmd, acteur);
+            cmd = Bind(cmd, obj);
 
 
             Execute(sql, cnx, cmd);
         }
 
-        //Supprime l'acteur avec l'id spécifié
-        public void Delete(int id)
+        //Met à jour l'acteur avec l'id spécifié avec les nouvelles valeurs 
+        void IDAOBase<Acteur>.Update(Acteur obj)
         {
-            string query =  repo.Remove();
+            SqlConnection cnx = new(Cnx);
+
+            string query = repo.Modify();
+            SqlCommand cmd = new(query, cnx);
+
+            cmd = Bind(cmd, obj);
+
+            cmd = AddParam(cmd, "@id", obj.Id);
+
+            Execute(query, cnx, cmd);
+        }
+
+        //Supprime l'acteur avec l'id spécifié
+        void IDAOBase<Acteur>.Delete(int id)
+        {
+            string query = repo.Remove();
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
                 cmd.Parameters.AddWithValue("@id", id);
                 Execute(query, cnx, cmd);
             }
-
         }
 
         //Récupère tous les acteurs
-        public List<Acteur> GetAll()
+        List<Acteur> IDAOBase<Acteur>.GetAll()
         {
             List<Acteur> list = new List<Acteur>();
             string query = repo.SelectAll();
@@ -68,7 +83,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère l'acteur qui a l'id spécifié
-        public Acteur GetById(int id)
+        Acteur IDAOBase<Acteur>.GetById(int id)
         {
             List<Acteur> list = new List<Acteur>();
             string query = repo.SelectById();
@@ -84,23 +99,7 @@ namespace projet_dawan.DAO
 
             return list[0];
         }
-
-        //Met à jour l'acteur avec l'id spécifié avec les nouvelles valeurs 
-        public void Update(Acteur acteur)
-        {
-            SqlConnection cnx = new(Cnx);
-
-            string query = repo.Modify();
-            SqlCommand cmd = new(query, cnx);
-
-            cmd = Bind(cmd, acteur);
-
-            cmd = AddParam(cmd, "@id", acteur.Id);
-
-            Execute(query, cnx, cmd);
-            //MessageBox.Show(query);
-        }
-
+       
         //Exécute les commandes de type insert, delete et update
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
@@ -156,6 +155,7 @@ namespace projet_dawan.DAO
 
             return cmd;
         }
+
     }
 
 

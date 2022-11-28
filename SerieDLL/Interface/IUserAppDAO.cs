@@ -1,14 +1,10 @@
-﻿using projet_dawan.Model;
+﻿using projet_dawan.DAO;
+using projet_dawan.Model;
 
-namespace projet_dawan.Interface
+namespace SerieDLL.Interface
 {
     public interface IUserAppDAO
     {
-        void Add(UserApp user);
-        void Update(UserApp user);
-        void Delete(int id);
-        List<UserApp> GetAll();
-        UserApp GetById(int id);
-
+        UserApp? GetByLogin(string login); 
     }
 }
