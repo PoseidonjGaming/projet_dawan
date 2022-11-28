@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Projet perso\\Projet dawan\\SerieDLL\\SerieDLL.csproj": {}
+    "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\SerieDLL\\SerieDLL.csproj": {}
   },
   "projects": {
-    "E:\\Projet perso\\Projet dawan\\SerieDLL\\SerieDLL.csproj": {
+    "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\SerieDLL\\SerieDLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Projet perso\\Projet dawan\\SerieDLL\\SerieDLL.csproj",
+        "projectUniqueName": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\SerieDLL\\SerieDLL.csproj",
         "projectName": "SerieDLL",
-        "projectPath": "E:\\Projet perso\\Projet dawan\\SerieDLL\\SerieDLL.csproj",
-        "packagesPath": "C:\\Users\\lucas\\.nuget\\packages\\",
-        "outputPath": "E:\\Projet perso\\Projet dawan\\SerieDLL\\obj\\",
+        "projectPath": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\SerieDLL\\SerieDLL.csproj",
+        "packagesPath": "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\SerieDLL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\lucas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin Stagiaire\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
