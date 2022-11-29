@@ -13,9 +13,9 @@ namespace projet_dawan.Model
 		[DataMember]
 		private Acteur acteur_id;
 		[DataMember]
-		private Serie serie_id;
+		private Serie? serie_id;
 
-		public Serie SerieId
+		public Serie? SerieId
 		{
 			get { return serie_id; }
 			set { serie_id = value; }

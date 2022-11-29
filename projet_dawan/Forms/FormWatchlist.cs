@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Devices;
+using Newtonsoft.Json;
+using projet_dawan.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,7 +24,8 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            List<Serie> list = Properties.Settings.Default.UserRemain.Towatch;
+            File.WriteAllText(@"C:\Users\Admin Stagiaire\Desktop\export.json", JsonConvert.SerializeObject(list, Formatting.Indented));
         }
 
         private void button2_Click(object sender, EventArgs e)
