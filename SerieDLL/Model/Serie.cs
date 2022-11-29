@@ -73,18 +73,7 @@ namespace projet_dawan.Model
             set { name = value; }
         }
 
-        public Serie(int id, string nom, string resume,
-            string affiche, DateTime date_diff, string url_ba,
-            List<Personnage> personnages)
-        {
-            this.id = id;
-            Name = nom;
-            Resume = resume;
-            Affiche = affiche;
-            DateDiff = date_diff;
-            UrlBa = url_ba;
-            Personnages = personnages;
-        }
+
 
         public Serie()
         {

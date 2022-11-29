@@ -2,15 +2,17 @@
 using projet_dawan.Model;
 using projet_dawan.Repository;
 using SerieDLL.Interface;
+using System.ComponentModel;
 using System.Data.SqlClient;
+using System.Runtime.CompilerServices;
 
 namespace projet_dawan.DAO
 {
     public class SerieDAO : IDAOBase<Serie>, ISerieDAO
     {
-        private string cnx;
+        private string cnx = string.Empty;
         private SerieRepository repo = new();
-       
+
 
         public string Cnx
         {
@@ -99,8 +101,8 @@ namespace projet_dawan.DAO
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
-                cmd = AddParam(cmd, "@text", "%"+text+"%");
-                
+                cmd = AddParam(cmd, "@text", "%" + text + "%");
+
                 cnx.Open();
 
                 list = Get(cmd);
@@ -145,9 +147,11 @@ namespace projet_dawan.DAO
         }
 
         //Récupère les séries en fonction de la requète passée dans la commande
-        private static List<Serie> Get(SqlCommand cmd)
+        private List<Serie> Get(SqlCommand cmd)
         {
             List<Serie> list = new List<Serie>();
+
+            PersonnageDAO personnageDAO = new PersonnageDAO(Cnx);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
@@ -159,10 +163,9 @@ namespace projet_dawan.DAO
                         DateDiff = reader.GetDateTime(2),
                         Resume = reader.GetString(3),
                         Affiche = reader.GetString(4),
-                        UrlBa = reader.GetString(5)
-
+                        UrlBa = reader.GetString(5),
+                        Personnages = personnageDAO.GetPersonnages(reader.GetInt32(0))
                     };
-
                     list.Add(serie);
                 }
             }

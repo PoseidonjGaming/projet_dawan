@@ -145,7 +145,7 @@ namespace projet_dawan.DAO
         private List<Episode> Get(SqlCommand cmd)
         {
             List<Episode> list = new List<Episode>();
-            SaisonDAO repoSaison = new(Cnx);
+            IDAOBase<Saison> repoSaison = new SaisonDAO(Cnx);
             using (SqlDataReader reader = cmd.ExecuteReader())
             {
                 while (reader.Read())

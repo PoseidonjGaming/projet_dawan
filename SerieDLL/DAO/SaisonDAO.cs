@@ -5,11 +5,11 @@ using System.Data.SqlClient;
 
 namespace projet_dawan.DAO
 {
-    public class SaisonDAO
+    public class SaisonDAO : IDAOBase<Saison>, ISaisonDao
     {
         private string cnx = string.Empty;
         private readonly SaisonRepository repo = new();
-       
+
 
         public string Cnx
         {
@@ -23,7 +23,7 @@ namespace projet_dawan.DAO
         }
 
         //Ajoute une saison dans la base
-        public void Add(Saison saison)
+        void IDAOBase<Saison>.Add(Saison saison)
         {
             SqlConnection cnx = new(Cnx);
 
@@ -38,7 +38,7 @@ namespace projet_dawan.DAO
         }
 
         //Supprime une saison avec l'id spécifié
-        public void Delete(int id)
+        void IDAOBase<Saison>.Delete(int id)
         {
             string query = repo.Remove();
 
@@ -52,7 +52,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère toutes les saisons
-        public List<Saison> GetAll()
+        List<Saison> IDAOBase<Saison>.GetAll()
         {
             List<Saison> list = new List<Saison>();
             string query = repo.SelectAll();
@@ -68,7 +68,7 @@ namespace projet_dawan.DAO
         }
 
         //Récupère une saison avec l'id spécifié
-        public Saison? GetById(int id)
+        Saison? IDAOBase<Saison>.GetById(int id)
         {
             List<Saison> list = new List<Saison>();
             string query = repo.SelectById();
@@ -103,7 +103,7 @@ namespace projet_dawan.DAO
         }
 
         //Met à jour la saison avec l'id spécifié avec les nouvelles valeurs
-        public void Update(Saison saison)
+        void IDAOBase<Saison>.Update(Saison saison)
         {
             SqlConnection cnx = new(Cnx);
             string query = repo.Modify();
@@ -117,7 +117,7 @@ namespace projet_dawan.DAO
         }
 
         //Exécute les commandes de type insert, delete et update
-        public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
+        public void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {
             try
             {
@@ -158,7 +158,7 @@ namespace projet_dawan.DAO
         }
 
         //Remplace le champ par la valeur passée en paramètre dans la requète
-        private static SqlCommand AddParam(SqlCommand command, string champ, object value)
+        private SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;

@@ -41,6 +41,11 @@ namespace projet_dawan.Repository
             return Select("*").From(table).WhereById("id").Build();
         }
 
+        public string SelectBySerie()
+        {
+            return Select("*").From(table).WhereById("serie_id").Build();
+        }
+
         //Génère update personnage set nom=@nom, serie_id=@serie_id, acteur_id=@acteur_id where id=@id
         public string Modify()
         {

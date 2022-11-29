@@ -6,9 +6,9 @@ using System.Data.SqlClient;
 
 namespace projet_dawan.DAO
 {
-    public class PersonnageDAO : IDAOBase<Personnage>
+    public class PersonnageDAO : IDAOBase<Personnage>, IPersonnageDAO
     {
-        private string cnx;
+        private string cnx = string.Empty;
         private PersonnageRepository repo = new();
 
 
@@ -91,6 +91,41 @@ namespace projet_dawan.DAO
             return null;
         }
 
+        public List<Personnage> GetPersonnages(int id)
+        {
+            List<Personnage> list = new List<Personnage>();
+            string query = repo.SelectBySerie();
+            using (SqlConnection cnx = new(Cnx))
+            {
+                SqlCommand cmd = new(query, cnx);
+                cmd = AddParam(cmd, "@id", id);
+                cnx.Open();
+                IDAOBase<Acteur> repoActeur = new ActeurDAO(Cnx);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Personnage perso = new()
+                        {
+                            Id = reader.GetInt32(0),
+                            Nom = reader.GetString(2),
+                            ActeurId = repoActeur.GetById(reader.GetInt32(1)),
+                            SerieId=null
+                        };
+
+                        list.Add(perso);
+                    }
+
+
+                }
+
+
+
+                return list;
+
+
+            }
+        }
 
         //Met à jour le personnage avec l'id spécifié avec les nouvelles valeurs 
         void IDAOBase<Personnage>.Update(Personnage perso)
@@ -152,7 +187,7 @@ namespace projet_dawan.DAO
         }
 
         //Remplace le champ par la valeur passée en paramètre dans la requète
-        private static SqlCommand AddParam(SqlCommand command, string champ, object value)
+        private SqlCommand AddParam(SqlCommand command, string champ, object value)
         {
             command.Parameters.AddWithValue(champ, value);
             return command;
