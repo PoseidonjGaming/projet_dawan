@@ -11,7 +11,7 @@ namespace projet_dawan.Model
 		[DataMember]
 		private string nom;
 		[DataMember]
-		private Acteur acteur_id;
+		private Acteur? acteur_id;
 		[DataMember]
 		private Serie? serie_id;
 
@@ -22,7 +22,7 @@ namespace projet_dawan.Model
 		}
 
 
-		public Acteur ActeurId
+		public Acteur? ActeurId
 		{
 			get { return acteur_id; }
 			set { acteur_id = value; }
