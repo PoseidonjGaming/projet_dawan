@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization;
+using System.Text.Json.Serialization;
 
 namespace projet_dawan.Model
 {
@@ -12,10 +13,10 @@ namespace projet_dawan.Model
 		private string nom;
 		[DataMember]
 		private Acteur? acteur_id;
-		[DataMember]
-		private Serie? serie_id;
+        [JsonIgnore]
+        private Serie serie_id;
 
-		public Serie? SerieId
+		public Serie SerieId
 		{
 			get { return serie_id; }
 			set { serie_id = value; }

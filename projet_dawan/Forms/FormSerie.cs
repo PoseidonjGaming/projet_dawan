@@ -16,7 +16,7 @@ namespace projet_dawan_WinForm
         {
             InitializeComponent();
             Serie = serie;
-            
+
         }
 
         private void FormSerie_Load(object sender, EventArgs e)
@@ -59,14 +59,16 @@ namespace projet_dawan_WinForm
 
         private void buttonToWatch_Click(object sender, EventArgs e)
         {
-            if (Settings.Default.UserRemain.Towatch.Find(e => e.Id == Serie.Id) == null)
+            UserApp user = Settings.Default.UserRemain;
+            if (!user.Towatch.Contains(Serie))
             {
-                Settings.Default.UserRemain.Towatch.Add(Serie);
+                
+                user.Towatch.Add(Serie);
+                
+                Settings.Default.UserRemain = user;
                 Settings.Default.Save();
             }
-            UserApp user = Settings.Default.UserRemain;
-            string jsonUser = JsonConvert.SerializeObject(user, Formatting.Indented);
-            MessageBox.Show(jsonUser);
+
 
         }
     }

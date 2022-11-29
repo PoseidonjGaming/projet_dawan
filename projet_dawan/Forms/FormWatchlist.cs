@@ -30,7 +30,8 @@ namespace projet_dawan
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Properties.Settings.Default.UserRemain.Towatch.Count.ToString());
+            Properties.Settings.Default.UserRemain.Towatch = new();
+            Properties.Settings.Default.Save();
         }
     }
 }
