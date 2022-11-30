@@ -29,9 +29,7 @@ namespace projet_dawan_WinForm
         {
             Serie serie = saison.SerieId;
             pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
-            txtBoxResumeSaison.Text = serie.Resume;
-            lblDateSaison.Text= serie.DateDiff.ToShortDateString();
-            linkLblBASaison.Text = serie.UrlBa;
+
 
             EpisodeDAO dao = new(projet_dawan.Properties.Settings.Default.Connection);
             foreach (Episode episode in dao.GetEpisodes(saison.Id))
@@ -39,23 +37,31 @@ namespace projet_dawan_WinForm
                 episodes.Add(episode);
                 lstBoxEpisode.Items.Add(episode.Nom);
             }
+
+            Populate(episodes[0]);
+            lstBoxEpisode.SelectedIndex = 0;
         }
 
         private void lstBoxEpisode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lstBoxEpisode.SelectedIndex != -1)
+            if (lstBoxEpisode.SelectedIndex != -1)
             {
                 Episode episode = episodes[lstBoxEpisode.SelectedIndex];
-                FormEpisode formEpisode = new(episode);
-                formEpisode.FormClosed += OpenForm;
-                this.Hide();
-                formEpisode.ShowDialog(this);
+                Populate(episode);
             }
         }
 
         private void OpenForm(object sender, EventArgs e)
         {
             this.Show();
+        }
+
+        private void Populate(Episode ep)
+        {
+            txtBoxResumeSaison.Text = ep.Resume;
+            lblDateSaison.Text = "Date de première diffusion: " + ep.DatePremDiff.ToShortDateString();
+            labelNomEp.Text = "Titre de l'épisode: \n" + ep.Nom;
+            lblSaison.Text = "Saison numéro" + ep.SaisonId.Num.ToString();
         }
     }
 }
