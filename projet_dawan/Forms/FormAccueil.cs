@@ -166,7 +166,6 @@ namespace projet_dawan
             serieList.Clear();
             SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
             serieList = serieDAO.GetByTxt(txtRechercher.Text);
-            MessageBox.Show(serieList.Count.ToString());
             FormBibliotheque formBibliotheque = new(serieList, text);
             formBibliotheque.FormClosing += form_FormClosing;
             this.Hide();

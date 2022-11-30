@@ -25,7 +25,7 @@ namespace projet_dawan
             serieList = series;
             
             txtRechercher.Text = text;
-            Populate();
+            
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -35,10 +35,7 @@ namespace projet_dawan
 
         private void Populate()
         {
-            foreach (Serie serie in serieList)
-            {
-                lstBxSerie.Items.Add(serie.Name);
-            }
+            
         }
 
         private void txtRechercher_TextChanged(object sender, EventArgs e)
@@ -46,7 +43,10 @@ namespace projet_dawan
             serieList.Clear();
             lstBxSerie.Items.Clear();
             serieList = SerieDAO.GetByTxt(txtRechercher.Text);
-            Populate();
+            foreach (Serie serie in serieList)
+            {
+                lstBxSerie.Items.Add(serie.Name);
+            }
         }
 
         private void btnDetail_Click(object sender, EventArgs e)
