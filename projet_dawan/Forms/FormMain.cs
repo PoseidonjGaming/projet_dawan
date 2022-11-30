@@ -51,13 +51,14 @@ namespace projet_dawan
         {
             if (Properties.Settings.Default.UserRemain != null)
             {
+
                 UserApp user = Properties.Settings.Default.UserRemain;
                 
                 Login(user, user.Password);
             }
         }
 
-        private void Login(UserApp user, string password)
+        private void Login(UserApp? user, string password)
         {
             if (user != null)
             {
@@ -72,6 +73,7 @@ namespace projet_dawan
                         Properties.Settings.Default.token = Convert.ToBase64String(bytesarray);
                     }
                 }
+
                 FormAccueil pageAcceuil = new FormAccueil();
                 pageAcceuil.FormClosing += pageAcceuil_FormClosing;
                 this.Hide();

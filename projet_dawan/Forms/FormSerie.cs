@@ -11,7 +11,7 @@ namespace projet_dawan_WinForm
     {
         private Serie Serie = new();
         private List<Saison> Saisons = new List<Saison>();
-
+        private UserApp user;
         public FormSerie(Serie serie)
         {
             InitializeComponent();
@@ -21,7 +21,6 @@ namespace projet_dawan_WinForm
 
         private void FormSerie_Load(object sender, EventArgs e)
         {
-            Settings.Default.UserRemain.Towatch = new List<Serie>();
             lblSerie.Text = Serie.Name;
             lblDateSerie.Text = Serie.DateDiff.ToShortDateString();
             linkLblBASerie.Text = Serie.UrlBa;
@@ -33,6 +32,7 @@ namespace projet_dawan_WinForm
                 Saisons.Add(saison);
                 lstBoxSaison.Items.Add(saison.Num);
             }
+            user = Settings.Default.UserRemain;
         }
 
         private void btnCasting_Click(object sender, EventArgs e)
@@ -59,14 +59,16 @@ namespace projet_dawan_WinForm
 
         private void buttonToWatch_Click(object sender, EventArgs e)
         {
-            UserApp user = Settings.Default.UserRemain;
-            if (!user.Towatch.Contains(Serie))
+            
+            MessageBox.Show(user.Towatch.Count.ToString());
+            if (user.Towatch.Find(e=> e.Id == Serie.Id) == null)
             {
                 
                 user.Towatch.Add(Serie);
                 
                 Settings.Default.UserRemain = user;
-                Settings.Default.Save();
+                MessageBox.Show(user.Towatch.Count.ToString());
+                //Settings.Default.Save();
             }
 
 

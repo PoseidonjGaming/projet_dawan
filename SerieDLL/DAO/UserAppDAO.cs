@@ -171,8 +171,9 @@ namespace projet_dawan.DAO
                         Id = reader.GetInt32(0),
                         Login = reader.GetString(1),
                         Password = reader.GetString(2),
-                        Roles = dao.GetAllRole(reader.GetInt32(0))
-
+                        Roles = dao.GetAllRole(reader.GetInt32(0)),
+                        Towatch=new()
+                        
                     };
 
                     list.Add(user);

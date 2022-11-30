@@ -39,17 +39,6 @@ namespace projet_dawan.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::projet_dawan.Model.UserApp UserRemain {
-            get {
-                return ((global::projet_dawan.Model.UserApp)(this["UserRemain"]));
-            }
-            set {
-                this["UserRemain"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string token {
             get {
@@ -57,6 +46,17 @@ namespace projet_dawan.Properties {
             }
             set {
                 this["token"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::projet_dawan.Model.UserApp UserRemain {
+            get {
+                return ((global::projet_dawan.Model.UserApp)(this["UserRemain"]));
+            }
+            set {
+                this["UserRemain"] = value;
             }
         }
     }

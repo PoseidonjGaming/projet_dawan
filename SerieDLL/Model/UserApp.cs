@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace projet_dawan.Model
 {
+    [Serializable]
+    [DataContract]
     public class UserApp
     {
+        [DataMember]
         private int id;
+        [DataMember]
         private string login;
+        [DataMember]
         private string password;
+        [DataMember]
         private List<Role> roles;
+        [DataMember]
         private List<Serie> toWatch;
 
         public List<Serie> Towatch
