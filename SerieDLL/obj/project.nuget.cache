@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "gp1htJlMVJ/3RnXHWKKgBCe5KtDC0u8CIi+LtvhGANQjttUfRtcK/PcKOd3FcqV8m3TTvPPeRwO/DRG/R69PDw==",
+  "dgSpecHash": "vTepDsj06C32D4S7qcTCbZI7SCcVaJS0SbxkkzBoOPzyIA3i8HlpNvARtAbSgj/dd9DLE5BLi4EwwvdWeD1uqA==",
   "success": true,
   "projectFilePath": "C:\\Users\\Admin Stagiaire\\Desktop\\projet_dawan\\SerieDLL\\SerieDLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
+    "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\runtime.native.system.data.sqlclient.sni\\4.7.0\\runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\runtime.win-x64.runtime.native.system.data.sqlclient.sni\\4.4.0\\runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

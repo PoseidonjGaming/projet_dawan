@@ -60,15 +60,13 @@ namespace projet_dawan_WinForm
         private void buttonToWatch_Click(object sender, EventArgs e)
         {
             
-            MessageBox.Show(user.Towatch.Count.ToString());
             if (user.Towatch.Find(e=> e.Id == Serie.Id) == null)
             {
                 
                 user.Towatch.Add(Serie);
                 
                 Settings.Default.UserRemain = user;
-                MessageBox.Show(user.Towatch.Count.ToString());
-                //Settings.Default.Save();
+                Settings.Default.Save();
             }
 
 

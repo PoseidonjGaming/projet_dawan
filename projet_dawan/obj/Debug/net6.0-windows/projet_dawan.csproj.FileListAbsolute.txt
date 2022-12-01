@@ -104,3 +104,4 @@ C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-wind
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormGererCompte.resources
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormSupprimerSeries.resources
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormWatchlist.resources
+C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\Newtonsoft.Json.Bson.dll
