@@ -2,7 +2,6 @@
 # Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
 ################################################################################
 
-/SerieDLL/Model/Serie.cs
 /projet_dawan/.vs/ProjectEvaluation/projet_dawan.metadata.v5.2
 /projet_dawan/.vs/ProjectEvaluation/projet_dawan.projects.v5.2
 /projet_dawan/.vs/projet_dawan/DesignTimeBuild/.dtbcache.v2

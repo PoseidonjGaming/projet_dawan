@@ -1,0 +1,93 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+
+namespace projet_dawan.Model
+{
+    [Serializable]
+    [DataContract]
+    public class Serie
+    {
+        [DataMember]
+        private int id;
+        [JsonIgnore]
+        private string name;
+        [JsonIgnore]
+        private string resume;
+        [JsonIgnore]
+        private string affiche;
+        [JsonIgnore]
+        private DateTime date_diff;
+        [JsonIgnore]
+        private string url_ba;
+        [JsonIgnore]
+        private List<Personnage> personnages;
+
+        public List<Personnage> Personnages
+        {
+            get { return personnages; }
+            set { personnages = value; }
+        }
+
+
+        public string UrlBa
+        {
+            get { return url_ba; }
+            set { url_ba = value; }
+        }
+
+
+        public DateTime DateDiff
+        {
+            get { return date_diff; }
+            set { date_diff = value; }
+        }
+
+
+        public string Affiche
+        {
+            get { return affiche; }
+            set { affiche = value; }
+        }
+
+
+        public string Resume
+        {
+            get { return resume; }
+            set { resume = value; }
+        }
+
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+
+
+        public Serie()
+        {
+        }
+
+        public Serie(string name, string resume, string affiche, DateTime date_diff, string url_ba, List<Personnage> personnages, string urlBa)
+        {
+            Personnages = personnages;
+            UrlBa = urlBa;
+            DateDiff = date_diff;
+            Affiche = affiche;
+            Resume = resume;
+            Name = name;
+        }
+    }
+}
