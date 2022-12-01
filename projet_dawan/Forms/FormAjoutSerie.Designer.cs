@@ -31,10 +31,16 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.txtBoxPathFile = new System.Windows.Forms.TextBox();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.openFileDialogImport = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnImport);
+            this.groupBox1.Controls.Add(this.txtBoxPathFile);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(351, 333);
@@ -62,7 +68,29 @@
             this.btnAnnuler.UseVisualStyleBackColor = true;
             this.btnAnnuler.Click += new System.EventHandler(this.btnAnnuler_Click);
             // 
-            // AjouterSeries
+            // txtBoxPathFile
+            // 
+            this.txtBoxPathFile.Location = new System.Drawing.Point(6, 35);
+            this.txtBoxPathFile.Name = "txtBoxPathFile";
+            this.txtBoxPathFile.ReadOnly = true;
+            this.txtBoxPathFile.Size = new System.Drawing.Size(239, 27);
+            this.txtBoxPathFile.TabIndex = 0;
+            // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(251, 35);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(94, 29);
+            this.btnImport.TabIndex = 1;
+            this.btnImport.Text = "Importer";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // openFileDialogImport
+            // 
+            this.openFileDialogImport.FileName = "openFileDialog1";
+            // 
+            // FormAjoutSerie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -70,8 +98,10 @@
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.groupBox1);
-            this.Name = "AjouterSeries";
+            this.Name = "FormAjoutSerie";
             this.Text = "AjouterSeries";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -81,5 +111,8 @@
         private GroupBox groupBox1;
         private Button btnAjouter;
         private Button btnAnnuler;
+        private Button btnImport;
+        private TextBox txtBoxPathFile;
+        private OpenFileDialog openFileDialogImport;
     }
 }

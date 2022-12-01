@@ -1,4 +1,5 @@
-﻿using projet_dawan.DAO;
+﻿using Newtonsoft.Json;
+using projet_dawan.DAO;
 using projet_dawan.Model;
 using SerieDLL.Interface;
 using System;
@@ -17,19 +18,19 @@ namespace projet_dawan
     {
         private Serie serie;
         private bool ajout = true;
-        public FormAjoutSerie(Serie serie)
+        public FormAjoutSerie(Serie? serie)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            if(serie == null )
+            if (serie == null)
             {
-                this.serie= new Serie();
+                this.serie = new Serie();
             }
             else
             {
-                this.serie= serie;
-                btnAjouter.Text= "Modifier";
+                this.serie = serie;
+                btnAjouter.Text = "Modifier";
                 ajout = false;
             }
         }
@@ -38,15 +39,25 @@ namespace projet_dawan
         {
             // vérifier si les champs sont valides puis ajouter la serie à la base de données
             IDAOBase<Serie> dao = new SerieDAO(Properties.Settings.Default.Connection);
-            if (ajout)
+            if (txtBoxPathFile.Text != string.Empty)
             {
-                dao.Add(serie);
+
+                List<Serie> series = JsonConvert.DeserializeObject<List<Serie>>(File.ReadAllText(txtBoxPathFile.Text));
+                
+                series.ForEach(s => MessageBox.Show(s.Name));
             }
             else
             {
-                dao.Update(serie);
+                if (ajout)
+                {
+                    dao.Add(serie);
+                }
+                else
+                {
+                    dao.Update(serie);
+                }
+                Close();
             }
-            Close();
         }
 
         private void btnAnnuler_Click(object sender, EventArgs e)
@@ -56,6 +67,14 @@ namespace projet_dawan
             if (annuler == DialogResult.Yes)
             {
                 Close();
+            }
+        }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            if (openFileDialogImport.ShowDialog() == DialogResult.OK)
+            {
+                txtBoxPathFile.Text = openFileDialogImport.FileName;
             }
         }
     }

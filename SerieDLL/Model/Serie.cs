@@ -14,17 +14,17 @@ namespace projet_dawan.Model
     {
         [DataMember]
         private int id;
-        [JsonIgnore]
+        [DataMember]
         private string name;
-        [JsonIgnore]
+        [DataMember]
         private string resume;
-        [JsonIgnore]
+        [DataMember]
         private string affiche;
-        [JsonIgnore]
+        [DataMember]
         private DateTime date_diff;
-        [JsonIgnore]
+        [DataMember]
         private string url_ba;
-        [JsonIgnore]
+        [DataMember]
         private List<Personnage> personnages;
 
         public List<Personnage> Personnages
