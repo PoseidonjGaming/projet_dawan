@@ -1,0 +1,26 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.assets.cache
+/.vs/Projet dawan/v17/.wsuo
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.csproj.AssemblyReference.cache
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.GeneratedMSBuildEditorConfig.editorconfig
+/projet_dawan/obj/project.assets.json
+/projet_dawan/obj/project.nuget.cache
+/projet_dawan/obj/projet_dawan.csproj.nuget.dgspec.json
+/projet_dawan/obj/projet_dawan.csproj.nuget.g.props
+/projet_dawan_WPF/obj/Debug/net6.0-windows/projet_dawan_WPF.assets.cache
+/projet_dawan_WPF/obj/Debug/net6.0-windows/projet_dawan_WPF.GeneratedMSBuildEditorConfig.editorconfig
+/projet_dawan_WPF/obj/Debug/net6.0-windows/projet_dawan_WPF_MarkupCompile.i.cache
+*.lref
+/projet_dawan_WPF/obj/project.assets.json
+/projet_dawan_WPF/obj/project.nuget.cache
+/projet_dawan_WPF/obj/projet_dawan_WPF.csproj.nuget.dgspec.json
+/projet_dawan_WPF/obj/projet_dawan_WPF.csproj.nuget.g.props
+/SerieDLL/obj/Debug/net6.0/SerieDLL.assets.cache
+/SerieDLL/obj/Debug/net6.0/SerieDLL.GeneratedMSBuildEditorConfig.editorconfig
+/SerieDLL/obj/project.assets.json
+/SerieDLL/obj/project.nuget.cache
+/SerieDLL/obj/SerieDLL.csproj.nuget.dgspec.json
+/SerieDLL/obj/SerieDLL.csproj.nuget.g.props
