@@ -23,9 +23,14 @@ namespace projet_dawan
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             serieList = series;
-            
-            txtRechercher.Text = text;
-            
+            if (text != string.Empty)
+            {
+                txtRechercher.Text = text;
+            }
+            else
+            {
+                Populate();
+            }
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -35,7 +40,10 @@ namespace projet_dawan
 
         private void Populate()
         {
-            
+            foreach (Serie serie in serieList)
+            {
+                lstBxSerie.Items.Add(serie.Name);
+            }
         }
 
         private void txtRechercher_TextChanged(object sender, EventArgs e)
@@ -43,10 +51,7 @@ namespace projet_dawan
             serieList.Clear();
             lstBxSerie.Items.Clear();
             serieList = SerieDAO.GetByTxt(txtRechercher.Text);
-            foreach (Serie serie in serieList)
-            {
-                lstBxSerie.Items.Add(serie.Name);
-            }
+            Populate();
         }
 
         private void btnDetail_Click(object sender, EventArgs e)
@@ -61,12 +66,16 @@ namespace projet_dawan
 
         private void buttonAddWich_Click(object sender, EventArgs e)
         {
-            if(lstBxSerie.SelectedIndex != -1)
+            if (lstBxSerie.SelectedItems.Count > 0)
             {
-                Serie serie = serieList[lstBxSerie.SelectedIndex];
-                UserApp userApp= Properties.Settings.Default.UserRemain;
-                userApp.Towatch.Add(serie);
-                Properties.Settings.Default.UserRemain = userApp;
+                foreach (var item in lstBxSerie.SelectedItems)
+                {
+                    Serie serie = serieList[lstBxSerie.Items.IndexOf(item)];
+                    if (!Properties.Settings.Default.UserRemain.Towatch.Contains(serie))
+                    {
+                        Properties.Settings.Default.UserRemain.Towatch.Add(serie);
+                    }
+                }
                 Properties.Settings.Default.Save();
             }
         }

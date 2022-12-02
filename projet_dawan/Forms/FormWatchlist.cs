@@ -26,6 +26,7 @@ namespace projet_dawan
         {
             List<Serie> list = Properties.Settings.Default.UserRemain.Towatch;
             //List<int> list = new() { 1, 2, 3, 4, 5 };
+            MessageBox.Show(list[0].Personnages.Count.ToString());
             File.WriteAllText(@"C:\Users\Admin Stagiaire\Desktop\export.json", JsonConvert.SerializeObject(list, Formatting.Indented));
         }
 
