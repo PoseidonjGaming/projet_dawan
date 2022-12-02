@@ -49,7 +49,7 @@ namespace projet_dawan
         private void txtRechercher_TextChanged(object sender, EventArgs e)
         {
             serieList.Clear();
-            //lstBxSerie.Items.Clear();
+            lstBxSerie.Items.Clear();
             serieList = SerieDAO.GetByTxt(txtRechercher.Text);
             Populate();
         }
