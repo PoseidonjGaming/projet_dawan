@@ -8,6 +8,7 @@
 /projet_dawan/.vs/projet_dawan/v17/.futdcache.v2
 /projet_dawan/.vs/projet_dawan/v17/.suo
 /projet_dawan/obj/Debug/net6.0-windows/projet_dawan.csproj.AssemblyReference.cache
+<<<<<<< HEAD
 /projet_dawan/obj/Debug/net6.0-windows/projet_dawan.assets.cache
 /projet_dawan/obj/Debug/net6.0-windows/projet_dawan.GeneratedMSBuildEditorConfig.editorconfig
 /projet_dawan_WPF/obj/Debug/net6.0-windows/projet_dawan_WPF.assets.cache
@@ -16,3 +17,17 @@
 *.lref
 /SerieDLL/obj/Debug/net6.0/SerieDLL.assets.cache
 /SerieDLL/obj/Debug/net6.0/SerieDLL.GeneratedMSBuildEditorConfig.editorconfig
+=======
+/SerieDLL/obj/Debug/net6.0/SerieDLL.dll
+/SerieDLL/obj/Debug/net6.0/SerieDLL.pdb
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.csproj.GenerateResource.cache
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.dll
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.pdb
+/SerieDLL/bin/Debug/net6.0/SerieDLL.dll
+/SerieDLL/bin/Debug/net6.0/SerieDLL.pdb
+/projet_dawan/bin/Debug/net6.0-windows/SerieDLL.dll
+/projet_dawan/bin/Debug/net6.0-windows/projet_dawan.pdb
+/projet_dawan/bin/Debug/net6.0-windows/SerieDLL.pdb
+/projet_dawan/bin/Debug/net6.0-windows/projet_dawan.dll
+>>>>>>> 0e341de737a18a09796618eb5fb21282ff4319e5
+/SerieDLL/Model/Personnage.cs
