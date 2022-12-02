@@ -108,7 +108,7 @@ namespace projet_dawan.DAO
                         Personnage perso = new()
                         {
                             Id = reader.GetInt32(0),
-                            Nom = reader.GetString(2),
+                            Nom = reader.GetString(3),
                             ActeurId = repoActeur.GetById(reader.GetInt32(1)),
                             SerieId=null
                         };
