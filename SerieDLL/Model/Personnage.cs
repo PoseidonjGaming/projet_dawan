@@ -13,7 +13,6 @@ namespace projet_dawan.Model
 		private string nom;
 		[DataMember]
 		private Acteur? acteur_id;
-		[DataMember]
         [JsonIgnore]
         private Serie serie_id;
 
