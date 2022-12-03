@@ -31,6 +31,7 @@
 /projet_dawan/bin/Debug/net6.0-windows/projet_dawan.dll
 >>>>>>> 0e341de737a18a09796618eb5fb21282ff4319e5
 /SerieDLL/Model/Personnage.cs
+<<<<<<< HEAD
 /projet_dawan/obj/Debug/net6.0-windows/projet_dawan.designer.deps.json
 /projet_dawan/obj/Debug/net6.0-windows/projet_dawan.designer.runtimeconfig.json
 /projet_dawan/bin/Debug/net6.0-windows/projet_dawan.dll.config
@@ -58,3 +59,7 @@
 *.editorconfig
 *.props
 *.targets
+=======
+>>>>>>> parent of 28d9dee (up)
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.designer.deps.json
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.designer.runtimeconfig.json
