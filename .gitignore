@@ -53,3 +53,8 @@
 /SerieDLL/obj/project.assets.json
 /SerieDLL/obj/SerieDLL.csproj.nuget.dgspec.json
 /SerieDLL/obj/SerieDLL.csproj.nuget.g.props
+*.cache
+*.json
+*.editorconfig
+*.props
+*.targets
