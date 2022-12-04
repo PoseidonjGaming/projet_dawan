@@ -43,7 +43,7 @@ namespace projet_dawan_WinForm
             if (lstBoxSaison.SelectedIndex != -1)
             {
                 Saison saison = Saisons[lstBoxSaison.SelectedIndex];
-                FormSaison formSaison = new(saison);
+                FormSaison formSaison = new(saison, Serie);
                 formSaison.FormClosed += OpenForm;
                 this.Hide();
                 formSaison.ShowDialog(this);

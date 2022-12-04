@@ -17,6 +17,7 @@ namespace SerieDLL_EF.Repository
             }
         }
 
+
         public static List<Saison> GetSaisonsBySerie(int id)
         {
             using (BddprojetContext context = new BddprojetContext())

@@ -1,5 +1,4 @@
 ﻿using projet_dawan.Models;
-using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,21 +7,20 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class SerieRepository
+    public class EpisodeRepository
     {
-        public static List<Serie> GetAll()
+        public static List<Episode> GetAll()
         {
-            using (BddprojetContext context = new BddprojetContext())
+            using(BddprojetContext context= new BddprojetContext())
             {
-                return context.Series.ToList();
+                return context.Episodes.ToList();
             }
         }
-
-        public static Serie GetById()
+        public static List<Episode> GetBySaison(int saison_id)
         {
             using (BddprojetContext context = new BddprojetContext())
             {
-                return context.Series.ToList()[0];
+                return context.Episodes.Where(e=> e.SaisonId== saison_id).ToList();
             }
         }
     }

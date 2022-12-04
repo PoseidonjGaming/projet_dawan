@@ -14,24 +14,28 @@ namespace projet_dawan_WinForm.Forms
     public partial class FormEpisode : Form
     {
         private Episode episode;
-        public FormEpisode(Episode episode)
+        private Saison saison;
+        private Serie serie;
+        public FormEpisode(Episode episode, Saison saison, Serie serie)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             this.episode = episode;
+            this.saison = saison;
+            this.serie= serie;
         }
 
         private void FormEpisode_Load(object sender, EventArgs e)
         {
-            //lblSerie.Text = episode.SaisonId.SerieId.Name;
-            //lblSaison.Text += episode.SaisonId.Num.ToString();
-            //lblSaison.Location = new(lblSerie.Size.Width + 20, lblSaison.Location.Y);
-            //labelEpisode.Text = episode.Nom;
-            //labelEpisode.Location = new(lblSaison.Size.Width + lblSaison.Location.X + 20, labelEpisode.Location.Y);
-            //lblDateEpisode.Text += ": " + episode.DatePremDiff.ToShortDateString();
-            //linkLblBAEpisode.Text = episode.SaisonId.SerieId.UrlBa;
-            //txtBoxResumeEpisode.Text = episode.Resume;
+            lblSerie.Text = serie.Nom;
+            lblSaison.Text += saison.Numero.ToString();
+            lblSaison.Location = new(lblSerie.Size.Width + 20, lblSaison.Location.Y);
+            labelEpisode.Text = episode.Nom;
+            labelEpisode.Location = new(lblSaison.Size.Width + lblSaison.Location.X + 20, labelEpisode.Location.Y);
+            lblDateEpisode.Text += ": " + episode.DatePremDiff.ToString();
+            linkLblBAEpisode.Text = serie.UrlBa;
+            txtBoxResumeEpisode.Text = episode.Resume;
             //pictureBoxEpisode.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + episode.SaisonId.SerieId.Affiche;
         }
     }

@@ -1,5 +1,6 @@
 ﻿using projet_dawan.Models;
 using projet_dawan_WinForm.Forms;
+using SerieDLL_EF.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,29 +17,29 @@ namespace projet_dawan_WinForm
     {
         private Saison saison;
         private List<Episode> episodes = new List<Episode>();
-        public FormSaison(Saison saison)
+        private Serie serie;
+        public FormSaison(Saison saison, Serie serie)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             this.saison = saison;
+            this.serie = serie;
         }
 
         private void FormSaison_Load(object sender, EventArgs e)
         {
-            //Serie serie = saison.SerieId;
-            //pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
+            pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
 
 
-            //EpisodeDAO dao = new(projet_dawan.Properties.Settings.Default.Connection);
-            //foreach (Episode episode in dao.GetEpisodes(saison.Id))
-            //{
-            //    episodes.Add(episode);
-            //    lstBoxEpisode.Items.Add(episode.Nom);
-            //}
+            foreach (Episode episode in EpisodeRepository.GetBySaison(saison.Id))
+            {
+                episodes.Add(episode);
+                lstBoxEpisode.Items.Add(episode.Nom);
+            }
 
-            //Populate(episodes[0]);
-            //lstBoxEpisode.SelectedIndex = 0;
+            Populate(episodes[0]);
+            lstBoxEpisode.SelectedIndex = 0;
         }
 
         private void lstBoxEpisode_SelectedIndexChanged(object sender, EventArgs e)
