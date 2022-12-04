@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class SaisonRepository
+    public static class SaisonRepository
     {
         public static List<Saison> GetAll()
         {
-            using(BddprojetContext context= new BddprojetContext())
+            using (BddprojetContext context = new BddprojetContext())
             {
                 return context.Saisons.ToList();
             }
@@ -22,8 +22,24 @@ namespace SerieDLL_EF.Repository
         {
             using (BddprojetContext context = new BddprojetContext())
             {
-                return context.Saisons.Where(sa=> sa.SerieId==id).ToList();
+                return context.Saisons.Where(sa => sa.SerieId == id).ToList();
             }
+        }
+
+        public static List<Saison> Export(int serie_id)
+        {
+            List<Saison> list = new();
+            using (BddprojetContext context = new BddprojetContext())
+            {
+                list = context.Saisons.Where(sa=> sa.SerieId==serie_id).ToList();
+            }
+
+            foreach (Saison saison in list)
+            {
+                saison.Episodes=EpisodeRepository.GetBySaison(saison.Id);
+            }
+
+            return list;
         }
     }
 }

@@ -12,17 +12,24 @@ public partial class Serie
     [DataMember]
     public int Id { get; set; }
 
+    [DataMember]
     public string? Nom { get; set; }
 
+    [DataMember]
     public DateTime? DateDiff { get; set; }
 
+    [DataMember]
     public string? Resume { get; set; }
 
+    [DataMember]
     public string? Affiche { get; set; }
 
+    [DataMember]
     public string? UrlBa { get; set; }
 
-    public virtual ICollection<Personnage> Personnages { get; } = new List<Personnage>();
+    [DataMember]
+    public virtual ICollection<Personnage> Personnages { get; set; } = new List<Personnage>();
 
-    public virtual ICollection<Saison> Saisons { get; } = new List<Saison>();
+    [DataMember]
+    public virtual ICollection<Saison> Saisons { get; set; } = new List<Saison>();
 }

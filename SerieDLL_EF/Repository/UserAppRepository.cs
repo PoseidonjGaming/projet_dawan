@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class UserAppRepository
+    public static class UserAppRepository
     {
         public static UserApp? GetUser(string login, string password)
         {

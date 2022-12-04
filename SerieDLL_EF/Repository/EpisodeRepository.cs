@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class EpisodeRepository
+    public static class EpisodeRepository
     {
         public static List<Episode> GetAll()
         {

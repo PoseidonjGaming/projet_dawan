@@ -11,7 +11,6 @@ public partial class Personnage
     [DataMember]
     public int Id { get; set; }
 
-
     public int ActeurId { get; set; }
 
     public int SerieId { get; set; }

@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using projet_dawan.Models;
+using SerieDLL_EF.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,8 +30,11 @@ namespace projet_dawan
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string json=JsonConvert.SerializeObject(Properties.Settings.Default.UserRemain.ToWatch,Formatting.Indented);
-            MessageBox.Show(json);
+            List<Serie> list = SerieRepository.Export(Properties.Settings.Default.UserRemain.ToWatch);
+
+           
+
+            File.WriteAllText(@"E:\Projet perso\export.json", JsonConvert.SerializeObject(list,Formatting.Indented));
         }
     }
 }
