@@ -1,6 +1,7 @@
 using Newtonsoft.Json;
 using projet_dawan.Models;
 using projet_dawan.Properties;
+using SerieDLL_EF.Repository;
 using System.Configuration;
 
 namespace projet_dawan_WinForm
@@ -24,11 +25,11 @@ namespace projet_dawan_WinForm
             linkLblBASerie.Text = Serie.UrlBa;
             txtBoxResumeSerie.Text = Serie.Resume;
             pictureBoxSerie.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche;
-            //foreach (Saison saison in dao.GetSaisons(Serie.Id))
-            //{
-            //    Saisons.Add(saison);
-            //    lstBoxSaison.Items.Add(saison.Num);
-            //}
+            foreach (Saison saison in SaisonRepository.GetSaisonsBySerie(Serie.Id))
+            {
+                Saisons.Add(saison);
+                lstBoxSaison.Items.Add(saison.Numero);
+            }
             user = Settings.Default.UserRemain;
         }
 
