@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.Serialization;
 
 namespace projet_dawan.Models;
 
-
+[Serializable]
+[DataContract]
 public partial class Serie
 {
-
+    [DataMember]
     public int Id { get; set; }
 
     public string? Nom { get; set; }
@@ -19,7 +21,6 @@ public partial class Serie
     public string? Affiche { get; set; }
 
     public string? UrlBa { get; set; }
-
 
     public virtual ICollection<Personnage> Personnages { get; } = new List<Personnage>();
 

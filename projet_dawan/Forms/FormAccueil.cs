@@ -83,10 +83,7 @@ namespace projet_dawan
         {
 
             serieList = SerieRepository.GetAll();
-            if(Properties.Settings.Default.ToWatch is null)
-            {
-                Properties.Settings.Default.ToWatch = new List<Serie>();
-            }
+            
             Populate(4);
         }
 
@@ -154,7 +151,7 @@ namespace projet_dawan
         private void OpenFormBibli(string text)
         {
             serieList.Clear();
-            //serieList = serieDAO.GetByTxt(txtRechercher.Text);
+            serieList = SerieRepository.GetByTxt(txtRechercher.Text);
             FormBibliotheque formBibliotheque = new(serieList, text);
             formBibliotheque.FormClosing += form_FormClosing;
             this.Hide();

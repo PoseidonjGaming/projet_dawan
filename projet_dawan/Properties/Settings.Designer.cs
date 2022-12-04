@@ -39,17 +39,6 @@ namespace projet_dawan.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Generic.List<projet_dawan.Models.Serie> ToWatch {
-            get {
-                return ((global::System.Collections.Generic.List<projet_dawan.Models.Serie>)(this["ToWatch"]));
-            }
-            set {
-                this["ToWatch"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::projet_dawan.Models.UserApp UserRemain {
             get {
                 return ((global::projet_dawan.Models.UserApp)(this["UserRemain"]));

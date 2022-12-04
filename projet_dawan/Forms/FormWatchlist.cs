@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,13 +22,14 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.ToWatch.Clear();
+            Properties.Settings.Default.UserRemain.ToWatch.Clear();
             Properties.Settings.Default.Save();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(Properties.Settings.Default.ToWatch.Count.ToString());
+            string json=JsonConvert.SerializeObject(Properties.Settings.Default.UserRemain.ToWatch,Formatting.Indented);
+            MessageBox.Show(json);
         }
     }
 }

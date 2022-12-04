@@ -23,5 +23,5 @@ public partial class UserApp
 
     [DataMember]
     [NotMapped]
-    public List<Serie> ToWatch { get; set; }=new List<Serie>();
+    public List<int> ToWatch { get; set; }=new List<int>();
 }

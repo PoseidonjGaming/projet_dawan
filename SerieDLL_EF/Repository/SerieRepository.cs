@@ -25,5 +25,13 @@ namespace SerieDLL_EF.Repository
                 return context.Series.Where(s => s.Id == id).ToList()[0];
             }
         }
+
+        public static List<Serie> GetByTxt(string txt)
+        {
+            using(BddprojetContext context=new BddprojetContext())
+            {
+                return context.Series.Where(s => s.Nom.Contains(txt)).ToList();
+            }
+        }
     }
 }

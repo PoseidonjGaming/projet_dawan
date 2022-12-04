@@ -1,5 +1,6 @@
 ﻿using projet_dawan.Models;
 using projet_dawan_WinForm;
+using SerieDLL_EF.Repository;
 
 namespace projet_dawan
 {
@@ -14,7 +15,7 @@ namespace projet_dawan
             serieList = series;
             
             txtRechercher.Text = text;
-            Populate();
+            
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -34,6 +35,7 @@ namespace projet_dawan
         {
             serieList.Clear();
             lstBxSerie.Items.Clear();
+            serieList = SerieRepository.GetByTxt(txtRechercher.Text);
             Populate();
         }
 
@@ -52,7 +54,7 @@ namespace projet_dawan
             if(lstBxSerie.SelectedIndex != -1)
             {
                 Serie serie = serieList[lstBxSerie.SelectedIndex];
-                Properties.Settings.Default.ToWatch.Add(serie);
+                Properties.Settings.Default.UserRemain.ToWatch.Add(serie.Id);
                 Properties.Settings.Default.Save();
             }
         }
