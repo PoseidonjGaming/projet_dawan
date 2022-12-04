@@ -1,4 +1,5 @@
 ﻿using projet_dawan.DAO;
+using projet_dawan.Forms;
 using projet_dawan.Model;
 using projet_dawan_WinForm.Forms;
 using System;
@@ -56,6 +57,14 @@ namespace projet_dawan_WinForm
         private void OpenForm(object sender, EventArgs e)
         {
             this.Show();
+        }
+
+        private void btnCasting_Click(object sender, EventArgs e)
+        {
+            // retour form casting correspondant au personnage présent dans la série
+            FormCasting casting = new();
+
+            casting.ShowDialog();
         }
     }
 }

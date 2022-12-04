@@ -1,4 +1,5 @@
 using projet_dawan.DAO;
+using projet_dawan.Forms;
 using projet_dawan.Model;
 using projet_dawan.Properties;
 
@@ -33,7 +34,10 @@ namespace projet_dawan_WinForm
 
         private void btnCasting_Click(object sender, EventArgs e)
         {
+            // retour form casting correspondant au personnage présent dans la série
+            FormCasting casting = new();
 
+            casting.ShowDialog();
         }
 
         private void lstBoxSaison_SelectedIndexChanged(object sender, EventArgs e)

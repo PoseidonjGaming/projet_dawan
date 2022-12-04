@@ -9,15 +9,23 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using projet_dawan.Model;
 
-namespace projet_dawan
+namespace projet_dawan.Forms
 {
-    public partial class PageTestSerie : Form
+    public partial class FormCasting : Form
     {
-        public PageTestSerie()
+        public FormCasting()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+        }
+
+        private void btnPerso1_Click(object sender, EventArgs e)
+        {
+            // afficher fiche personnage correspondant (idem pour chaque bouton de la form casting)
+            FormPersonnage perso = new();
+
+            perso.ShowDialog();
         }
     }
 }

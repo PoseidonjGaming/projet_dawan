@@ -1,4 +1,5 @@
-﻿using projet_dawan.Model;
+﻿using projet_dawan.Forms;
+using projet_dawan.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +34,14 @@ namespace projet_dawan_WinForm.Forms
             linkLblBAEpisode.Text = episode.SaisonId.SerieId.UrlBa;
             txtBoxResumeEpisode.Text = episode.Resume;
             pictureBoxEpisode.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + episode.SaisonId.SerieId.Affiche;
+        }
+
+        private void btnCasting_Click(object sender, EventArgs e)
+        {
+            // retour form casting correspondant au personnage présent dans la série
+            FormCasting casting = new();
+
+            casting.ShowDialog();
         }
     }
 }
