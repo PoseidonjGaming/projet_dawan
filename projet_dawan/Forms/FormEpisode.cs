@@ -1,39 +1,47 @@
 ﻿using projet_dawan.Forms;
 using projet_dawan.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using SerieDLL_EF.Repository;
 
-namespace projet_dawan_WinForm.Forms
+namespace projet_dawan_WinForm
 {
     public partial class FormEpisode : Form
     {
-        private Episode episode;
-        public FormEpisode(Episode episode)
+        private Saison saison;
+        private List<Episode> episodes = new List<Episode>();
+        public FormEpisode(Saison saison)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.episode = episode;
+            this.saison = saison;
         }
 
-        private void FormEpisode_Load(object sender, EventArgs e)
+        private void FormSaison_Load(object sender, EventArgs e)
         {
-            //lblSerie.Text = episode.SaisonId.SerieId.Name;
-            //lblSaison.Text += episode.SaisonId.Num.ToString();
-            //lblSaison.Location = new(lblSerie.Size.Width + 20, lblSaison.Location.Y);
-            //labelEpisode.Text = episode.Nom;
-            //labelEpisode.Location = new(lblSaison.Size.Width + lblSaison.Location.X + 20, labelEpisode.Location.Y);
-            //lblDateEpisode.Text += ": " + episode.DatePremDiff.ToShortDateString();
-            //linkLblBAEpisode.Text = episode.SaisonId.SerieId.UrlBa;
-            //txtBoxResumeEpisode.Text = episode.Resume;
-            //pictureBoxEpisode.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + episode.SaisonId.SerieId.Affiche;
+            //Serie serie = saison.SerieId;
+            //pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
+            //txtBoxResumeSaison.Text = serie.Resume;
+            //lblDateSaison.Text= serie.DateDiff.ToString();
+            //linkLblBASaison.Text = serie.UrlBa;
+
+            //foreach (Episode episode in EpisodeRepository.GetBySaison(saison.Id))
+            //{
+            //    episodes.Add(episode);
+            //    lstBoxEpisode.Items.Add(episode.Nom);
+            //}
+        }
+
+        private void lstBoxEpisode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(lstBoxEpisode.SelectedIndex != -1)
+            {
+               
+            }
+        }
+
+        private void OpenForm(object sender, EventArgs e)
+        {
+            this.Show();
         }
 
         private void btnCasting_Click(object sender, EventArgs e)

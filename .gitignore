@@ -2,15 +2,20 @@
 # Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
 ################################################################################
 
-/projet_dawan/obj/Debug/net6.0-windows/
+/projet_dawan/obj/
+/projet_dawan/bin/
 /.vs/
 /projet_dawan/obj/
 /projet_dawan_WPF/obj/Debug/net6.0-windows/
-*.lref
-/projet_dawan_WPF/obj/
-/SerieDLL/obj/Debug/net6.0/
-/SerieDLL/obj/
-/projet_dawan/.vs/
+*.lref*
+/projet_dawan_WPF/obj/*
+/SerieDLL/obj/Debug/net6.0/*
+/SerieDLL/obj/*
+/projet_dawan/.vs/*
 *.dll
 *.json
-/projet_dawan/.vs/projet_dawan/
+/projet_dawan/bin/Debug/net6.0-windows/*
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.dll
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.pdb
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan_WinForm.Forms.FormEpisode.resources
+/projet_dawan/obj/Debug/net6.0-windows/projet_dawan_WinForm.FormSaison.resources
