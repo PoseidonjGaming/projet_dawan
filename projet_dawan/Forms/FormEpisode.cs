@@ -14,28 +14,38 @@ namespace projet_dawan_WinForm
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             this.saison = saison;
+            episodes = EpisodeRepository.GetBySaison(saison.Id);
         }
 
         private void FormSaison_Load(object sender, EventArgs e)
         {
-            //Serie serie = saison.SerieId;
-            //pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
-            //txtBoxResumeSaison.Text = serie.Resume;
-            //lblDateSaison.Text= serie.DateDiff.ToString();
-            //linkLblBASaison.Text = serie.UrlBa;
+            Serie serie = saison.Serie;
+            pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
+            lblSerie.Text = serie.Nom;
+            lblSaison.Text += saison.Numero.ToString();
 
-            //foreach (Episode episode in EpisodeRepository.GetBySaison(saison.Id))
-            //{
-            //    episodes.Add(episode);
-            //    lstBoxEpisode.Items.Add(episode.Nom);
-            //}
+
+
+
+
+            foreach (Episode episode in EpisodeRepository.GetBySaison(saison.Id))
+            {
+                episodes.Add(episode);
+                lstBoxEpisode.Items.Add(episode.Nom);
+            }
+            if (lstBoxEpisode.Items.Count > 0)
+            {
+                Populate(episodes[0]);
+            }
+
         }
 
         private void lstBoxEpisode_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lstBoxEpisode.SelectedIndex != -1)
+            if (lstBoxEpisode.SelectedIndex != -1)
             {
-               
+                Episode ep = episodes[lstBoxEpisode.SelectedIndex];
+                Populate(ep);
             }
         }
 
@@ -50,6 +60,13 @@ namespace projet_dawan_WinForm
             FormCasting casting = new();
 
             casting.ShowDialog();
+        }
+
+        private void Populate(Episode ep)
+        {
+            txtBoxResumeSaison.Text = ep.Resume;
+            lblDateSaison.Text = "Episode diffusé le " + ep.DatePremDiff.Value.ToShortDateString();
+            lblTitreEp.Text = "Détail l'épisode: " + ep.Nom;
         }
     }
 }
