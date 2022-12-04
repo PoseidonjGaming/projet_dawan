@@ -1,5 +1,4 @@
-﻿using projet_dawan.DAO;
-using projet_dawan.Model;
+﻿using projet_dawan.Models;
 using projet_dawan_WinForm.Forms;
 using System;
 using System.Collections.Generic;
@@ -27,19 +26,19 @@ namespace projet_dawan_WinForm
 
         private void FormSaison_Load(object sender, EventArgs e)
         {
-            Serie serie = saison.SerieId;
-            pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
+            //Serie serie = saison.SerieId;
+            //pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
 
 
-            EpisodeDAO dao = new(projet_dawan.Properties.Settings.Default.Connection);
-            foreach (Episode episode in dao.GetEpisodes(saison.Id))
-            {
-                episodes.Add(episode);
-                lstBoxEpisode.Items.Add(episode.Nom);
-            }
+            //EpisodeDAO dao = new(projet_dawan.Properties.Settings.Default.Connection);
+            //foreach (Episode episode in dao.GetEpisodes(saison.Id))
+            //{
+            //    episodes.Add(episode);
+            //    lstBoxEpisode.Items.Add(episode.Nom);
+            //}
 
-            Populate(episodes[0]);
-            lstBoxEpisode.SelectedIndex = 0;
+            //Populate(episodes[0]);
+            //lstBoxEpisode.SelectedIndex = 0;
         }
 
         private void lstBoxEpisode_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,9 +58,9 @@ namespace projet_dawan_WinForm
         private void Populate(Episode ep)
         {
             txtBoxResumeSaison.Text = ep.Resume;
-            lblDateSaison.Text = "Date de première diffusion: " + ep.DatePremDiff.ToShortDateString();
+            lblDateSaison.Text = "Date de première diffusion: " + ep.DatePremDiff.ToString();
             labelNomEp.Text = "Titre de l'épisode: \n" + ep.Nom;
-            lblSaison.Text = "Saison numéro" + ep.SaisonId.Num.ToString();
+            lblSaison.Text = "Saison numéro" + ep.SaisonId.ToString();
         }
     }
 }

@@ -66,3 +66,10 @@
 /EntityFrameWorkApp/bin/Debug/net6.0-windows
 /EntityFrameWorkApp/obj/Debug/net6.0-windows
 *.vsidx
+*.dll
+*.pdb
+*.txt
+/projet_dawan_WPF/obj/Debug/net6.0-windows/projet_dawan_WPF.csproj.AssemblyReference.cache
+*.exe
+*.BuildWithSkipAnalyzers
+*.CopyComplete

@@ -1,7 +1,5 @@
-using Microsoft.VisualBasic.ApplicationServices;
-using projet_dawan.DAO;
-using projet_dawan.Model;
-using projet_dawan.Repository;
+using projet_dawan.Models;
+using SerieDLL_EF.Repository;
 using System.Security.Cryptography;
 
 namespace projet_dawan
@@ -18,9 +16,8 @@ namespace projet_dawan
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            UserAppDAO dao = new(Properties.Settings.Default.Connection);
 
-            UserApp? user = dao.GetByLogin(textBox2.Text);
+            UserApp? user = UserAppRepository.GetUser(textBoxLogin.Text, textBoxPassword.Text);
 
             if (checkBox1.Checked)
             {
@@ -29,7 +26,7 @@ namespace projet_dawan
 
             }
 
-            Login(user, UserApp.HashPassword(textBox1.Text) );
+            Login(user);
 
 
         }
@@ -41,8 +38,8 @@ namespace projet_dawan
             }
             else
             {
-                textBox1.Text = string.Empty;
-                textBox2.Text = string.Empty;
+                textBoxPassword.Text = string.Empty;
+                textBoxLogin.Text = string.Empty;
                 this.Show();
             }
         }
@@ -51,29 +48,25 @@ namespace projet_dawan
         {
             if (Properties.Settings.Default.UserRemain != null)
             {
-
                 UserApp user = Properties.Settings.Default.UserRemain;
                 
-                Login(user, user.Password);
+                Login(user);
             }
         }
 
-        private void Login(UserApp? user, string password)
+        private void Login(UserApp? user)
         {
             if (user != null)
             {
-                if (user.Password == password)
+               
+                using (var crypto = new RNGCryptoServiceProvider())
                 {
-                    using (var crypto = new RNGCryptoServiceProvider())
-                    {
-                        var bits = (password.Length * 6);
-                        var byte_size = ((bits + 7) / 8);
-                        var bytesarray = new byte[byte_size];
-                        crypto.GetBytes(bytesarray);
-                        Properties.Settings.Default.token = Convert.ToBase64String(bytesarray);
-                    }
+                    var bits = (user.Password.Length * 6);
+                    var byte_size = ((bits + 7) / 8);
+                    var bytesarray = new byte[byte_size];
+                    crypto.GetBytes(bytesarray);
+                    Properties.Settings.Default.token = Convert.ToBase64String(bytesarray);
                 }
-
                 FormAccueil pageAcceuil = new FormAccueil();
                 pageAcceuil.FormClosing += pageAcceuil_FormClosing;
                 this.Hide();

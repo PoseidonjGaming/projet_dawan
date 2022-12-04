@@ -1,6 +1,4 @@
-﻿using projet_dawan.DAO;
-using projet_dawan.Model;
-using SerieDLL.Interface;
+﻿using projet_dawan.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +13,6 @@ namespace projet_dawan
 {
     public partial class FormSupprimerSeries : Form
     {
-        private IDAOBase<Serie> SerieDAO = new SerieDAO(Properties.Settings.Default.Connection);
         private List<Serie> SerieList = new List<Serie>();
         public FormSupprimerSeries()
         {
@@ -33,7 +30,6 @@ namespace projet_dawan
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (annuler == DialogResult.Yes)
                 {
-                    SerieDAO.Delete(SerieList[cmbBxSerie.SelectedIndex].Id);
                 }
             }
             Close();
@@ -51,11 +47,11 @@ namespace projet_dawan
 
         private void SupprimerSeries_Load(object sender, EventArgs e)
         {
-            foreach (Serie serie in SerieDAO.GetAll())
-            {
-                cmbBxSerie.Items.Add(serie.Name);
-                SerieList.Add(serie);
-            }
+            //foreach (Serie serie in SerieDAO.GetAll())
+            //{
+            //    cmbBxSerie.Items.Add(serie.Nom);
+            //    SerieList.Add(serie);
+            //}
         }
     }
 }

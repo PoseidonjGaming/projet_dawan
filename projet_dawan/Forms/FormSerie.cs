@@ -1,8 +1,6 @@
 using Newtonsoft.Json;
-using projet_dawan.DAO;
-using projet_dawan.Model;
+using projet_dawan.Models;
 using projet_dawan.Properties;
-using SerieDLL.Interface;
 using System.Configuration;
 
 namespace projet_dawan_WinForm
@@ -21,17 +19,16 @@ namespace projet_dawan_WinForm
 
         private void FormSerie_Load(object sender, EventArgs e)
         {
-            lblSerie.Text = Serie.Name;
-            lblDateSerie.Text = Serie.DateDiff.ToShortDateString();
+            lblSerie.Text = Serie.Nom;
+            lblDateSerie.Text = Serie.DateDiff.ToString();
             linkLblBASerie.Text = Serie.UrlBa;
             txtBoxResumeSerie.Text = Serie.Resume;
             pictureBoxSerie.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche;
-            SaisonDAO dao = new SaisonDAO(Settings.Default.Connection);
-            foreach (Saison saison in dao.GetSaisons(Serie.Id))
-            {
-                Saisons.Add(saison);
-                lstBoxSaison.Items.Add(saison.Num);
-            }
+            //foreach (Saison saison in dao.GetSaisons(Serie.Id))
+            //{
+            //    Saisons.Add(saison);
+            //    lstBoxSaison.Items.Add(saison.Num);
+            //}
             user = Settings.Default.UserRemain;
         }
 
@@ -60,10 +57,10 @@ namespace projet_dawan_WinForm
         private void buttonToWatch_Click(object sender, EventArgs e)
         {
             
-            if (user.Towatch.Find(e=> e.Id == Serie.Id) == null)
+            if (user.ToWatch.Find(e=> e.Id == Serie.Id) == null)
             {
                 
-                user.Towatch.Add(Serie);
+                user.ToWatch.Add(Serie);
                 
                 Settings.Default.UserRemain = user;
                 Settings.Default.Save();

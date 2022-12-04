@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
-using projet_dawan.DAO;
-using projet_dawan.Model;
-using SerieDLL.Interface;
+using projet_dawan.Models;
+using projet_dawan.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,23 +37,20 @@ namespace projet_dawan
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             // vérifier si les champs sont valides puis ajouter la serie à la base de données
-            IDAOBase<Serie> dao = new SerieDAO(Properties.Settings.Default.Connection);
             if (txtBoxPathFile.Text != string.Empty)
             {
 
                 List<Serie> series = JsonConvert.DeserializeObject<List<Serie>>(File.ReadAllText(txtBoxPathFile.Text));
                 
-                series.ForEach(s => MessageBox.Show(s.Name));
+                series.ForEach(s => MessageBox.Show(s.Nom));
             }
             else
             {
                 if (ajout)
                 {
-                    dao.Add(serie);
                 }
                 else
                 {
-                    dao.Update(serie);
                 }
                 Close();
             }
