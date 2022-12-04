@@ -34,6 +34,8 @@
             this.labelPrnom = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxNom
@@ -76,6 +78,7 @@
             this.buttonAdd.TabIndex = 4;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // listBox1
             // 
@@ -85,12 +88,35 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(155, 214);
             this.listBox1.TabIndex = 5;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // buttonSearch
+            // 
+            this.buttonSearch.Location = new System.Drawing.Point(92, 70);
+            this.buttonSearch.Name = "buttonSearch";
+            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
+            this.buttonSearch.TabIndex = 6;
+            this.buttonSearch.Text = "button1";
+            this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(173, 70);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Perso";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(181, 329);
+            this.ClientSize = new System.Drawing.Size(428, 329);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.labelPrnom);
@@ -100,6 +126,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +140,7 @@
         private Label labelPrnom;
         private Button buttonAdd;
         private ListBox listBox1;
+        private Button buttonSearch;
+        private Button button1;
     }
 }
