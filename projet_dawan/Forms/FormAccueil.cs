@@ -1,13 +1,11 @@
-﻿using projet_dawan.DAO;
-using projet_dawan.Model;
+﻿using projet_dawan.Models;
 using projet_dawan_WinForm;
-using SerieDLL.Interface;
+using SerieDLL_EF.Repository;
 
 namespace projet_dawan
 {
     public partial class FormAccueil : Form
     {
-        private IDAOBase<Serie> serieDAO = new SerieDAO(Properties.Settings.Default.Connection);
         private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
         public FormAccueil()
@@ -79,17 +77,12 @@ namespace projet_dawan
             watchlist.ShowDialog();
         }
 
-        private void btnNew2_Click(object sender, EventArgs e)
-        {
-            FormSerie formSerie = new(serieDAO.GetById(1));
-            formSerie.ShowDialog(this);
-
-        }
+       
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
 
-            serieList = serieDAO.GetAll();
+            serieList = SerieRepository.GetAll();
             if(Properties.Settings.Default.ToWatch is null)
             {
                 Properties.Settings.Default.ToWatch = new List<Serie>();
@@ -102,7 +95,7 @@ namespace projet_dawan
             Button? button = sender as Button;
             if (button != null)
             {
-                Serie? serie = serieList.Find(s => s.Name == button.Text);
+                Serie? serie = serieList.Find(s => s.Nom == button.Text);
                 if (serie != null)
                 {
                     FormSerie formSerie = new(serie);
@@ -114,7 +107,7 @@ namespace projet_dawan
             else
             {
                 PictureBox? pictureBox = sender as PictureBox;
-                Serie? serie = serieList.Find(s => s.Name == pictureBox.Name);
+                Serie? serie = serieList.Find(s => s.Nom == pictureBox.Name);
                 if (serie != null)
                 {
                     FormSerie formSerie = new(serie);
@@ -133,7 +126,7 @@ namespace projet_dawan
                 pictureBox.Location = new Point((95 * i * 2) + 25, 50);
                 pictureBox.Size = new Size(138, 170);
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBox.Name = serieList[i].Name;
+                pictureBox.Name = serieList[i].Nom;
                 pictureBox.ImageLocation = path + serieList[i].Affiche;
                 pictureBox.Click += Serie_Click;
 
@@ -142,7 +135,7 @@ namespace projet_dawan
                 Button btnSerie = new Button();
                 btnSerie.Location = new Point((95 * i * 2) + 25, 225);
                 btnSerie.Size = new Size(138, 50);
-                btnSerie.Text = serieList[i].Name;
+                btnSerie.Text = serieList[i].Nom;
                 btnSerie.Click += Serie_Click;
                 this.Controls[this.Controls.IndexOf(groupBox1)].Controls.Add(btnSerie);
             }
@@ -161,9 +154,7 @@ namespace projet_dawan
         private void OpenFormBibli(string text)
         {
             serieList.Clear();
-            SerieDAO serieDAO = new(Properties.Settings.Default.Connection);
-            serieList = serieDAO.GetByTxt(txtRechercher.Text);
-            MessageBox.Show(serieList.Count.ToString());
+            //serieList = serieDAO.GetByTxt(txtRechercher.Text);
             FormBibliotheque formBibliotheque = new(serieList, text);
             formBibliotheque.FormClosing += form_FormClosing;
             this.Hide();

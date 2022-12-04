@@ -1,0 +1,14 @@
+E:\Projet perso\Projet dawan\SerieDLL_EF\bin\Debug\net6.0\SerieDLL_EF.deps.json
+E:\Projet perso\Projet dawan\SerieDLL_EF\bin\Debug\net6.0\SerieDLL_EF.runtimeconfig.json
+E:\Projet perso\Projet dawan\SerieDLL_EF\bin\Debug\net6.0\SerieDLL_EF.dll
+E:\Projet perso\Projet dawan\SerieDLL_EF\bin\Debug\net6.0\SerieDLL_EF.pdb
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\SerieDLL_EF.csproj.AssemblyReference.cache
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\SerieDLL_EF.GeneratedMSBuildEditorConfig.editorconfig
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\SerieDLL_EF.AssemblyInfoInputs.cache
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\SerieDLL_EF.AssemblyInfo.cs
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\SerieDLL_EF.csproj.CoreCompileInputs.cache
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\SerieDLL_EF.dll
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\refint\SerieDLL_EF.dll
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\SerieDLL_EF.pdb
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\SerieDLL_EF.genruntimeconfig.cache
+E:\Projet perso\Projet dawan\SerieDLL_EF\obj\Debug\net6.0\ref\SerieDLL_EF.dll

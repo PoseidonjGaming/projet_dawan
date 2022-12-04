@@ -1,16 +1,7 @@
-﻿using projet_dawan.DAO;
-using projet_dawan.Forms;
-using projet_dawan.Model;
+﻿using projet_dawan.Forms;
+using projet_dawan.Models;
 using projet_dawan_WinForm.Forms;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using SerieDLL_EF.Repository;
 
 namespace projet_dawan_WinForm
 {
@@ -28,18 +19,17 @@ namespace projet_dawan_WinForm
 
         private void FormSaison_Load(object sender, EventArgs e)
         {
-            Serie serie = saison.SerieId;
-            pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
-            txtBoxResumeSaison.Text = serie.Resume;
-            lblDateSaison.Text= serie.DateDiff.ToShortDateString();
-            linkLblBASaison.Text = serie.UrlBa;
+            //Serie serie = saison.SerieId;
+            //pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
+            //txtBoxResumeSaison.Text = serie.Resume;
+            //lblDateSaison.Text= serie.DateDiff.ToString();
+            //linkLblBASaison.Text = serie.UrlBa;
 
-            EpisodeDAO dao = new(projet_dawan.Properties.Settings.Default.Connection);
-            foreach (Episode episode in dao.GetEpisodes(saison.Id))
-            {
-                episodes.Add(episode);
-                lstBoxEpisode.Items.Add(episode.Nom);
-            }
+            //foreach (Episode episode in EpisodeRepository.GetBySaison(saison.Id))
+            //{
+            //    episodes.Add(episode);
+            //    lstBoxEpisode.Items.Add(episode.Nom);
+            //}
         }
 
         private void lstBoxEpisode_SelectedIndexChanged(object sender, EventArgs e)

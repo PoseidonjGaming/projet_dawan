@@ -1,7 +1,6 @@
-using projet_dawan.DAO;
 using projet_dawan.Forms;
-using projet_dawan.Model;
-using projet_dawan.Properties;
+using projet_dawan.Models;
+using SerieDLL_EF.Repository;
 
 namespace projet_dawan_WinForm
 {
@@ -19,16 +18,15 @@ namespace projet_dawan_WinForm
         private void FormSerie_Load(object sender, EventArgs e)
         {
 
-            lblSerie.Text = Serie.Name;
-            lblDateSerie.Text = Serie.DateDiff.ToShortDateString();
+            lblSerie.Text = Serie.Nom;
+            lblDateSerie.Text = Serie.DateDiff.ToString();
             linkLblBASerie.Text = Serie.UrlBa;
             txtBoxResumeSerie.Text = Serie.Resume;
             pictureBoxSerie.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche;
-            SaisonDAO dao = new(projet_dawan.Properties.Settings.Default.Connection);
-            foreach (Saison saison in dao.GetSaisons(Serie.Id))
+            foreach (Saison saison in SaisonRepository.GetSaisonsBySerie(Serie.Id))
             {
                 Saisons.Add(saison);
-                lstBoxSaison.Items.Add(saison.Num);
+                lstBoxSaison.Items.Add(saison.Numero.ToString());
             }
         }
 

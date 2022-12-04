@@ -1,7 +1,4 @@
-using Microsoft.VisualBasic.ApplicationServices;
-using projet_dawan.DAO;
-using projet_dawan.Model;
-using projet_dawan.Repository;
+using projet_dawan.Models;
 using System.Security.Cryptography;
 
 namespace projet_dawan
@@ -18,18 +15,17 @@ namespace projet_dawan
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            UserAppDAO dao = new(Properties.Settings.Default.Connection);
 
-            UserApp? user = dao.GetByLogin(textBox2.Text);
+            //UserApp? user = ;
 
             if (checkBox1.Checked)
             {
-                Properties.Settings.Default.UserRemain = user;
-                Properties.Settings.Default.Save();
+                //Properties.Settings.Default.UserRemain = user;
+                //Properties.Settings.Default.Save();
 
             }
 
-            Login(user, UserApp.HashPassword(textBox1.Text) );
+            //Login(user, UserService.HashPassword(textBox1.Text) );
 
 
         }

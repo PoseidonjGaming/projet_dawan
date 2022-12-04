@@ -1,22 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using projet_dawan.DAO;
-using projet_dawan.Model;
+﻿using projet_dawan.Models;
 using projet_dawan_WinForm;
-using SerieDLL.Interface;
+using SerieDLL_EF.Repository;
 
 namespace projet_dawan.Forms
 {
     public partial class FormPersonnage : Form
     {
-        private IDAOBase<Serie> serieDAO = new SerieDAO(Properties.Settings.Default.Connection);
 
         public FormPersonnage()
         {
@@ -28,7 +17,7 @@ namespace projet_dawan.Forms
         private void labelNomPerso_Click(object sender, EventArgs e)
         {
             // retour form serie correspondant au personnage
-            FormSerie serie = new(serieDAO.GetById(1));
+            FormSerie serie = new(SerieRepository.GetById(1));
 
             serie.ShowDialog();
         }

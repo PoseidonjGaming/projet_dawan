@@ -12,7 +12,7 @@ namespace projet_dawan.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -39,9 +39,9 @@ namespace projet_dawan.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Generic.List<projet_dawan.Model.Serie> ToWatch {
+        public global::System.Collections.Generic.List<projet_dawan.Models.Serie> ToWatch {
             get {
-                return ((global::System.Collections.Generic.List<projet_dawan.Model.Serie>)(this["ToWatch"]));
+                return ((global::System.Collections.Generic.List<projet_dawan.Models.Serie>)(this["ToWatch"]));
             }
             set {
                 this["ToWatch"] = value;
@@ -50,9 +50,9 @@ namespace projet_dawan.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::projet_dawan.Model.UserApp UserRemain {
+        public global::projet_dawan.Models.UserApp UserRemain {
             get {
-                return ((global::projet_dawan.Model.UserApp)(this["UserRemain"]));
+                return ((global::projet_dawan.Models.UserApp)(this["UserRemain"]));
             }
             set {
                 this["UserRemain"] = value;

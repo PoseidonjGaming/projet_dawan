@@ -1,15 +1,4 @@
-﻿using projet_dawan.DAO;
-using projet_dawan.Model;
-using SerieDLL.Interface;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using projet_dawan.Models;
 
 namespace projet_dawan
 {
@@ -37,14 +26,11 @@ namespace projet_dawan
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             // vérifier si les champs sont valides puis ajouter la serie à la base de données
-            IDAOBase<Serie> dao = new SerieDAO(Properties.Settings.Default.Connection);
             if (ajout)
             {
-                dao.Add(serie);
             }
             else
             {
-                dao.Update(serie);
             }
             Close();
         }

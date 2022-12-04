@@ -93,8 +93,6 @@ E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormGererCompte.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormSupprimerSeries.resources
 E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormWatchlist.resources
-E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL.dll
-E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL.pdb
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL.dll
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL.pdb
 C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.FormAccueil.resources
@@ -146,3 +144,44 @@ C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj
 C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.pdb
 C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.genruntimeconfig.cache
 C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\projet_dawan\projet_dawan\obj\Debug\net6.0-windows\ref\projet_dawan.dll
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Forms.FormActeur.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Forms.FormCasting.resources
+E:\Projet perso\Projet dawan\projet_dawan\obj\Debug\net6.0-windows\projet_dawan.Forms.FormPersonnage.resources
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Azure.Core.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Azure.Identity.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Data.SqlClient.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Memory.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Extensions.Primitives.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Identity.Client.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.Identity.Client.Extensions.Msal.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Abstractions.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Logging.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\Microsoft.SqlServer.Server.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\System.IdentityModel.Tokens.Jwt.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\System.Memory.Data.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\System.Runtime.Caching.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL_EF.dll
+E:\Projet perso\Projet dawan\projet_dawan\bin\Debug\net6.0-windows\SerieDLL_EF.pdb
