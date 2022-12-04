@@ -12,4 +12,4 @@
 /SerieDLL/obj/
 /projet_dawan/.vs/
 *.dll
-/projet_dawan/bin/Debug/net6.0-windows/projet_dawan.deps.json
+*.json
