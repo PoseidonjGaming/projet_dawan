@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.btnConnexion = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBoxPwd = new System.Windows.Forms.TextBox();
+            this.txtBoxLogin = new System.Windows.Forms.TextBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -44,21 +44,21 @@
             this.btnConnexion.UseVisualStyleBackColor = true;
             this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
             // 
-            // textBox1
+            // txtBoxPwd
             // 
-            this.textBox1.Location = new System.Drawing.Point(296, 272);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(139, 27);
-            this.textBox1.TabIndex = 2;
+            this.txtBoxPwd.Location = new System.Drawing.Point(296, 272);
+            this.txtBoxPwd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBoxPwd.Name = "txtBoxPwd";
+            this.txtBoxPwd.Size = new System.Drawing.Size(139, 27);
+            this.txtBoxPwd.TabIndex = 2;
             // 
-            // textBox2
+            // txtBoxLogin
             // 
-            this.textBox2.Location = new System.Drawing.Point(296, 233);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(139, 27);
-            this.textBox2.TabIndex = 3;
+            this.txtBoxLogin.Location = new System.Drawing.Point(296, 233);
+            this.txtBoxLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBoxLogin.Name = "txtBoxLogin";
+            this.txtBoxLogin.Size = new System.Drawing.Size(139, 27);
+            this.txtBoxLogin.TabIndex = 3;
             // 
             // checkBox1
             // 
@@ -77,8 +77,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtBoxLogin);
+            this.Controls.Add(this.txtBoxPwd);
             this.Controls.Add(this.btnConnexion);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -91,8 +91,8 @@
 
         #endregion
         private Button btnConnexion;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtBoxPwd;
+        private TextBox txtBoxLogin;
         private CheckBox checkBox1;
     }
 }
