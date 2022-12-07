@@ -20,12 +20,8 @@ namespace projet_dawan.Forms
             FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        private void btnPerso1_Click(object sender, EventArgs e)
-        {
-            // afficher fiche personnage correspondant (idem pour chaque bouton de la form casting)
-            FormPersonnage perso = new();
-
-            perso.ShowDialog();
-        }
+        // la list box affiche tous les nom des personnages de la série
+        // en selectionnant un des nom de la liste les information sur le côté s'actualise en fonction du personnage
+        // au demarage de la form casting le premier nom de la liste est automatiquement selectionné
     }
 }
