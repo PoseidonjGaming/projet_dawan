@@ -1,27 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using projet_dawan.Forms;
 using projet_dawan.Models;
+using SerieDLL_EF.Repository;
 
 namespace projet_dawan.Forms
-{
+{  
     public partial class FormCasting : Form
     {
-        public FormCasting()
+        private Serie Serie = new();
+        private List<Personnage> castList = new List<Personnage>();
+
+        public FormCasting(Serie serie)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Serie = serie;
+            castList = PersonnageRepository.GetBySerie(Serie.Id);
         }
 
-        // la list box affiche tous les nom des personnages de la série
-        // en selectionnant un des nom de la liste les information sur le côté s'actualise en fonction du personnage
-        // au demarage de la form casting le premier nom de la liste est automatiquement selectionné
+        private void FormCasting_Load(object sender, EventArgs e)
+        {
+            labelCasting.Text = "Casting " + Serie.Nom;
+
+            foreach (Personnage personnage in PersonnageRepository.GetBySerie(Serie.Id))
+            {
+                castList.Add(personnage);
+                listBoxCasting.Items.Add(personnage.Nom);
+            }
+
+            listBoxCasting.SelectedIndex = 0;
+            Personnage perso = castList[listBoxCasting.SelectedIndex];
+            Acteur acteur = ActeurRepository.GetById(perso.ActeurId);
+            Populate(perso, acteur);
+
+        }
+
+        private void listBoxCasting_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxCasting.SelectedIndex != -1)
+            {
+                Personnage perso = castList[listBoxCasting.SelectedIndex];
+                Acteur acteur = ActeurRepository.GetById(perso.ActeurId);
+                Populate(perso, acteur);
+            }
+        }
+
+        private void Populate(Personnage perso, Acteur acteur)
+        {
+            labelNomPerso.Text = perso.Nom;
+            labelActeur.Text = acteur.Nom + " " + acteur.Prenom;
+        }
+
+        // ajouter information sur le perso et une image
+
     }
 }
