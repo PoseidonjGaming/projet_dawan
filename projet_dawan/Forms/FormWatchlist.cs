@@ -22,19 +22,19 @@ namespace projet_dawan
             FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnClearAll_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.UserRemain.ToWatch.Clear();
             Properties.Settings.Default.Save();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnExportList_Click(object sender, EventArgs e)
         {
             List<Serie> list = SerieRepository.Export(Properties.Settings.Default.UserRemain.ToWatch);
-
-           
-
-            File.WriteAllText(@"E:\Projet perso\export.json", JsonConvert.SerializeObject(list,Formatting.Indented));
+         
+            File.WriteAllText(@"C:\Users\Admin Stagiaire\Desktop\ProjetGroup_Dawan\Watchlist.json", JsonConvert.SerializeObject(list,Formatting.Indented));
         }
+
+        // possibilité de supprimer l'élément de la listbox séléctionné
     }
 }
