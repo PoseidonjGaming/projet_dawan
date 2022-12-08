@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public static class PersonnageRepository
+    public class PersonnageRepository: IRepo<Personnage>
     {
-        public static List<Personnage> GetAll()
+        public List<Personnage> GetAll()
         {
             using(BddprojetContext context=new BddprojetContext())
             {
@@ -17,7 +17,7 @@ namespace SerieDLL_EF.Repository
             }
         }
 
-        public static Personnage GetById(int id)
+        public  Personnage GetById(int id)
         {
             using(BddprojetContext context= new BddprojetContext())
             {
@@ -25,7 +25,7 @@ namespace SerieDLL_EF.Repository
             }
         }
 
-        public static List<Personnage> GetBySerie(int serie_id)
+        public List<Personnage> GetBySerie(int serie_id)
         {
             using (BddprojetContext context = new BddprojetContext())
             {
@@ -43,10 +43,38 @@ namespace SerieDLL_EF.Repository
 
             foreach(Personnage person in list)
             {
-                person.Acteur = ActeurRepository.Export(person.ActeurId);
+                ActeurRepository repo=new ActeurRepository();
+                person.Acteur = repo.Export(person.ActeurId);
             }
 
             return list;
+        }
+
+        public void Add(Personnage item)
+        {
+            using(BddprojetContext context=new BddprojetContext())
+            {
+                context.Personnages.Add(item);
+                context.SaveChanges();
+            }
+        }
+
+        public void Update(Personnage item)
+        {
+            using (BddprojetContext context = new BddprojetContext())
+            {
+                context.Personnages.Update(item);
+                context.SaveChanges();
+            }
+        }
+
+        public void Delete(Personnage item)
+        {
+            using (BddprojetContext context = new BddprojetContext())
+            {
+                context.Personnages.Remove(item);
+                context.SaveChanges();
+            }
         }
     }
 }

@@ -35,7 +35,7 @@ namespace projet_dawan
         {
             serieList.Clear();
             lstBxSerie.Items.Clear();
-            serieList = SerieRepository.GetByTxt(txtRechercher.Text);
+            //serieList = SaisonRepository.GetByTxt(txtRechercher.Text);
             Populate();
         }
 

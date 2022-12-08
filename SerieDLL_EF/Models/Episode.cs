@@ -13,12 +13,9 @@ public partial class Episode
 
     public int SaisonId { get; set; }
 
-    [DataMember]
     public string? Nom { get; set; }
 
-    [DataMember]
     public string Resume { get; set; } = null!;
 
-    [DataMember]
     public DateTime? DatePremDiff { get; set; }
 }

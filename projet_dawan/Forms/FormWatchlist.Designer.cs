@@ -32,6 +32,7 @@
             this.btnExportList = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstBoxWatchlist = new System.Windows.Forms.ListBox();
+            this.saveFileDialogWatchList = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,5 +100,6 @@
         private Button btnExportList;
         private GroupBox groupBox1;
         private ListBox lstBoxWatchlist;
+        private SaveFileDialog saveFileDialogWatchList;
     }
 }

@@ -1,6 +1,7 @@
 using projet_dawan.Forms;
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;
+using SerieDLL_EF.Service;
 
 namespace projet_dawan_WinForm
 {
@@ -23,11 +24,12 @@ namespace projet_dawan_WinForm
             linkLblBASerie.Text = Serie.UrlBa;
             txtBoxResumeSerie.Text = Serie.Resume;
             pictureBoxSerie.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche;
-            foreach (Saison saison in SaisonRepository.GetSaisonsBySerie(Serie.Id))
-            {
-                Saisons.Add(saison);
-                lstBoxSaison.Items.Add(saison.Numero.ToString());
-            }
+            Service<Saison> service = new (new SaisonRepository());
+            //foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
+            //{
+            //    Saisons.Add(saison);
+            //    lstBoxSaison.Items.Add(saison.Numero.ToString());
+            //}
         }
 
         private void btnCasting_Click(object sender, EventArgs e)

@@ -1,6 +1,7 @@
 ﻿using projet_dawan.Forms;
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;
+using SerieDLL_EF.Service;
 
 namespace projet_dawan.Forms
 {  
@@ -8,29 +9,30 @@ namespace projet_dawan.Forms
     {
         private Serie Serie = new();
         private List<Personnage> castList = new List<Personnage>();
-
+        private Service<Personnage> servicePerso = new(new PersonnageRepository());
         public FormCasting(Serie serie)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Serie = serie;
-            castList = PersonnageRepository.GetBySerie(Serie.Id);
+            //castList = servicePerso.GetBySerie(Serie.Id);
         }
 
         private void FormCasting_Load(object sender, EventArgs e)
         {
             labelCasting.Text = "Casting " + Serie.Nom;
+            ActeurService acteurService = new();
 
-            foreach (Personnage personnage in PersonnageRepository.GetBySerie(Serie.Id))
-            {
-                castList.Add(personnage);
-                listBoxCasting.Items.Add(personnage.Nom);
-            }
+            //foreach (Personnage personnage in PersonnageRepository.GetBySerie(Serie.Id))
+            //{
+            //    castList.Add(personnage);
+            //    listBoxCasting.Items.Add(personnage.Nom);
+            //}
 
             listBoxCasting.SelectedIndex = 0;
             Personnage perso = castList[listBoxCasting.SelectedIndex];
-            Acteur acteur = ActeurRepository.GetById(perso.ActeurId);
+            Acteur acteur = acteurService.GetById(perso.ActeurId);
             Populate(perso, acteur);
 
         }
@@ -39,8 +41,9 @@ namespace projet_dawan.Forms
         {
             if (listBoxCasting.SelectedIndex != -1)
             {
+                ActeurService acteurService = new();
                 Personnage perso = castList[listBoxCasting.SelectedIndex];
-                Acteur acteur = ActeurRepository.GetById(perso.ActeurId);
+                Acteur acteur = acteurService.GetById(perso.ActeurId);
                 Populate(perso, acteur);
             }
         }

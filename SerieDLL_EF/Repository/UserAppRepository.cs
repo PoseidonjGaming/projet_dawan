@@ -14,7 +14,7 @@ namespace SerieDLL_EF.Repository
         {
             using(BddprojetContext context= new())
             {
-                return context.UserApps.Where(u => u.Login == login && u.Password == UserService.HashPassword(password)).ToList()[0];
+                return context.UserApps.Where(u => u.Login == login && u.Password == UserService.HashPassword(password)).SingleOrDefault();
             }
         }
     }
