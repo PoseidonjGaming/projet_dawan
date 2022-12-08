@@ -57,9 +57,9 @@ namespace projet_dawan_WinForm
         private void btnCasting_Click(object sender, EventArgs e)
         {
             // retour form casting correspondant au personnage présent dans la série
-            FormCasting casting = new();
+            //FormCasting casting = new();
 
-            casting.ShowDialog();
+            //casting.ShowDialog();
         }
 
         private void Populate(Episode ep)

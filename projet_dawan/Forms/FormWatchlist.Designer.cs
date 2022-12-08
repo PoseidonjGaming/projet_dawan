@@ -31,16 +31,15 @@
             this.btnClearAll = new System.Windows.Forms.Button();
             this.btnExportList = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.lstBoxWatchlist = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClearAll
             // 
-            this.btnClearAll.Location = new System.Drawing.Point(402, 197);
-            this.btnClearAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnClearAll.Location = new System.Drawing.Point(352, 148);
             this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(109, 33);
+            this.btnClearAll.Size = new System.Drawing.Size(95, 25);
             this.btnClearAll.TabIndex = 0;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
@@ -48,10 +47,9 @@
             // 
             // btnExportList
             // 
-            this.btnExportList.Location = new System.Drawing.Point(402, 145);
-            this.btnExportList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnExportList.Location = new System.Drawing.Point(352, 109);
             this.btnExportList.Name = "btnExportList";
-            this.btnExportList.Size = new System.Drawing.Size(109, 44);
+            this.btnExportList.Size = new System.Drawing.Size(95, 33);
             this.btnExportList.TabIndex = 1;
             this.btnExportList.Text = "Save";
             this.btnExportList.UseVisualStyleBackColor = true;
@@ -59,34 +57,37 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.listBox1);
+            this.groupBox1.Controls.Add(this.lstBoxWatchlist);
             this.groupBox1.Controls.Add(this.btnClearAll);
             this.groupBox1.Controls.Add(this.btnExportList);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(10, 9);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(517, 251);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(452, 188);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // listBox1
+            // lstBoxWatchlist
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(6, 26);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(390, 204);
-            this.listBox1.TabIndex = 2;
+            this.lstBoxWatchlist.FormattingEnabled = true;
+            this.lstBoxWatchlist.ItemHeight = 15;
+            this.lstBoxWatchlist.Location = new System.Drawing.Point(5, 20);
+            this.lstBoxWatchlist.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstBoxWatchlist.Name = "lstBoxWatchlist";
+            this.lstBoxWatchlist.Size = new System.Drawing.Size(342, 154);
+            this.lstBoxWatchlist.TabIndex = 2;
             // 
             // FormWatchlist
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(579, 279);
+            this.ClientSize = new System.Drawing.Size(507, 209);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormWatchlist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Watchlist";
+            this.Load += new System.EventHandler(this.FormWatchlist_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -97,6 +98,6 @@
         private Button btnClearAll;
         private Button btnExportList;
         private GroupBox groupBox1;
-        private ListBox listBox1;
+        private ListBox lstBoxWatchlist;
     }
 }
