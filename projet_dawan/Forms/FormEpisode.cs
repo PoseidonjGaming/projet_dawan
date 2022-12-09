@@ -1,4 +1,5 @@
-﻿using projet_dawan.Forms;
+﻿using projet_dawan;
+using projet_dawan.Forms;
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
@@ -21,7 +22,8 @@ namespace projet_dawan_WinForm
 
         private void FormSaison_Load(object sender, EventArgs e)
         {
-            Serie serie = saison.Serie;
+            SerieService serieService = new();
+            Serie serie = serieService.GetById(saison.SerieId);
             pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
             lblSerie.Text = serie.Nom;
             lblSaison.Text += saison.Numero.ToString();

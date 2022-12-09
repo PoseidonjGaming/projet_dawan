@@ -12,5 +12,10 @@ namespace SerieDLL_EF.Service
     {
         public ActeurService():base(new ActeurRepository()) { }
 
+        public List<Acteur> GetByTxt(string txt)
+        {
+            return repo.GetByTxt(txt);
+        }
+
     }
 }

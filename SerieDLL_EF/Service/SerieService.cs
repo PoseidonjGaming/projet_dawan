@@ -4,8 +4,13 @@ using SerieDLL_EF.Service;
 
 namespace projet_dawan
 {
-    public class SerieService: Service<Serie, SerieRepository>
+    public class SerieService : Service<Serie, SerieRepository>
     {
-        public SerieService():base(new SerieRepository()) { }
+        public SerieService() : base(new SerieRepository()) { }
+
+        public List<Serie> GetByTxt(string text)
+        {
+            return repo.GetByTxt(text);
+        }
     }
 }

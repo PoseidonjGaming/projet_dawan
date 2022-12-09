@@ -11,5 +11,10 @@ namespace SerieDLL_EF.Service
         {
             return repo.GetBySaison(saison);
         }
+
+        public List<Episode> GetByTxt(string text)
+        {
+            return repo.GetByTxt(text);
+        }
     }
 }

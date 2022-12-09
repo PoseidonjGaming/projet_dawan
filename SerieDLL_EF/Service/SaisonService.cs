@@ -10,7 +10,7 @@ namespace SerieDLL_EF.Service
 {
     public class SaisonService: Service<Saison, SaisonRepository>
     {
-        public SaisonService(SaisonRepository repo):base(repo)
+        public SaisonService():base(new SaisonRepository())
         {
 
         }

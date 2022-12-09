@@ -153,7 +153,8 @@ namespace projet_dawan
         {
             serieList.Clear();
             //serieList = SaisonRepository.GetByTxt(txtRechercher.Text);
-            FormBibliotheque formBibliotheque = new(serieList, text);
+            SerieService service = new();
+            FormBibliotheque formBibliotheque = new(text);
             formBibliotheque.FormClosing += form_FormClosing;
             this.Hide();
             formBibliotheque.ShowDialog(this);

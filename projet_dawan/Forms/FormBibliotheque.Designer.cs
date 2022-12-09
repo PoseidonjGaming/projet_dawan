@@ -105,6 +105,7 @@
             this.cmbFiltrer.Name = "cmbFiltrer";
             this.cmbFiltrer.Size = new System.Drawing.Size(169, 28);
             this.cmbFiltrer.TabIndex = 5;
+            this.cmbFiltrer.SelectedIndexChanged += new System.EventHandler(this.cmbFiltrer_SelectedIndexChanged);
             // 
             // btnRetour
             // 

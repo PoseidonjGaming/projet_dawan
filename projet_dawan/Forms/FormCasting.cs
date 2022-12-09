@@ -7,26 +7,25 @@ namespace projet_dawan.Forms
 {  
     public partial class FormCasting : Form
     {
-        private Serie Serie = new();
         private List<Personnage> castList = new List<Personnage>();
-        private PersonnageService servicePerso = new(new PersonnageRepository());
-        public FormCasting(Serie serie)
+        private Serie serie;
+        public FormCasting(List<Personnage> list)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            Serie = serie;
-            castList = servicePerso.GetBySerie(Serie.Id);
+            SerieService serieService= new SerieService();
+            castList = list;
+            serie = serieService.GetById(castList[0].SerieId);
         }
 
         private void FormCasting_Load(object sender, EventArgs e)
         {
-            labelCasting.Text = "Casting " + Serie.Nom;
+            labelCasting.Text = "Casting " + serie.Nom;
             ActeurService acteurService = new ();
 
-            foreach (Personnage personnage in servicePerso.GetBySerie(Serie.Id))
+            foreach (Personnage personnage in castList)
             {
-                castList.Add(personnage);
                 listBoxCasting.Items.Add(personnage.Nom);
             }
 

@@ -11,7 +11,7 @@ namespace SerieDLL_EF.Service
     public class PersonnageService: Service<Personnage, PersonnageRepository>
     {
 
-        public PersonnageService(PersonnageRepository repo) : base(repo)
+        public PersonnageService() : base(new PersonnageRepository())
         {
 
         }
@@ -20,6 +20,11 @@ namespace SerieDLL_EF.Service
         public List<Personnage> GetBySerie(int serie_id)
         {
             return repo.GetBySerie(serie_id);
+        }
+
+        public List<Personnage> GetByTxt(string txt)
+        {
+            return repo.GetByTxt(txt);
         }
     }
 }

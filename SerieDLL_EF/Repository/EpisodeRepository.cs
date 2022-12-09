@@ -37,7 +37,7 @@ namespace SerieDLL_EF.Repository
         {
             using (BddprojetContext context = new())
             {
-                return context.Episodes.Where(e=> e.Nom.Contains(txt) || e.Resume.Contains(txt)).ToList();
+                return context.Episodes.Where(e=> e.Nom.Contains(txt)).ToList();
             }
         }
 
