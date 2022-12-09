@@ -10,7 +10,7 @@ namespace SerieDLL_EF.Service
     {
         public EpisodeService():base(new EpisodeRepository()) { }
 
-        //Récupère la liste des épisodes qui appartient à la saison spécifié
+        //Récupère la liste des épisodes qui appartienent à la saison spécifié
         public List<Episode> GetBySaison(int saison)
         {
             return repo.GetBySaison(saison);
