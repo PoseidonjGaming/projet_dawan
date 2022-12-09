@@ -1,4 +1,5 @@
 ﻿using projet_dawan.Models;
+using SerieDLL_EF.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class ActeurRepository : IRepo<Acteur>
+    public class ActeurRepository : IRepoCRUD<Acteur>, IRepSpecials<Acteur>
     {
         public List<Acteur> GetAll()
         {
@@ -23,6 +24,13 @@ namespace SerieDLL_EF.Repository
             using (BddprojetContext context = new BddprojetContext())
             {
                 return context.Acteurs.Where(p => p.Id == id).ToList()[0];
+            }
+        }
+        public List<Acteur> GetByTxt(string txt)
+        {
+            using (BddprojetContext context = new BddprojetContext())
+            {
+                return context.Acteurs.Where(a => a.Nom.Contains(txt) || a.Prenom.Contains(txt)).ToList();
             }
         }
 
@@ -61,6 +69,5 @@ namespace SerieDLL_EF.Repository
             }
         }
 
-       
     }
 }

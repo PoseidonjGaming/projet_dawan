@@ -1,4 +1,6 @@
 ﻿using projet_dawan.Models;
+using SerieDLL_EF.Interface;
+using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class SaisonRepository : IRepo<Saison>
+    public class SaisonRepository : IRepoCRUD<Saison>
     {
         public List<Saison> GetAll()
         {
@@ -37,6 +39,7 @@ namespace SerieDLL_EF.Repository
         public  List<Saison> Export(int serie_id)
         {
             List<Saison> list = new();
+            EpisodeService service = new EpisodeService(); ;
             using (BddprojetContext context = new BddprojetContext())
             {
                 list = context.Saisons.Where(sa => sa.SerieId == serie_id).ToList();
@@ -44,7 +47,7 @@ namespace SerieDLL_EF.Repository
 
             foreach (Saison saison in list)
             {
-                saison.Episodes = EpisodeRepository.GetBySaison(saison.Id);
+                saison.Episodes = service.GetBySaison(saison.Id);
             }
 
             return list;

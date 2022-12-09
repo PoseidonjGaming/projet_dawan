@@ -1,4 +1,5 @@
 ﻿using projet_dawan.Models;
+using SerieDLL_EF.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class EpisodeRepository: IRepo<Episode>
+    public class EpisodeRepository : IRepoCRUD<Episode>, IRepSpecials<Episode>
     {
         public List<Episode> GetAll()
         {
-            using(BddprojetContext context= new BddprojetContext())
+            using (BddprojetContext context = new BddprojetContext())
             {
                 return context.Episodes.ToList();
             }
@@ -24,11 +25,19 @@ namespace SerieDLL_EF.Repository
                 return context.Episodes.Where(p => p.Id == id).SingleOrDefault();
             }
         }
-        public static List<Episode> GetBySaison(int saison_id)
+        public List<Episode> GetBySaison(int saison_id)
         {
             using (BddprojetContext context = new BddprojetContext())
             {
-                return context.Episodes.Where(e=> e.SaisonId== saison_id).ToList();
+                return context.Episodes.Where(e => e.SaisonId == saison_id).ToList();
+            }
+        }
+
+        public List<Episode> GetByTxt(string txt)
+        {
+            using (BddprojetContext context = new())
+            {
+                return context.Episodes.Where(e=> e.Nom.Contains(txt) || e.Resume.Contains(txt)).ToList();
             }
         }
 
@@ -59,8 +68,8 @@ namespace SerieDLL_EF.Repository
             }
         }
 
-       
 
-       
+
+
     }
 }

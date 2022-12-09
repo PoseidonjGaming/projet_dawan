@@ -22,7 +22,7 @@ namespace projet_dawan.Forms
         private void FormCasting_Load(object sender, EventArgs e)
         {
             labelCasting.Text = "Casting " + Serie.Nom;
-            Service<Acteur, ActeurRepository> acteurService = new Service<Acteur, ActeurRepository>(new ActeurRepository());
+            ActeurService acteurService = new ();
 
             foreach (Personnage personnage in servicePerso.GetBySerie(Serie.Id))
             {
@@ -41,7 +41,7 @@ namespace projet_dawan.Forms
         {
             if (listBoxCasting.SelectedIndex != -1)
             {
-                Service<Acteur, ActeurRepository> acteurService = new Service<Acteur, ActeurRepository>(new ActeurRepository());
+                ActeurService acteurService = new();
                 Personnage perso = castList[listBoxCasting.SelectedIndex];
                 Acteur acteur = acteurService.GetById(perso.ActeurId);
                 Populate(perso, acteur);

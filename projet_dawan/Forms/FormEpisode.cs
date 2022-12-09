@@ -1,6 +1,7 @@
 ﻿using projet_dawan.Forms;
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;
+using SerieDLL_EF.Service;
 
 namespace projet_dawan_WinForm
 {
@@ -8,13 +9,14 @@ namespace projet_dawan_WinForm
     {
         private Saison saison;
         private List<Episode> episodes = new List<Episode>();
+        private EpisodeService service = new();
         public FormEpisode(Saison saison)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             this.saison = saison;
-            episodes = EpisodeRepository.GetBySaison(saison.Id);
+            episodes = service.GetBySaison(saison.Id);
         }
 
         private void FormSaison_Load(object sender, EventArgs e)
@@ -28,7 +30,7 @@ namespace projet_dawan_WinForm
 
 
 
-            foreach (Episode episode in EpisodeRepository.GetBySaison(saison.Id))
+            foreach (Episode episode in service.GetBySaison(saison.Id))
             {
                 episodes.Add(episode);
                 lstBoxEpisode.Items.Add(episode.Nom);

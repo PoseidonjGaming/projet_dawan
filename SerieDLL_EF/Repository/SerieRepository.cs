@@ -1,4 +1,5 @@
 ﻿using projet_dawan.Models;
+using SerieDLL_EF.Interface;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class SerieRepository : IRepo<Serie>
+    public class SerieRepository : IRepoCRUD<Serie>, IRepSpecials<Serie>
     {
         public List<Serie> GetAll()
         {
@@ -26,7 +27,7 @@ namespace SerieDLL_EF.Repository
             }
         }
 
-        public static List<Serie> GetByTxt(string txt)
+        public List<Serie> GetByTxt(string txt)
         {
             using (BddprojetContext context = new BddprojetContext())
             {

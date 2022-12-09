@@ -1,4 +1,5 @@
 ﻿using projet_dawan.Models;
+using SerieDLL_EF.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class PersonnageRepository: IRepo<Personnage>
+    public class PersonnageRepository : IRepoCRUD<Personnage>, IRepSpecials<Personnage>
     {
         public List<Personnage> GetAll()
         {
-            using(BddprojetContext context=new BddprojetContext())
+            using (BddprojetContext context = new BddprojetContext())
             {
                 return context.Personnages.ToList();
             }
         }
 
-        public  Personnage GetById(int id)
+        public Personnage GetById(int id)
         {
-            using(BddprojetContext context= new BddprojetContext())
+            using (BddprojetContext context = new BddprojetContext())
             {
                 return context.Personnages.Where(p => p.Id == id).ToList()[0];
             }
@@ -29,21 +30,29 @@ namespace SerieDLL_EF.Repository
         {
             using (BddprojetContext context = new BddprojetContext())
             {
-                return context.Personnages.Where(p=> p.SerieId==serie_id).ToList();
+                return context.Personnages.Where(p => p.SerieId == serie_id).ToList();
+            }
+        }
+
+        public List<Personnage> GetByTxt(string txt)
+        {
+            using(BddprojetContext context= new BddprojetContext())
+            {
+                return context.Personnages.Where(p => p.Nom.Contains(txt)).ToList();
             }
         }
 
         public static List<Personnage> Export(int serie_id)
         {
-            List<Personnage> list=new List<Personnage>();
+            List<Personnage> list = new List<Personnage>();
             using (BddprojetContext context = new BddprojetContext())
             {
-                list= context.Personnages.Where(p => p.SerieId == serie_id).ToList();
+                list = context.Personnages.Where(p => p.SerieId == serie_id).ToList();
             }
 
-            foreach(Personnage person in list)
+            foreach (Personnage person in list)
             {
-                ActeurRepository repo=new ActeurRepository();
+                ActeurRepository repo = new ActeurRepository();
                 person.Acteur = repo.Export(person.ActeurId);
             }
 
@@ -52,7 +61,7 @@ namespace SerieDLL_EF.Repository
 
         public void Add(Personnage item)
         {
-            using(BddprojetContext context=new BddprojetContext())
+            using (BddprojetContext context = new BddprojetContext())
             {
                 context.Personnages.Add(item);
                 context.SaveChanges();

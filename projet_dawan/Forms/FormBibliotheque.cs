@@ -35,7 +35,7 @@ namespace projet_dawan
         {
             serieList.Clear();
             lstBxSerie.Items.Clear();
-            serieList = SaisonRepository.GetByTxt(txtRechercher.Text);
+            //serieList = .GetByTxt(txtRechercher.Text);
             Populate();
         }
 
@@ -61,8 +61,21 @@ namespace projet_dawan
 
         private void FormBibliotheque_Load(object sender, EventArgs e)
         {
-            comboBoxFiltrer.Items.AddRange(new string[] {"Serie", "Episode", "Personnage", "Acteur"});
-            comboBoxFiltrer.SelectedIndex = 0;
+            cmbFiltrer.Items.AddRange(new string[] {"Serie", "Episode", "Personnage", "Acteur"});
+            cmbFiltrer.SelectedIndex = 0;
+        }
+
+        private void Check()
+        {
+            switch (cmbFiltrer.SelectedIndex)
+            {
+                case 0:
+                    MessageBox.Show("Test");
+                    break;
+                default:
+                    break;
+            }
+            MessageBox.Show("TestA");
         }
     }
 }

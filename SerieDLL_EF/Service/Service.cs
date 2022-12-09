@@ -1,4 +1,4 @@
-﻿using SerieDLL_EF.Repository;
+﻿using SerieDLL_EF.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Service
 {
-    public class Service <TClass, TRepo> where TClass: class where TRepo : IRepo<TClass>
+    public abstract class Service <TClass, TRepo> where TClass: class where TRepo : IRepoCRUD<TClass>
     {
         protected TRepo repo;
 

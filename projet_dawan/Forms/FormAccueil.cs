@@ -82,7 +82,7 @@ namespace projet_dawan
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
-            Service<Serie, SerieRepository> service = new(new SerieRepository());
+            SerieService service = new();
             serieList = service.GetAll();
             
             Populate(4);
