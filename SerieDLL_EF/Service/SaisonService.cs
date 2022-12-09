@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Service
 {
-    public class SaisonService: Service<Saison>
+    public class SaisonService: Service<Saison, SaisonRepository>
     {
-        public SaisonService(IRepo<Saison> repo):base(repo)
+        public SaisonService(SaisonRepository repo):base(repo)
         {
 
         }
 
-        //public List<Saison> GetSaisonsBySerie(int id)
-        //{
-        //    return
-        //}
+        public List<Saison> GetSaisonsBySerie(int id)
+        {
+            return repo.GetSaisonsBySerie(id);
+        }
     }
 }

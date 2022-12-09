@@ -24,12 +24,12 @@ namespace projet_dawan_WinForm
             linkLblBASerie.Text = Serie.UrlBa;
             txtBoxResumeSerie.Text = Serie.Resume;
             pictureBoxSerie.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche;
-            Service<Saison> service = new (new SaisonRepository());
-            //foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
-            //{
-            //    Saisons.Add(saison);
-            //    lstBoxSaison.Items.Add(saison.Numero.ToString());
-            //}
+            SaisonService service = new SaisonService(new SaisonRepository());
+            foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
+            {
+                Saisons.Add(saison);
+                lstBoxSaison.Items.Add(saison.Numero.ToString());
+            }
         }
 
         private void btnCasting_Click(object sender, EventArgs e)

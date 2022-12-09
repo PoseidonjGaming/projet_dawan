@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Service
 {
-    public class Service <T> where T: class 
+    public class Service <TClass, TRepo> where TClass: class where TRepo : IRepo<TClass>
     {
-        protected IRepo<T> repo;
+        protected TRepo repo;
 
-        public Service(IRepo<T> repo)
+        public Service(TRepo repo)
         {
-            this.repo = repo;
+            this.repo=repo;
         }
 
-        public List<T> GetAll()
+        public List<TClass> GetAll()
         {
             return repo.GetAll();
         }
 
-        public T GetById(int id)
+        public TClass GetById(int id)
         {
             return repo.GetById(id);
         }
@@ -31,17 +31,17 @@ namespace SerieDLL_EF.Service
         //    return repo.Export(id);
         //}
 
-        public void Add(T item)
+        public void Add(TClass item)
         {
             repo.Add(item);
         }
 
-        public void Update(T item)
+        public void Update(TClass item)
         {
             repo.Update(item);
         }
 
-        public void Delete(T item)
+        public void Delete(TClass item)
         {
             repo.Delete(item);
         }

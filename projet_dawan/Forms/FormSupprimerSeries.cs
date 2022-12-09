@@ -40,7 +40,7 @@ namespace projet_dawan
 
         private void SupprimerSeries_Load(object sender, EventArgs e)
         {
-            Service<Serie> service=new(new SerieRepository());
+            Service<Serie,SerieRepository> service=new(new SerieRepository());
             foreach (Serie serie in service.GetAll())
             {
                 cmbBxSerie.Items.Add(serie.Nom);

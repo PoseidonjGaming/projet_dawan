@@ -9,26 +9,26 @@ namespace projet_dawan.Forms
     {
         private Serie Serie = new();
         private List<Personnage> castList = new List<Personnage>();
-        private Service<Personnage> servicePerso = new(new PersonnageRepository());
+        private PersonnageService servicePerso = new(new PersonnageRepository());
         public FormCasting(Serie serie)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Serie = serie;
-            //castList = servicePerso.GetBySerie(Serie.Id);
+            castList = servicePerso.GetBySerie(Serie.Id);
         }
 
         private void FormCasting_Load(object sender, EventArgs e)
         {
             labelCasting.Text = "Casting " + Serie.Nom;
-            ActeurService acteurService = new();
+            Service<Acteur, ActeurRepository> acteurService = new Service<Acteur, ActeurRepository>(new ActeurRepository());
 
-            //foreach (Personnage personnage in PersonnageRepository.GetBySerie(Serie.Id))
-            //{
-            //    castList.Add(personnage);
-            //    listBoxCasting.Items.Add(personnage.Nom);
-            //}
+            foreach (Personnage personnage in servicePerso.GetBySerie(Serie.Id))
+            {
+                castList.Add(personnage);
+                listBoxCasting.Items.Add(personnage.Nom);
+            }
 
             listBoxCasting.SelectedIndex = 0;
             Personnage perso = castList[listBoxCasting.SelectedIndex];
@@ -41,7 +41,7 @@ namespace projet_dawan.Forms
         {
             if (listBoxCasting.SelectedIndex != -1)
             {
-                ActeurService acteurService = new();
+                Service<Acteur, ActeurRepository> acteurService = new Service<Acteur, ActeurRepository>(new ActeurRepository());
                 Personnage perso = castList[listBoxCasting.SelectedIndex];
                 Acteur acteur = acteurService.GetById(perso.ActeurId);
                 Populate(perso, acteur);

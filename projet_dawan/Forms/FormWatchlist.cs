@@ -44,7 +44,7 @@ namespace projet_dawan
 
         private void FormWatchlist_Load(object sender, EventArgs e)
         {
-            Service<Serie> service = new(new SerieRepository());
+            Service<Serie, SerieRepository> service = new(new SerieRepository());
             foreach (int serieid in Properties.Settings.Default.UserRemain.ToWatch)
             {
                 Serie serie = service.GetById(serieid);
