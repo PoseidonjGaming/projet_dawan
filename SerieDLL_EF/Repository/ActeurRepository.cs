@@ -9,6 +9,11 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
+    /*
+     * Les Répositories sont les classes qui gèrent la bdd.
+     * Dans notre cas, elles implèment les interfaces du dossier Interface, pour plus de simplicité
+     * Cette classe implémente les interfaces IRepoCRUD et IRepSpecials pour gérer la table acteur
+     */
     public class ActeurRepository : IRepoCRUD<Acteur>, IRepSpecials<Acteur>
     {
         public List<Acteur> GetAll()

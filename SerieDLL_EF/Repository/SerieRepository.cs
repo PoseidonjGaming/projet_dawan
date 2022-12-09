@@ -11,6 +11,7 @@ namespace SerieDLL_EF.Repository
 {
     public class SerieRepository : IRepoCRUD<Serie>, IRepSpecials<Serie>
     {
+        //Cette classe implémente les interfaces IRepoCRUD et IRepSpecials pour gérer la table serie
         public List<Serie> GetAll()
         {
             using (BddprojetContext context = new BddprojetContext())

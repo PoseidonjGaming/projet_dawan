@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
+    //Cette classe implémente les interfaces IRepoCRUD et IRepSpecials pour gérer la table episodes
     public class EpisodeRepository : IRepoCRUD<Episode>, IRepSpecials<Episode>
     {
         public List<Episode> GetAll()

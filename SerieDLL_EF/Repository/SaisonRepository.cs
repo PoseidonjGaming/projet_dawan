@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
-{
+{ 
+    //Cette classe implémente les interfaces IRepoCRUD et IRepSpecials pour gérer la table saison
     public class SaisonRepository : IRepoCRUD<Saison>
     {
         public List<Saison> GetAll()

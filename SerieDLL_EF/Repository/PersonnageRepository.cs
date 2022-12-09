@@ -9,6 +9,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace SerieDLL_EF.Repository
 {
+    //Cette classe implémente les interfaces IRepoCRUD et IRepSpecials pour gérer la table personnage
     public class PersonnageRepository : IRepoCRUD<Personnage>, IRepSpecials<Personnage>
     {
         public List<Personnage> GetAll()
