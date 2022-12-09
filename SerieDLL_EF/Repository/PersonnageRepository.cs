@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SerieDLL_EF.Repository
 {
@@ -39,6 +40,14 @@ namespace SerieDLL_EF.Repository
             using(BddprojetContext context= new BddprojetContext())
             {
                 return context.Personnages.Where(p => p.Nom.Contains(txt)).ToList();
+            }
+        }
+
+        public List<Personnage> GetByActeur(int acteur_id)
+        {
+            using (BddprojetContext context = new BddprojetContext())
+            {
+                return context.Personnages.Where(p => p.ActeurId==acteur_id).ToList();
             }
         }
 

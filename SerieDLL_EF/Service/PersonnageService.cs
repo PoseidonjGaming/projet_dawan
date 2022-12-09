@@ -26,5 +26,10 @@ namespace SerieDLL_EF.Service
         {
             return repo.GetByTxt(txt);
         }
+
+        public List<Personnage> GetByActeur(int actur_id)
+        {
+            return repo.GetByActeur(actur_id);
+        }
     }
 }

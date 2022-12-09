@@ -55,9 +55,11 @@ namespace projet_dawan
                         FormCasting formCasting = new(personnageService.GetBySerie(Ids[lstBxSerie.SelectedIndex]));
                         formCasting.ShowDialog(this);
                         break;
-                    //case 3:
-                    //    ActeurRepository acteurService= new();
-                        
+                    case 3:
+                        PersonnageService personnageServiceA= new();
+                        FormCasting form = new(personnageServiceA.GetByActeur(Ids[lstBxSerie.SelectedIndex]));
+                        form.ShowDialog(this);
+                        break;
                     default:
                         break;
                 }
