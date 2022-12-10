@@ -1,5 +1,6 @@
 ﻿using projet_dawan.Models;
 using SerieDLL_EF.Repository;
+using SerieDLL_EF.Service;
 
 namespace projet_dawan
 {
@@ -39,7 +40,8 @@ namespace projet_dawan
 
         private void SupprimerSeries_Load(object sender, EventArgs e)
         {
-            foreach (Serie serie in SerieRepository.GetAll())
+            SerieService service=new();
+            foreach (Serie serie in service.GetAll())
             {
                 cmbBxSerie.Items.Add(serie.Nom);
                 SerieList.Add(serie);

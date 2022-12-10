@@ -1,6 +1,7 @@
 ﻿using projet_dawan.Models;
 using projet_dawan_WinForm;
 using SerieDLL_EF.Repository;
+using SerieDLL_EF.Service;
 
 namespace projet_dawan
 {
@@ -81,8 +82,8 @@ namespace projet_dawan
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
-
-            serieList = SerieRepository.GetAll();
+            SerieService service = new();
+            serieList = service.GetAll();
             
             Populate(4);
         }
@@ -151,8 +152,9 @@ namespace projet_dawan
         private void OpenFormBibli(string text)
         {
             serieList.Clear();
-            serieList = SerieRepository.GetByTxt(txtRechercher.Text);
-            FormBibliotheque formBibliotheque = new(serieList, text);
+            //serieList = SaisonRepository.GetByTxt(txtRechercher.Text);
+            SerieService service = new();
+            FormBibliotheque formBibliotheque = new(text);
             formBibliotheque.FormClosing += form_FormClosing;
             this.Hide();
             formBibliotheque.ShowDialog(this);
