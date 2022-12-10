@@ -19,5 +19,11 @@ public partial class Acteur
 
     public virtual ICollection<Personnage> Personnages { get; } = new List<Personnage>();
 
-    
+    public Acteur() { }
+
+    public Acteur(string nom, string prenom)
+    {
+        Nom = nom;
+        Prenom = prenom;
+    }
 }

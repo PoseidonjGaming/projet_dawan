@@ -1,4 +1,5 @@
-﻿using projet_dawan.Models;
+﻿using projet_dawan.Forms;
+using projet_dawan.Models;
 using projet_dawan_WinForm;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
@@ -160,6 +161,10 @@ namespace projet_dawan
             formBibliotheque.ShowDialog(this);
         }
 
-
+        private void gererLesActeursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormManageActeur formManageActeur = new();
+            formManageActeur.ShowDialog(this);
+        }
     }
 }
