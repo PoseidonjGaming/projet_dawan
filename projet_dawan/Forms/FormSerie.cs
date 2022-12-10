@@ -1,6 +1,7 @@
 using projet_dawan.Forms;
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;
+using SerieDLL_EF.Service;
 
 namespace projet_dawan_WinForm
 {
@@ -23,7 +24,8 @@ namespace projet_dawan_WinForm
             linkLblBASerie.Text = Serie.UrlBa;
             txtBoxResumeSerie.Text = Serie.Resume;
             pictureBoxSerie.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche;
-            foreach (Saison saison in SaisonRepository.GetSaisonsBySerie(Serie.Id))
+            SaisonService service = new SaisonService();
+            foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
             {
                 Saisons.Add(saison);
                 lstBoxSaison.Items.Add(saison.Numero.ToString());
@@ -33,9 +35,8 @@ namespace projet_dawan_WinForm
         private void btnCasting_Click(object sender, EventArgs e)
         {
             // retour form casting correspondant au personnage présent dans la série
-            FormCasting casting = new();
-
-            casting.ShowDialog();
+            //FormCasting casting = new();
+            //casting.ShowDialog();
         }
 
         private void lstBoxSaison_SelectedIndexChanged(object sender, EventArgs e)

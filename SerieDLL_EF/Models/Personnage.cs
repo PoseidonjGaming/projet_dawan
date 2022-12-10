@@ -15,10 +15,8 @@ public partial class Personnage
 
     public int SerieId { get; set; }
 
-    [DataMember]
     public string Nom { get; set; } = null!;
 
-    [DataMember]
     public virtual Acteur Acteur { get; set; } = null!;
 
     public virtual Serie Serie { get; set; } = null!;

@@ -1,6 +1,8 @@
-﻿using projet_dawan.Forms;
+﻿using projet_dawan;
+using projet_dawan.Forms;
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;
+using SerieDLL_EF.Service;
 
 namespace projet_dawan_WinForm
 {
@@ -8,18 +10,20 @@ namespace projet_dawan_WinForm
     {
         private Saison saison;
         private List<Episode> episodes = new List<Episode>();
+        private EpisodeService service = new();
         public FormEpisode(Saison saison)
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
             this.saison = saison;
-            episodes = EpisodeRepository.GetBySaison(saison.Id);
+            episodes = service.GetBySaison(saison.Id);
         }
 
         private void FormSaison_Load(object sender, EventArgs e)
         {
-            Serie serie = saison.Serie;
+            SerieService serieService = new();
+            Serie serie = serieService.GetById(saison.SerieId);
             pictureBoxSaison.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
             lblSerie.Text = serie.Nom;
             lblSaison.Text += saison.Numero.ToString();
@@ -28,7 +32,7 @@ namespace projet_dawan_WinForm
 
 
 
-            foreach (Episode episode in EpisodeRepository.GetBySaison(saison.Id))
+            foreach (Episode episode in service.GetBySaison(saison.Id))
             {
                 episodes.Add(episode);
                 lstBoxEpisode.Items.Add(episode.Nom);
@@ -57,9 +61,9 @@ namespace projet_dawan_WinForm
         private void btnCasting_Click(object sender, EventArgs e)
         {
             // retour form casting correspondant au personnage présent dans la série
-            FormCasting casting = new();
+            //FormCasting casting = new();
 
-            casting.ShowDialog();
+            //casting.ShowDialog();
         }
 
         private void Populate(Episode ep)
