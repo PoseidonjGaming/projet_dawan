@@ -47,7 +47,7 @@ namespace SerieDLL_EF.Service
 
 
         //Ajoute l'objet de type TClass dans la bdd
-        public void Add(TClass item)
+        public virtual void Add(TClass item)
         {
             repo.Add(item);
         }

@@ -31,6 +31,12 @@ namespace SerieDLL_EF.Service
                 return builder.ToString();
             }
         }
+
+        public override void Add(UserApp item)
+        {
+            item.Password= HashPassword(item.Password);
+            base.Add(item);
+        }
     }
 }
 

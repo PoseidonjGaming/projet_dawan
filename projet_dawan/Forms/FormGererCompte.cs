@@ -24,13 +24,12 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
-            UserApp user = new();
-            user.Login = "TestUser";
-            user.Password= "password";
-            user.Roles = Roles.User;
-            UserService service = new();
-            user.Password= service.HashPassword(user.Password);
-            service.Add(user);
+            //UserApp user = new();
+            //user.Login = "TestUser";
+            //user.Password= "password";
+            //user.Roles = Roles.User;
+            //UserService service = new();
+            //service.Add(user);
         }
     }
 }
