@@ -14,42 +14,32 @@ namespace SerieDLL_EF.Repository
     {
         public List<Personnage> GetAll()
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                return context.Personnages.ToList();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            return context.Personnages.ToList();
         }
 
         public Personnage GetById(int id)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                return context.Personnages.Where(p => p.Id == id).ToList()[0];
-            }
+            using BddprojetContext context = new BddprojetContext();
+            return context.Personnages.Where(p => p.Id == id).ToList()[0];
         }
 
         public List<Personnage> GetBySerie(int serie_id)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                return context.Personnages.Where(p => p.SerieId == serie_id).ToList();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            return context.Personnages.Where(p => p.SerieId == serie_id).ToList();
         }
 
         public List<Personnage> GetByTxt(string txt)
         {
-            using(BddprojetContext context= new BddprojetContext())
-            {
-                return context.Personnages.Where(p => p.Nom.Contains(txt)).ToList();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            return context.Personnages.Where(p => p.Nom.Contains(txt)).ToList();
         }
 
         public List<Personnage> GetByActeur(int acteur_id)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                return context.Personnages.Where(p => p.ActeurId==acteur_id).ToList();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            return context.Personnages.Where(p => p.ActeurId == acteur_id).ToList();
         }
 
         public static List<Personnage> Export(int serie_id)
@@ -71,29 +61,23 @@ namespace SerieDLL_EF.Repository
 
         public void Add(Personnage item)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                context.Personnages.Add(item);
-                context.SaveChanges();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            context.Personnages.Add(item);
+            context.SaveChanges();
         }
 
         public void Update(Personnage item)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                context.Personnages.Update(item);
-                context.SaveChanges();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            context.Personnages.Update(item);
+            context.SaveChanges();
         }
 
         public void Delete(Personnage item)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                context.Personnages.Remove(item);
-                context.SaveChanges();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            context.Personnages.Remove(item);
+            context.SaveChanges();
         }
     }
 }

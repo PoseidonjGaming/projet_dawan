@@ -37,5 +37,10 @@
 /SerieDLL_EF/obj/Debug/net6.0/SerieDLL_EF.genruntimeconfig.cache
 /projet_dawan/bin/Debug/net6.0-windows/projet_dawan.exe
 /projet_dawan/.vs/ProjectEvaluation/projet_dawan.projects.v5.1
+<<<<<<< HEAD
+
+=======
 /.vs/VSWorkspaceState.json
+>>>>>>> d45a9385e966f8628e25597b71321c3965b02e68
 /SerieDLL_EF/BddprojetContext.cs
+/projet_dawan/projet_dawan.csproj.user
