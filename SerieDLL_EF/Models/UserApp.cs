@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SerieDLL_EF.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
@@ -12,16 +13,19 @@ public partial class UserApp
     [DataMember]
     public int Id { get; set; }
 
-    [DataMember] 
+    [DataMember]
     public string Login { get; set; } = null!;
 
     [DataMember]
     public string Password { get; set; } = null!;
 
+   
+
     [DataMember]
-    public string? Roles { get; set; }
+    public Roles Roles { get; set; }
+
 
     [DataMember]
     [NotMapped]
-    public List<int> ToWatch { get; set; }=new List<int>();
+    public List<int> ToWatch { get; set; } = new List<int>();
 }

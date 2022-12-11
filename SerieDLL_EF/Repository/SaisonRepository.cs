@@ -14,27 +14,21 @@ namespace SerieDLL_EF.Repository
     {
         public List<Saison> GetAll()
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                return context.Saisons.ToList();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            return context.Saisons.ToList();
         }
 
         public Saison GetById(int id)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                return context.Saisons.Where(sa => sa.Id == id).SingleOrDefault();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            return context.Saisons.Where(sa => sa.Id == id).SingleOrDefault();
         }
 
 
         public List<Saison> GetSaisonsBySerie(int id)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                return context.Saisons.Where(sa => sa.SerieId == id).ToList();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            return context.Saisons.Where(sa => sa.SerieId == id).ToList();
         }
 
         public  List<Saison> Export(int serie_id)
@@ -57,29 +51,23 @@ namespace SerieDLL_EF.Repository
 
         public void Add(Saison item)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                context.Saisons.Add(item);
-                context.SaveChanges();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            context.Saisons.Add(item);
+            context.SaveChanges();
         }
 
         public void Update(Saison item)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                context.Saisons.Update(item);
-                context.SaveChanges();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            context.Saisons.Update(item);
+            context.SaveChanges();
         }
 
         public void Delete(Saison item)
         {
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                context.Saisons.Remove(item);
-                context.SaveChanges();
-            }
+            using BddprojetContext context = new BddprojetContext();
+            context.Saisons.Remove(item);
+            context.SaveChanges();
         }
     }
 }

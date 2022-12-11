@@ -1,6 +1,7 @@
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;
 using System.Security.Cryptography;
+using SerieDLL_EF.Service;
 
 namespace projet_dawan
 {
@@ -17,7 +18,7 @@ namespace projet_dawan
         private void btnConnexion_Click(object sender, EventArgs e)
         {
 
-            UserApp? user = UserAppRepository.GetUser(txtBoxLogin.Text,txtBoxPwd.Text);
+            UserApp user = UserAppRepository.GetUser(txtBoxLogin.Text,txtBoxPwd.Text);
 
             if (checkBox1.Checked)
             {
@@ -48,7 +49,8 @@ namespace projet_dawan
         {
             if (Properties.Settings.Default.UserRemain != null)
             {
-                UserApp user = Properties.Settings.Default.UserRemain;
+                UserService service = new UserService();
+                UserApp user = service.GetById( Properties.Settings.Default.UserRemain.Id);
                 
                 Login(user);
             }

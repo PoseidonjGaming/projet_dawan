@@ -1,4 +1,6 @@
-﻿using System;
+﻿using projet_dawan.Models;
+using SerieDLL_EF.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -7,9 +9,13 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Service
 {
-    internal class UserService
+    public class UserService: Service<UserApp, UserAppRepository>
     {
-        public static string HashPassword(string? pwd)
+        public UserService():base(new UserAppRepository())
+        {
+
+        }
+        public string HashPassword(string? pwd)
         {
             using (SHA256 sha256 = SHA256.Create())
             {

@@ -1,6 +1,7 @@
 ﻿using projet_dawan.Forms;
 using projet_dawan.Models;
 using projet_dawan_WinForm;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 
@@ -10,11 +11,13 @@ namespace projet_dawan
     {
         private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
+        private UserApp user;
         public FormAccueil()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            user=Properties.Settings.Default.UserRemain;
         }
 
         private void toolStripAddSerie_Click(object sender, EventArgs e)
@@ -58,6 +61,8 @@ namespace projet_dawan
             if (deconnecter == DialogResult.Yes)
             {
                 Properties.Settings.Default.token = string.Empty;
+                Properties.Settings.Default.UserRemain = null;
+                Properties.Settings.Default.Save();
                 this.Close();
             }
 
@@ -66,9 +71,13 @@ namespace projet_dawan
         private void toolStripGerer_Click(object sender, EventArgs e)
         {
             // affiche la page de gestion du compte
-            FormGererCompte compte = new();
+            if(user.Roles>Roles.User)
+            {
+                FormGererCompte compte = new();
 
-            compte.ShowDialog();
+                compte.ShowDialog();
+            }
+            
         }
 
         private void watchlistToolStripMenuItem_Click(object sender, EventArgs e)
@@ -163,8 +172,16 @@ namespace projet_dawan
 
         private void gererLesActeursToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormManageActeur formManageActeur = new();
-            formManageActeur.ShowDialog(this);
+            if (user.Roles == Roles.SuperAdmin)
+            {
+                FormManageActeur formManageActeur = new();
+                formManageActeur.ShowDialog(this);
+            }
+            else
+            {
+                MessageBox.Show("Test");
+            }
+           
         }
     }
 }
