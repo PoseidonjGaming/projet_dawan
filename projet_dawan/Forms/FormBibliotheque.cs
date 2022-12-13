@@ -35,6 +35,7 @@ namespace projet_dawan
 
         private void btnDetail_Click(object sender, EventArgs e)
         {
+            bibli.Detail();
         }
 
         private void buttonAddWich_Click(object sender, EventArgs e)

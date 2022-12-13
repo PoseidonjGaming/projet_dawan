@@ -93,7 +93,7 @@ namespace projet_dawan.FormLogique
                         list.Add(serie.Nom);
                         Ids.Add(serie.Id);
                     }
-                    
+                    Populate(list);
                     break;
                 case 1:
                     EpisodeService epService = new();
@@ -103,6 +103,7 @@ namespace projet_dawan.FormLogique
                         list.Add(episode.Nom);
                         Ids.Add(episode.Id);
                     }
+                    Populate(list);
                     break;
                 case 2:
                     PersonnageService personnageService = new();
@@ -112,6 +113,7 @@ namespace projet_dawan.FormLogique
                         list.Add(personnage.Nom);
                         Ids.Add(personnage.Id);
                     }
+                    Populate(list);
                     break;
                 case 3:
                     ActeurService acteurService = new();
@@ -121,14 +123,14 @@ namespace projet_dawan.FormLogique
                         list.Add(acteur.Prenom + " " + acteur.Nom);
                         Ids.Add(acteur.Id);
                     }
-                    
+                    Populate(list);
                     break;
 
                 default:
                     MessageBox.Show("Pas de Filtre seléctionné");
                     break;
             }
-            Populate(list);
+            
         }
         private void Populate(List<string> list)
         {
