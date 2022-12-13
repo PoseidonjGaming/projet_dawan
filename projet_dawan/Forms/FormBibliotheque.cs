@@ -1,4 +1,4 @@
-﻿using projet_dawan.FormLogique;
+﻿using projet_dawan.FormLogic;
 using projet_dawan.Forms;
 using projet_dawan.Models;
 using projet_dawan_WinForm;

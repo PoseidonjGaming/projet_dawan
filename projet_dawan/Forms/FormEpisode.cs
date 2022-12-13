@@ -1,5 +1,5 @@
 ﻿using projet_dawan;
-using projet_dawan.FormLogique;
+using projet_dawan.FormLogic;
 using projet_dawan.Forms;
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;

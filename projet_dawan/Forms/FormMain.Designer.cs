@@ -91,8 +91,8 @@
 
         #endregion
         private Button btnConnexion;
-        private TextBox txtBoxPwd;
-        private TextBox txtBoxLogin;
-        private CheckBox checkBox1;
+        public TextBox txtBoxPwd;
+        public TextBox txtBoxLogin;
+        public CheckBox checkBox1;
     }
 }
