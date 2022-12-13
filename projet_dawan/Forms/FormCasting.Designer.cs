@@ -130,7 +130,6 @@
             this.Controls.Add(this.labelCasting);
             this.Name = "FormCasting";
             this.Text = "FormCasting";
-            this.Load += new System.EventHandler(this.FormCasting_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imagePersonnage)).EndInit();
@@ -141,13 +140,13 @@
 
         #endregion
 
-        private Label labelCasting;
+        public Label labelCasting;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private Label labelActeur;
-        private Label labelNomPerso;
+        public Label labelActeur;
+        public Label labelNomPerso;
         private PictureBox imagePersonnage;
-        private ListBox listBoxCasting;
+        public ListBox listBoxCasting;
         private Label label1;
     }
 }

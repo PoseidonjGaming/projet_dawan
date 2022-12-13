@@ -38,8 +38,9 @@ namespace projet_dawan_WinForm
         private void btnCasting_Click(object sender, EventArgs e)
         {
             // retour form casting correspondant au personnage présent dans la série
-            //FormCasting casting = new();
-            //casting.ShowDialog();
+            PersonnageService service= new PersonnageService();
+            FormCasting casting = new(service.GetBySerie(Serie.Id));
+            casting.ShowDialog();
         }
 
         private void lstBoxSaison_SelectedIndexChanged(object sender, EventArgs e)
