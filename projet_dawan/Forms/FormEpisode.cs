@@ -22,19 +22,14 @@ namespace projet_dawan_WinForm
             
         }
 
-        private void FormSaison_Load(object sender, EventArgs e)
-        {
-        }
+        
 
         private void lstBoxEpisode_SelectedIndexChanged(object sender, EventArgs e)
         {
             episodes.LstBoxEpisode_SelectedIndexChanged();
         }
 
-        private void OpenForm(object sender, EventArgs e)
-        {
-            this.Show();
-        }
+       
 
         private void btnCasting_Click(object sender, EventArgs e)
         {
