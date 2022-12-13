@@ -14,10 +14,13 @@ namespace projet_dawan_WinForm
         {
             InitializeComponent();
             Serie = serie;
+            //(width - 176) / 2
         }
 
         private void FormSerie_Load(object sender, EventArgs e)
         {
+            MessageBox.Show(lblSerie.Width.ToString());
+            lblSerie.Location = new Point((this.Size.Width-lblSerie.Width) / 2, lblSerie.Location.Y);
 
             lblSerie.Text = Serie.Nom;
             lblDateSerie.Text = Serie.DateDiff.ToString();

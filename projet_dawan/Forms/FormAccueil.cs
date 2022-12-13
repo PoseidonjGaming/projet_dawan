@@ -161,8 +161,7 @@ namespace projet_dawan
 
         private void OpenFormBibli(string text)
         {
-            serieList.Clear();
-            //serieList = SaisonRepository.GetByTxt(txtRechercher.Text);
+            
             SerieService service = new();
             FormBibliotheque formBibliotheque = new(text);
             formBibliotheque.FormClosing += form_FormClosing;
