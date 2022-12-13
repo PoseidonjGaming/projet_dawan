@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
-namespace projet_dawan.FormLogique
+namespace projet_dawan.FormLogic
 {
    
     internal class Bibliothèque

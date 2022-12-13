@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projet_dawan.FormLogique
+namespace projet_dawan.FormLogic
 {
     internal class Casting
     {
