@@ -68,5 +68,10 @@ namespace projet_dawan.FormLogique
             Form.lblDateSaison.Text = "Episode diffusé le " + ep.DatePremDiff.Value.ToShortDateString();
             Form.lblTitreEp.Text = "Détail l'épisode: " + ep.Nom;
         }
+
+        private void OpenForm(object sender, EventArgs e)
+        {
+            Form.Show();
+        }
     }
 }
