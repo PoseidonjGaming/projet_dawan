@@ -8,7 +8,7 @@ namespace projet_dawan.Forms
 {  
     public partial class FormCasting : Form
     {
-        private Casting casting;
+        private LogicCasting casting;
         public FormCasting(List<Personnage> list)
         {
             InitializeComponent();

@@ -9,7 +9,7 @@ namespace projet_dawan
 {
     public partial class FormBibliotheque : Form
     {
-        private Bibliothèque bibli;
+        private LogicBibliothèque bibli;
         public FormBibliotheque(string text)
         {
             InitializeComponent();

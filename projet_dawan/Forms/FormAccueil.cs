@@ -10,7 +10,7 @@ namespace projet_dawan
 {
     public partial class FormAccueil : Form
     {
-        Accueil Accueil;
+        LogicAccueil Accueil;
         public FormAccueil()
         {
             InitializeComponent();

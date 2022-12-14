@@ -15,7 +15,7 @@ namespace projet_dawan.Forms
 {
     public partial class FormManageActeur : Form
     {
-        private ManageActeur manageActeur;
+        private LogicManageActeur manageActeur;
         public FormManageActeur()
         {
             InitializeComponent();

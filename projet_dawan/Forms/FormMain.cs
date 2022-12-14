@@ -8,7 +8,7 @@ namespace projet_dawan
 {
     public partial class FormMain : Form
     {
-        private Main main;
+        private LogicMain main;
         public FormMain()
         {
             InitializeComponent();
