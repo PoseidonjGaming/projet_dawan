@@ -99,7 +99,7 @@
         private Button btnClearAll;
         private Button btnExportList;
         private GroupBox groupBox1;
-        private ListBox lstBoxWatchlist;
-        private SaveFileDialog saveFileDialogWatchList;
+        public ListBox lstBoxWatchlist;
+        public SaveFileDialog saveFileDialogWatchList;
     }
 }
