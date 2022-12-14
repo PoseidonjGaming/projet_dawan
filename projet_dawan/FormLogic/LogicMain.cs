@@ -10,11 +10,11 @@ using System.Threading.Tasks;
 
 namespace projet_dawan.FormLogic
 {
-    internal class Main
+    internal class LogicMain
     {
         public FormMain Form { get; set; }
 
-        public Main(FormMain form)
+        public LogicMain(FormMain form)
         {
             Form = form;
         }

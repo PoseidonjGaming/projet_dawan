@@ -12,12 +12,12 @@ using static System.Net.Mime.MediaTypeNames;
 namespace projet_dawan.FormLogic
 {
    
-    internal class Bibliothèque
+    internal class LogicBibliothèque
     {
         public FormBibliotheque Form { get; set; }
         private List<int> Ids = new List<int>();
 
-        public Bibliothèque(FormBibliotheque form)
+        public LogicBibliothèque(FormBibliotheque form)
         {
             Form = form;
         }

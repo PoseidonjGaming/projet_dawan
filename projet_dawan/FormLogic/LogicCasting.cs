@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace projet_dawan.FormLogic
 {
-    internal class Casting
+    internal class LogicCasting
     {
         public FormCasting Form{ get; set; }
         private List<Personnage> castList = new List<Personnage>();
         private Serie serie;
-        public Casting(FormCasting form)
+        public LogicCasting(FormCasting form)
         {
             Form = form;
         }

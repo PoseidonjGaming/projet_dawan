@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace projet_dawan.FormLogic
 {
-    internal class ManageActeur
+    internal class LogicManageActeur
     {
         public FormManageActeur Form { get; set; }
 
         private Acteur currentActeur;
         private ActeurService service = new();
         private List<Acteur> acteurs = new();
-        public ManageActeur(FormManageActeur form)
+        public LogicManageActeur(FormManageActeur form)
         {
             Form = form;
             currentActeur = new Acteur();

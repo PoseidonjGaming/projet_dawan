@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace projet_dawan.FormLogic
 {
-    internal class Accueil
+    internal class LogicAccueil
     {
         private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
         private UserApp user;
         public FormAccueil Form { get; set; }
-        public Accueil(FormAccueil form)
+        public LogicAccueil(FormAccueil form)
         {
             user = Properties.Settings.Default.UserRemain;
             Form = form;
