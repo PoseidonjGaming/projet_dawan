@@ -76,7 +76,7 @@
             // toolStripBibli
             // 
             this.toolStripBibli.Name = "toolStripBibli";
-            this.toolStripBibli.Size = new System.Drawing.Size(177, 26);
+            this.toolStripBibli.Size = new System.Drawing.Size(224, 26);
             this.toolStripBibli.Text = "&Bibliothéque";
             this.toolStripBibli.Click += new System.EventHandler(this.toolStripBibli_Click);
             // 
@@ -87,32 +87,33 @@
             this.toolStripDeleteSerie,
             this.gererLesActeursToolStripMenuItem});
             this.gererToolStripMenuItem.Name = "gererToolStripMenuItem";
-            this.gererToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
+            this.gererToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.gererToolStripMenuItem.Text = "Gérer";
             // 
             // toolStripAddSerie
             // 
             this.toolStripAddSerie.Name = "toolStripAddSerie";
-            this.toolStripAddSerie.Size = new System.Drawing.Size(201, 26);
+            this.toolStripAddSerie.Size = new System.Drawing.Size(224, 26);
             this.toolStripAddSerie.Text = "&AjouterSéries";
             // 
             // toolStripDeleteSerie
             // 
             this.toolStripDeleteSerie.Name = "toolStripDeleteSerie";
-            this.toolStripDeleteSerie.Size = new System.Drawing.Size(201, 26);
+            this.toolStripDeleteSerie.Size = new System.Drawing.Size(224, 26);
             this.toolStripDeleteSerie.Text = "&SupprimerSéries";
+            this.toolStripDeleteSerie.Click += new System.EventHandler(this.toolStripDeleteSerie_Click);
             // 
             // gererLesActeursToolStripMenuItem
             // 
             this.gererLesActeursToolStripMenuItem.Name = "gererLesActeursToolStripMenuItem";
-            this.gererLesActeursToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.gererLesActeursToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.gererLesActeursToolStripMenuItem.Text = "Gérer les acteurs";
             this.gererLesActeursToolStripMenuItem.Click += new System.EventHandler(this.gererLesActeursToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(177, 26);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.quitterToolStripMenuItem.Text = "&Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
