@@ -65,6 +65,7 @@ namespace projet_dawan.FormLogic
             Form.openFileDialogLoad.FileName = $"exports.json";
             Form.openFileDialogLoad.Filter = $"File JSON|*json";
             Form.openFileDialogLoad.Title = $"Load WatchList";
+
             if (Form.openFileDialogLoad.ShowDialog() == DialogResult.OK)
             {
                 List<Serie> list = new List<Serie>();
