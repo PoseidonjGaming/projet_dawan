@@ -93,6 +93,6 @@
         private Label label1;
         private Button btnSupprimer;
         private Button btnAnnuler;
-        public ComboBox cmbBxSerie;
+        private ComboBox cmbBxSerie;
     }
 }
