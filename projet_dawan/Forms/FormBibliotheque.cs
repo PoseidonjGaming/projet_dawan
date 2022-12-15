@@ -16,12 +16,17 @@ namespace projet_dawan
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
 
+            bibli = new(this);
+            bibli.Load(text);
 
+<<<<<<< HEAD
             txtRechercher.Text = text;
 
             bibli = new(this);
             bibli.Load(text);
 
+=======
+>>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -43,8 +48,16 @@ namespace projet_dawan
 
         private void buttonAddWich_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
            bibli.ButtonAddWich_Click();
         }
+=======
+            bibli.ButtonAddWich_Click();
+        }
+
+
+
+>>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
 
       
         private void cmbFiltrer_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,9 +66,12 @@ namespace projet_dawan
         }
 
 
+<<<<<<< HEAD
         
        
 
+=======
+>>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
 
 
     }

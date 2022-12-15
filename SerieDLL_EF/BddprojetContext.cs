@@ -132,7 +132,7 @@ public partial class BddprojetContext : DbContext
             entity.Property(e => e.Resume)
                 .IsUnicode(false)
                 .HasColumnName("resume");
-           
+
             entity.Property(e => e.UrlBa)
                 .HasMaxLength(255)
                 .IsUnicode(false)
@@ -157,7 +157,12 @@ public partial class BddprojetContext : DbContext
             entity.Property(e => e.Roles)
                 .HasColumnName("roles");
             entity.Property(e => e.ToWatch)
+<<<<<<< HEAD
                 .HasColumnName("WatchList");
+=======
+                .HasColumnName("WatchList")
+                ;
+>>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
         });
 
         OnModelCreatingPartial(modelBuilder);

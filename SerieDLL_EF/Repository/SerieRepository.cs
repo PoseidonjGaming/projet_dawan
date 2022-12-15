@@ -21,7 +21,7 @@ namespace SerieDLL_EF.Repository
         public Serie GetById(int id)
         {
             using BddprojetContext context = new BddprojetContext();
-            return context.Series.Where(s => s.Id == id).ToList()[0];
+            return context.Series.Where(s => s.Id == id).SingleOrDefault();
         }
 
         public List<Serie> GetByTxt(string txt)
@@ -30,7 +30,24 @@ namespace SerieDLL_EF.Repository
             return context.Series.Where(s => s.Nom.Contains(txt)).ToList();
         }
 
+<<<<<<< HEAD
        
+=======
+        public List<Serie> Export(List<int> ids)
+        {
+            List<Serie> list = new List<Serie>();
+            using (BddprojetContext context = new())
+            {
+                list = context.Series.ToList();
+            }
+            foreach (Serie serie in list)
+            {
+                //serie.Saisons = SaisonRepository.Export(serie.Id);
+                serie.Personnages = PersonnageRepository.Export(serie.Id);
+            }
+            return list;
+        }
+>>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
 
         public void Add(Serie item)
         {

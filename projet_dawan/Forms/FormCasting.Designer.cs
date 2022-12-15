@@ -145,7 +145,11 @@
         private GroupBox groupBox2;
         public Label labelActeur;
         public Label labelNomPerso;
+<<<<<<< HEAD
         public PictureBox imagePersonnage;
+=======
+        private PictureBox imagePersonnage;
+>>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
         public ListBox listBoxCasting;
         private Label label1;
     }
