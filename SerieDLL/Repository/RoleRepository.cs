@@ -5,13 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projet_dawan.Repository
+namespace SerieDLL.Repository
 {
     public class RoleRepository : Orm
     {
         private string table;
         private List<string> champs = new List<string>() { "titre" };
-        private List<string> values = new List<string>() { "@titre"};
+        private List<string> values = new List<string>() { "@titre" };
         public RoleRepository()
         {
             table = "roles";

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SerieDLL_EF.Models;
 
-namespace projet_dawan.Models;
+namespace SerieDLL_EF;
 
 public partial class BddprojetContext : DbContext
 {

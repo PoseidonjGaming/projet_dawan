@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projet_dawan.Model
+namespace SerieDLL.Model
 {
     [Serializable]
     [DataContract]
@@ -58,7 +58,7 @@ namespace projet_dawan.Model
 
         public Episode()
         {
-            saison_id= new Saison();
+            saison_id = new Saison();
             resume = string.Empty;
             Id = 0;
             nom = string.Empty;

@@ -1,8 +1,7 @@
-﻿using projet_dawan.Models;
+﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
 
-namespace projet_dawan
+namespace SerieDLL_EF.Service
 {
     /*
     * Classe qui hérite de la classe Service et qui type Service pour le type Série
@@ -22,6 +21,6 @@ namespace projet_dawan
             return repo.GetByTxt(text);
         }
 
-      
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using projet_dawan.Forms;
-using projet_dawan.Models;
 using projet_dawan_WinForm;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace projet_dawan.FormLogic
 {
-   
+
     internal class LogicBibliothèque
     {
         public FormBibliotheque Form { get; set; }

@@ -1,12 +1,12 @@
-﻿using projet_dawan.Interface;
-using projet_dawan.Model;
-using projet_dawan.Repository;
+﻿using projet_dawan.DAO;
 using SerieDLL.Interface;
+using SerieDLL.Model;
+using SerieDLL.Repository;
 using System.Data.SqlClient;
 
-namespace projet_dawan.DAO
+namespace SerieDLL.DAO
 {
-    public class UserRoleDAO :  IUserRoleDAO
+    public class UserRoleDAO : IUserRoleDAO
     {
         private string cnx = string.Empty;
         private UserRoleRepository repo = new();
@@ -108,7 +108,7 @@ namespace projet_dawan.DAO
         //Modifie le role du user
         public void Update(UserApp user, Role role, Role oldRole)
         {
-            
+
             string query = repo.SelectId();
             int id = 0;
             using (SqlConnection cnx = new(Cnx))
@@ -120,14 +120,14 @@ namespace projet_dawan.DAO
 
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    
+
                     while (reader.Read())
                     {
                         id = reader.GetInt32(0);
                     }
                 }
 
-                query= repo.Modify();
+                query = repo.Modify();
                 cmd.CommandText = query;
                 cmd = AddParam(cmd, "id", id);
                 cmd = Bind(cmd, user, role);

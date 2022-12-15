@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace projet_dawan.Models;
+namespace SerieDLL_EF.Models;
 
 [Serializable]
 [DataContract]
@@ -21,5 +21,5 @@ public partial class Saison
     public virtual Serie Serie { get; set; } = null!;
 
     [NotMapped]
-    public List<Episode> Episodes { get; set;}
+    public List<Episode> Episodes { get; set; }
 }

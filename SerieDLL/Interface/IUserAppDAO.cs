@@ -1,5 +1,5 @@
 ﻿using projet_dawan.DAO;
-using projet_dawan.Model;
+using SerieDLL.Model;
 
 namespace SerieDLL.Interface
 {
