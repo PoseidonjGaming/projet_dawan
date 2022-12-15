@@ -36,6 +36,8 @@ namespace projet_dawan.FormLogic
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (annuler == DialogResult.Yes)
                 {
+                    SerieService service= new();
+                    service.Delete(SerieList[Form.cmbBxSerie.SelectedIndex]);
                 }
             }
             Form.Close();
