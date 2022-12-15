@@ -147,14 +147,14 @@
 
         #endregion
 
-        public TextBox txtBoxNom;
-        public TextBox txtPrenom;
+        private TextBox txtBoxNom;
+        private TextBox txtPrenom;
         private Label lblNom;
         private Label lblPrenom;
         private GroupBox groupBoxAdd_Update;
         private Button btnSup;
         private Button btnAdd;
-        public ListBox lstBoxActeur;
+        private ListBox lstBoxActeur;
         private Button btnNewActeur;
     }
 }

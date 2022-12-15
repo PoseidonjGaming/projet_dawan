@@ -46,6 +46,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.ajouterEpisodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -85,29 +86,31 @@
             this.gererToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripAddSerie,
             this.toolStripDeleteSerie,
+            this.ajouterEpisodeToolStripMenuItem,
             this.gererLesActeursToolStripMenuItem});
             this.gererToolStripMenuItem.Name = "gererToolStripMenuItem";
             this.gererToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.gererToolStripMenuItem.Text = "Gérer";
+            this.gererToolStripMenuItem.Text = "&Gérer BDD";
             // 
             // toolStripAddSerie
             // 
             this.toolStripAddSerie.Name = "toolStripAddSerie";
             this.toolStripAddSerie.Size = new System.Drawing.Size(224, 26);
-            this.toolStripAddSerie.Text = "&AjouterSéries";
+            this.toolStripAddSerie.Text = "Ajouter Séries";
+            this.toolStripAddSerie.Click += new System.EventHandler(this.toolStripAddSerie_Click);
             // 
             // toolStripDeleteSerie
             // 
             this.toolStripDeleteSerie.Name = "toolStripDeleteSerie";
             this.toolStripDeleteSerie.Size = new System.Drawing.Size(224, 26);
-            this.toolStripDeleteSerie.Text = "&SupprimerSéries";
+            this.toolStripDeleteSerie.Text = "Supprimer Séries";
             this.toolStripDeleteSerie.Click += new System.EventHandler(this.toolStripDeleteSerie_Click);
             // 
             // gererLesActeursToolStripMenuItem
             // 
             this.gererLesActeursToolStripMenuItem.Name = "gererLesActeursToolStripMenuItem";
             this.gererLesActeursToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.gererLesActeursToolStripMenuItem.Text = "Gérer les acteurs";
+            this.gererLesActeursToolStripMenuItem.Text = "Gérer Acteurs";
             this.gererLesActeursToolStripMenuItem.Click += new System.EventHandler(this.gererLesActeursToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
@@ -131,7 +134,7 @@
             // 
             this.toolStripGerer.Name = "toolStripGerer";
             this.toolStripGerer.Size = new System.Drawing.Size(179, 26);
-            this.toolStripGerer.Text = "&Gérer";
+            this.toolStripGerer.Text = "&Mon Compte";
             this.toolStripGerer.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.toolStripGerer.Click += new System.EventHandler(this.toolStripGerer_Click);
             // 
@@ -205,6 +208,13 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // ajouterEpisodeToolStripMenuItem
+            // 
+            this.ajouterEpisodeToolStripMenuItem.Name = "ajouterEpisodeToolStripMenuItem";
+            this.ajouterEpisodeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ajouterEpisodeToolStripMenuItem.Text = "Ajouter Episode";
+            this.ajouterEpisodeToolStripMenuItem.Click += new System.EventHandler(this.ajouterEpisodeToolStripMenuItem_Click);
+            // 
             // FormAccueil
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -236,11 +246,11 @@
         private ToolStripMenuItem toolStripCompte;
         private Label label1;
         private Label label2;
-        public TextBox txtRechercher;
+        private TextBox txtRechercher;
         private ToolStripMenuItem toolStripBibli;
         private ToolStripMenuItem toolStripGerer;
         private ToolStripMenuItem toolStripDeco;
-        public GroupBox groupBox1;
+        private GroupBox groupBox1;
         private Label label3;
         private ToolStripMenuItem quitterToolStripMenuItem;
         private ToolStripMenuItem watchlistToolStripMenuItem;
@@ -249,5 +259,6 @@
         private ToolStripMenuItem toolStripAddSerie;
         private ToolStripMenuItem toolStripDeleteSerie;
         private ToolStripMenuItem gererLesActeursToolStripMenuItem;
+        private ToolStripMenuItem ajouterEpisodeToolStripMenuItem;
     }
 }

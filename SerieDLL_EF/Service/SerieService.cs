@@ -11,11 +11,6 @@ namespace projet_dawan
     {
         public SerieService() : base(new SerieRepository()) { }
 
-        public List<Serie> Export(List<int> toWatch)
-        {
-            return repo.Export(toWatch);
-        }
-
         //Récupère la liste des séries dont le nom contient la chaîne txt
         public List<Serie> GetByTxt(string text)
         {

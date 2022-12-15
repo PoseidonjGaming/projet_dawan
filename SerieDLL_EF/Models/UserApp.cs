@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using SerieDLL_EF.Models;
+﻿using SerieDLL_EF.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,28 +19,13 @@ public partial class UserApp
     [DataMember]
     public string Password { get; set; } = null!;
 
-
+   
 
     [DataMember]
     public Roles Roles { get; set; }
 
-    [DataMember]
-    public string ToWatch { get; set; }
 
     [DataMember]
     [NotMapped]
-    public List<int> ToWatchList { get; set; } = new List<int>();
-
-    public void SetToWatchList(List<Serie> list)
-    {
-        foreach (Serie serie in list)
-        {
-            if (!ToWatchList.Contains(serie.Id))
-            {
-                ToWatchList.Add(serie.Id);
-            }
-        }
-        ToWatch = JsonConvert.SerializeObject(ToWatchList);
-    }
-
+    public List<int> ToWatch { get; set; } = new List<int>();
 }

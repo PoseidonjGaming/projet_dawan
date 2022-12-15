@@ -154,6 +154,7 @@
             this.Controls.Add(this.lblTitre);
             this.Name = "FormBibliotheque";
             this.Text = "PageBibliotheque";
+            this.Load += new System.EventHandler(this.FormBibliotheque_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -165,11 +166,11 @@
         private Label lblTitre;
         private GroupBox groupBox1;
         private Label lblRecherche;
-        public TextBox txtRechercher;
+        private TextBox txtRechercher;
         private Label lblFiltre;
-        public ComboBox cmbFiltrer;
+        private ComboBox cmbFiltrer;
         private Button btnRetour;
-        public ListBox lstBxSerie;
+        private ListBox lstBxSerie;
         private Button btnDetail;
         private Button buttonAddWich;
     }

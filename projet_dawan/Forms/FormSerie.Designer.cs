@@ -167,14 +167,14 @@
 
         #endregion
 
-        public Label lblSerie;
+        private Label lblSerie;
         private GroupBox groupBox1;
-        public PictureBox pictureBoxSerie;
-        public TextBox txtBoxResumeSerie;
-        public LinkLabel linkLblBASerie;
-        public Label lblDateSerie;
+        private PictureBox pictureBoxSerie;
+        private TextBox txtBoxResumeSerie;
+        private LinkLabel linkLblBASerie;
+        private Label lblDateSerie;
         private Button btnCasting;
-        public ListBox lstBoxSaison;
+        private ListBox lstBoxSaison;
         private Button buttonToWatch;
     }
 }

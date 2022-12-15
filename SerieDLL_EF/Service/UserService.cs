@@ -31,8 +31,6 @@ namespace SerieDLL_EF.Service
                 return builder.ToString();
             }
         }
-
-
     }
 }
 
