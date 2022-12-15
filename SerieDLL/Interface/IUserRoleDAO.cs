@@ -1,4 +1,4 @@
-﻿using SerieDLL.Model;
+﻿using projet_dawan.Model;
 
 namespace SerieDLL.Interface
 {

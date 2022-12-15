@@ -1,6 +1,8 @@
-﻿using projet_dawan.Interface;
+﻿using projet_dawan.DAO;
+using projet_dawan.Interface;
+using projet_dawan.Model;
+using projet_dawan.Repository;
 using SerieDLL.Interface;
-using SerieDLL.Model;
 using SerieDLL.Repository;
 using System.Data.SqlClient;
 
@@ -192,6 +194,8 @@ namespace SerieDLL.DAO
 
             return cmd;
         }
+
+        
     }
 
 

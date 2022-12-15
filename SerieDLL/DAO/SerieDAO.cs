@@ -1,6 +1,6 @@
 ﻿using projet_dawan.Interface;
+using projet_dawan.Model;
 using SerieDLL.Interface;
-using SerieDLL.Model;
 using SerieDLL.Repository;
 using System.Data.SqlClient;
 

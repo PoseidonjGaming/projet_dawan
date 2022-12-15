@@ -111,7 +111,6 @@
             this.ajouterEpisodeToolStripMenuItem.Name = "ajouterEpisodeToolStripMenuItem";
             this.ajouterEpisodeToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.ajouterEpisodeToolStripMenuItem.Text = "Ajouter Episode";
-            this.ajouterEpisodeToolStripMenuItem.Click += new System.EventHandler(this.ajouterEpisodeToolStripMenuItem_Click);
             // 
             // gererLesActeursToolStripMenuItem
             // 

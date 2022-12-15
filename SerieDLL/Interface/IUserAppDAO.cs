@@ -1,10 +1,10 @@
 ﻿using projet_dawan.DAO;
-using SerieDLL.Model;
+using projet_dawan.Model;
 
 namespace SerieDLL.Interface
 {
     public interface IUserAppDAO
     {
-        UserApp? GetByLogin(string login); 
+        UserApp GetByLogin(string login); 
     }
 }

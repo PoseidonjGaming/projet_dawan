@@ -11,7 +11,7 @@ namespace SerieDLL_EF.Repository
 {
     public class UserAppRepository: IRepoCRUD<UserApp>
     {
-        public static UserApp GetUser(string login, string password)
+        public UserApp GetUser(string login, string password)
         {
             using(BddprojetContext context= new())
             {
