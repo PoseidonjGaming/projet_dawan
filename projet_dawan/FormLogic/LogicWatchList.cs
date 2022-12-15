@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace projet_dawan.FormLogic
 {
@@ -43,6 +44,11 @@ namespace projet_dawan.FormLogic
 
         public void BtnExportList_Click()
         {
+            Form.saveFileDialogWatchList.InitialDirectory = Directory.GetCurrentDirectory();
+            Form.saveFileDialogWatchList.FileName = $"exports.json";
+            Form.saveFileDialogWatchList.Filter = $"File JSON|*json";
+            Form.saveFileDialogWatchList.Title = $"Save WatchList";
+
             if (Form.saveFileDialogWatchList.ShowDialog() == DialogResult.OK)
             {
                 SerieService service = new();
@@ -55,7 +61,10 @@ namespace projet_dawan.FormLogic
 
         public void Import()
         {
-            
+            Form.openFileDialogLoad.InitialDirectory = Directory.GetCurrentDirectory();
+            Form.openFileDialogLoad.FileName = $"exports.json";
+            Form.openFileDialogLoad.Filter = $"File JSON|*json";
+            Form.openFileDialogLoad.Title = $"Load WatchList";
             if (Form.openFileDialogLoad.ShowDialog() == DialogResult.OK)
             {
                 List<Serie> list = new List<Serie>();
