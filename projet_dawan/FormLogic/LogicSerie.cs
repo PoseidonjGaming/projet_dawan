@@ -61,10 +61,10 @@ namespace projet_dawan.FormLogic
 
         public void ButtonToWatch_Click()
         {
-            if (!Properties.Settings.Default.UserRemain.ToWatch.Contains(Serie.Id))
+            if (!Properties.Settings.Default.UserRemain.ToWatchList.Contains(Serie.Id))
             {
 
-                Properties.Settings.Default.UserRemain.ToWatch.Add(Serie.Id);
+                Properties.Settings.Default.UserRemain.ToWatchList.Add(Serie.Id);
                 Properties.Settings.Default.Save();
             }
         }

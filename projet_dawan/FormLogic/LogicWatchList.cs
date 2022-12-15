@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;
+using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace projet_dawan.FormLogic
         public void Load()
         {
             SerieService service = new();
-            foreach (int serieid in Properties.Settings.Default.UserRemain.ToWatch)
+            foreach (int serieid in Properties.Settings.Default.UserRemain.ToWatchList)
             {
                 Serie serie = service.GetById(serieid);
                 series.Add(serie);
@@ -32,7 +33,7 @@ namespace projet_dawan.FormLogic
 
         public void BtnClearAll_Click()
         {
-            Properties.Settings.Default.UserRemain.ToWatch.Clear();
+            Properties.Settings.Default.UserRemain.ToWatchList.Clear();
             Properties.Settings.Default.Save();
             Form.lstBoxWatchlist.Items.Clear();
         }
@@ -42,7 +43,7 @@ namespace projet_dawan.FormLogic
             if (Form.saveFileDialogWatchList.ShowDialog() == DialogResult.OK)
             {
                 SerieService service = new();
-                List<Serie> list = service.Export(Properties.Settings.Default.UserRemain.ToWatch);
+                List<Serie> list = service.Export(Properties.Settings.Default.UserRemain.ToWatchList);
 
                 File.WriteAllText(Form.saveFileDialogWatchList.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
             }
@@ -53,15 +54,17 @@ namespace projet_dawan.FormLogic
         {
             if (Form.openFileDialogLoad.ShowDialog() == DialogResult.OK)
             {
-                List<Serie> list = new();
+                List<Serie> list = new List<Serie>();
                 using (StreamReader file = File.OpenText(Form.openFileDialogLoad.FileName))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     list = (List<Serie>)serializer.Deserialize(file, typeof(List<Serie>));
                 }
-                Properties.Settings.Default.UserRemain.SetToWatch(list);
+                Properties.Settings.Default.UserRemain.SetToWatchList(list);
                 Properties.Settings.Default.Save();
                 Load();
+                UserService service= new();
+                service.Update(Properties.Settings.Default.UserRemain);
             }
         }
     }

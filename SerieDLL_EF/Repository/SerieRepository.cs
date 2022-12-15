@@ -21,7 +21,7 @@ namespace SerieDLL_EF.Repository
         public Serie GetById(int id)
         {
             using BddprojetContext context = new BddprojetContext();
-            return context.Series.Where(s => s.Id == id).ToList()[0];
+            return context.Series.Where(s => s.Id == id).SingleOrDefault();
         }
 
         public List<Serie> GetByTxt(string txt)
