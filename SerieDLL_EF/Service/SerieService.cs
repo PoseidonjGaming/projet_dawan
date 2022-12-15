@@ -22,5 +22,14 @@ namespace projet_dawan
             return repo.GetByTxt(text);
         }
 
+        public List<Serie> Export(List<int> ids)
+        {
+            List<Serie> list = new();
+            foreach(int id in ids)
+            {
+                list.Add(repo.GetById(id));
+            }
+            return list;
+        }
     }
 }
