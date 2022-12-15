@@ -55,6 +55,7 @@ namespace projet_dawan.FormLogic
 
         public void Import()
         {
+            
             if (Form.openFileDialogLoad.ShowDialog() == DialogResult.OK)
             {
                 List<Serie> list = new List<Serie>();
@@ -63,6 +64,8 @@ namespace projet_dawan.FormLogic
                     JsonSerializer serializer = new JsonSerializer();
                     list = (List<Serie>)serializer.Deserialize(file, typeof(List<Serie>));
                 }
+                Form.lstBoxWatchlist.Items.Clear();
+                Properties.Settings.Default.UserRemain.ToWatchList.Clear();
                 Properties.Settings.Default.UserRemain.SetToWatchList(list);
                 Properties.Settings.Default.Save();
                 Load();

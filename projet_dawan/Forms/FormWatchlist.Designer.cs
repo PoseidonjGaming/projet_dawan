@@ -31,11 +31,9 @@
             this.btnClearAll = new System.Windows.Forms.Button();
             this.btnExportList = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.lstBoxWatchlist = new System.Windows.Forms.ListBox();
             this.saveFileDialogWatchList = new System.Windows.Forms.SaveFileDialog();
-
-            this.btnLoad = new System.Windows.Forms.Button();
-
             this.openFileDialogLoad = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -74,20 +72,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // lstBoxWatchlist
-            // 
-            this.lstBoxWatchlist.FormattingEnabled = true;
-            this.lstBoxWatchlist.ItemHeight = 20;
-            this.lstBoxWatchlist.Location = new System.Drawing.Point(6, 27);
-            this.lstBoxWatchlist.Name = "lstBoxWatchlist";
-            this.lstBoxWatchlist.Size = new System.Drawing.Size(390, 204);
-            this.lstBoxWatchlist.TabIndex = 2;
-            // 
-
-            // openFileDialogLoad
-            // 
-            this.openFileDialogLoad.FileName = "openFileDialog1";
-
             // btnLoad
             // 
             this.btnLoad.Location = new System.Drawing.Point(402, 109);
@@ -96,6 +80,16 @@
             this.btnLoad.TabIndex = 3;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            // 
+            // lstBoxWatchlist
+            // 
+            this.lstBoxWatchlist.FormattingEnabled = true;
+            this.lstBoxWatchlist.ItemHeight = 20;
+            this.lstBoxWatchlist.Location = new System.Drawing.Point(6, 27);
+            this.lstBoxWatchlist.Name = "lstBoxWatchlist";
+            this.lstBoxWatchlist.Size = new System.Drawing.Size(390, 204);
+            this.lstBoxWatchlist.TabIndex = 2;
             // 
             // openFileDialogLoad
             // 

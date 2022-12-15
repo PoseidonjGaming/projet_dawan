@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using projet_dawan.FormLogic;
-using projet_dawan.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 using System;
@@ -41,6 +40,11 @@ namespace projet_dawan
         {
 
             logic.Load();
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            logic.Import();
         }
 
         // possibilité de supprimer l'élément de la listbox séléctionné
