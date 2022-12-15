@@ -27,5 +27,19 @@ public partial class UserApp
 
     [DataMember]
     [NotMapped]
+<<<<<<< HEAD
     public List<int> ToWatch { get; set; } = new List<int>();
+=======
+    public List<int> ToWatchList { get; set; } = new List<int>();
+
+    public void SetToWatchList(List<Serie> list)
+    {
+        foreach(Serie serie in list)
+        {
+            ToWatchList.Add(serie.Id);
+        }
+        ToWatch=JsonConvert.SerializeObject(ToWatchList);
+    }
+
+>>>>>>> parent of fc4ff70 (modif bdd user paryout)
 }

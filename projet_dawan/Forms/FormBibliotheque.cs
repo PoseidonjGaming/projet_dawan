@@ -15,8 +15,14 @@ namespace projet_dawan
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
 
+<<<<<<< HEAD
 
             txtRechercher.Text = text;
+=======
+            bibli = new(this);
+            bibli.Load(text);
+            
+>>>>>>> parent of fc4ff70 (modif bdd user paryout)
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -83,6 +89,7 @@ namespace projet_dawan
             cmbFiltrer.SelectedIndex = 0;
         }
 
+<<<<<<< HEAD
         private void Check()
         {
             List<string> list = new List<string>();
@@ -134,6 +141,9 @@ namespace projet_dawan
                     break;
             }
         }
+=======
+      
+>>>>>>> parent of fc4ff70 (modif bdd user paryout)
 
         private void cmbFiltrer_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -145,6 +155,7 @@ namespace projet_dawan
             }
         }
 
+<<<<<<< HEAD
         private void Populate(List<string> list)
         {
             foreach (string item in list)
@@ -152,6 +163,9 @@ namespace projet_dawan
                 lstBxSerie.Items.Add(item);
             }
         }
+=======
+       
+>>>>>>> parent of fc4ff70 (modif bdd user paryout)
 
 
     }
