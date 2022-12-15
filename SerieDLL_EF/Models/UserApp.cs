@@ -27,17 +27,13 @@ public partial class UserApp
 
     [DataMember]
     public string ToWatch { get; set; }
-
-    
-
-    public string ToWatch { get; set; }
+   
     [DataMember]
     [NotMapped]
     public List<int> ToWatchList { get; set; } = new List<int>();
 
     public void SetToWatchList(List<Serie> list)
     {
-<<<<<<< HEAD
         foreach(Serie serie in list)
         {
             ToWatchList.Add(serie.Id);
@@ -46,16 +42,5 @@ public partial class UserApp
     }
 
 
-=======
-        foreach (Serie serie in list)
-        {
-            if (!ToWatchList.Contains(serie.Id))
-            {
-                ToWatchList.Add(serie.Id);
-            }
-        }
-        ToWatch = JsonConvert.SerializeObject(ToWatchList);
-    }
 
->>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
 }

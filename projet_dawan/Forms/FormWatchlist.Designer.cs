@@ -33,10 +33,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstBoxWatchlist = new System.Windows.Forms.ListBox();
             this.saveFileDialogWatchList = new System.Windows.Forms.SaveFileDialog();
-<<<<<<< HEAD
-=======
+
             this.btnLoad = new System.Windows.Forms.Button();
->>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
+
             this.openFileDialogLoad = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -84,11 +83,11 @@
             this.lstBoxWatchlist.Size = new System.Drawing.Size(390, 204);
             this.lstBoxWatchlist.TabIndex = 2;
             // 
-<<<<<<< HEAD
+
             // openFileDialogLoad
             // 
             this.openFileDialogLoad.FileName = "openFileDialog1";
-=======
+
             // btnLoad
             // 
             this.btnLoad.Location = new System.Drawing.Point(402, 109);
@@ -97,12 +96,10 @@
             this.btnLoad.TabIndex = 3;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // openFileDialogLoad
             // 
             this.openFileDialogLoad.FileName = "openFileDialogLoad";
->>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
             // 
             // FormWatchlist
             // 
@@ -127,10 +124,7 @@
         private GroupBox groupBox1;
         public ListBox lstBoxWatchlist;
         public SaveFileDialog saveFileDialogWatchList;
-<<<<<<< HEAD
-=======
         private Button btnLoad;
->>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
         public OpenFileDialog openFileDialogLoad;
     }
 }
