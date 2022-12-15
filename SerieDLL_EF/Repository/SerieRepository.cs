@@ -30,9 +30,7 @@ namespace SerieDLL_EF.Repository
             return context.Series.Where(s => s.Nom.Contains(txt)).ToList();
         }
 
-<<<<<<< HEAD
-       
-=======
+
         public List<Serie> Export(List<int> ids)
         {
             List<Serie> list = new List<Serie>();
@@ -47,7 +45,7 @@ namespace SerieDLL_EF.Repository
             }
             return list;
         }
->>>>>>> f984640f1965c9eef8b8e8c88742c195a1fc19ce
+
 
         public void Add(Serie item)
         {
