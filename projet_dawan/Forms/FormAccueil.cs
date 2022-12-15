@@ -25,7 +25,7 @@ namespace projet_dawan
             // affiche la page pour ajouter des séries à la base de données (test les droits)
             if (user.Roles == Roles.SuperAdmin)
             {
-                FormAjoutSerie add = new(new Serie());
+                FormAjoutSerie add = new();
 
                 add.ShowDialog();
             }

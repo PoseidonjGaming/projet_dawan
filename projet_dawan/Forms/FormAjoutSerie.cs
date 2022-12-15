@@ -1,36 +1,30 @@
 ﻿using projet_dawan.Models;
+using SerieDLL_EF.Repository;
 
 namespace projet_dawan
 {
     public partial class FormAjoutSerie : Form
     {
-        private Serie serie;
-        private bool ajout = true;
-        public FormAjoutSerie(Serie serie)
+        SerieService serieService = new();
+        public FormAjoutSerie()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            if(serie == null )
-            {
-                this.serie= new Serie();
-            }
-            else
-            {
-                this.serie= serie;
-                btnAjouter.Text= "Modifier";
-                ajout = false;
-            }
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             // vérifier si les champs sont valides puis ajouter la serie à la base de données
-            if (ajout)
+            if (txtNomSerie.Text != null && txtResume.Text != null)
             {
+                Serie serie = new Serie { Nom = txtNomSerie.Text, DateDiff = dateTimeSortie.Value, 
+                    Resume = txtResume.Text, UrlBa = txtUrlBa.Text };
+                serieService.Add(serie);
             }
             else
             {
+                MessageBox.Show("Champ Obligatoir Incorrecte");
             }
             Close();
         }
