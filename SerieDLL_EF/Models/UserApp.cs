@@ -28,4 +28,12 @@ public partial class UserApp
     [DataMember]
     [NotMapped]
     public List<int> ToWatch { get; set; } = new List<int>();
+
+    public void SetToWatch(List<Serie> list)
+    {
+        foreach(Serie serie in list)
+        {
+            ToWatch.Add(serie.Id);
+        }
+    }
 }

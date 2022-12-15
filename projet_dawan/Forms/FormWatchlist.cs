@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.VisualBasic.Devices;
+using Newtonsoft.Json;
 using projet_dawan.FormLogic;
 using projet_dawan.Models;
 using SerieDLL_EF.Repository;
@@ -28,7 +29,7 @@ namespace projet_dawan
 
         private void btnClearAll_Click(object sender, EventArgs e)
         {
-           watchlist.BtnClearAll_Click();
+            watchlist.BtnClearAll_Click();
         }
 
         private void btnExportList_Click(object sender, EventArgs e)
@@ -39,6 +40,11 @@ namespace projet_dawan
         private void FormWatchlist_Load(object sender, EventArgs e)
         {
             watchlist.Load();
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+           watchlist.Import();
         }
 
         // possibilité de supprimer l'élément de la listbox séléctionné

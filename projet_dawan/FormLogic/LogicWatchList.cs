@@ -48,5 +48,21 @@ namespace projet_dawan.FormLogic
             }
 
         }
+
+        public void Import()
+        {
+            if (Form.openFileDialogLoad.ShowDialog() == DialogResult.OK)
+            {
+                List<Serie> list = new();
+                using (StreamReader file = File.OpenText(Form.openFileDialogLoad.FileName))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    list = (List<Serie>)serializer.Deserialize(file, typeof(List<Serie>));
+                }
+                Properties.Settings.Default.UserRemain.SetToWatch(list);
+                Properties.Settings.Default.Save();
+                Load();
+            }
+        }
     }
 }
