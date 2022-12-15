@@ -20,7 +20,7 @@ public partial class UserApp
     [DataMember]
     public string Password { get; set; } = null!;
 
-   
+
 
     [DataMember]
     public Roles Roles { get; set; }
@@ -34,11 +34,14 @@ public partial class UserApp
 
     public void SetToWatchList(List<Serie> list)
     {
-        foreach(Serie serie in list)
+        foreach (Serie serie in list)
         {
-            ToWatchList.Add(serie.Id);
+            if (!ToWatchList.Contains(serie.Id))
+            {
+                ToWatchList.Add(serie.Id);
+            }
         }
-        ToWatch=JsonConvert.SerializeObject(ToWatchList);
+        ToWatch = JsonConvert.SerializeObject(ToWatchList);
     }
 
 }

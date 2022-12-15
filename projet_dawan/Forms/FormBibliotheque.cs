@@ -18,7 +18,7 @@ namespace projet_dawan
 
             bibli = new(this);
             bibli.Load(text);
-            
+
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
@@ -40,23 +40,18 @@ namespace projet_dawan
 
         private void buttonAddWich_Click(object sender, EventArgs e)
         {
-            if (lstBxSerie.SelectedIndex != -1)
-            {
-                //Serie serie = serieList[lstBxSerie.SelectedIndex];
-                //Properties.Settings.Default.UserRemain.ToWatch.Add(serie.Id);
-                //Properties.Settings.Default.Save();
-            }
+            bibli.ButtonAddWich_Click();
         }
 
 
-      
+
 
         private void cmbFiltrer_SelectedIndexChanged(object sender, EventArgs e)
         {
             bibli.CmbFiltrer_SelectedIndexChanged();
         }
 
-       
+
 
 
     }

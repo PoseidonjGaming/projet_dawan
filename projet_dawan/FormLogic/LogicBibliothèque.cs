@@ -80,6 +80,19 @@ namespace projet_dawan.FormLogic
 
             }
         }
+
+        public void ButtonAddWich_Click()
+        {
+            if (Form.lstBxSerie.SelectedIndex != -1)
+            {
+                SerieService serieService = new();
+                Serie serie = serieService.GetById(Ids[Form.lstBxSerie.SelectedIndex]);
+                Properties.Settings.Default.UserRemain.SetToWatchList(new() { serie });
+                Properties.Settings.Default.Save();
+                UserService service = new();
+                service.Update(Properties.Settings.Default.UserRemain);
+            }
+        }
         private void Check()
         {
             List<string> list = new List<string>();
