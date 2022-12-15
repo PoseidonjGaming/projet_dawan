@@ -19,7 +19,7 @@ namespace projet_dawan.FormLogic
         public LogicSerie(FormSerie form)
         {
             Form = form;
-            
+
         }
 
         public void Load(Serie serie)
@@ -64,8 +64,10 @@ namespace projet_dawan.FormLogic
             if (!Properties.Settings.Default.UserRemain.ToWatchList.Contains(Serie.Id))
             {
 
-                Properties.Settings.Default.UserRemain.ToWatchList.Add(Serie.Id);
+                Properties.Settings.Default.UserRemain.SetToWatchList(new() { Serie });
                 Properties.Settings.Default.Save();
+                UserService service = new();
+                service.Update(Properties.Settings.Default.UserRemain);
             }
         }
 

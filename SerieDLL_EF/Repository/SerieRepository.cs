@@ -30,20 +30,7 @@ namespace SerieDLL_EF.Repository
             return context.Series.Where(s => s.Nom.Contains(txt)).ToList();
         }
 
-        public static List<Serie> Export(List<int> ids)
-        {
-            List<Serie> list = new List<Serie>();
-            using (BddprojetContext context = new())
-            {
-                list = context.Series.ToList();
-            }
-            foreach (Serie serie in list)
-            {
-                //serie.Saisons = SaisonRepository.Export(serie.Id);
-                serie.Personnages = PersonnageRepository.Export(serie.Id);
-            }
-            return list;
-        }
+       
 
         public void Add(Serie item)
         {

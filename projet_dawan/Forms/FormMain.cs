@@ -2,14 +2,17 @@ using projet_dawan.Models;
 using SerieDLL_EF.Repository;
 using System.Security.Cryptography;
 using SerieDLL_EF.Service;
+using projet_dawan.FormLogic;
 
 namespace projet_dawan
 {
     public partial class FormMain : Form
     {
+        private LogicMain logicMain;
         public FormMain()
         {
             InitializeComponent();
+            logicMain = new(this);
         }
 
 
@@ -17,62 +20,15 @@ namespace projet_dawan
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-
-            UserApp user = UserAppRepository.GetUser(txtBoxLogin.Text,txtBoxPwd.Text);
-
-            if (checkBox1.Checked)
-            {
-                Properties.Settings.Default.UserRemain = user;
-                Properties.Settings.Default.Save();
-
-            }
-
-            Login(user);
-
-
+            logicMain.BtnConnexion_Click();
         }
-        private void pageAcceuil_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (Properties.Settings.Default.token != string.Empty)
-            {
-                this.Close();
-            }
-            else
-            {
-                txtBoxPwd.Text = string.Empty;
-                txtBoxLogin.Text = string.Empty;
-                this.Show();
-            }
-        }
+
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.UserRemain != null)
-            {
-                UserService service = new UserService();
-                UserApp user = service.GetById( Properties.Settings.Default.UserRemain.Id);
-                
-                Login(user);
-            }
+            logicMain.Load();
         }
 
-        private void Login(UserApp user)
-        {
-            if (user != null)
-            {
-                using (var crypto = new RNGCryptoServiceProvider())
-                {
-                    var bits = (user.Password.Length * 6);
-                    var byte_size = ((bits + 7) / 8);
-                    var bytesarray = new byte[byte_size];
-                    crypto.GetBytes(bytesarray);
-                    Properties.Settings.Default.token = Convert.ToBase64String(bytesarray);
-                }
-                FormAccueil pageAcceuil = new FormAccueil();
-                pageAcceuil.FormClosing += pageAcceuil_FormClosing;
-                this.Hide();
-                pageAcceuil.ShowDialog();
-            }
-        }
+     
     }
 }

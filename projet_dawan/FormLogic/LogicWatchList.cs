@@ -34,7 +34,10 @@ namespace projet_dawan.FormLogic
         public void BtnClearAll_Click()
         {
             Properties.Settings.Default.UserRemain.ToWatchList.Clear();
+            Properties.Settings.Default.UserRemain.ToWatch = string.Empty;
             Properties.Settings.Default.Save();
+            UserService service= new();
+            service.Update(Properties.Settings.Default.UserRemain);
             Form.lstBoxWatchlist.Items.Clear();
         }
 

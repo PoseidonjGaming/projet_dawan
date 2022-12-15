@@ -1,4 +1,5 @@
-﻿using SerieDLL_EF.Models;
+﻿using Newtonsoft.Json;
+using SerieDLL_EF.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -25,11 +26,11 @@ public partial class UserApp
     public Roles Roles { get; set; }
 
 
+    
+
+    public string ToWatch { get; set; }
     [DataMember]
     [NotMapped]
-<<<<<<< HEAD
-    public List<int> ToWatch { get; set; } = new List<int>();
-=======
     public List<int> ToWatchList { get; set; } = new List<int>();
 
     public void SetToWatchList(List<Serie> list)
@@ -41,5 +42,5 @@ public partial class UserApp
         ToWatch=JsonConvert.SerializeObject(ToWatchList);
     }
 
->>>>>>> parent of fc4ff70 (modif bdd user paryout)
+
 }
