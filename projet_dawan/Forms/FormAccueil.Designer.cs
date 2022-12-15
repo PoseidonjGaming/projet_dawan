@@ -31,11 +31,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripBibli = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gererToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripAddSerie = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripDeleteSerie = new System.Windows.Forms.ToolStripMenuItem();
             this.gererLesActeursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripCompte = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripGerer = new System.Windows.Forms.ToolStripMenuItem();
             this.watchlistToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +46,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.ajouterEpisodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -58,8 +59,8 @@
             this.toolStripCompte});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(692, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 3, 0, 3);
+            this.menuStrip1.Size = new System.Drawing.Size(791, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -70,51 +71,54 @@
             this.gererToolStripMenuItem,
             this.quitterToolStripMenuItem});
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(50, 20);
+            this.toolStripMenu.Size = new System.Drawing.Size(60, 24);
             this.toolStripMenu.Text = "&Menu";
             // 
             // toolStripBibli
             // 
             this.toolStripBibli.Name = "toolStripBibli";
-            this.toolStripBibli.Size = new System.Drawing.Size(180, 22);
+            this.toolStripBibli.Size = new System.Drawing.Size(224, 26);
             this.toolStripBibli.Text = "&Bibliothéque";
             this.toolStripBibli.Click += new System.EventHandler(this.toolStripBibli_Click);
-            // 
-            // quitterToolStripMenuItem
-            // 
-            this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.quitterToolStripMenuItem.Text = "&Quitter";
-            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
             // gererToolStripMenuItem
             // 
             this.gererToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripAddSerie,
             this.toolStripDeleteSerie,
+            this.ajouterEpisodeToolStripMenuItem,
             this.gererLesActeursToolStripMenuItem});
             this.gererToolStripMenuItem.Name = "gererToolStripMenuItem";
-            this.gererToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.gererToolStripMenuItem.Text = "Gérer";
+            this.gererToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gererToolStripMenuItem.Text = "&Gérer BDD";
             // 
             // toolStripAddSerie
             // 
             this.toolStripAddSerie.Name = "toolStripAddSerie";
-            this.toolStripAddSerie.Size = new System.Drawing.Size(180, 22);
-            this.toolStripAddSerie.Text = "&AjouterSéries";
+            this.toolStripAddSerie.Size = new System.Drawing.Size(224, 26);
+            this.toolStripAddSerie.Text = "Ajouter Séries";
+            this.toolStripAddSerie.Click += new System.EventHandler(this.toolStripAddSerie_Click);
             // 
             // toolStripDeleteSerie
             // 
             this.toolStripDeleteSerie.Name = "toolStripDeleteSerie";
-            this.toolStripDeleteSerie.Size = new System.Drawing.Size(180, 22);
-            this.toolStripDeleteSerie.Text = "&SupprimerSéries";
+            this.toolStripDeleteSerie.Size = new System.Drawing.Size(224, 26);
+            this.toolStripDeleteSerie.Text = "Supprimer Séries";
+            this.toolStripDeleteSerie.Click += new System.EventHandler(this.toolStripDeleteSerie_Click);
             // 
             // gererLesActeursToolStripMenuItem
             // 
             this.gererLesActeursToolStripMenuItem.Name = "gererLesActeursToolStripMenuItem";
-            this.gererLesActeursToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.gererLesActeursToolStripMenuItem.Text = "Gérer les acteurs";
+            this.gererLesActeursToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gererLesActeursToolStripMenuItem.Text = "Gérer Acteurs";
             this.gererLesActeursToolStripMenuItem.Click += new System.EventHandler(this.gererLesActeursToolStripMenuItem_Click);
+            // 
+            // quitterToolStripMenuItem
+            // 
+            this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.quitterToolStripMenuItem.Text = "&Quitter";
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
             // toolStripCompte
             // 
@@ -123,28 +127,28 @@
             this.watchlistToolStripMenuItem,
             this.toolStripDeco});
             this.toolStripCompte.Name = "toolStripCompte";
-            this.toolStripCompte.Size = new System.Drawing.Size(62, 20);
+            this.toolStripCompte.Size = new System.Drawing.Size(76, 24);
             this.toolStripCompte.Text = "&Compte";
             // 
             // toolStripGerer
             // 
             this.toolStripGerer.Name = "toolStripGerer";
-            this.toolStripGerer.Size = new System.Drawing.Size(144, 22);
-            this.toolStripGerer.Text = "&Gérer";
+            this.toolStripGerer.Size = new System.Drawing.Size(179, 26);
+            this.toolStripGerer.Text = "&Mon Compte";
             this.toolStripGerer.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.toolStripGerer.Click += new System.EventHandler(this.toolStripGerer_Click);
             // 
             // watchlistToolStripMenuItem
             // 
             this.watchlistToolStripMenuItem.Name = "watchlistToolStripMenuItem";
-            this.watchlistToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
+            this.watchlistToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
             this.watchlistToolStripMenuItem.Text = "&Watchlist";
             this.watchlistToolStripMenuItem.Click += new System.EventHandler(this.watchlistToolStripMenuItem_Click);
             // 
             // toolStripDeco
             // 
             this.toolStripDeco.Name = "toolStripDeco";
-            this.toolStripDeco.Size = new System.Drawing.Size(144, 22);
+            this.toolStripDeco.Size = new System.Drawing.Size(179, 26);
             this.toolStripDeco.Text = "&Deconnexion";
             this.toolStripDeco.Click += new System.EventHandler(this.toolStripDeco_Click);
             // 
@@ -152,9 +156,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(361, 24);
+            this.label1.Location = new System.Drawing.Point(413, 32);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 32);
+            this.label1.Size = new System.Drawing.Size(139, 41);
             this.label1.TabIndex = 1;
             this.label1.Text = "ACCEUIL";
             // 
@@ -162,28 +166,25 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(190, 60);
+            this.label2.Location = new System.Drawing.Point(217, 80);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 19);
+            this.label2.Size = new System.Drawing.Size(97, 23);
             this.label2.TabIndex = 2;
             this.label2.Text = "Rechercher :";
             // 
             // txtRechercher
             // 
-            this.txtRechercher.Location = new System.Drawing.Point(280, 58);
-            this.txtRechercher.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRechercher.Location = new System.Drawing.Point(320, 77);
             this.txtRechercher.Name = "txtRechercher";
-            this.txtRechercher.Size = new System.Drawing.Size(265, 23);
+            this.txtRechercher.Size = new System.Drawing.Size(302, 27);
             this.txtRechercher.TabIndex = 3;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Location = new System.Drawing.Point(10, 84);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(11, 112);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(671, 209);
+            this.groupBox1.Size = new System.Drawing.Size(767, 279);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             // 
@@ -191,28 +192,34 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(5, 15);
+            this.label3.Location = new System.Drawing.Point(6, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 20);
+            this.label3.Size = new System.Drawing.Size(231, 25);
             this.label3.TabIndex = 0;
             this.label3.Text = "Dernières séries ajoutées :";
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(549, 58);
-            this.btnSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSearch.Location = new System.Drawing.Point(627, 77);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(82, 22);
+            this.btnSearch.Size = new System.Drawing.Size(94, 29);
             this.btnSearch.TabIndex = 5;
             this.btnSearch.Text = "Rechercher";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
+            // ajouterEpisodeToolStripMenuItem
+            // 
+            this.ajouterEpisodeToolStripMenuItem.Name = "ajouterEpisodeToolStripMenuItem";
+            this.ajouterEpisodeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ajouterEpisodeToolStripMenuItem.Text = "Ajouter Episode";
+            this.ajouterEpisodeToolStripMenuItem.Click += new System.EventHandler(this.ajouterEpisodeToolStripMenuItem_Click);
+            // 
             // FormAccueil
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(692, 302);
+            this.ClientSize = new System.Drawing.Size(791, 403);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtRechercher);
@@ -220,7 +227,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormAccueil";
             this.Text = "PageAcceuil";
             this.Load += new System.EventHandler(this.PageAcceuil_Load);
@@ -253,5 +259,6 @@
         private ToolStripMenuItem toolStripAddSerie;
         private ToolStripMenuItem toolStripDeleteSerie;
         private ToolStripMenuItem gererLesActeursToolStripMenuItem;
+        private ToolStripMenuItem ajouterEpisodeToolStripMenuItem;
     }
 }

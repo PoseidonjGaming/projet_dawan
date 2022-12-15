@@ -25,9 +25,9 @@ namespace projet_dawan.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=P7710-2VGQK72\\SQLEXPRESS;Integrated Security=True;Connect Timeout=30;" +
-            "Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubn" +
-            "etFailover=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=P7710-2VGQK72\\SQLEXPRESS;Initial Catalog=serie_list;Integrated Securi" +
+            "ty=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;Applicatio" +
+            "nIntent=ReadWrite;MultiSubnetFailover=False")]
         public string Connection {
             get {
                 return ((string)(this["Connection"]));

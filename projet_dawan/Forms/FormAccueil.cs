@@ -22,20 +22,32 @@ namespace projet_dawan
 
         private void toolStripAddSerie_Click(object sender, EventArgs e)
         {
-            // affiche la page pour ajouter des séries à la base de données
-            // ajouter If pour vérifier si le compte à les droits
-            FormAjoutSerie add = new(new Serie());
+            // affiche la page pour ajouter des séries à la base de données (test les droits)
+            if (user.Roles == Roles.SuperAdmin)
+            {
+                FormAjoutSerie add = new(new Serie());
 
-            add.ShowDialog();
+                add.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Pas les droits");
+            }
         }
 
         private void toolStripDeleteSerie_Click(object sender, EventArgs e)
         {
-            // affiche la page pour supprimer des séries à la base de données
-            // ajouter If pour vérifier si le compte à les droits
-            FormSupprimerSeries supr = new();
+            // affiche la page pour supprimer des séries à la base de données (test les droits)
+            if (user.Roles == Roles.SuperAdmin)
+            {
+                FormSupprimerSeries supr = new();
 
-            supr.ShowDialog();
+                supr.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Pas les droits");
+            }
         }
 
         private void toolStripBibli_Click(object sender, EventArgs e)
@@ -178,9 +190,21 @@ namespace projet_dawan
             }
             else
             {
-                MessageBox.Show("Test");
+                MessageBox.Show("Pas les droits");
+            }          
+        }
+
+        private void ajouterEpisodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (user.Roles == Roles.SuperAdmin)
+            {
+                FormAjoutEpisode formAjoutEpisode = new();
+                formAjoutEpisode.ShowDialog(this);
             }
-           
+            else
+            {
+                MessageBox.Show("Pas les droits");
+            }
         }
     }
 }
