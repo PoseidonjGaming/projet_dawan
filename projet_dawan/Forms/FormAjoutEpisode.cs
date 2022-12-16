@@ -52,10 +52,11 @@ namespace projet_dawan.Forms
         private void btnAjouter_Click(object sender, EventArgs e)
         {
             SaisonService saisonService = new SaisonService();
+            List<Saison> saisonList = saisonService.GetSaisonsBySerie(serieList[cmbSerie.SelectedIndex].Id);
             if (txtBoxNom.Text != string.Empty && txtBoxResume.Text != string.Empty
                 && numSaison.Value != 0)
             {
-                Saison saison = (Saison)saisonService.GetSaisonsBySerie(serieList[cmbSerie.SelectedIndex].Id).Where(e => e.Numero == numSaison.Value);
+                Saison saison = (Saison)saisonList.Where(e => e.Numero == numSaison.Value);
                 saison.NbEpisode++;
                 saisonService.Update(saison);
                 Episode ep = new()
@@ -74,9 +75,10 @@ namespace projet_dawan.Forms
                 {
                     NbEpisode = 0,
                     SerieId = serieList[cmbSerie.SelectedIndex].Id,
-                    Numero = 1
+                    Numero = saisonList.Max(e => e.Numero)
                 };
-                saisonService.Update(saison);
+                saison.Numero++;
+                saisonService.Add(saison);
             }
         }
 
