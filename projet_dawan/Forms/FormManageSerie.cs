@@ -22,12 +22,12 @@ namespace projet_dawan
             if (txtNomSerie.Text != string.Empty && txtResume.Text != string.Empty
                 && txtPathAffiche.Text != string.Empty)
             {
-                if(lstBoxSerie.SelectedIndex != -1)
+                if (lstBoxSerie.SelectedIndex != -1)
                 {
                     Serie serie = serieList[lstBoxSerie.SelectedIndex];
-                    serie.Affiche=Path.GetFileName(txtNomSerie.Text);
-                    serie.Nom=txtNomSerie.Text;
-                    serie.Resume=txtResume.Text;
+                    serie.Affiche = Path.GetFileName(txtPathAffiche.Text);
+                    serie.Nom = txtNomSerie.Text;
+                    serie.Resume = txtResume.Text;
                     serie.UrlBa = txtUrlBa.Text;
                     serie.DateDiff = dateTimeSortie.Value;
                     serieService.Update(serie);
@@ -43,9 +43,10 @@ namespace projet_dawan
                         Affiche = Path.GetFileName(txtPathAffiche.Text)
 
                     };
+                    File.Copy(txtPathAffiche.Text, Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche);
                     serieService.Add(serie);
                 }
-                
+                Populate();
             }
             else
             {
@@ -55,11 +56,7 @@ namespace projet_dawan
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-            txtNomSerie.Clear();
-            txtPathAffiche.Clear();
-            txtUrlBa.Clear();
-            txtResume.Clear();
-            lstBoxSerie.SelectedIndex= -1;
+            Clear();
             btnAjouter.Text = "Ajouter";
         }
 
@@ -70,6 +67,7 @@ namespace projet_dawan
             if (annuler == DialogResult.Yes)
             {
                 SerieService service = new();
+                File.Delete(Directory.GetCurrentDirectory() + "\\Photo\\" + serieList[lstBoxSerie.SelectedIndex].Affiche);
                 service.Delete(serieList[lstBoxSerie.SelectedIndex]);
             }
             Populate();
@@ -80,8 +78,18 @@ namespace projet_dawan
             Populate();
         }
 
+        private void Clear()
+        {
+            txtNomSerie.Clear();
+            txtPathAffiche.Clear();
+            txtUrlBa.Clear();
+            txtResume.Clear();
+            lstBoxSerie.SelectedIndex = -1;
+        }
+
         private void Populate()
         {
+            Clear();
             lstBoxSerie.Items.Clear();
             serieList = serieService.GetAll();
             foreach (Serie serie in serieList)
@@ -100,22 +108,22 @@ namespace projet_dawan
 
         private void lstBoxSerie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(lstBoxSerie.SelectedIndex != -1)
+            if (lstBoxSerie.SelectedIndex != -1)
             {
                 Serie serie = serieList[lstBoxSerie.SelectedIndex];
                 txtNomSerie.Text = serie.Nom;
-                if(File.Exists(Directory.GetCurrentDirectory()+"\\Photo\\"+serie.Affiche))
+                if (File.Exists(Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche))
                 {
                     txtPathAffiche.Text += Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
                 }
                 else
                 {
-                    txtPathAffiche.Text =serie.Affiche;
+                    txtPathAffiche.Text = serie.Affiche;
                 }
 
                 txtResume.Text = serie.Resume;
-                txtUrlBa.Text= serie.UrlBa;
-                dateTimeSortie.Value= (DateTime)serie.DateDiff;
+                txtUrlBa.Text = serie.UrlBa;
+                dateTimeSortie.Value = (DateTime)serie.DateDiff;
                 btnAjouter.Text = "Modifier";
             }
         }
