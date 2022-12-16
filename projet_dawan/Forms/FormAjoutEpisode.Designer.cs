@@ -42,6 +42,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
+            this.btnSup = new System.Windows.Forms.Button();
+            this.lstBoxEpisode = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSaison)).BeginInit();
             this.SuspendLayout();
@@ -174,9 +176,9 @@
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(46, 445);
+            this.btnAjouter.Location = new System.Drawing.Point(19, 430);
             this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(130, 52);
+            this.btnAjouter.Size = new System.Drawing.Size(105, 48);
             this.btnAjouter.TabIndex = 1;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
@@ -184,18 +186,40 @@
             // 
             // btnAnnuler
             // 
-            this.btnAnnuler.Location = new System.Drawing.Point(217, 445);
+            this.btnAnnuler.Location = new System.Drawing.Point(130, 430);
             this.btnAnnuler.Name = "btnAnnuler";
-            this.btnAnnuler.Size = new System.Drawing.Size(130, 52);
+            this.btnAnnuler.Size = new System.Drawing.Size(113, 48);
             this.btnAnnuler.TabIndex = 2;
             this.btnAnnuler.Text = "Annuler";
             this.btnAnnuler.UseVisualStyleBackColor = true;
+            // 
+            // btnSup
+            // 
+            this.btnSup.Location = new System.Drawing.Point(249, 430);
+            this.btnSup.Name = "btnSup";
+            this.btnSup.Size = new System.Drawing.Size(159, 48);
+            this.btnSup.TabIndex = 3;
+            this.btnSup.Text = "Supprimer";
+            this.btnSup.UseVisualStyleBackColor = true;
+            this.btnSup.Click += new System.EventHandler(this.btnSup_Click);
+            // 
+            // lstBoxEpisode
+            // 
+            this.lstBoxEpisode.FormattingEnabled = true;
+            this.lstBoxEpisode.ItemHeight = 20;
+            this.lstBoxEpisode.Location = new System.Drawing.Point(414, 12);
+            this.lstBoxEpisode.Name = "lstBoxEpisode";
+            this.lstBoxEpisode.Size = new System.Drawing.Size(271, 464);
+            this.lstBoxEpisode.TabIndex = 4;
+            this.lstBoxEpisode.SelectedIndexChanged += new System.EventHandler(this.lstBoxEpisode_SelectedIndexChanged);
             // 
             // FormAjoutEpisode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 524);
+            this.ClientSize = new System.Drawing.Size(702, 488);
+            this.Controls.Add(this.lstBoxEpisode);
+            this.Controls.Add(this.btnSup);
             this.Controls.Add(this.btnAnnuler);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.groupBox1);
@@ -225,5 +249,7 @@
         private Button btnAjouter;
         private Button btnAnnuler;
         private NumericUpDown numSaison;
+        private Button btnSup;
+        private ListBox lstBoxEpisode;
     }
 }
