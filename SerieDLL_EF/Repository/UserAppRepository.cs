@@ -1,5 +1,5 @@
-﻿using projet_dawan.Models;
-using SerieDLL_EF.Interface;
+﻿using SerieDLL_EF.Interface;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
@@ -11,12 +11,12 @@ namespace SerieDLL_EF.Repository
 {
     public class UserAppRepository: IRepoCRUD<UserApp>
     {
-        public static UserApp GetUser(string login, string password)
+        public UserApp GetUser(string login, string password)
         {
             using(BddprojetContext context= new())
             {
-                UserService service = new();
-                return context.UserApps.Where(u => u.Login == login && u.Password == service.HashPassword(password)).SingleOrDefault();
+                
+                return context.UserApps.Where(u => u.Login == login && u.Password == password).SingleOrDefault();
             }
         }
 

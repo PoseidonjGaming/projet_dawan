@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using projet_dawan.Models;
 using SerieDLL_EF.Service;
 using projet_dawan.Forms;
+using SerieDLL_EF.Models;
 
 namespace projet_dawan.FormLogic
 {

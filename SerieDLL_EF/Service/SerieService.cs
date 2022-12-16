@@ -1,8 +1,7 @@
-﻿using projet_dawan.Models;
+﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
 
-namespace projet_dawan
+namespace SerieDLL_EF.Service
 {
     /*
     * Classe qui hérite de la classe Service et qui type Service pour le type Série
@@ -11,9 +10,9 @@ namespace projet_dawan
     {
         public SerieService() : base(new SerieRepository()) { }
 
-        public List<Serie> Export(List<int> toWatch)
+        public List<Serie> ExportWatchList(List<int> toWatch)
         {
-            return repo.Export(toWatch);
+            return repo.ExportWatchList(toWatch);
         }
 
         //Récupère la liste des séries dont le nom contient la chaîne txt
@@ -21,5 +20,7 @@ namespace projet_dawan
         {
             return repo.GetByTxt(text);
         }
+
+
     }
 }

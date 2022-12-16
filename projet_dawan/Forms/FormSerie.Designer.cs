@@ -156,7 +156,6 @@
             this.Name = "FormSerie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Serie";
-            this.Load += new System.EventHandler(this.FormSerie_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSerie)).EndInit();

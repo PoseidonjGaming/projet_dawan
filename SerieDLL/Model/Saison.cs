@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projet_dawan.Model
+namespace SerieDLL.Model
 {
     [Serializable]
     [DataContract]
@@ -14,7 +14,7 @@ namespace projet_dawan.Model
         [DataMember]
         private int id;
         [DataMember]
-        private Int16 num;
+        private short num;
         [DataMember]
         private int nb_episode;
         [DataMember]
@@ -34,7 +34,7 @@ namespace projet_dawan.Model
         }
 
 
-        public Int16 Num
+        public short Num
         {
             get { return num; }
             set { num = value; }
@@ -55,7 +55,7 @@ namespace projet_dawan.Model
             Serie serie_Id_in
            )
         {
-            
+
             Num = num_in;
             NbEpisode = nb_episode_in;
             SerieId = serie_Id_in;

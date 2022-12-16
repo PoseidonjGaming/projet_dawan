@@ -29,30 +29,31 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.numSaison = new System.Windows.Forms.NumericUpDown();
+            this.cmbSerie = new System.Windows.Forms.ComboBox();
+            this.datePremDiff = new System.Windows.Forms.DateTimePicker();
+            this.txtBoxResume = new System.Windows.Forms.TextBox();
+            this.txtBoxNom = new System.Windows.Forms.TextBox();
+            this.checkBoxLastSeason = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnAjouter = new System.Windows.Forms.Button();
             this.btnAnnuler = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSaison)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.numSaison);
+            this.groupBox1.Controls.Add(this.cmbSerie);
+            this.groupBox1.Controls.Add(this.datePremDiff);
+            this.groupBox1.Controls.Add(this.txtBoxResume);
+            this.groupBox1.Controls.Add(this.txtBoxNom);
+            this.groupBox1.Controls.Add(this.checkBoxLastSeason);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
@@ -64,41 +65,67 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // label1
+            // numSaison
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nom :";
+            this.numSaison.Location = new System.Drawing.Point(71, 109);
+            this.numSaison.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numSaison.Name = "numSaison";
+            this.numSaison.Size = new System.Drawing.Size(304, 27);
+            this.numSaison.TabIndex = 10;
+            this.numSaison.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.numSaison.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // label2
+            // cmbSerie
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 111);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 20);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Saison :";
+            this.cmbSerie.FormattingEnabled = true;
+            this.cmbSerie.Location = new System.Drawing.Point(71, 64);
+            this.cmbSerie.Name = "cmbSerie";
+            this.cmbSerie.Size = new System.Drawing.Size(304, 28);
+            this.cmbSerie.TabIndex = 9;
+            this.cmbSerie.SelectedIndexChanged += new System.EventHandler(this.cmbSerie_SelectedIndexChanged);
             // 
-            // label3
+            // datePremDiff
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 202);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 20);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Resumé :";
+            this.datePremDiff.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datePremDiff.Location = new System.Drawing.Point(143, 156);
+            this.datePremDiff.Name = "datePremDiff";
+            this.datePremDiff.Size = new System.Drawing.Size(232, 27);
+            this.datePremDiff.TabIndex = 8;
             // 
-            // label4
+            // txtBoxResume
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 67);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 20);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Série :";
+            this.txtBoxResume.Location = new System.Drawing.Point(7, 225);
+            this.txtBoxResume.Multiline = true;
+            this.txtBoxResume.Name = "txtBoxResume";
+            this.txtBoxResume.Size = new System.Drawing.Size(368, 147);
+            this.txtBoxResume.TabIndex = 7;
+            // 
+            // txtBoxNom
+            // 
+            this.txtBoxNom.Location = new System.Drawing.Point(71, 20);
+            this.txtBoxNom.Name = "txtBoxNom";
+            this.txtBoxNom.Size = new System.Drawing.Size(304, 27);
+            this.txtBoxNom.TabIndex = 6;
+            // 
+            // checkBoxLastSeason
+            // 
+            this.checkBoxLastSeason.AutoSize = true;
+            this.checkBoxLastSeason.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBoxLastSeason.Location = new System.Drawing.Point(7, 378);
+            this.checkBoxLastSeason.Name = "checkBoxLastSeason";
+            this.checkBoxLastSeason.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkBoxLastSeason.Size = new System.Drawing.Size(230, 24);
+            this.checkBoxLastSeason.TabIndex = 5;
+            this.checkBoxLastSeason.Text = "Dernier épisode de la saison ?";
+            this.checkBoxLastSeason.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -109,52 +136,41 @@
             this.label5.TabIndex = 4;
             this.label5.Text = "Date de diffusion :";
             // 
-            // checkBox1
+            // label4
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(7, 378);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(230, 24);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "Dernier épisode de la saison ?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 20);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Série :";
             // 
-            // textBox1
+            // label3
             // 
-            this.textBox1.Location = new System.Drawing.Point(71, 20);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(304, 27);
-            this.textBox1.TabIndex = 6;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 202);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 20);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Resumé :";
             // 
-            // textBox2
+            // label2
             // 
-            this.textBox2.Location = new System.Drawing.Point(7, 225);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(368, 147);
-            this.textBox2.TabIndex = 7;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 20);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Saison :";
             // 
-            // dateTimePicker1
+            // label1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(143, 156);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(232, 27);
-            this.dateTimePicker1.TabIndex = 8;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(71, 64);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(304, 28);
-            this.comboBox1.TabIndex = 9;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(71, 111);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(304, 27);
-            this.textBox3.TabIndex = 10;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nom :";
             // 
             // btnAjouter
             // 
@@ -164,6 +180,7 @@
             this.btnAjouter.TabIndex = 1;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // btnAnnuler
             // 
@@ -184,8 +201,10 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FormAjoutEpisode";
             this.Text = "Ajouter un episode";
+            this.Load += new System.EventHandler(this.FormAjoutEpisode_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numSaison)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -193,12 +212,11 @@
         #endregion
 
         private GroupBox groupBox1;
-        private TextBox textBox3;
-        private ComboBox comboBox1;
-        private DateTimePicker dateTimePicker1;
-        private TextBox textBox2;
-        private TextBox textBox1;
-        private CheckBox checkBox1;
+        private ComboBox cmbSerie;
+        private DateTimePicker datePremDiff;
+        private TextBox txtBoxResume;
+        private TextBox txtBoxNom;
+        private CheckBox checkBoxLastSeason;
         private Label label5;
         private Label label4;
         private Label label3;
@@ -206,5 +224,6 @@
         private Label label1;
         private Button btnAjouter;
         private Button btnAnnuler;
+        private NumericUpDown numSaison;
     }
 }

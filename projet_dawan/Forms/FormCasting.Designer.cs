@@ -145,7 +145,7 @@
         private GroupBox groupBox2;
         public Label labelActeur;
         public Label labelNomPerso;
-        private PictureBox imagePersonnage;
+        public PictureBox imagePersonnage;
         public ListBox listBoxCasting;
         private Label label1;
     }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SerieDLL_EF.Models;
 
-namespace projet_dawan.Models;
+namespace SerieDLL_EF;
 
 public partial class BddprojetContext : DbContext
 {
@@ -27,7 +28,7 @@ public partial class BddprojetContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Data Source=P7710-2VGQK72\\SQLEXPRESS;Initial Catalog=serie_list;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        optionsBuilder.UseSqlServer("Data Source=P3570-7D6Q;Initial Catalog=serie_list;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -157,8 +158,9 @@ public partial class BddprojetContext : DbContext
             entity.Property(e => e.Roles)
                 .HasColumnName("roles");
             entity.Property(e => e.ToWatch)
-                .HasColumnName("WatchList")
-                ;
+                .HasColumnName("WatchList");
+
+
         });
 
         OnModelCreatingPartial(modelBuilder);
