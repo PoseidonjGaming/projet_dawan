@@ -20,6 +20,8 @@ namespace projet_dawan
 
         private void toolStripAddSerie_Click(object sender, EventArgs e)
         {
+            FormManageSerie form=new FormManageSerie();
+            form.ShowDialog(this);
         }
 
         private void toolStripDeleteSerie_Click(object sender, EventArgs e)
