@@ -31,22 +31,7 @@ namespace SerieDLL_EF.Repository
             return context.Saisons.Where(sa => sa.SerieId == id).ToList();
         }
 
-        public  List<Saison> Export(int serie_id)
-        {
-            List<Saison> list = new();
-            EpisodeService service = new EpisodeService(); ;
-            using (BddprojetContext context = new BddprojetContext())
-            {
-                list = context.Saisons.Where(sa => sa.SerieId == serie_id).ToList();
-            }
-
-            foreach (Saison saison in list)
-            {
-                saison.Episodes = service.GetBySaison(saison.Id);
-            }
-
-            return list;
-        }
+      
 
 
         public void Add(Saison item)
