@@ -1,4 +1,5 @@
-﻿using SerieDLL_EF.Interface;
+﻿using projet_dawan.Models;
+using SerieDLL_EF.Interface;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;

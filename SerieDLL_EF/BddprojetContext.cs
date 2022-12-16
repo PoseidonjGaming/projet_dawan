@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using projet_dawan.Models;
 using SerieDLL_EF.Models;
 
 namespace SerieDLL_EF;
