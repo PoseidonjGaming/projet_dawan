@@ -1,5 +1,5 @@
-﻿using projet_dawan.Models;
-using SerieDLL_EF.Interface;
+﻿using SerieDLL_EF.Interface;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
@@ -30,18 +30,17 @@ namespace SerieDLL_EF.Repository
             return context.Series.Where(s => s.Nom.Contains(txt)).ToList();
         }
 
-        public List<Serie> Export(List<int> ids)
+        public List<Serie> ExportWatchList(List<int> ids)
         {
             List<Serie> list = new List<Serie>();
             using (BddprojetContext context = new())
             {
-                list = context.Series.ToList();
+                foreach(int id in ids)
+                {
+                    list.Add(GetById(id));
+                }
             }
-            foreach (Serie serie in list)
-            {
-                //serie.Saisons = SaisonRepository.Export(serie.Id);
-                serie.Personnages = PersonnageRepository.Export(serie.Id);
-            }
+          
             return list;
         }
 

@@ -1,11 +1,10 @@
 ﻿using Newtonsoft.Json;
-using SerieDLL_EF.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace projet_dawan.Models;
+namespace SerieDLL_EF.Models;
 
 [Serializable]
 [DataContract]
@@ -36,12 +35,11 @@ public partial class UserApp
     {
         foreach (Serie serie in list)
         {
-            if (!ToWatchList.Contains(serie.Id))
-            {
-                ToWatchList.Add(serie.Id);
-            }
+            ToWatchList.Add(serie.Id);
         }
         ToWatch = JsonConvert.SerializeObject(ToWatchList);
     }
+
+
 
 }

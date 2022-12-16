@@ -1,6 +1,6 @@
 ﻿using projet_dawan.Forms;
-using projet_dawan.Models;
 using projet_dawan_WinForm;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace projet_dawan.FormLogic
 {
-    internal class Episodes
+    internal class LogicEpisodes
     {
         private Saison saison;
         private List<Episode> episodes = new List<Episode>();
         private EpisodeService service = new();
         public FormEpisode Form { get; set; }
 
-        public Episodes(FormEpisode form)
+        public LogicEpisodes(FormEpisode form)
         {
             Form = form;
         }

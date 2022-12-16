@@ -4,13 +4,13 @@ using projet_dawan.Repository;
 using SerieDLL.Interface;
 using System.Data.SqlClient;
 
-namespace projet_dawan.DAO
+namespace SerieDLL.DAO
 {
     public class ActeurDAO : IDAOBase<Acteur>
     {
         private string cnx = string.Empty;
         private ActeurRepository repo = new();
-        
+
 
         public string Cnx
         {
@@ -21,7 +21,7 @@ namespace projet_dawan.DAO
         public ActeurDAO(string cnx)
         {
             Cnx = cnx;
-            
+
         }
 
         //Ajoute un acteur dans la base
@@ -99,7 +99,7 @@ namespace projet_dawan.DAO
 
             return list[0];
         }
-       
+
         //Exécute les commandes de type insert, delete et update
         public static void Execute(string query, SqlConnection cnx, SqlCommand cmd)
         {

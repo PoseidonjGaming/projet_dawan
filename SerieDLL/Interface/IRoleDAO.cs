@@ -1,6 +1,6 @@
-﻿using projet_dawan.Model;
+﻿using SerieDLL.Model;
 
-namespace projet_dawan.Interface
+namespace SerieDLL.Interface
 {
     public interface IRoleDAO
     {

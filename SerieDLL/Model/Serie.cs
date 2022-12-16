@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projet_dawan.Model
+namespace SerieDLL.Model
 {
     [Serializable]
     [DataContract]

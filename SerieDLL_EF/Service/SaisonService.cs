@@ -1,4 +1,4 @@
-﻿using projet_dawan.Models;
+﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using System;
 using System.Collections.Generic;
@@ -23,5 +23,7 @@ namespace SerieDLL_EF.Service
         {
             return repo.GetSaisonsBySerie(id);
         }
+
+       
     }
 }

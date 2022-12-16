@@ -1,5 +1,4 @@
-﻿using projet_dawan.Models;
-using SerieDLL_EF.Models;
+﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
@@ -29,7 +28,7 @@ namespace projet_dawan
             user.Password= "password";
             user.Roles = Roles.User;
             UserService service = new();
-            user.Password= service.HashPassword(user.Password);
+            user.Password= UserService.HashPassword(user.Password);
             service.Add(user);
         }
     }

@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace projet_dawan.Models;
+namespace SerieDLL_EF.Models;
 
-[Serializable]
-[DataContract]
 public partial class Episode
 {
-    [DataMember]
     public int Id { get; set; }
 
     public int SaisonId { get; set; }

@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using projet_dawan.Models;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 using System;
@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace projet_dawan.FormLogic
 {
@@ -29,6 +30,17 @@ namespace projet_dawan.FormLogic
                 series.Add(serie);
                 Form.lstBoxWatchlist.Items.Add(serie.Nom);
             }
+
+
+            Form.openFileDialogLoad.InitialDirectory = Directory.GetCurrentDirectory();
+            Form.openFileDialogLoad.FileName = string.Empty;
+            Form.openFileDialogLoad.Filter = "File JSON|*json";
+            Form.openFileDialogLoad.Title = "Load WatchList";
+
+            Form.saveFileDialogWatchList.InitialDirectory = Directory.GetCurrentDirectory();
+            Form.saveFileDialogWatchList.FileName = "exports.json";
+            Form.saveFileDialogWatchList.Filter = "File JSON|*json";
+            Form.saveFileDialogWatchList.Title = "Save WatchList";
         }
 
         public void BtnClearAll_Click()
@@ -43,10 +55,12 @@ namespace projet_dawan.FormLogic
 
         public void BtnExportList_Click()
         {
+            
+
             if (Form.saveFileDialogWatchList.ShowDialog() == DialogResult.OK)
             {
                 SerieService service = new();
-                List<Serie> list = service.Export(Properties.Settings.Default.UserRemain.ToWatchList);
+                List<Serie> list = service.ExportWatchList(Properties.Settings.Default.UserRemain.ToWatchList);
 
                 File.WriteAllText(Form.saveFileDialogWatchList.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
             }
@@ -55,6 +69,7 @@ namespace projet_dawan.FormLogic
 
         public void Import()
         {
+
             if (Form.openFileDialogLoad.ShowDialog() == DialogResult.OK)
             {
                 List<Serie> list = new List<Serie>();
@@ -63,6 +78,8 @@ namespace projet_dawan.FormLogic
                     JsonSerializer serializer = new JsonSerializer();
                     list = (List<Serie>)serializer.Deserialize(file, typeof(List<Serie>));
                 }
+                Form.lstBoxWatchlist.Items.Clear();
+                Properties.Settings.Default.UserRemain.ToWatchList.Clear();
                 Properties.Settings.Default.UserRemain.SetToWatchList(list);
                 Properties.Settings.Default.Save();
                 Load();

@@ -1,4 +1,4 @@
-﻿using projet_dawan.Models;
+﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 using System;
@@ -32,7 +32,8 @@ namespace projet_dawan.FormLogic
 
         public void BtnConnexion_Click()
         {
-            UserApp user = UserAppRepository.GetUser(Form.txtBoxLogin.Text, Form.txtBoxPwd.Text);
+            UserService service = new();
+            UserApp user = service.GetUser(Form.txtBoxLogin.Text, Form.txtBoxPwd.Text);
 
             if (Form.checkBox1.Checked)
             {

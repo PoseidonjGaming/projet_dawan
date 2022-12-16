@@ -1,4 +1,3 @@
-using projet_dawan.Models;
 using SerieDLL_EF.Repository;
 using System.Security.Cryptography;
 using SerieDLL_EF.Service;
@@ -8,11 +7,13 @@ namespace projet_dawan
 {
     public partial class FormMain : Form
     {
-        private LogicMain main;
+
+        private LogicMain logicMain;
         public FormMain()
         {
             InitializeComponent();
-            main = new(this);
+            logicMain = new(this);
+
         }
 
 
@@ -20,15 +21,15 @@ namespace projet_dawan
 
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            main.BtnConnexion_Click();
+            logicMain.BtnConnexion_Click();
+
         }
-        
+
+
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            main.Load();
+            logicMain.Load();
         }
-
-        
     }
 }

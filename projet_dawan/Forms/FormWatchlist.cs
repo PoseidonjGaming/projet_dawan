@@ -1,7 +1,5 @@
-﻿using Microsoft.VisualBasic.Devices;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using projet_dawan.FormLogic;
-using projet_dawan.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 using System;
@@ -17,34 +15,36 @@ using System.Windows.Forms;
 namespace projet_dawan
 {
     public partial class FormWatchlist : Form
-    {
-        private LogicWatchList watchlist;
+    { 
+        private LogicWatchList logic;
+
         public FormWatchlist()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
-            watchlist = new(this);
+            logic = new(this);
         }
 
         private void btnClearAll_Click(object sender, EventArgs e)
         {
-            watchlist.BtnClearAll_Click();
+            logic.BtnClearAll_Click();
         }
 
         private void btnExportList_Click(object sender, EventArgs e)
         {
-            watchlist.BtnExportList_Click();
+            logic.BtnExportList_Click();
         }
 
         private void FormWatchlist_Load(object sender, EventArgs e)
         {
-            watchlist.Load();
+
+            logic.Load();
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
         {
-           watchlist.Import();
+            logic.Import();
         }
 
         // possibilité de supprimer l'élément de la listbox séléctionné

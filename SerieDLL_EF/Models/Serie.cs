@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace projet_dawan.Models;
+namespace SerieDLL_EF.Models;
 
 [Serializable]
 [DataContract]
@@ -24,6 +24,6 @@ public partial class Serie
 
     public virtual ICollection<Personnage> Personnages { get; set; } = new List<Personnage>();
 
-    
+
     public virtual ICollection<Saison> Saisons { get; set; } = new List<Saison>();
 }

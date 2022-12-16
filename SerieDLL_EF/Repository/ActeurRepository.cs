@@ -1,5 +1,5 @@
-﻿using projet_dawan.Models;
-using SerieDLL_EF.Interface;
+﻿using SerieDLL_EF.Interface;
+using SerieDLL_EF.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

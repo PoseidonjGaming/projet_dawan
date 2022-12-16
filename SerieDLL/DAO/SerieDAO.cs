@@ -1,16 +1,16 @@
 ﻿using projet_dawan.Interface;
 using projet_dawan.Model;
-using projet_dawan.Repository;
 using SerieDLL.Interface;
+using SerieDLL.Repository;
 using System.Data.SqlClient;
 
-namespace projet_dawan.DAO
+namespace SerieDLL.DAO
 {
     public class SerieDAO : IDAOBase<Serie>, ISerieDAO
     {
         private string cnx;
         private SerieRepository repo = new();
-       
+
 
         public string Cnx
         {
@@ -94,8 +94,8 @@ namespace projet_dawan.DAO
             using (SqlConnection cnx = new(Cnx))
             {
                 SqlCommand cmd = new(query, cnx);
-                cmd = AddParam(cmd, "@text", "%"+text+"%");
-                
+                cmd = AddParam(cmd, "@text", "%" + text + "%");
+
                 cnx.Open();
 
                 list = Get(cmd);
