@@ -5,11 +5,8 @@ using System.Runtime.Serialization;
 
 namespace SerieDLL_EF.Models;
 
-[Serializable]
-[DataContract]
 public partial class Saison
 {
-    [DataMember]
     public int Id { get; set; }
 
     public int SerieId { get; set; }

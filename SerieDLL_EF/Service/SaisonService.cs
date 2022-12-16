@@ -23,5 +23,7 @@ namespace SerieDLL_EF.Service
         {
             return repo.GetSaisonsBySerie(id);
         }
+
+       
     }
 }

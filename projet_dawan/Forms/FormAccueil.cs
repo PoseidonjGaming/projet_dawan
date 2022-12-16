@@ -20,6 +20,8 @@ namespace projet_dawan
 
         private void toolStripAddSerie_Click(object sender, EventArgs e)
         {
+            FormManageSerie form=new FormManageSerie();
+            form.ShowDialog(this);
         }
 
         private void toolStripDeleteSerie_Click(object sender, EventArgs e)
@@ -82,9 +84,12 @@ namespace projet_dawan
                 
         }
 
-        private void ajouterEpisodeToolStripMenuItem_Click(object sender, EventArgs e)
+      
+        private void ajouterEpisodeToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-           
+            FormAjoutEpisode form = new();
+
+            form.ShowDialog(this);
         }
     }
 }

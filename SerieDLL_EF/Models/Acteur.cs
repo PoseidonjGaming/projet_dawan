@@ -6,11 +6,8 @@ using System.Runtime.Serialization;
 
 namespace SerieDLL_EF.Models;
 
-[Serializable]
-[DataContract]
 public partial class Acteur
 {
-    [DataMember]
     public int Id { get; set; }
 
     public string Nom { get; set; } = null!;
