@@ -18,7 +18,7 @@ namespace SerieDLL_EF.Service
 
         public UserApp GetUser(string login, string pwd)
         {
-            return repo.GetUser(login, pwd);
+            return repo.GetUser(login, HashPassword(pwd));
         }
 
         public string HashPassword(string? pwd)
