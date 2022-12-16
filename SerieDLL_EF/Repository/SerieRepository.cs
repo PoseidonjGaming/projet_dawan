@@ -30,7 +30,7 @@ namespace SerieDLL_EF.Repository
             return context.Series.Where(s => s.Nom.Contains(txt)).ToList();
         }
 
-        public List<Serie> Export(List<int> ids)
+        public List<Serie> ExportWatchList(List<int> ids)
         {
             List<Serie> list = new List<Serie>();
             using (BddprojetContext context = new())

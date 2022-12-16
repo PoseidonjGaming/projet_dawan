@@ -10,9 +10,9 @@ namespace SerieDLL_EF.Service
     {
         public SerieService() : base(new SerieRepository()) { }
 
-        public List<Serie> Export(List<int> toWatch)
+        public List<Serie> ExportWatchList(List<int> toWatch)
         {
-            return repo.Export(toWatch);
+            return repo.ExportWatchList(toWatch);
         }
 
         //Récupère la liste des séries dont le nom contient la chaîne txt

@@ -30,6 +30,17 @@ namespace projet_dawan.FormLogic
                 series.Add(serie);
                 Form.lstBoxWatchlist.Items.Add(serie.Nom);
             }
+
+
+            Form.openFileDialogLoad.InitialDirectory = Directory.GetCurrentDirectory();
+            Form.openFileDialogLoad.FileName = string.Empty;
+            Form.openFileDialogLoad.Filter = "File JSON|*json";
+            Form.openFileDialogLoad.Title = "Load WatchList";
+
+            Form.saveFileDialogWatchList.InitialDirectory = Directory.GetCurrentDirectory();
+            Form.saveFileDialogWatchList.FileName = "exports.json";
+            Form.saveFileDialogWatchList.Filter = "File JSON|*json";
+            Form.saveFileDialogWatchList.Title = "Save WatchList";
         }
 
         public void BtnClearAll_Click()
@@ -44,15 +55,12 @@ namespace projet_dawan.FormLogic
 
         public void BtnExportList_Click()
         {
-            Form.saveFileDialogWatchList.InitialDirectory = Directory.GetCurrentDirectory();
-            Form.saveFileDialogWatchList.FileName = $"exports.json";
-            Form.saveFileDialogWatchList.Filter = $"File JSON|*json";
-            Form.saveFileDialogWatchList.Title = $"Save WatchList";
+            
 
             if (Form.saveFileDialogWatchList.ShowDialog() == DialogResult.OK)
             {
                 SerieService service = new();
-                List<Serie> list = service.Export(Properties.Settings.Default.UserRemain.ToWatchList);
+                List<Serie> list = service.ExportWatchList(Properties.Settings.Default.UserRemain.ToWatchList);
 
                 File.WriteAllText(Form.saveFileDialogWatchList.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
             }
@@ -61,10 +69,6 @@ namespace projet_dawan.FormLogic
 
         public void Import()
         {
-            Form.openFileDialogLoad.InitialDirectory = Directory.GetCurrentDirectory();
-            Form.openFileDialogLoad.FileName = $"exports.json";
-            Form.openFileDialogLoad.Filter = $"File JSON|*json";
-            Form.openFileDialogLoad.Title = $"Load WatchList";
 
             if (Form.openFileDialogLoad.ShowDialog() == DialogResult.OK)
             {
