@@ -36,46 +36,47 @@
             // 
             // btnConnexion
             // 
-            this.btnConnexion.Location = new System.Drawing.Point(296, 336);
+            this.btnConnexion.Location = new System.Drawing.Point(12, 116);
             this.btnConnexion.Name = "btnConnexion";
             this.btnConnexion.Size = new System.Drawing.Size(139, 52);
-            this.btnConnexion.TabIndex = 1;
+            this.btnConnexion.TabIndex = 3;
             this.btnConnexion.Text = "Connexion";
             this.btnConnexion.UseVisualStyleBackColor = true;
             this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
             // 
             // txtBoxPwd
             // 
-            this.txtBoxPwd.Location = new System.Drawing.Point(296, 272);
+            this.txtBoxPwd.Location = new System.Drawing.Point(12, 52);
             this.txtBoxPwd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxPwd.Name = "txtBoxPwd";
+            this.txtBoxPwd.PasswordChar = '*';
             this.txtBoxPwd.Size = new System.Drawing.Size(139, 27);
-            this.txtBoxPwd.TabIndex = 2;
+            this.txtBoxPwd.TabIndex = 1;
             // 
             // txtBoxLogin
             // 
-            this.txtBoxLogin.Location = new System.Drawing.Point(296, 233);
+            this.txtBoxLogin.Location = new System.Drawing.Point(12, 13);
             this.txtBoxLogin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBoxLogin.Name = "txtBoxLogin";
             this.txtBoxLogin.Size = new System.Drawing.Size(139, 27);
-            this.txtBoxLogin.TabIndex = 3;
+            this.txtBoxLogin.TabIndex = 0;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1.Location = new System.Drawing.Point(311, 306);
+            this.checkBox1.Location = new System.Drawing.Point(12, 86);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(101, 24);
-            this.checkBox1.TabIndex = 4;
-            this.checkBox1.Text = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(138, 24);
+            this.checkBox1.TabIndex = 2;
+            this.checkBox1.Text = "Rester Connecté";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 451);
+            this.ClientSize = new System.Drawing.Size(166, 184);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.txtBoxLogin);
             this.Controls.Add(this.txtBoxPwd);
