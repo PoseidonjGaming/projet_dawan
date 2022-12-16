@@ -4,11 +4,8 @@ using System.Runtime.Serialization;
 
 namespace SerieDLL_EF.Models;
 
-[Serializable]
-[DataContract]
 public partial class Personnage
 {
-    [DataMember]
     public int Id { get; set; }
 
     public int ActeurId { get; set; }

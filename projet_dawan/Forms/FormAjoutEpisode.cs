@@ -70,9 +70,12 @@ namespace projet_dawan.Forms
 
             if (checkBoxLastSeason.Checked)
             {
-                Saison saison = new Saison();
-                saison.NbEpisode = 0;
-                saison.SerieId = serieList[cmbSerie.SelectedIndex].Id;
+                Saison saison = new Saison
+                {
+                    NbEpisode = 0,
+                    SerieId = serieList[cmbSerie.SelectedIndex].Id,
+                    Numero = 1
+                };
                 saisonService.Update(saison);
             }
         }
