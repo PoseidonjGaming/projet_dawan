@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace projet_dawan.Forms
 {
-    public partial class FormAjoutEpisode : Form
+    public partial class FormManageEpisode : Form
     {
         private EpisodeService service = new();
         private List<Episode> episodes = new List<Episode>();
         private List<Serie> serieList = new List<Serie>();
         private Saison saison = new();
-        public FormAjoutEpisode()
+        public FormManageEpisode()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;

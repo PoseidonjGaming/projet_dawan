@@ -8,12 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace projet_dawan.Properties
-{
-
-
+namespace projet_dawan.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,15 +25,13 @@ namespace projet_dawan.Properties
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=P7710-2VGQK72\\SQLEXPRESS;Initial Catalog=serie_list;Integrated Securi" +
-            "ty=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;Applicatio" +
-            "nIntent=ReadWrite;MultiSubnetFailover=False")]
-        public string Connection {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string token {
             get {
-                return ((string)(this["Connection"]));
+                return ((string)(this["token"]));
             }
             set {
-                this["Connection"] = value;
+                this["token"] = value;
             }
         }
         
@@ -46,18 +43,6 @@ namespace projet_dawan.Properties
             }
             set {
                 this["UserRemain"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string token {
-            get {
-                return ((string)(this["token"]));
-            }
-            set {
-                this["token"] = value;
             }
         }
     }

@@ -25,13 +25,10 @@ namespace projet_dawan
                 FormManageSerie form = new FormManageSerie();
                 form.ShowDialog(this);
             }
-            
+
         }
 
-        private void toolStripDeleteSerie_Click(object sender, EventArgs e)
-        {
-            
-        }
+
 
         private void toolStripBibli_Click(object sender, EventArgs e)
         {
@@ -53,47 +50,42 @@ namespace projet_dawan
         private void toolStripGerer_Click(object sender, EventArgs e)
         {
             logicAccueil.Gerer_Click();
-            
+
         }
 
         private void watchlistToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           logicAccueil.WatchList_Click();
+            logicAccueil.WatchList_Click();
         }
 
-       
+
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
             logicAccueil.Load();
         }
 
-      
-
-     
-
-       
-
         private void btnSearch_Click(object sender, EventArgs e)
         {
-           
+            logicAccueil.Search_Click();
         }
-
-       
-
-      
 
         private void gererLesActeursToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                
+            logicAccueil.GererLesActeurs_Click();
         }
 
-      
+
         private void ajouterEpisodeToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            FormAjoutEpisode form = new();
-
+            FormManageEpisode form = new();
             form.ShowDialog(this);
+        }
+
+        private void seConnecterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormMain formMain = new FormMain();
+            formMain.ShowDialog(this);
         }
     }
 }

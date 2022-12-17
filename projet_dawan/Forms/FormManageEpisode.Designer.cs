@@ -1,6 +1,6 @@
 ﻿namespace projet_dawan.Forms
 {
-    partial class FormAjoutEpisode
+    partial class FormManageEpisode
     {
         /// <summary>
         /// Required designer variable.

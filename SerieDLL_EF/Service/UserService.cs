@@ -21,6 +21,8 @@ namespace SerieDLL_EF.Service
             return repo.GetUser(login, HashPassword(pwd));
         }
 
+        
+
         public static string HashPassword(string? pwd)
         {
             using SHA256 sha256 = SHA256.Create();

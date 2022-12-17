@@ -27,6 +27,11 @@ namespace projet_dawan.FormLogic
             SerieService service = new();
             serieList = service.GetAll();
 
+            if (Properties.Settings.Default.UserRemain != null)
+            {
+                Form.seConnecterToolStripMenuItem.Enabled = false;
+            }
+
             Populate(4);
         }
 
@@ -114,14 +119,14 @@ namespace projet_dawan.FormLogic
             formBibliotheque.ShowDialog(Form);
         }
 
-        public void Search_Clock()
-        {
-            OpenFormBibli(Form.txtRechercher.Text);
-        }
-
         public void Biblio_Click()
         {
             OpenFormBibli(string.Empty);
+        }
+
+        public void Search_Click()
+        {
+            OpenFormBibli(Form.txtRechercher.Text);
         }
 
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -141,22 +146,29 @@ namespace projet_dawan.FormLogic
 
         public void Deco_Click()
         {
-            var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (deconnecter == DialogResult.Yes)
+            if (Properties.Settings.Default.UserRemain != null)
             {
-                Properties.Settings.Default.token = string.Empty;
-                Properties.Settings.Default.UserRemain = null;
-                Properties.Settings.Default.Save();
-                Form.Close();
+                var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deconnecter == DialogResult.Yes)
+                {
+                    Properties.Settings.Default.token = string.Empty;
+                    Properties.Settings.Default.UserRemain = null;
+                    Properties.Settings.Default.Save();
+                    Form.Close();
+                }
             }
+            
         }
 
         public void WatchList_Click()
         {
-            FormWatchlist watchlist = new();
-
-            watchlist.ShowDialog();
+            if (Properties.Settings.Default.UserRemain != null)
+            {
+                FormWatchlist watchlist = new();
+                watchlist.ShowDialog();
+            }
+           
         }
 
     }
