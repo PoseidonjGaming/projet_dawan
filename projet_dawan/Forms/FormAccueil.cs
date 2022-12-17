@@ -24,11 +24,6 @@ namespace projet_dawan
             form.ShowDialog(this);
         }
 
-        private void toolStripDeleteSerie_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void toolStripBibli_Click(object sender, EventArgs e)
         {
             //affiche la page de la bibliothéque des séries de la base de données
@@ -55,36 +50,23 @@ namespace projet_dawan
         private void watchlistToolStripMenuItem_Click(object sender, EventArgs e)
         {
            logicAccueil.WatchList_Click();
-        }
-
-       
+        }     
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
             logicAccueil.Load();
-        }
-
-      
-
-     
-
-       
+        }     
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
            
         }
 
-       
-
-      
-
         private void gererLesActeursToolStripMenuItem_Click(object sender, EventArgs e)
         {
                 
         }
-
-      
+     
         private void ajouterEpisodeToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             FormAjoutEpisode form = new();
