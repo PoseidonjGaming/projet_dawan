@@ -4,6 +4,7 @@ using projet_dawan_WinForm;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
+using System.Windows.Forms;
 
 namespace projet_dawan
 {
@@ -20,11 +21,7 @@ namespace projet_dawan
 
         private void toolStripAddSerie_Click(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.UserRemain.Roles == Roles.SuperAdmin)
-            {
-                FormManageSerie form = new FormManageSerie();
-                form.ShowDialog(this);
-            }
+            logicAccueil.ToolStripAddSerie_Click();
 
         }
 
@@ -76,16 +73,15 @@ namespace projet_dawan
         }
 
 
-        private void ajouterEpisodeToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            FormManageEpisode form = new();
-            form.ShowDialog(this);
-        }
-
         private void seConnecterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormMain formMain = new FormMain();
             formMain.ShowDialog(this);
+        }
+
+        private void ajouterEpisodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            logicAccueil.ManageEpisodeToolStripMenuItem_Click();
         }
     }
 }

@@ -105,7 +105,7 @@ namespace projet_dawan.FormLogic
             }
             else
             {
-                MessageBox.Show("Test");
+                MessageBox.Show("Vous devez avoir le niveau accréditation requis");
             }
         }
 
@@ -155,10 +155,9 @@ namespace projet_dawan.FormLogic
                     Properties.Settings.Default.token = string.Empty;
                     Properties.Settings.Default.UserRemain = null;
                     Properties.Settings.Default.Save();
-                    Form.Close();
                 }
             }
-            
+
         }
 
         public void WatchList_Click()
@@ -168,7 +167,26 @@ namespace projet_dawan.FormLogic
                 FormWatchlist watchlist = new();
                 watchlist.ShowDialog();
             }
-           
+
+        }
+
+        public void ManageEpisodeToolStripMenuItem_Click()
+        {
+            if (user.Roles == Roles.SuperAdmin)
+            {
+                FormManageEpisode form = new();
+                form.ShowDialog(Form);
+            }
+
+        }
+
+        public void ToolStripAddSerie_Click()
+        {
+            if (user.Roles == Roles.SuperAdmin)
+            {
+                FormManageSerie form = new FormManageSerie();
+                form.ShowDialog(Form);
+            }
         }
 
     }
