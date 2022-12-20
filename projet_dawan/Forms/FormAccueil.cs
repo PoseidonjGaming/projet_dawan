@@ -25,11 +25,11 @@ namespace projet_dawan
 
         }
 
-<<<<<<< HEAD
+        private void toolStripDeleteSerie_Click(object sender, EventArgs e)
+        {
+            
+        }
 
-
-=======
->>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
         private void toolStripBibli_Click(object sender, EventArgs e)
         {
             //affiche la page de la bibliothéque des séries de la base de données
@@ -55,24 +55,15 @@ namespace projet_dawan
 
         private void watchlistToolStripMenuItem_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            logicAccueil.WatchList_Click();
+           logicAccueil.WatchList_Click();
         }
 
-
-=======
-           logicAccueil.WatchList_Click();
-        }     
->>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
+       
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
             logicAccueil.Load();
-<<<<<<< HEAD
-        }
-=======
         }     
->>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -83,16 +74,9 @@ namespace projet_dawan
         {
             logicAccueil.GererLesActeurs_Click();
         }
-<<<<<<< HEAD
 
-=======
-     
+      
         private void ajouterEpisodeToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            FormAjoutEpisode form = new();
->>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
-
-        private void seConnecterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormMain formMain = new FormMain();
             formMain.ShowDialog(this);
