@@ -38,6 +38,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAjouter = new System.Windows.Forms.Button();
+            this.listBoxPerso = new System.Windows.Forms.ListBox();
+            this.btnSuppr = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -130,7 +132,7 @@
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(18, 273);
+            this.btnAjouter.Location = new System.Drawing.Point(77, 273);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(94, 29);
             this.btnAjouter.TabIndex = 1;
@@ -138,11 +140,32 @@
             this.btnAjouter.UseVisualStyleBackColor = true;
             this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
+            // listBoxPerso
+            // 
+            this.listBoxPerso.FormattingEnabled = true;
+            this.listBoxPerso.ItemHeight = 20;
+            this.listBoxPerso.Location = new System.Drawing.Point(367, 21);
+            this.listBoxPerso.Name = "listBoxPerso";
+            this.listBoxPerso.Size = new System.Drawing.Size(181, 284);
+            this.listBoxPerso.TabIndex = 2;
+            // 
+            // btnSuppr
+            // 
+            this.btnSuppr.Location = new System.Drawing.Point(206, 273);
+            this.btnSuppr.Name = "btnSuppr";
+            this.btnSuppr.Size = new System.Drawing.Size(94, 29);
+            this.btnSuppr.TabIndex = 3;
+            this.btnSuppr.Text = "Supprimer";
+            this.btnSuppr.UseVisualStyleBackColor = true;
+            this.btnSuppr.Click += new System.EventHandler(this.button1_Click);
+            // 
             // FormAjoutPerso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 314);
+            this.ClientSize = new System.Drawing.Size(562, 314);
+            this.Controls.Add(this.btnSuppr);
+            this.Controls.Add(this.listBoxPerso);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.groupBox1);
             this.Name = "FormAjoutPerso";
@@ -166,5 +189,7 @@
         private Label label3;
         private Label label2;
         private Button btnAjouter;
+        private ListBox listBoxPerso;
+        private Button btnSuppr;
     }
 }

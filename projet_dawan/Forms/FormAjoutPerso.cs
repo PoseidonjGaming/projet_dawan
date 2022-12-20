@@ -14,7 +14,6 @@ namespace projet_dawan.Forms
 {
     public partial class FormAjoutPerso : Form
     {
-        private PersonnageService servicePerso = new();
         private List<Personnage> personnages = new List<Personnage>();
         private List<Serie> serieList = new List<Serie>();
         private List<Acteur> acteurList = new List<Acteur>();
@@ -49,6 +48,8 @@ namespace projet_dawan.Forms
             {
                 comboBoxActeur.SelectedIndex = 0;
             }
+
+            populate();
         }
 
         private void btnAjouter_Click(object sender, EventArgs e)
@@ -63,9 +64,34 @@ namespace projet_dawan.Forms
                     SerieId = serieList[comboBoxSerie.SelectedIndex].Id,
                 };
 
+                PersonnageService servicePerso = new();
                 servicePerso.Add(perso);
+                populate();
 
                 MessageBox.Show("Personnage ajouté");
+            }
+        }
+
+        private void populate()
+        {
+            listBoxPerso.Items.Clear();
+            PersonnageService servicePerso = new();
+            personnages = servicePerso.GetAll();
+            foreach (Personnage perso in personnages)
+            {
+                listBoxPerso.Items.Add(perso.Nom);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(listBoxPerso.SelectedItems != null)
+            {
+                PersonnageService servicePerso = new();
+                servicePerso.Delete(personnages[listBoxPerso.SelectedIndex]);
+                populate();
+
+                MessageBox.Show("Personnage supprimé");
             }
         }
     }

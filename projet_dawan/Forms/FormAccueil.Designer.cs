@@ -35,6 +35,7 @@
             this.toolStripAddSerie = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterEpisodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gererLesActeursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gérerPersonnagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripCompte = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripGerer = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,7 +47,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.gérerPersonnagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -96,14 +96,14 @@
             // 
             this.toolStripAddSerie.Name = "toolStripAddSerie";
             this.toolStripAddSerie.Size = new System.Drawing.Size(224, 26);
-            this.toolStripAddSerie.Text = "Ajouter Séries";
+            this.toolStripAddSerie.Text = "Gérer Séries";
             this.toolStripAddSerie.Click += new System.EventHandler(this.toolStripAddSerie_Click);
             // 
             // ajouterEpisodeToolStripMenuItem
             // 
             this.ajouterEpisodeToolStripMenuItem.Name = "ajouterEpisodeToolStripMenuItem";
             this.ajouterEpisodeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.ajouterEpisodeToolStripMenuItem.Text = "Ajouter Episode";
+            this.ajouterEpisodeToolStripMenuItem.Text = "Gérer Episode";
             this.ajouterEpisodeToolStripMenuItem.Click += new System.EventHandler(this.ajouterEpisodeToolStripMenuItem_Click_1);
             // 
             // gererLesActeursToolStripMenuItem
@@ -112,6 +112,13 @@
             this.gererLesActeursToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.gererLesActeursToolStripMenuItem.Text = "Gérer Acteurs";
             this.gererLesActeursToolStripMenuItem.Click += new System.EventHandler(this.gererLesActeursToolStripMenuItem_Click);
+            // 
+            // gérerPersonnagesToolStripMenuItem
+            // 
+            this.gérerPersonnagesToolStripMenuItem.Name = "gérerPersonnagesToolStripMenuItem";
+            this.gérerPersonnagesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gérerPersonnagesToolStripMenuItem.Text = "Gérer Personnages";
+            this.gérerPersonnagesToolStripMenuItem.Click += new System.EventHandler(this.gérerPersonnagesToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
             // 
@@ -207,13 +214,6 @@
             this.btnSearch.Text = "Rechercher";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // gérerPersonnagesToolStripMenuItem
-            // 
-            this.gérerPersonnagesToolStripMenuItem.Name = "gérerPersonnagesToolStripMenuItem";
-            this.gérerPersonnagesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.gérerPersonnagesToolStripMenuItem.Text = "Gérer Personnages";
-            this.gérerPersonnagesToolStripMenuItem.Click += new System.EventHandler(this.gérerPersonnagesToolStripMenuItem_Click);
             // 
             // FormAccueil
             // 
