@@ -1,11 +1,8 @@
-﻿using SerieDLL_EF.Models;
+﻿using projet_dawan.Models;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Service
 {

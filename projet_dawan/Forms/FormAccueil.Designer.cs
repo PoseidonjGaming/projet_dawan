@@ -35,6 +35,7 @@
             this.toolStripAddSerie = new System.Windows.Forms.ToolStripMenuItem();
             this.ajouterEpisodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gererLesActeursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gérerPersonnagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripCompte = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripGerer = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +88,8 @@
             this.gererToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripAddSerie,
             this.ajouterEpisodeToolStripMenuItem,
-            this.gererLesActeursToolStripMenuItem});
+            this.gererLesActeursToolStripMenuItem,
+            this.gérerPersonnagesToolStripMenuItem});
             this.gererToolStripMenuItem.Name = "gererToolStripMenuItem";
             this.gererToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gererToolStripMenuItem.Text = "&Gérer BDD";
@@ -95,16 +97,26 @@
             // toolStripAddSerie
             // 
             this.toolStripAddSerie.Name = "toolStripAddSerie";
+<<<<<<< HEAD
             this.toolStripAddSerie.Size = new System.Drawing.Size(180, 22);
+=======
+            this.toolStripAddSerie.Size = new System.Drawing.Size(224, 26);
+>>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
             this.toolStripAddSerie.Text = "Gérer Séries";
             this.toolStripAddSerie.Click += new System.EventHandler(this.toolStripAddSerie_Click);
             // 
             // ajouterEpisodeToolStripMenuItem
             // 
             this.ajouterEpisodeToolStripMenuItem.Name = "ajouterEpisodeToolStripMenuItem";
+<<<<<<< HEAD
             this.ajouterEpisodeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ajouterEpisodeToolStripMenuItem.Text = "Gérer Episodes";
             this.ajouterEpisodeToolStripMenuItem.Click += new System.EventHandler(this.ajouterEpisodeToolStripMenuItem_Click);
+=======
+            this.ajouterEpisodeToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ajouterEpisodeToolStripMenuItem.Text = "Gérer Episode";
+            this.ajouterEpisodeToolStripMenuItem.Click += new System.EventHandler(this.ajouterEpisodeToolStripMenuItem_Click_1);
+>>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
             // 
             // gererLesActeursToolStripMenuItem
             // 
@@ -112,6 +124,13 @@
             this.gererLesActeursToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.gererLesActeursToolStripMenuItem.Text = "Gérer Acteurs";
             this.gererLesActeursToolStripMenuItem.Click += new System.EventHandler(this.gererLesActeursToolStripMenuItem_Click);
+            // 
+            // gérerPersonnagesToolStripMenuItem
+            // 
+            this.gérerPersonnagesToolStripMenuItem.Name = "gérerPersonnagesToolStripMenuItem";
+            this.gérerPersonnagesToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.gérerPersonnagesToolStripMenuItem.Text = "Gérer Personnages";
+            this.gérerPersonnagesToolStripMenuItem.Click += new System.EventHandler(this.gérerPersonnagesToolStripMenuItem_Click);
             // 
             // quitterToolStripMenuItem
             // 
@@ -133,7 +152,11 @@
             // toolStripGerer
             // 
             this.toolStripGerer.Name = "toolStripGerer";
+<<<<<<< HEAD
             this.toolStripGerer.Size = new System.Drawing.Size(145, 22);
+=======
+            this.toolStripGerer.Size = new System.Drawing.Size(224, 26);
+>>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
             this.toolStripGerer.Text = "&Mon Compte";
             this.toolStripGerer.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.toolStripGerer.Click += new System.EventHandler(this.toolStripGerer_Click);
@@ -141,14 +164,22 @@
             // watchlistToolStripMenuItem
             // 
             this.watchlistToolStripMenuItem.Name = "watchlistToolStripMenuItem";
+<<<<<<< HEAD
             this.watchlistToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+=======
+            this.watchlistToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+>>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
             this.watchlistToolStripMenuItem.Text = "&Watchlist";
             this.watchlistToolStripMenuItem.Click += new System.EventHandler(this.watchlistToolStripMenuItem_Click);
             // 
             // toolStripDeco
             // 
             this.toolStripDeco.Name = "toolStripDeco";
+<<<<<<< HEAD
             this.toolStripDeco.Size = new System.Drawing.Size(145, 22);
+=======
+            this.toolStripDeco.Size = new System.Drawing.Size(224, 26);
+>>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
             this.toolStripDeco.Text = "&Deconnexion";
             this.toolStripDeco.Click += new System.EventHandler(this.toolStripDeco_Click);
             // 
@@ -266,6 +297,10 @@
         private ToolStripMenuItem toolStripAddSerie;
         private ToolStripMenuItem gererLesActeursToolStripMenuItem;
         private ToolStripMenuItem ajouterEpisodeToolStripMenuItem;
+<<<<<<< HEAD
         public ToolStripMenuItem seConnecterToolStripMenuItem;
+=======
+        private ToolStripMenuItem gérerPersonnagesToolStripMenuItem;
+>>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
     }
 }
