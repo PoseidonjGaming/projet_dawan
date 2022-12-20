@@ -23,46 +23,7 @@ namespace projet_dawan.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-<<<<<<< HEAD
-=======
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=P7710-2VGQK72\\SQLEXPRESS;Initial Catalog=serie_list;Integrated Securi" +
-            "ty=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;Applicatio" +
-            "nIntent=ReadWrite;MultiSubnetFailover=False")]
-        public string Connection {
-            get {
-                return ((string)(this["Connection"]));
-            }
-            set {
-                this["Connection"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::projet_dawan.Models.UserApp UserRemain {
-            get {
-                return ((global::projet_dawan.Models.UserApp)(this["UserRemain"]));
-            }
-            set {
-                this["UserRemain"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
->>>>>>> 174a1bb283b751681fa26b16983c827edea32aee
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string token {
-            get {
-                return ((string)(this["token"]));
-            }
-            set {
-                this["token"] = value;
-            }
-        }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::SerieDLL_EF.Models.UserApp UserRemain {
@@ -73,5 +34,18 @@ namespace projet_dawan.Properties {
                 this["UserRemain"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string token {
+            get {
+                return ((string)(this["token"]));
+            }
+            set {
+                this["token"] = value;
+            }
+        }
+       
     }
 }

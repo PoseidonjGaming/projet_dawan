@@ -1,10 +1,9 @@
 ﻿using Newtonsoft.Json;
-using projet_dawan.Models;
 using SerieDLL_EF.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
-namespace projet_dawan.Models;
+namespace SerieDLL_EF.Models;
 
 [Serializable]
 [DataContract]

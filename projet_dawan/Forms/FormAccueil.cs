@@ -25,11 +25,6 @@ namespace projet_dawan
 
         }
 
-        private void toolStripDeleteSerie_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void toolStripBibli_Click(object sender, EventArgs e)
         {
             //affiche la page de la bibliothéque des séries de la base de données
@@ -55,15 +50,15 @@ namespace projet_dawan
 
         private void watchlistToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           logicAccueil.WatchList_Click();
+            logicAccueil.WatchList_Click();
         }
 
-       
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
             logicAccueil.Load();
-        }     
+        }
+
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -75,23 +70,27 @@ namespace projet_dawan
             logicAccueil.GererLesActeurs_Click();
         }
 
-      
-        private void ajouterEpisodeToolStripMenuItem_Click_1(object sender, EventArgs e)
+
+       
+        private void seConnecterToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormMain formMain = new FormMain();
-            formMain.ShowDialog(this);
+            logicAccueil.SeConnecterToolStripMenuItem_Click();
         }
+
+       
 
         private void ajouterEpisodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             logicAccueil.ManageEpisodeToolStripMenuItem_Click();
         }
 
-        private void gérerPersonnagesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormAjoutPerso form = new();
+       
 
-            form.ShowDialog(this);
+        private void gererPersonnagesToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            logicAccueil.gererPersonnagesToolStripMenuItem_Click();
         }
+
+       
     }
 }

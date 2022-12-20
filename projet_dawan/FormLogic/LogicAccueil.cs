@@ -1,5 +1,4 @@
 ﻿using projet_dawan.Forms;
-using projet_dawan.Models;
 using projet_dawan_WinForm;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
@@ -157,6 +156,7 @@ namespace projet_dawan.FormLogic
                     Properties.Settings.Default.UserRemain = null;
                     Properties.Settings.Default.Save();
                 }
+                Form.seConnecterToolStripMenuItem.Enabled = true;
             }
 
         }
@@ -188,6 +188,29 @@ namespace projet_dawan.FormLogic
                 FormManageSerie form = new FormManageSerie();
                 form.ShowDialog(Form);
             }
+        }
+
+        public void gererPersonnagesToolStripMenuItem_Click()
+        {
+            if(user.Roles == Roles.SuperAdmin)
+            {
+                FormMangaPerso form = new();
+                form.ShowDialog(Form);
+            }
+           
+        }
+
+        public void SeConnecterToolStripMenuItem_Click()
+        {
+            FormMain formMain = new FormMain();
+            formMain.FormClosed += FormClose;
+            formMain.ShowDialog(Form);
+        }
+
+        private void FormClose(object sender, EventArgs e)
+        {
+            user = Properties.Settings.Default.UserRemain;
+            Form.seConnecterToolStripMenuItem.Enabled = false;
         }
 
     }
