@@ -73,5 +73,12 @@ namespace projet_dawan
 
             form.ShowDialog(this);
         }
+
+        private void gérerPersonnagesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAjoutPerso form = new();
+
+            form.ShowDialog(this);
+        }
     }
 }
