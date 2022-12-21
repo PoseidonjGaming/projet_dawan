@@ -26,31 +26,31 @@ namespace projet_dawan.FormLogic
 
         public void BtnAjouter_Click()
         {
-            if (Form.txtNomSerie.Text != string.Empty && Form.txtResume.Text != string.Empty
-                && Form.txtPathAffiche.Text != string.Empty)
+            if (Form.GetTextBoxNomSerie().Text != string.Empty && Form.GetTextBoxResume().Text != string.Empty
+                && Form.GetTextBoxAffiche().Text != string.Empty)
             {
-                if (Form.lstBoxSerie.SelectedIndex != -1)
+                if (Form.GetListBoxSerie().SelectedIndex != -1)
                 {
-                    Serie serie = serieList[Form.lstBoxSerie.SelectedIndex];
-                    serie.Affiche = Path.GetFileName(Form.txtPathAffiche.Text);
-                    serie.Nom = Form.txtNomSerie.Text;
-                    serie.Resume = Form.txtResume.Text;
-                    serie.UrlBa = Form.txtUrlBa.Text;
-                    serie.DateDiff = Form.dateTimeSortie.Value;
+                    Serie serie = serieList[Form.GetListBoxSerie().SelectedIndex];
+                    serie.Affiche = Path.GetFileName(Form.GetTextBoxAffiche().Text);
+                    serie.Nom = Form.GetTextBoxNomSerie().Text;
+                    serie.Resume = Form.GetTextBoxResume().Text;
+                    serie.UrlBa = Form.GetTextBoxURLBa().Text;
+                    serie.DateDiff = Form.GetDateDiff().Value;
                     serieService.Update(serie);
                 }
                 else
                 {
                     Serie serie = new()
                     {
-                        Nom = Form.txtNomSerie.Text,
-                        DateDiff = Form.dateTimeSortie.Value,
-                        Resume = Form.txtResume.Text,
-                        UrlBa = Form.txtUrlBa.Text,
-                        Affiche = Path.GetFileName(Form.txtPathAffiche.Text)
+                        Nom = Form.GetTextBoxNomSerie().Text,
+                        DateDiff = Form.GetDateDiff().Value,
+                        Resume = Form.GetTextBoxResume().Text,
+                        UrlBa = Form.GetTextBoxURLBa().Text,
+                        Affiche = Path.GetFileName(Form.GetTextBoxAffiche().Text)
 
                     };
-                    File.Copy(Form.txtPathAffiche.Text, Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche);
+                    File.Copy(Form.GetTextBoxAffiche().Text, Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche);
                     serieService.Add(serie);
                 }
                 Populate();
@@ -68,39 +68,39 @@ namespace projet_dawan.FormLogic
             if (annuler == DialogResult.Yes)
             {
                 SerieService service = new();
-                File.Delete(Directory.GetCurrentDirectory() + "\\Photo\\" + serieList[Form.lstBoxSerie.SelectedIndex].Affiche);
-                service.Delete(serieList[Form.lstBoxSerie.SelectedIndex]);
+                File.Delete(Directory.GetCurrentDirectory() + "\\Photo\\" + serieList[Form.GetListBoxSerie().SelectedIndex].Affiche);
+                service.Delete(serieList[Form.GetListBoxSerie().SelectedIndex]);
             }
             Populate();
         }
 
         public void BtnParcourir_Click()
         {
-            if (Form.openFileDialogAffiche.ShowDialog() == DialogResult.OK)
+            if (Form.GetOpenFileAffiche().ShowDialog() == DialogResult.OK)
             {
-                Form.txtPathAffiche.Text = Form.openFileDialogAffiche.FileName;
+                Form.GetTextBoxAffiche().Text = Form.GetOpenFileAffiche().FileName;
             }
         }
 
         public void LstBoxSerie_SelectedIndexChanged()
         {
-            if (Form.lstBoxSerie.SelectedIndex != -1)
+            if (Form.GetListBoxSerie().SelectedIndex != -1)
             {
-                Serie serie = serieList[Form.lstBoxSerie.SelectedIndex];
-                Form.txtNomSerie.Text = serie.Nom;
+                Serie serie = serieList[Form.GetListBoxSerie().SelectedIndex];
+                Form.GetTextBoxNomSerie().Text = serie.Nom;
                 if (File.Exists(Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche))
                 {
-                    Form.txtPathAffiche.Text += Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
+                    Form.GetTextBoxAffiche().Text = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
                 }
                 else
                 {
-                    Form.txtPathAffiche.Text = serie.Affiche;
+                    Form.GetTextBoxAffiche().Text = serie.Affiche;
                 }
 
-                Form.txtResume.Text = serie.Resume;
-                Form.txtUrlBa.Text = serie.UrlBa;
-                Form.dateTimeSortie.Value = (DateTime)serie.DateDiff;
-                Form.btnAjouter.Text = "Modifier";
+                Form.GetTextBoxResume().Text = serie.Resume;
+                Form.GetTextBoxURLBa().Text = serie.UrlBa;
+                Form.GetDateDiff().Value = (DateTime)serie.DateDiff;
+                Form.GetButtonAdd().Text = "Modifier";
             }
             
         }
@@ -108,27 +108,27 @@ namespace projet_dawan.FormLogic
         public void BtnAnnuler_Click()
         {
             Clear();
-            Form.btnAjouter.Text = "Ajouter";
+            Form.GetButtonAdd().Text = "Ajouter";
         }
 
         private void Populate()
         {
             Clear();
-            Form.lstBoxSerie.Items.Clear();
+            Form.GetListBoxSerie().Items.Clear();
             serieList = serieService.GetAll();
             foreach (Serie serie in serieList)
             {
-                Form.lstBoxSerie.Items.Add(serie.Nom);
+                Form.GetListBoxSerie().Items.Add(serie.Nom);
             }
         }
 
         private void Clear()
         {
-            Form.txtNomSerie.Clear();
-            Form.txtPathAffiche.Clear();
-            Form.txtUrlBa.Clear();
-            Form.txtResume.Clear();
-            Form.lstBoxSerie.SelectedIndex = -1;
+            Form.GetTextBoxNomSerie().Clear();
+            Form.GetTextBoxAffiche().Clear();
+            Form.GetTextBoxURLBa().Clear();
+            Form.GetTextBoxResume().Clear();
+            Form.GetListBoxSerie().SelectedIndex = -1;
         }
     }
 }

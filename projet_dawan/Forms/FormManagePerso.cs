@@ -13,10 +13,10 @@ using SerieDLL_EF.Service;
 
 namespace projet_dawan.Forms
 {
-    public partial class FormMangaPerso : Form
+    public partial class FormManagePerso : Form
     {
         private LogicManagePerso managePerso;
-        public FormMangaPerso()
+        public FormManagePerso()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
@@ -38,5 +38,31 @@ namespace projet_dawan.Forms
         {
             managePerso.BtnSuppr_Click();
         }
+
+        private void listBoxPerso_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            managePerso.ListBoxPerso_SelectedIndexChanged();
+        }
+
+        public ComboBox GetComboBoxSerie()
+        {
+            return comboBoxSerie;
+        }
+        public ComboBox GetComboBoxActeur()
+        {
+            return comboBoxActeur;
+        }
+
+        public TextBox GetTextBoxNomPerso()
+        {
+            return txtNomPerso;
+        }
+
+        public ListBox GetListBoxPerso()
+        {
+            return listBoxPerso;
+        }
+
+       
     }
 }

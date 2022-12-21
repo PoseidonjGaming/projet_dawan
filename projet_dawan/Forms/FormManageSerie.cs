@@ -47,5 +47,45 @@ namespace projet_dawan
         {
            manageSerie.LstBoxSerie_SelectedIndexChanged();
         }
+
+        public TextBox GetTextBoxNomSerie()
+        {
+            return txtNomSerie;
+        }
+
+        public TextBox GetTextBoxResume()
+        {
+            return txtResume;
+        }
+
+        public TextBox GetTextBoxAffiche()
+        {
+            return txtPathAffiche;
+        }
+
+        public TextBox GetTextBoxURLBa()
+        {
+            return txtUrlBa;
+        }
+
+        public DateTimePicker GetDateDiff()
+        {
+            return dateTimeSortie;
+        }
+
+        public ListBox GetListBoxSerie()
+        {
+            return lstBoxSerie;
+        }
+
+        public OpenFileDialog GetOpenFileAffiche()
+        {
+            return openFileDialogAffiche;
+        }
+
+        public Button GetButtonAdd()
+        {
+            return btnAjouter;
+        }
     }
 }

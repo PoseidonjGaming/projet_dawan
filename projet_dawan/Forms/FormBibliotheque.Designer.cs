@@ -172,11 +172,11 @@
         private Label lblTitre;
         private GroupBox groupBoxResult;
         private Label lblRecherche;
-        public TextBox txtRechercher;
+        private TextBox txtRechercher;
         private Label lblFiltre;
-        public ComboBox cmbFiltrer;
+        private ComboBox cmbFiltrer;
         private Button btnRetour;
-        public ListBox lstBxSerie;
+        private ListBox lstBxSerie;
         private Button btnDetail;
         private Button buttonAddWich;
     }

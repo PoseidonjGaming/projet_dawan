@@ -46,5 +46,19 @@ namespace projet_dawan.Forms
         {
            manageActeur.Sup_Click();
         }
+
+        public TextBox GetTextBoxNom()
+        {
+            return txtBoxNom;
+        }
+        public TextBox GetTextBoxPrenom()
+        {
+            return txtBoxPrenom;
+        }
+
+        public ListBox GetListBoxActeur()
+        {
+            return lstBoxActeur;
+        }
     }
 }

@@ -31,26 +31,26 @@ namespace projet_dawan.FormLogic
         public void BtnNewActeur_Click()
         {
             currentActeur = new();
-            Form.txtBoxNom.Clear();
-            Form.txtPrenom.Clear();
+            Form.GetTextBoxNom().Clear();
+            Form.GetTextBoxPrenom().Clear();
         }
 
         public void SelectIndexChanged()
         {
-            if (Form.lstBoxActeur.SelectedIndex != -1)
+            if (Form.GetListBoxActeur().SelectedIndex != -1)
             {
-                currentActeur = acteurs[Form.lstBoxActeur.SelectedIndex];
-                Form.txtBoxNom.Text = currentActeur.Nom;
-                Form.txtPrenom.Text = currentActeur.Prenom;
+                currentActeur = acteurs[Form.GetListBoxActeur().SelectedIndex];
+                Form.GetTextBoxNom().Text = currentActeur.Nom;
+                Form.GetTextBoxPrenom().Text = currentActeur.Prenom;
             }
         }
 
         public void Add_Cick()
         {
-            if (Form.txtPrenom.Text != string.Empty && Form.txtBoxNom.Text != string.Empty)
+            if (Form.GetTextBoxPrenom().Text != string.Empty && Form.GetTextBoxNom().Text != string.Empty)
             {
-                currentActeur.Prenom = Form.txtPrenom.Text;
-                currentActeur.Nom = Form.txtBoxNom.Text;
+                currentActeur.Prenom = Form.GetTextBoxPrenom().Text;
+                currentActeur.Nom = Form.GetTextBoxNom().Text;
                 if (currentActeur.Id == 0)
                 {
                     service.Add(currentActeur);
@@ -75,13 +75,13 @@ namespace projet_dawan.FormLogic
 
         private void Populate()
         {
-            Form.lstBoxActeur.Items.Clear();
-            Form.txtBoxNom.Clear();
-            Form.txtPrenom.Clear();
+            Form.GetListBoxActeur().Items.Clear();
+            Form.GetTextBoxNom().Clear();
+            Form.GetTextBoxPrenom().Clear();
             acteurs = service.GetAll();
             foreach (Acteur act in acteurs)
             {
-                Form.lstBoxActeur.Items.Add(act.Prenom + " " + act.Nom);
+                Form.GetListBoxActeur().Items.Add(act.Prenom + " " + act.Nom);
             }
         }
 

@@ -55,8 +55,8 @@ namespace projet_dawan.FormLogic
                     crypto.GetBytes(bytesarray);
                     Properties.Settings.Default.token = Convert.ToBase64String(bytesarray);
                 }
+                Form.Close();
             }
-            Form.Close();
 
         }
 

@@ -25,17 +25,17 @@ namespace projet_dawan.FormLogic
         public void Load(Serie serie)
         {
             Serie = serie;
-            Form.lblSerie.Text = Serie.Nom;
-            Form.lblSerie.Location = new Point((Form.Size.Width - Form.lblSerie.Size.Width) / 2, Form.lblSerie.Location.Y);
-            Form.lblDateSerie.Text = Serie.DateDiff.ToString();
-            Form.linkLblBASerie.Text = Serie.UrlBa;
-            Form.txtBoxResumeSerie.Text = Serie.Resume;
-            Form.pictureBoxSerie.ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche;
+            Form.GetLabelNom().Text = Serie.Nom;
+            Form.GetLabelNom().Location = new Point((Form.Size.Width - Form.GetLabelNom().Size.Width) / 2, Form.GetLabelNom().Location.Y);
+            Form.GetLabelDateSerie().Text = Serie.DateDiff.ToString();
+            Form.GetLinkLabelUrlBa().Text = Serie.UrlBa;
+            Form.GetTextBoxRsume().Text = Serie.Resume;
+            Form.GetPictureBoxAffiche().ImageLocation = Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche;
             SaisonService service = new SaisonService();
             foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
             {
                 Saisons.Add(saison);
-                Form.lstBoxSaison.Items.Add(saison.Numero.ToString());
+                Form.GetListBoxSaison().Items.Add(saison.Numero.ToString());
             }
         }
 
@@ -48,9 +48,9 @@ namespace projet_dawan.FormLogic
 
         public void LstBoxSaison_SelectedIndexChanged()
         {
-            if (Form.lstBoxSaison.SelectedIndex != -1)
+            if (Form.GetListBoxSaison().SelectedIndex != -1)
             {
-                Saison saison = Saisons[Form.lstBoxSaison.SelectedIndex];
+                Saison saison = Saisons[Form.GetListBoxSaison().SelectedIndex];
                 saison.Serie = Serie;
                 FormEpisode formSaison = new(saison);
                 formSaison.FormClosed += OpenForm;

@@ -24,23 +24,23 @@ namespace projet_dawan.FormLogic
 
         public void Load(string text)
         {
-            Form.cmbFiltrer.Items.AddRange(new string[] { "Serie", "Episode", "Personnage", "Acteur" });
-            Form.cmbFiltrer.SelectedIndex = 0;
-            Form.txtRechercher.Text = text;
+            Form.GetComboBoxFilter().Items.AddRange(new string[] { "Serie", "Episode", "Personnage", "Acteur" });
+            Form.GetComboBoxFilter().SelectedIndex = 0;
+            Form.GetTextBoxRechercher().Text = text;
         }
 
         public void ChangeText()
         {
             Ids.Clear();
-            Form.lstBxSerie.Items.Clear();
+            Form.GetListBoxSerie().Items.Clear();
             Check();
         }
 
         public void CmbFiltrer_SelectedIndexChanged()
         {
-            if (Form.cmbFiltrer.SelectedIndex != -1)
+            if (Form.GetComboBoxFilter().SelectedIndex != -1)
             {
-                Form.lstBxSerie.Items.Clear();
+                Form.GetListBoxSerie().Items.Clear();
                 Ids.Clear();
                 Check();
             }
@@ -49,29 +49,29 @@ namespace projet_dawan.FormLogic
         public void Detail()
         {
 
-            if (Form.lstBxSerie.SelectedIndex != -1)
+            if (Form.GetListBoxSerie().SelectedIndex != -1)
             {
-                switch (Form.cmbFiltrer.SelectedIndex)
+                switch (Form.GetComboBoxFilter().SelectedIndex)
                 {
                     case 0:
                         SerieService serieService = new();
-                        FormSerie formSerie = new(serieService.GetById(Ids[Form.lstBxSerie.SelectedIndex]));
+                        FormSerie formSerie = new(serieService.GetById(Ids[Form.GetListBoxSerie().SelectedIndex]));
                         formSerie.ShowDialog(Form);
                         break;
                     case 1:
                         EpisodeService episodeService = new();
                         SaisonService saisonService = new();
-                        FormEpisode formEpisode = new(saisonService.GetById(episodeService.GetById(Ids[Form.lstBxSerie.SelectedIndex]).SaisonId));
+                        FormEpisode formEpisode = new(saisonService.GetById(episodeService.GetById(Ids[Form.GetListBoxSerie().SelectedIndex]).SaisonId));
                         formEpisode.ShowDialog(Form);
                         break;
                     case 2:
                         PersonnageService personnageService = new();
-                        FormCasting formCasting = new(personnageService.GetBySerie(Ids[Form.lstBxSerie.SelectedIndex]));
+                        FormCasting formCasting = new(personnageService.GetBySerie(Ids[Form.GetListBoxSerie().SelectedIndex]));
                         formCasting.ShowDialog(Form);
                         break;
                     case 3:
                         PersonnageService personnageServiceA = new();
-                        FormCasting form = new(personnageServiceA.GetByActeur(Ids[Form.lstBxSerie.SelectedIndex]));
+                        FormCasting form = new(personnageServiceA.GetByActeur(Ids[Form.GetListBoxSerie().SelectedIndex]));
                         form.ShowDialog(Form);
                         break;
                     default:
@@ -83,10 +83,10 @@ namespace projet_dawan.FormLogic
 
         public void ButtonAddWich_Click()
         {
-            if (Form.lstBxSerie.SelectedIndex != -1)
+            if (Form.GetListBoxSerie().SelectedIndex != -1)
             {
                 SerieService serieService = new();
-                Serie serie = serieService.GetById(Ids[Form.lstBxSerie.SelectedIndex]);
+                Serie serie = serieService.GetById(Ids[Form.GetListBoxSerie().SelectedIndex]);
                 Properties.Settings.Default.UserRemain.SetToWatchList(new() { serie });
                 Properties.Settings.Default.Save();
                 UserService service = new();
@@ -101,11 +101,11 @@ namespace projet_dawan.FormLogic
         private void Check()
         {
             List<string> list = new List<string>();
-            switch (Form.cmbFiltrer.SelectedIndex)
+            switch (Form.GetComboBoxFilter().SelectedIndex)
             {
                 case 0:
                     SerieService serieService = new();
-                    List<Serie> series = serieService.GetByTxt(Form.txtRechercher.Text);
+                    List<Serie> series = serieService.GetByTxt(Form.GetTextBoxRechercher().Text);
                     foreach (Serie serie in series)
                     {
                         list.Add(serie.Nom);
@@ -115,7 +115,7 @@ namespace projet_dawan.FormLogic
                     break;
                 case 1:
                     EpisodeService epService = new();
-                    List<Episode> episodes = epService.GetByTxt(Form.txtRechercher.Text);
+                    List<Episode> episodes = epService.GetByTxt(Form.GetTextBoxRechercher().Text);
                     foreach (Episode episode in episodes)
                     {
                         list.Add(episode.Nom);
@@ -125,7 +125,7 @@ namespace projet_dawan.FormLogic
                     break;
                 case 2:
                     PersonnageService personnageService = new();
-                    List<Personnage> personnages = personnageService.GetByTxt(Form.txtRechercher.Text);
+                    List<Personnage> personnages = personnageService.GetByTxt(Form.GetTextBoxRechercher().Text);
                     foreach (Personnage personnage in personnages)
                     {
                         list.Add(personnage.Nom);
@@ -135,7 +135,7 @@ namespace projet_dawan.FormLogic
                     break;
                 case 3:
                     ActeurService acteurService = new();
-                    List<Acteur> acteurs = acteurService.GetByTxt(Form.txtRechercher.Text);
+                    List<Acteur> acteurs = acteurService.GetByTxt(Form.GetTextBoxRechercher().Text);
                     foreach (Acteur acteur in acteurs)
                     {
                         list.Add(acteur.Prenom + " " + acteur.Nom);
@@ -154,7 +154,7 @@ namespace projet_dawan.FormLogic
         {
             foreach (string item in list)
             {
-                Form.lstBxSerie.Items.Add(item);
+                Form.GetListBoxSerie().Items.Add(item);
             }
         }
     }

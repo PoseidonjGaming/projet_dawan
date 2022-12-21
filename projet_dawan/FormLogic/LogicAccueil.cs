@@ -29,7 +29,7 @@ namespace projet_dawan.FormLogic
 
             if (Properties.Settings.Default.UserRemain != null)
             {
-                Form.seConnecterToolStripMenuItem.Enabled = false;
+                Form.getSeConnecter().Enabled = false;
             }
 
             Populate(4);
@@ -47,14 +47,14 @@ namespace projet_dawan.FormLogic
                 pictureBox.ImageLocation = path + serieList[i].Affiche;
                 pictureBox.Click += Serie_Click;
 
-                Form.Controls[Form.Controls.IndexOf(Form.groupBox1)].Controls.Add(pictureBox);
+                Form.Controls[Form.Controls.IndexOf(Form.GetGroupBox())].Controls.Add(pictureBox);
 
                 Button btnSerie = new Button();
                 btnSerie.Location = new Point((95 * i * 2) + 25, 225);
                 btnSerie.Size = new Size(138, 50);
                 btnSerie.Text = serieList[i].Nom;
                 btnSerie.Click += Serie_Click;
-                Form.Controls[Form.Controls.IndexOf(Form.groupBox1)].Controls.Add(btnSerie);
+                Form.Controls[Form.Controls.IndexOf(Form.GetGroupBox())].Controls.Add(btnSerie);
             }
         }
 
@@ -126,7 +126,7 @@ namespace projet_dawan.FormLogic
 
         public void Search_Click()
         {
-            OpenFormBibli(Form.txtRechercher.Text);
+            OpenFormBibli(Form.GetTextBoxRechercher().Text);
         }
 
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -156,7 +156,7 @@ namespace projet_dawan.FormLogic
                     Properties.Settings.Default.UserRemain = null;
                     Properties.Settings.Default.Save();
                 }
-                Form.seConnecterToolStripMenuItem.Enabled = true;
+                Form.getSeConnecter().Enabled = true;
             }
 
         }
@@ -194,7 +194,7 @@ namespace projet_dawan.FormLogic
         {
             if(user.Roles == Roles.SuperAdmin)
             {
-                FormMangaPerso form = new();
+                FormManagePerso form = new();
                 form.ShowDialog(Form);
             }
            
@@ -210,7 +210,7 @@ namespace projet_dawan.FormLogic
         private void FormClose(object sender, EventArgs e)
         {
             user = Properties.Settings.Default.UserRemain;
-            Form.seConnecterToolStripMenuItem.Enabled = false;
+            Form.getSeConnecter().Enabled = false;
         }
 
     }
