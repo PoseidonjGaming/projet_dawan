@@ -16,6 +16,7 @@ namespace projet_dawan_WinForm
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            logicEpisodes = new(this);
             logicEpisodes.Load(saison);
         }
 

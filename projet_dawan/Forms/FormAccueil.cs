@@ -4,6 +4,7 @@ using projet_dawan_WinForm;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
+using System.Windows.Forms;
 
 namespace projet_dawan
 {
@@ -20,13 +21,8 @@ namespace projet_dawan
 
         private void toolStripAddSerie_Click(object sender, EventArgs e)
         {
-            FormManageSerie form=new FormManageSerie();
-            form.ShowDialog(this);
-        }
+            logicAccueil.ToolStripAddSerie_Click();
 
-        private void toolStripDeleteSerie_Click(object sender, EventArgs e)
-        {
-            
         }
 
         private void toolStripBibli_Click(object sender, EventArgs e)
@@ -49,47 +45,52 @@ namespace projet_dawan
         private void toolStripGerer_Click(object sender, EventArgs e)
         {
             logicAccueil.Gerer_Click();
-            
+
         }
 
         private void watchlistToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           logicAccueil.WatchList_Click();
+            logicAccueil.WatchList_Click();
         }
 
-       
 
         private void PageAcceuil_Load(object sender, EventArgs e)
         {
             logicAccueil.Load();
         }
 
-      
-
-     
-
-       
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-           
+            logicAccueil.Search_Click();
+        }
+
+        private void gererLesActeursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            logicAccueil.GererLesActeurs_Click();
+        }
+
+
+       
+        private void seConnecterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            logicAccueil.SeConnecterToolStripMenuItem_Click();
         }
 
        
 
-      
-
-        private void gererLesActeursToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ajouterEpisodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                
+            logicAccueil.ManageEpisodeToolStripMenuItem_Click();
         }
 
-      
-        private void ajouterEpisodeToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            FormAjoutEpisode form = new();
+       
 
-            form.ShowDialog(this);
+        private void gererPersonnagesToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            logicAccueil.gererPersonnagesToolStripMenuItem_Click();
         }
+
+       
     }
 }

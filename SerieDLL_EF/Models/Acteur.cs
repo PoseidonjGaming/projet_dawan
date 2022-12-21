@@ -1,4 +1,5 @@
-﻿using SerieDLL_EF.Interface;
+﻿using SerieDLL_EF.Models;
+using SerieDLL_EF.Interface;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
