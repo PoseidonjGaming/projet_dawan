@@ -1,5 +1,4 @@
-﻿using projet_dawan.Models;
-using SerieDLL_EF.Models;
+﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 using System;
@@ -36,13 +35,11 @@ namespace projet_dawan.FormLogic
             UserService service = new();
             UserApp user = service.GetUser(Form.txtBoxLogin.Text, Form.txtBoxPwd.Text);
 
+            Properties.Settings.Default.UserRemain = user;
             if (Form.checkBox1.Checked)
             {
-                Properties.Settings.Default.UserRemain = user;
                 Properties.Settings.Default.Save();
-
             }
-
             Login(user);
         }
 
@@ -58,27 +55,11 @@ namespace projet_dawan.FormLogic
                     crypto.GetBytes(bytesarray);
                     Properties.Settings.Default.token = Convert.ToBase64String(bytesarray);
                 }
-                FormAccueil pageAcceuil = new FormAccueil();
-                pageAcceuil.FormClosing += pageAcceuil_FormClosing;
-                Form.Hide();
-                pageAcceuil.ShowDialog();
             }
-
+            Form.Close();
 
         }
 
-        private void pageAcceuil_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (Properties.Settings.Default.token != string.Empty)
-            {
-                Form.Close();
-            }
-            else
-            {
-                Form.txtBoxPwd.Text = string.Empty;
-                Form.txtBoxLogin.Text = string.Empty;
-                Form.Show();
-            }
-        }
+
     }
 }

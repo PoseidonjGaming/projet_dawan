@@ -8,12 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace projet_dawan.Properties
-{
-
-
+namespace projet_dawan.Properties {
+    
+    
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.3.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.4.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -24,25 +23,12 @@ namespace projet_dawan.Properties
             }
         }
         
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=P7710-2VGQK72\\SQLEXPRESS;Initial Catalog=serie_list;Integrated Securi" +
-            "ty=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;Applicatio" +
-            "nIntent=ReadWrite;MultiSubnetFailover=False")]
-        public string Connection {
+        public global::SerieDLL_EF.Models.UserApp UserRemain {
             get {
-                return ((string)(this["Connection"]));
-            }
-            set {
-                this["Connection"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::projet_dawan.Models.UserApp UserRemain {
-            get {
-                return ((global::projet_dawan.Models.UserApp)(this["UserRemain"]));
+                return ((global::SerieDLL_EF.Models.UserApp)(this["UserRemain"]));
             }
             set {
                 this["UserRemain"] = value;
@@ -60,5 +46,6 @@ namespace projet_dawan.Properties
                 this["token"] = value;
             }
         }
+       
     }
 }

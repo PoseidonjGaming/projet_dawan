@@ -1,5 +1,4 @@
 ﻿using projet_dawan.Forms;
-using projet_dawan.Models;
 using projet_dawan_WinForm;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
@@ -27,6 +26,11 @@ namespace projet_dawan.FormLogic
         {
             SerieService service = new();
             serieList = service.GetAll();
+
+            if (Properties.Settings.Default.UserRemain != null)
+            {
+                Form.seConnecterToolStripMenuItem.Enabled = false;
+            }
 
             Populate(4);
         }
@@ -101,7 +105,7 @@ namespace projet_dawan.FormLogic
             }
             else
             {
-                MessageBox.Show("Test");
+                MessageBox.Show("Vous devez avoir le niveau accréditation requis");
             }
         }
 
@@ -115,14 +119,14 @@ namespace projet_dawan.FormLogic
             formBibliotheque.ShowDialog(Form);
         }
 
-        public void Search_Clock()
-        {
-            OpenFormBibli(Form.txtRechercher.Text);
-        }
-
         public void Biblio_Click()
         {
             OpenFormBibli(string.Empty);
+        }
+
+        public void Search_Click()
+        {
+            OpenFormBibli(Form.txtRechercher.Text);
         }
 
         private void Form_FormClosing(object sender, FormClosingEventArgs e)
@@ -142,22 +146,71 @@ namespace projet_dawan.FormLogic
 
         public void Deco_Click()
         {
-            var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (deconnecter == DialogResult.Yes)
+            if (Properties.Settings.Default.UserRemain != null)
             {
-                Properties.Settings.Default.token = string.Empty;
-                Properties.Settings.Default.UserRemain = null;
-                Properties.Settings.Default.Save();
-                Form.Close();
+                var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (deconnecter == DialogResult.Yes)
+                {
+                    Properties.Settings.Default.token = string.Empty;
+                    Properties.Settings.Default.UserRemain = null;
+                    Properties.Settings.Default.Save();
+                }
+                Form.seConnecterToolStripMenuItem.Enabled = true;
             }
+
         }
 
         public void WatchList_Click()
         {
-            FormWatchlist watchlist = new();
+            if (Properties.Settings.Default.UserRemain != null)
+            {
+                FormWatchlist watchlist = new();
+                watchlist.ShowDialog();
+            }
 
-            watchlist.ShowDialog();
+        }
+
+        public void ManageEpisodeToolStripMenuItem_Click()
+        {
+            if (user.Roles == Roles.SuperAdmin)
+            {
+                FormManageEpisode form = new();
+                form.ShowDialog(Form);
+            }
+
+        }
+
+        public void ToolStripAddSerie_Click()
+        {
+            if (user.Roles == Roles.SuperAdmin)
+            {
+                FormManageSerie form = new FormManageSerie();
+                form.ShowDialog(Form);
+            }
+        }
+
+        public void gererPersonnagesToolStripMenuItem_Click()
+        {
+            if(user.Roles == Roles.SuperAdmin)
+            {
+                FormMangaPerso form = new();
+                form.ShowDialog(Form);
+            }
+           
+        }
+
+        public void SeConnecterToolStripMenuItem_Click()
+        {
+            FormMain formMain = new FormMain();
+            formMain.FormClosed += FormClose;
+            formMain.ShowDialog(Form);
+        }
+
+        private void FormClose(object sender, EventArgs e)
+        {
+            user = Properties.Settings.Default.UserRemain;
+            Form.seConnecterToolStripMenuItem.Enabled = false;
         }
 
     }

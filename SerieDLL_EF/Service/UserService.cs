@@ -1,5 +1,4 @@
-﻿using projet_dawan.Models;
-using SerieDLL_EF.Models;
+﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using System.Security.Cryptography;
 using System.Text;
@@ -17,6 +16,8 @@ namespace SerieDLL_EF.Service
         {
             return repo.GetUser(login, HashPassword(pwd));
         }
+
+        
 
         public static string HashPassword(string? pwd)
         {
