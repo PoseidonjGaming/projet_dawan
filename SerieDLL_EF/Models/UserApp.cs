@@ -39,6 +39,11 @@ public partial class UserApp
         ToWatch = JsonConvert.SerializeObject(ToWatchList);
     }
 
+    public bool IsGranted(Roles role)
+    {
+        return this.Roles>=role;
+    }
+
 
 
 }

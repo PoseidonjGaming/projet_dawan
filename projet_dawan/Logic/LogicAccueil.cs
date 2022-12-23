@@ -98,7 +98,7 @@ namespace projet_dawan.FormLogic
 
         public void GererLesActeurs_Click()
         {
-            if (user.Roles == Roles.SuperAdmin)
+            if (user.IsGranted(Roles.SuperAdmin))
             {
                 FormManageActeur formManageActeur = new();
                 formManageActeur.ShowDialog(Form);
@@ -173,7 +173,7 @@ namespace projet_dawan.FormLogic
 
         public void ManageEpisodeToolStripMenuItem_Click()
         {
-            if (user.Roles == Roles.SuperAdmin)
+            if (user.IsGranted(Roles.SuperAdmin))
             {
                 FormManageEpisode form = new();
                 form.ShowDialog(Form);
@@ -183,7 +183,7 @@ namespace projet_dawan.FormLogic
 
         public void ToolStripAddSerie_Click()
         {
-            if (user.Roles == Roles.SuperAdmin)
+            if (user.IsGranted(Roles.SuperAdmin))
             {
                 FormManageSerie form = new FormManageSerie();
                 form.ShowDialog(Form);
@@ -192,7 +192,7 @@ namespace projet_dawan.FormLogic
 
         public void gererPersonnagesToolStripMenuItem_Click()
         {
-            if(user.Roles == Roles.SuperAdmin)
+            if(user.IsGranted(Roles.SuperAdmin))
             {
                 FormManagePerso form = new();
                 form.ShowDialog(Form);
