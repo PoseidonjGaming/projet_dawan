@@ -1,4 +1,4 @@
-﻿using projet_dawan.Model;
+﻿using SerieDLL.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

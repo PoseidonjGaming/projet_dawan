@@ -21,6 +21,7 @@ namespace SerieDLL_EF.Service
 
         public static string HashPassword(string? pwd)
         {
+           
             using SHA256 sha256 = SHA256.Create();
             byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pwd));
 

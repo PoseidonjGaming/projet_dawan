@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace projet_dawan_WPF
+namespace projet_dawan_WPF.Windows
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logique d'interaction pour WindowGereActeur.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WindowGereActeur : Window
     {
-        public MainWindow()
+        public WindowGereActeur()
         {
             InitializeComponent();
         }
