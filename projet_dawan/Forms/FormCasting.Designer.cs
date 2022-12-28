@@ -140,13 +140,13 @@
 
         #endregion
 
-        public Label labelCasting;
+        private Label labelCasting;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        public Label labelActeur;
-        public Label labelNomPerso;
-        public PictureBox imagePersonnage;
-        public ListBox listBoxCasting;
+        private Label labelActeur;
+        private Label labelNomPerso;
+        private PictureBox imagePersonnage;
+        private ListBox listBoxCasting;
         private Label label1;
     }
 }

@@ -11,13 +11,13 @@ namespace projet_dawan.FormLogic
 {
     internal class LogicManagePerso
     {
-        public FormMangaPerso Form { get; set; }
+        public FormManagePerso Form { get; set; }
         private List<Personnage> personnages = new List<Personnage>();
         private List<Serie> serieList = new List<Serie>();
         private List<Acteur> acteurList = new List<Acteur>();
         private PersonnageService servicePerso = new();
 
-        public LogicManagePerso(FormMangaPerso form)
+        public LogicManagePerso(FormManagePerso form)
         {
             Form = form;
         }
@@ -28,22 +28,22 @@ namespace projet_dawan.FormLogic
             serieList = serieService.GetAll();
             foreach (Serie serie in serieList)
             {
-                Form.comboBoxSerie.Items.Add(serie.Nom);
+                Form.GetComboBoxSerie().Items.Add(serie.Nom);
             }
             if (serieList.Count > 0)
             {
-                Form.comboBoxSerie.SelectedIndex = 0;
+                Form.GetComboBoxSerie().SelectedIndex = 0;
             }
 
             ActeurService acteurService = new();
             acteurList = acteurService.GetAll();
             foreach (Acteur acteur in acteurList)
             {
-                Form.comboBoxActeur.Items.Add(acteur.Prenom + " " + acteur.Nom);
+                Form.GetComboBoxActeur().Items.Add(acteur.Prenom + " " + acteur.Nom);
             }
             if (acteurList.Count > 0)
             {
-                Form.comboBoxActeur.SelectedIndex = 0;
+                Form.GetComboBoxActeur().SelectedIndex = 0;
             }
 
             populate();
@@ -51,14 +51,14 @@ namespace projet_dawan.FormLogic
 
         public void BtnAjouter_Click()
         {
-            if (Form.txtNomPerso.Text != string.Empty)
+            if (Form.GetTextBoxNomPerso().Text != string.Empty)
             {
                 // ajouter le personnage
                 Personnage perso = new()
                 {
-                    Nom = Form.txtNomPerso.Text,
-                    ActeurId = acteurList[Form.comboBoxActeur.SelectedIndex].Id,
-                    SerieId = serieList[Form.comboBoxSerie.SelectedIndex].Id,
+                    Nom = Form.GetTextBoxNomPerso().Text,
+                    ActeurId = acteurList[Form.GetComboBoxActeur().SelectedIndex].Id,
+                    SerieId = serieList[Form.GetComboBoxSerie().SelectedIndex].Id,
                 };
 
                 servicePerso.Add(perso);
@@ -70,22 +70,33 @@ namespace projet_dawan.FormLogic
 
         public void BtnSuppr_Click()
         {
-            if (Form.listBoxPerso.SelectedIndex != -1)
+            if (Form.GetListBoxPerso().SelectedIndex != -1)
             {
-                servicePerso.Delete(personnages[Form.listBoxPerso.SelectedIndex]);
+                servicePerso.Delete(personnages[Form.GetListBoxPerso().SelectedIndex]);
                 populate();
 
                 MessageBox.Show("Personnage supprimé");
             }
         }
 
+        public void ListBoxPerso_SelectedIndexChanged()
+        {
+            Personnage perso = personnages[Form.GetListBoxPerso().SelectedIndex];
+            Form.GetTextBoxNomPerso().Text = perso.Nom;
+            Acteur acteur = acteurList.Find(a => a.Id == perso.ActeurId);
+            
+            Form.GetComboBoxActeur().SelectedIndex = acteurList.IndexOf(acteur);
+            Serie serie = serieList.Find(s => s.Id == perso.SerieId);
+            Form.GetComboBoxSerie().SelectedIndex = serieList.IndexOf(serie);
+        }
+
         private void populate()
         {
-            Form.listBoxPerso.Items.Clear();
+            Form.GetListBoxPerso().Items.Clear();
             personnages = servicePerso.GetAll();
             foreach (Personnage perso in personnages)
             {
-                Form.listBoxPerso.Items.Add(perso.Nom);
+                Form.GetListBoxPerso().Items.Add(perso.Nom);
             }
         }
     }

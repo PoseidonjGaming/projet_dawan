@@ -1,4 +1,5 @@
-﻿using SerieDLL_EF.Models;
+﻿using projet_dawan_WPF.Windows;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 using System;
@@ -8,15 +9,15 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projet_dawan.FormLogic
+namespace projet_dawan_WPF.Logic
 {
     internal class LogicMain
     {
-        public FormMain Form { get; set; }
+        public WindowsConnection Window { get; set; }
 
-        public LogicMain(FormMain form)
+        public LogicMain(WindowsConnection form)
         {
-            Form = form;
+            Window = form;
         }
 
         public void Load()
@@ -33,10 +34,10 @@ namespace projet_dawan.FormLogic
         public void BtnConnexion_Click()
         {
             UserService service = new();
-            UserApp user = service.GetUser(Form.txtBoxLogin.Text, Form.txtBoxPwd.Text);
+            UserApp user = service.GetUser(Window.txtLogin.Text, Window.txtPwd.Text);
 
             Properties.Settings.Default.UserRemain = user;
-            if (Form.checkBox1.Checked)
+            if ((bool)Window.checkBoxCo.IsChecked)
             {
                 Properties.Settings.Default.Save();
             }
@@ -55,8 +56,8 @@ namespace projet_dawan.FormLogic
                     crypto.GetBytes(bytesarray);
                     Properties.Settings.Default.token = Convert.ToBase64String(bytesarray);
                 }
+                Window.Close();
             }
-            Form.Close();
 
         }
 

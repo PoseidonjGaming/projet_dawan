@@ -34,5 +34,35 @@ namespace projet_dawan_WinForm
         {
             logicSerie.ButtonToWatch_Click();
         }
+
+        public Label GetLabelNom()
+        {
+            return lblSerie;
+        }
+
+        public Label GetLabelDateSerie()
+        {
+            return lblDateSerie;
+        }
+
+        public LinkLabel GetLinkLabelUrlBa()
+        {
+            return linkLblBASerie;
+        }
+
+        public TextBox GetTextBoxRsume()
+        {
+            return txtBoxResumeSerie;
+        }
+
+        public PictureBox GetPictureBoxAffiche()
+        {
+            return pictureBoxSerie;
+        }
+
+        public ListBox GetListBoxSaison()
+        {
+            return lstBoxSaison;
+        }
     }
 }

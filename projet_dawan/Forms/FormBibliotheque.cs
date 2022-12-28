@@ -29,8 +29,6 @@ namespace projet_dawan
             bibli.BtnRetour_Click();
         }
 
-
-
         private void txtRechercher_TextChanged(object sender, EventArgs e)
         {
             bibli.ChangeText();
@@ -46,18 +44,25 @@ namespace projet_dawan
            bibli.ButtonAddWich_Click();
         }
 
-
-
-
-
-
-      
         private void cmbFiltrer_SelectedIndexChanged(object sender, EventArgs e)
         {
             bibli.CmbFiltrer_SelectedIndexChanged();
         }
 
+        public ComboBox GetComboBoxFilter()
+        {
+            return cmbFiltrer;
+        }
 
+        public TextBox GetTextBoxRechercher()
+        {
+            return txtRechercher;
+        }
+
+        public ListBox GetListBoxSerie()
+        {
+            return lstBxSerie;
+        }
 
     }
 }

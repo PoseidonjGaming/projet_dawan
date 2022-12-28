@@ -28,19 +28,19 @@ namespace projet_dawan.FormLogic
             {
                 Serie serie = service.GetById(serieid);
                 series.Add(serie);
-                Form.lstBoxWatchlist.Items.Add(serie.Nom);
+                Form.GetListBoxWatch().Items.Add(serie.Nom);
             }
 
 
-            Form.openFileDialogLoad.InitialDirectory = Directory.GetCurrentDirectory();
-            Form.openFileDialogLoad.FileName = string.Empty;
-            Form.openFileDialogLoad.Filter = "File JSON|*json";
-            Form.openFileDialogLoad.Title = "Load WatchList";
+            Form.GetOpenFileDialogLoad().InitialDirectory = Directory.GetCurrentDirectory();
+            Form.GetOpenFileDialogLoad().FileName = string.Empty;
+            Form.GetOpenFileDialogLoad().Filter = "File JSON|*json";
+            Form.GetOpenFileDialogLoad().Title = "Load WatchList";
 
-            Form.saveFileDialogWatchList.InitialDirectory = Directory.GetCurrentDirectory();
-            Form.saveFileDialogWatchList.FileName = "exports.json";
-            Form.saveFileDialogWatchList.Filter = "File JSON|*json";
-            Form.saveFileDialogWatchList.Title = "Save WatchList";
+            Form.GetSaveFileDialogWatchlist().InitialDirectory = Directory.GetCurrentDirectory();
+            Form.GetSaveFileDialogWatchlist().FileName = "exports.json";
+            Form.GetSaveFileDialogWatchlist().Filter = "File JSON|*json";
+            Form.GetSaveFileDialogWatchlist().Title = "Save WatchList";
         }
 
         public void BtnClearAll_Click()
@@ -50,19 +50,19 @@ namespace projet_dawan.FormLogic
             Properties.Settings.Default.Save();
             UserService service= new();
             service.Update(Properties.Settings.Default.UserRemain);
-            Form.lstBoxWatchlist.Items.Clear();
+            Form.GetListBoxWatch().Items.Clear();
         }
 
         public void BtnExportList_Click()
         {
             
 
-            if (Form.saveFileDialogWatchList.ShowDialog() == DialogResult.OK)
+            if (Form.GetSaveFileDialogWatchlist().ShowDialog() == DialogResult.OK)
             {
                 SerieService service = new();
                 List<Serie> list = service.ExportWatchList(Properties.Settings.Default.UserRemain.ToWatchList);
 
-                File.WriteAllText(Form.saveFileDialogWatchList.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
+                File.WriteAllText(Form.GetSaveFileDialogWatchlist().FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
             }
 
         }
@@ -70,15 +70,15 @@ namespace projet_dawan.FormLogic
         public void Import()
         {
 
-            if (Form.openFileDialogLoad.ShowDialog() == DialogResult.OK)
+            if (Form.GetOpenFileDialogLoad().ShowDialog() == DialogResult.OK)
             {
                 List<Serie> list = new List<Serie>();
-                using (StreamReader file = File.OpenText(Form.openFileDialogLoad.FileName))
+                using (StreamReader file = File.OpenText(Form.GetOpenFileDialogLoad().FileName))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     list = (List<Serie>)serializer.Deserialize(file, typeof(List<Serie>));
                 }
-                Form.lstBoxWatchlist.Items.Clear();
+                Form.GetListBoxWatch().Items.Clear();
                 Properties.Settings.Default.UserRemain.ToWatchList.Clear();
                 Properties.Settings.Default.UserRemain.SetToWatchList(list);
                 Properties.Settings.Default.Save();

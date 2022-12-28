@@ -158,14 +158,14 @@
 
         #endregion
 
-        public Label lblSerie;
-        public Label lblSaison;
+        private Label lblSerie;
+        private Label lblSaison;
         private GroupBox groupBox1;
         private Button btnCasting;
-        public TextBox txtBoxResumeSaison;
-        public Label lblDateSaison;
-        public PictureBox pictureBoxSaison;
-        public ListBox lstBoxEpisode;
-        public Label lblTitreEp;
+        private TextBox txtBoxResumeSaison;
+        private Label lblDateSaison;
+        private PictureBox pictureBoxSaison;
+        private ListBox lstBoxEpisode;
+        private Label lblTitreEp;
     }
 }

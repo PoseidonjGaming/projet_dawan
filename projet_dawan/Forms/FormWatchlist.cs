@@ -15,7 +15,7 @@ using System.Windows.Forms;
 namespace projet_dawan
 {
     public partial class FormWatchlist : Form
-    { 
+    {
         private LogicWatchList logic;
 
         public FormWatchlist()
@@ -48,5 +48,21 @@ namespace projet_dawan
         }
 
         // possibilité de supprimer l'élément de la listbox séléctionné
+
+
+        public ListBox GetListBoxWatch()
+        {
+            return lstBoxWatchlist;
+        }
+
+        public OpenFileDialog GetOpenFileDialogLoad()
+        {
+            return openFileDialogLoad;
+        }
+
+        public SaveFileDialog GetSaveFileDialogWatchlist()
+        {
+            return saveFileDialogWatchList;
+        }
     }
 }

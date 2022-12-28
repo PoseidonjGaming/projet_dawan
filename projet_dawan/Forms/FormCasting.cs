@@ -30,5 +30,26 @@ namespace projet_dawan.Forms
 
         // ajouter information sur le perso et une image
 
+        public Label GetLabelCasting()
+        {
+            return labelCasting;
+        }
+
+        public Label GetLabelNomPerso()
+        {
+            return labelNomPerso;
+        }
+
+        public Label GetLabelActeur()
+        {
+            return labelActeur;
+        }
+
+        public ListBox GetListBoxCasting()
+        {
+            return listBoxCasting;
+        }
+
+
     }
 }

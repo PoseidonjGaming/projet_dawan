@@ -1,6 +1,6 @@
 ﻿namespace projet_dawan.Forms
 {
-    partial class FormMangaPerso
+    partial class FormManagePerso
     {
         /// <summary>
         /// Required designer variable.
@@ -53,88 +53,95 @@
             this.groupBox1.Controls.Add(this.lblSerie);
             this.groupBox1.Controls.Add(this.lblActeur);
             this.groupBox1.Controls.Add(this.lblNom);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(10, 9);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(349, 249);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(305, 187);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(100, 155);
+            this.textBox1.Location = new System.Drawing.Point(88, 116);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(229, 75);
+            this.textBox1.Size = new System.Drawing.Size(201, 57);
             this.textBox1.TabIndex = 7;
             // 
             // comboBoxSerie
             // 
             this.comboBoxSerie.FormattingEnabled = true;
-            this.comboBoxSerie.Location = new System.Drawing.Point(90, 106);
+            this.comboBoxSerie.Location = new System.Drawing.Point(79, 80);
+            this.comboBoxSerie.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxSerie.Name = "comboBoxSerie";
-            this.comboBoxSerie.Size = new System.Drawing.Size(239, 28);
+            this.comboBoxSerie.Size = new System.Drawing.Size(210, 23);
             this.comboBoxSerie.TabIndex = 6;
             // 
             // comboBoxActeur
             // 
             this.comboBoxActeur.FormattingEnabled = true;
-            this.comboBoxActeur.Location = new System.Drawing.Point(90, 67);
+            this.comboBoxActeur.Location = new System.Drawing.Point(79, 50);
+            this.comboBoxActeur.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxActeur.Name = "comboBoxActeur";
-            this.comboBoxActeur.Size = new System.Drawing.Size(239, 28);
+            this.comboBoxActeur.Size = new System.Drawing.Size(210, 23);
             this.comboBoxActeur.TabIndex = 5;
             // 
             // txtNomPerso
             // 
-            this.txtNomPerso.Location = new System.Drawing.Point(77, 27);
+            this.txtNomPerso.Location = new System.Drawing.Point(67, 20);
+            this.txtNomPerso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNomPerso.Name = "txtNomPerso";
-            this.txtNomPerso.Size = new System.Drawing.Size(252, 27);
+            this.txtNomPerso.Size = new System.Drawing.Size(221, 23);
             this.txtNomPerso.TabIndex = 4;
             // 
-            // label4
+            // lblResume
             // 
             this.lblResume.AutoSize = true;
             this.lblResume.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblResume.Location = new System.Drawing.Point(6, 151);
-            this.lblResume.Name = "label4";
-            this.lblResume.Size = new System.Drawing.Size(88, 28);
+            this.lblResume.Location = new System.Drawing.Point(5, 113);
+            this.lblResume.Name = "lblResume";
+            this.lblResume.Size = new System.Drawing.Size(73, 21);
             this.lblResume.TabIndex = 3;
             this.lblResume.Text = "Resumé :";
             // 
-            // label3
+            // lblSerie
             // 
             this.lblSerie.AutoSize = true;
             this.lblSerie.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblSerie.Location = new System.Drawing.Point(6, 102);
-            this.lblSerie.Name = "label3";
-            this.lblSerie.Size = new System.Drawing.Size(64, 28);
+            this.lblSerie.Location = new System.Drawing.Point(5, 76);
+            this.lblSerie.Name = "lblSerie";
+            this.lblSerie.Size = new System.Drawing.Size(52, 21);
             this.lblSerie.TabIndex = 2;
             this.lblSerie.Text = "Serie :";
             // 
-            // label2
+            // lblActeur
             // 
             this.lblActeur.AutoSize = true;
             this.lblActeur.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblActeur.Location = new System.Drawing.Point(6, 63);
-            this.lblActeur.Name = "label2";
-            this.lblActeur.Size = new System.Drawing.Size(78, 28);
+            this.lblActeur.Location = new System.Drawing.Point(5, 47);
+            this.lblActeur.Name = "lblActeur";
+            this.lblActeur.Size = new System.Drawing.Size(62, 21);
             this.lblActeur.TabIndex = 1;
             this.lblActeur.Text = "Acteur :";
             // 
-            // label1
+            // lblNom
             // 
             this.lblNom.AutoSize = true;
             this.lblNom.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblNom.Location = new System.Drawing.Point(6, 23);
-            this.lblNom.Name = "label1";
-            this.lblNom.Size = new System.Drawing.Size(65, 28);
+            this.lblNom.Location = new System.Drawing.Point(5, 17);
+            this.lblNom.Name = "lblNom";
+            this.lblNom.Size = new System.Drawing.Size(52, 21);
             this.lblNom.TabIndex = 0;
             this.lblNom.Text = "Nom :";
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(77, 273);
+            this.btnAjouter.Location = new System.Drawing.Point(67, 205);
+            this.btnAjouter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(94, 29);
+            this.btnAjouter.Size = new System.Drawing.Size(82, 22);
             this.btnAjouter.TabIndex = 1;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
@@ -143,32 +150,36 @@
             // listBoxPerso
             // 
             this.listBoxPerso.FormattingEnabled = true;
-            this.listBoxPerso.ItemHeight = 20;
-            this.listBoxPerso.Location = new System.Drawing.Point(367, 21);
+            this.listBoxPerso.ItemHeight = 15;
+            this.listBoxPerso.Location = new System.Drawing.Point(321, 16);
+            this.listBoxPerso.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxPerso.Name = "listBoxPerso";
-            this.listBoxPerso.Size = new System.Drawing.Size(181, 284);
+            this.listBoxPerso.Size = new System.Drawing.Size(159, 214);
             this.listBoxPerso.TabIndex = 2;
+            this.listBoxPerso.SelectedIndexChanged += new System.EventHandler(this.listBoxPerso_SelectedIndexChanged);
             // 
             // btnSuppr
             // 
-            this.btnSuppr.Location = new System.Drawing.Point(206, 273);
+            this.btnSuppr.Location = new System.Drawing.Point(180, 205);
+            this.btnSuppr.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSuppr.Name = "btnSuppr";
-            this.btnSuppr.Size = new System.Drawing.Size(94, 29);
+            this.btnSuppr.Size = new System.Drawing.Size(82, 22);
             this.btnSuppr.TabIndex = 3;
             this.btnSuppr.Text = "Supprimer";
             this.btnSuppr.UseVisualStyleBackColor = true;
             this.btnSuppr.Click += new System.EventHandler(this.btnSuppr_Click);
             // 
-            // FormAjoutPerso
+            // FormManagePerso
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(562, 314);
+            this.ClientSize = new System.Drawing.Size(492, 236);
             this.Controls.Add(this.btnSuppr);
             this.Controls.Add(this.listBoxPerso);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FormAjoutPerso";
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name = "FormManagePerso";
             this.Text = "FormAjoutPerso";
             this.Load += new System.EventHandler(this.FormAjoutPerso_Load);
             this.groupBox1.ResumeLayout(false);
@@ -180,15 +191,15 @@
         #endregion
 
         private GroupBox groupBox1;
-        public ComboBox comboBoxSerie;
-        public ComboBox comboBoxActeur;
-        public TextBox txtNomPerso;
+        private ComboBox comboBoxSerie;
+        private ComboBox comboBoxActeur;
+        private TextBox txtNomPerso;
         private TextBox textBox1;
         private Label lblNom;
         private Label lblResume;
         private Label lblSerie;
         private Label lblActeur;
-        public ListBox listBoxPerso;
+        private ListBox listBoxPerso;
         private Button btnAjouter;
         private Button btnSuppr;
     }

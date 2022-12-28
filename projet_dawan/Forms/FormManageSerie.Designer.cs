@@ -229,20 +229,20 @@
         #endregion
 
         private GroupBox groupBox1;
-        public Button btnAjouter;
+        private Button btnAjouter;
         private Button btnAnnuler;
-        public TextBox txtUrlBa;
-        public TextBox txtPathAffiche;
-        public TextBox txtResume;
-        public TextBox txtNomSerie;
+        private TextBox txtUrlBa;
+        private TextBox txtPathAffiche;
+        private TextBox txtResume;
+        private TextBox txtNomSerie;
         private Label lblDateDiff;
         private Label lblNomSerie;
         private Label lblUrlBA;
         private Label lblResume;
-        public ListBox lstBoxSerie;
+        private ListBox lstBoxSerie;
         private Button btnSup;
         private Button btnParcourir;
-        public DateTimePicker dateTimeSortie;
-        public OpenFileDialog openFileDialogAffiche;
+        private DateTimePicker dateTimeSortie;
+        private OpenFileDialog openFileDialogAffiche;
     }
 }

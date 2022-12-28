@@ -24,26 +24,26 @@ namespace projet_dawan.FormLogic
             SerieService serieService = new SerieService();
             castList = list;
             serie = serieService.GetById(castList[0].SerieId);
-            Form.labelCasting.Text = "Casting " + serie.Nom;
+            Form.GetLabelCasting().Text = "Casting " + serie.Nom;
             ActeurService acteurService = new();
 
             foreach (Personnage personnage in castList)
             {
-                Form.listBoxCasting.Items.Add(personnage.Nom);
+                Form.GetListBoxCasting().Items.Add(personnage.Nom);
             }
 
-            Form.listBoxCasting.SelectedIndex = 0;
-            Personnage perso = castList[Form.listBoxCasting.SelectedIndex];
+            Form.GetListBoxCasting().SelectedIndex = 0;
+            Personnage perso = castList[Form.GetListBoxCasting().SelectedIndex];
             Acteur acteur = acteurService.GetById(perso.ActeurId);
             Populate(perso, acteur);
         }
 
         public void ListBoxCasting_SelectedIndexChanged()
         {
-            if (Form.listBoxCasting.SelectedIndex != -1)
+            if (Form.GetListBoxCasting().SelectedIndex != -1)
             {
                 ActeurService acteurService = new();
-                Personnage perso = castList[Form.listBoxCasting.SelectedIndex];
+                Personnage perso = castList[Form.GetListBoxCasting().SelectedIndex];
                 Acteur acteur = acteurService.GetById(perso.ActeurId);
                 Populate(perso, acteur);
             }
@@ -51,8 +51,8 @@ namespace projet_dawan.FormLogic
 
         private void Populate(Personnage perso, Acteur acteur)
         {
-            Form.labelNomPerso.Text = perso.Nom;
-            Form.labelActeur.Text = acteur.Nom + " " + acteur.Prenom;
+            Form.GetLabelNomPerso().Text = perso.Nom;
+            Form.GetLabelActeur().Text = acteur.Nom + " " + acteur.Prenom;
         }
     }
 }

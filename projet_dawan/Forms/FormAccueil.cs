@@ -91,6 +91,21 @@ namespace projet_dawan
             logicAccueil.gererPersonnagesToolStripMenuItem_Click();
         }
 
-       
+
+        public ToolStripMenuItem getSeConnecter()
+        {
+            return seConnecterToolStripMenuItem;
+        }
+
+        public GroupBox GetGroupBox()
+        {
+            return groupBox1;
+        }
+
+        public TextBox GetTextBoxRechercher()
+        {
+            return txtRechercher;
+        }
+
     }
 }

@@ -116,9 +116,9 @@
         private Button btnClearAll;
         private Button btnExportList;
         private GroupBox groupBox1;
-        public ListBox lstBoxWatchlist;
-        public SaveFileDialog saveFileDialogWatchList;
+        private ListBox lstBoxWatchlist;
+        private SaveFileDialog saveFileDialogWatchList;
         private Button btnLoad;
-        public OpenFileDialog openFileDialogLoad;
+        private OpenFileDialog openFileDialogLoad;
     }
 }
