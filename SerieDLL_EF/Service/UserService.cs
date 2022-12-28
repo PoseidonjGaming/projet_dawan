@@ -17,9 +17,13 @@ namespace SerieDLL_EF.Service
             return repo.GetUser(login, HashPassword(pwd));
         }
 
-        
+        public override void Add(UserApp item)
+        {
+            item.Password = HashPassword(item.Password);
+            base.Add(item);
+        }
 
-        public static string HashPassword(string? pwd)
+        public string HashPassword(string? pwd)
         {
            
             using SHA256 sha256 = SHA256.Create();
@@ -36,11 +40,7 @@ namespace SerieDLL_EF.Service
             }
         }
 
-        public override void Add(UserApp item)
-        {
-            item.Password= HashPassword(item.Password);
-            base.Add(item);
-        }
+       
     }
-}
+
 
