@@ -31,7 +31,7 @@ namespace projet_dawan_WPF.Logic
             SerieService service = new();
             serieList = service.GetAll();
 
-            if (projet_dawan_WPF.Properties.Settings.Default.UserRemain != null)
+            if (Properties.Settings.Default.UserRemain != null)
             {
                 Window.menuItemSeConnecter.IsEnabled = false;
             }
@@ -45,31 +45,31 @@ namespace projet_dawan_WPF.Logic
             {
                 Grid grid = new Grid();
                 RowDefinition rowImg = new();
-                rowImg.Height = new GridLength(225,GridUnitType.Star);
-                RowDefinition rowBtn=new();
+                rowImg.Height = new GridLength(225, GridUnitType.Star);
+                RowDefinition rowBtn = new();
                 rowBtn.Height = new GridLength(30, GridUnitType.Pixel);
                 grid.RowDefinitions.Add(rowImg);
                 grid.RowDefinitions.Add(rowBtn);
 
                 Image img = new();
-                BitmapImage bitImg= new BitmapImage();
+                BitmapImage bitImg = new BitmapImage();
                 bitImg.BeginInit();
-                bitImg.UriSource = new(Directory.GetCurrentDirectory() + "\\Photo\\" + serieList[i].Affiche);
+                bitImg.UriSource = new(path + "\\" + serieList[i].Affiche);
                 bitImg.EndInit();
                 img.Margin = new Thickness(10, 20, 10, 0);
                 img.Source = bitImg;
-                img.Stretch= Stretch.Fill;
+                img.Stretch = Stretch.Fill;
 
                 Grid.SetRow(img, 0);
                 grid.Children.Add(img);
 
-                Button btnSerie=new Button();
+                Button btnSerie = new Button();
                 btnSerie.Content = serieList[i].Nom;
                 btnSerie.Margin = new Thickness(10, 0, 10, 10);
                 Grid.SetRow(btnSerie, 1);
                 grid.Children.Add(btnSerie);
 
-                Grid.SetColumn(grid, 1+i);
+                Grid.SetColumn(grid, 1 + i);
                 Grid.SetRow(grid, 2);
                 Window.GridMain.Children.Add(grid);
             }
@@ -105,7 +105,7 @@ namespace projet_dawan_WPF.Logic
         public void Gerer_Click()
         {
             // affiche la page de gestion du compte
-            if (user.Roles > Roles.User)
+            if (user.IsGranted(Roles.User))
             {
                 //FormGererCompte compte = new();
 
@@ -143,7 +143,7 @@ namespace projet_dawan_WPF.Logic
 
         public void Search_Click()
         {
-             OpenFormBibli(Window.txtRechercher.Text);
+            OpenFormBibli(Window.txtRechercher.Text);
         }
 
         private void Form_FormClosing(object sender, CancelEventArgs e)
@@ -153,20 +153,21 @@ namespace projet_dawan_WPF.Logic
 
         public void Quitter_Click()
         {
-            //var quitter = MessageBox.Show("Etes vous sur de vouloir vous quitter l'application ?", "Quitter ?",
-            //  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            //if (quitter == DialogResult.Yes)
-            //{
-            //    Environment.Exit(0);
-            //}
+            var quitter = MessageBox.Show("Etes vous sur de vouloir vous quitter l'application ?", "Quitter ?",
+              MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (quitter == MessageBoxResult.Yes)
+            {
+                Environment.Exit(0);
+            }
         }
 
         public void Deco_Click()
         {
-            if (Properties.Settings.Default.UserRemain != null)           {
+            if (Properties.Settings.Default.UserRemain != null)
+            {
                 var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
-                
+
                 if (deconnecter == MessageBoxResult.Yes)
                 {
                     Properties.Settings.Default.token = string.Empty;
