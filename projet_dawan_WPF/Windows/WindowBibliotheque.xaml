@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows"
         mc:Ignorable="d"
-        Title="WindowBibliotheque" Height="450" Width="800">
+        Title="WindowBibliotheque" Height="378" Width="716" WindowStartupLocation="CenterOwner">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="110"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="btnRetour" Grid.Row="1" Grid.Column="1" Content="Back" Width="75" Margin="20,40,0,35" FontSize="22" Click="btnRetour_Click"></Button>
+            <Label Grid.Row="1" Grid.Column="1" Content="Bibliothèque" HorizontalAlignment="Center" VerticalAlignment="Center"
+               FontWeight="Bold" FontSize="40" Margin="10"></Label>
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btnDetail" Grid.Row="0" Grid.Column="0" Margin="30,10,30,20" Content="Détail" Click="btnDetail_Click"></Button>
+            <Button Grid.Row="1" Grid.Column="0" Margin="30,10,30,20" Content="A regarder"></Button>
+            <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Label Grid.Row="0" Grid.Column="1" Content="Rechercher" VerticalAlignment="Center"></Label>
+                <TextBox x:Name="txtRechercher" Width="100" VerticalContentAlignment="Center" TextChanged="txtRechercher_TextChanged"></TextBox>
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
+                <Label Grid.Row="0" Grid.Column="1" Content="Filtrer: " VerticalAlignment="Center"></Label>
+                <ComboBox Width="100" x:Name="cmbFiltrer" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" SelectionChanged="cmbFiltrer_SelectionChanged"></ComboBox>
+            </StackPanel>
+            
+        </Grid>
+        <GroupBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Header="Liste des résultats de le recherche">
+            <ListBox Margin="5" x:Name="lstBxSerie"></ListBox>
+        </GroupBox>
     </Grid>
 </Window>

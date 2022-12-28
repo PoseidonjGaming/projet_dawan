@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projet_dawan_WPF.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,33 @@ namespace projet_dawan_WPF.Windows
     /// </summary>
     public partial class WindowBibliotheque : Window
     {
-        public WindowBibliotheque(string text)
+        private LogicBibliothèque logic;
+        public WindowBibliotheque(string text, Window windows)
         {
             InitializeComponent();
+            this.Owner= windows;
+            logic = new(this);
+            logic.Load(text);
+        }
+
+        private void txtRechercher_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            logic.ChangeText();
+        }
+
+        private void cmbFiltrer_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            logic.CmbFiltrer_SelectedIndexChanged();
+        }
+
+        private void btnRetour_Click(object sender, RoutedEventArgs e)
+        {
+            logic.BtnRetour_Click();
+        }
+
+        private void btnDetail_Click(object sender, RoutedEventArgs e)
+        {
+            logic.Detail();
         }
     }
 }

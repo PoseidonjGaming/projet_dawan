@@ -8,10 +8,22 @@
     <Compile Update="Windows\WindowBibliotheque.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\WindowGereActeur.xaml.cs">
+    <Compile Update="Windows\WindowManageActeur.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\WindowsConnection.xaml.cs">
+    <Compile Update="Windows\WindowManageEpisodes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowConnection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowsManagePersonnages.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowsManageSeries.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowWatchList.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -22,10 +34,22 @@
     <Page Update="Windows\WindowBibliotheque.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\WindowGereActeur.xaml">
+    <Page Update="Windows\WindowManageActeur.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\WindowsConnection.xaml">
+    <Page Update="Windows\WindowManageEpisodes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowConnection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowsManagePersonnages.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowsManageSeries.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowWatchList.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

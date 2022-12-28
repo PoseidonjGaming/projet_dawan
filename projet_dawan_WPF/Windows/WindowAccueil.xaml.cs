@@ -52,5 +52,25 @@ namespace projet_dawan_WPF.Windows
         {
             logic.Deco_Click();
         }
+
+        private void menuItemWatchlist_Click(object sender, RoutedEventArgs e)
+        {
+            logic.WatchList_Click();
+        }
+
+        private void menuItemSeries_Click(object sender, RoutedEventArgs e)
+        {
+            logic.ToolStripAddSerie_Click();
+        }
+
+        private void menuItemEpisodes_Click(object sender, RoutedEventArgs e)
+        {
+            logic.ManageEpisodeToolStripMenuItem_Click();
+        }
+
+        private void menuItemPersonnages_Click(object sender, RoutedEventArgs e)
+        {
+            logic.gererPersonnagesToolStripMenuItem_Click();
+        }
     }
 }

@@ -30,15 +30,16 @@
             <MenuItem Header="_Menu">
                 <MenuItem Name="menuItemBibli" Header="Bibliothèque" Click="menuItemBibli_Click"/>
                 <MenuItem Header="Gérer la base">
-                    <MenuItem Header="Gérer les Series"/>
-                    <MenuItem Header="Gérer les Personnages"/>
+                    <MenuItem Header="Gérer les Series" Name="menuItemSeries" Click="menuItemSeries_Click"/>
+                    <MenuItem Header="Gérer les Episodes" Name="menuItemEpisodes" Click="menuItemEpisodes_Click"/>
+                    <MenuItem Header="Gérer les Personnages" Name="menuItemPersonnages" Click="menuItemPersonnages_Click"/>
                     <MenuItem Header="Gérer les Acteurs" Name="menuItemActeurs" Click="menuItemActeurs_Click"/>
                 </MenuItem>
                 <MenuItem Header="Quitter"/>
             </MenuItem>
             <MenuItem Header="Compte">
                 <MenuItem Header="Mon Compte"/>
-                <MenuItem Header="WatchList"/>
+                <MenuItem Header="WatchList" Name="menuItemWatchlist" Click="menuItemWatchlist_Click"/>
                 <MenuItem Header="Déconnexion" Click="MenuItem_Click" />
             </MenuItem>
             <MenuItem HorizontalAlignment="Right" Header="Connexion" Name="menuItemSeConnecter" Click="menuItemSeConnecter_Click"/>

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace projet_dawan_WPF.Windows
 {
     /// <summary>
-    /// Logique d'interaction pour WindowGereActeur.xaml
+    /// Logique d'interaction pour WindowManageEpisodes.xaml
     /// </summary>
-    public partial class WindowGereActeur : Window
+    public partial class WindowManageEpisodes : Window
     {
-        public WindowGereActeur()
+        public WindowManageEpisodes()
         {
             InitializeComponent();
         }
