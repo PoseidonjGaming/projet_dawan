@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projet_dawan.Model
+namespace SerieDLL.Model
 {
     public class UserApp
     {

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.txtBoxNom = new System.Windows.Forms.TextBox();
-            this.txtPrenom = new System.Windows.Forms.TextBox();
+            this.txtBoxPrenom = new System.Windows.Forms.TextBox();
             this.lblNom = new System.Windows.Forms.Label();
             this.lblPrenom = new System.Windows.Forms.Label();
             this.groupBoxAdd_Update = new System.Windows.Forms.GroupBox();
@@ -47,12 +47,12 @@
             this.txtBoxNom.Size = new System.Drawing.Size(100, 23);
             this.txtBoxNom.TabIndex = 0;
             // 
-            // txtPrenom
+            // txtBoxPrenom
             // 
-            this.txtPrenom.Location = new System.Drawing.Point(69, 54);
-            this.txtPrenom.Name = "txtPrenom";
-            this.txtPrenom.Size = new System.Drawing.Size(100, 23);
-            this.txtPrenom.TabIndex = 1;
+            this.txtBoxPrenom.Location = new System.Drawing.Point(69, 54);
+            this.txtBoxPrenom.Name = "txtBoxPrenom";
+            this.txtBoxPrenom.Size = new System.Drawing.Size(100, 23);
+            this.txtBoxPrenom.TabIndex = 1;
             // 
             // lblNom
             // 
@@ -79,7 +79,7 @@
             this.groupBoxAdd_Update.Controls.Add(this.btnAdd);
             this.groupBoxAdd_Update.Controls.Add(this.txtBoxNom);
             this.groupBoxAdd_Update.Controls.Add(this.lblPrenom);
-            this.groupBoxAdd_Update.Controls.Add(this.txtPrenom);
+            this.groupBoxAdd_Update.Controls.Add(this.txtBoxPrenom);
             this.groupBoxAdd_Update.Controls.Add(this.lblNom);
             this.groupBoxAdd_Update.Location = new System.Drawing.Point(12, 12);
             this.groupBoxAdd_Update.Name = "groupBoxAdd_Update";
@@ -148,7 +148,7 @@
         #endregion
 
         private TextBox txtBoxNom;
-        private TextBox txtPrenom;
+        private TextBox txtBoxPrenom;
         private Label lblNom;
         private Label lblPrenom;
         private GroupBox groupBoxAdd_Update;

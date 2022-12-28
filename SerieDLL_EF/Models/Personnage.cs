@@ -1,14 +1,12 @@
-﻿using System;
+﻿using SerieDLL_EF.Models;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace projet_dawan.Models;
+namespace SerieDLL_EF.Models;
 
-[Serializable]
-[DataContract]
 public partial class Personnage
 {
-    [DataMember]
     public int Id { get; set; }
 
     public int ActeurId { get; set; }

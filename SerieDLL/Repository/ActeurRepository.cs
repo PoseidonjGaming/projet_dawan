@@ -1,4 +1,4 @@
-﻿namespace projet_dawan.Repository
+﻿namespace SerieDLL.Repository
 {
     public class ActeurRepository : Orm
     {

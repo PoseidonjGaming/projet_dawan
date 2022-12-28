@@ -40,10 +40,7 @@ namespace SerieDLL_EF.Service
             return repo.GetById(id);
         }
 
-        //public T Export(int id)
-        //{
-        //    return repo.Export(id);
-        //}
+        
 
 
         //Ajoute l'objet de type TClass dans la bdd

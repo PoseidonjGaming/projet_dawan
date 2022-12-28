@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace projet_dawan.Model
+namespace SerieDLL.Model
 {
     [Serializable]
     [DataContract]
@@ -40,9 +40,9 @@ namespace projet_dawan.Model
 
         public Acteur()
         {
-            id= 0;
-            nom=string.Empty; 
-            prenom=string.Empty;
+            id = 0;
+            nom = string.Empty;
+            prenom = string.Empty;
         }
         public Acteur(string nom, string prenom)
         {

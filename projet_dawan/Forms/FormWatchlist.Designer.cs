@@ -31,16 +31,19 @@
             this.btnClearAll = new System.Windows.Forms.Button();
             this.btnExportList = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnLoad = new System.Windows.Forms.Button();
             this.lstBoxWatchlist = new System.Windows.Forms.ListBox();
             this.saveFileDialogWatchList = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialogLoad = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnClearAll
             // 
-            this.btnClearAll.Location = new System.Drawing.Point(352, 148);
+            this.btnClearAll.Location = new System.Drawing.Point(402, 197);
+            this.btnClearAll.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnClearAll.Name = "btnClearAll";
-            this.btnClearAll.Size = new System.Drawing.Size(95, 25);
+            this.btnClearAll.Size = new System.Drawing.Size(109, 33);
             this.btnClearAll.TabIndex = 0;
             this.btnClearAll.Text = "Clear All";
             this.btnClearAll.UseVisualStyleBackColor = true;
@@ -48,9 +51,10 @@
             // 
             // btnExportList
             // 
-            this.btnExportList.Location = new System.Drawing.Point(352, 109);
+            this.btnExportList.Location = new System.Drawing.Point(402, 145);
+            this.btnExportList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnExportList.Name = "btnExportList";
-            this.btnExportList.Size = new System.Drawing.Size(95, 33);
+            this.btnExportList.Size = new System.Drawing.Size(109, 44);
             this.btnExportList.TabIndex = 1;
             this.btnExportList.Text = "Save";
             this.btnExportList.UseVisualStyleBackColor = true;
@@ -58,33 +62,46 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnLoad);
             this.groupBox1.Controls.Add(this.lstBoxWatchlist);
             this.groupBox1.Controls.Add(this.btnClearAll);
             this.groupBox1.Controls.Add(this.btnExportList);
-            this.groupBox1.Location = new System.Drawing.Point(10, 9);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(11, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(452, 188);
+            this.groupBox1.Size = new System.Drawing.Size(517, 251);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // btnLoad
+            // 
+            this.btnLoad.Location = new System.Drawing.Point(402, 109);
+            this.btnLoad.Name = "btnLoad";
+            this.btnLoad.Size = new System.Drawing.Size(109, 29);
+            this.btnLoad.TabIndex = 3;
+            this.btnLoad.Text = "Load";
+            this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // lstBoxWatchlist
             // 
             this.lstBoxWatchlist.FormattingEnabled = true;
-            this.lstBoxWatchlist.ItemHeight = 15;
-            this.lstBoxWatchlist.Location = new System.Drawing.Point(5, 20);
-            this.lstBoxWatchlist.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstBoxWatchlist.ItemHeight = 20;
+            this.lstBoxWatchlist.Location = new System.Drawing.Point(6, 27);
             this.lstBoxWatchlist.Name = "lstBoxWatchlist";
-            this.lstBoxWatchlist.Size = new System.Drawing.Size(342, 154);
+            this.lstBoxWatchlist.Size = new System.Drawing.Size(390, 204);
             this.lstBoxWatchlist.TabIndex = 2;
+            // 
+            // openFileDialogLoad
+            // 
+            this.openFileDialogLoad.FileName = "openFileDialogLoad";
             // 
             // FormWatchlist
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 209);
+            this.ClientSize = new System.Drawing.Size(579, 279);
             this.Controls.Add(this.groupBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormWatchlist";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Watchlist";
@@ -101,5 +118,7 @@
         private GroupBox groupBox1;
         private ListBox lstBoxWatchlist;
         private SaveFileDialog saveFileDialogWatchList;
+        private Button btnLoad;
+        private OpenFileDialog openFileDialogLoad;
     }
 }

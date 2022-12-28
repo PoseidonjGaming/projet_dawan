@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using projet_dawan.Models;
+using projet_dawan.FormLogic;
 using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 using System;
@@ -16,43 +16,53 @@ namespace projet_dawan
 {
     public partial class FormWatchlist : Form
     {
-        List<Serie> series = new List<Serie>();
+        private LogicWatchList logic;
+
         public FormWatchlist()
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            logic = new(this);
         }
 
         private void btnClearAll_Click(object sender, EventArgs e)
         {
-            Properties.Settings.Default.UserRemain.ToWatch.Clear();
-            Properties.Settings.Default.Save();
-            lstBoxWatchlist.Items.Clear();
+            logic.BtnClearAll_Click();
         }
 
         private void btnExportList_Click(object sender, EventArgs e)
         {
-            //if (saveFileDialogWatchList.ShowDialog() == DialogResult.OK)
-            //{
-
-            //    List<int> list = SaisonRepository.Export(Properties.Settings.Default.UserRemain.ToWatch);
-
-            //    File.WriteAllText(saveFileDialogWatchList.FileName,JsonConvert.SerializeObject(list, Formatting.Indented));
-            //}
+            logic.BtnExportList_Click();
         }
 
         private void FormWatchlist_Load(object sender, EventArgs e)
         {
-            SerieService service = new();
-            foreach (int serieid in Properties.Settings.Default.UserRemain.ToWatch)
-            {
-                Serie serie = service.GetById(serieid);
-                series.Add(serie);
-                lstBoxWatchlist.Items.Add(serie.Nom);
-            }
+
+            logic.Load();
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            logic.Import();
         }
 
         // possibilité de supprimer l'élément de la listbox séléctionné
+
+
+        public ListBox GetListBoxWatch()
+        {
+            return lstBoxWatchlist;
+        }
+
+        public OpenFileDialog GetOpenFileDialogLoad()
+        {
+            return openFileDialogLoad;
+        }
+
+        public SaveFileDialog GetSaveFileDialogWatchlist()
+        {
+            return saveFileDialogWatchList;
+        }
     }
 }

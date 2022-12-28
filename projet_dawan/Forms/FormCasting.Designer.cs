@@ -130,7 +130,6 @@
             this.Controls.Add(this.labelCasting);
             this.Name = "FormCasting";
             this.Text = "FormCasting";
-            this.Load += new System.EventHandler(this.FormCasting_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.imagePersonnage)).EndInit();

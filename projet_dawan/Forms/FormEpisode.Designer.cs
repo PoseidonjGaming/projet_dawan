@@ -148,7 +148,6 @@
             this.Controls.Add(this.lblSerie);
             this.Name = "FormEpisode";
             this.Text = "Saison";
-            this.Load += new System.EventHandler(this.FormSaison_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSaison)).EndInit();

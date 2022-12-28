@@ -1,4 +1,4 @@
-﻿namespace projet_dawan.Repository
+﻿namespace SerieDLL.Repository
 {
     public class UserRoleRepository : Orm
     {
@@ -10,7 +10,7 @@
             table = "userRoles";
         }
 
-       
+
 
         //Génère Insert into userRoles (login, password) values (@login, @password)
         public string Add()
@@ -57,7 +57,7 @@
 
         public string SelectId()
         {
-            return Select("id").From(table).Where("userApp_id", "@user_id").And().Where("role_id","@role_id").Build();
+            return Select("id").From(table).Where("userApp_id", "@user_id").And().Where("role_id", "@role_id").Build();
         }
 
 

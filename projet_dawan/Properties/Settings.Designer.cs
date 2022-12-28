@@ -23,25 +23,12 @@ namespace projet_dawan.Properties {
             }
         }
         
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=P7710-2VGQK72\\SQLEXPRESS;Initial Catalog=serie_list;Integrated Securi" +
-            "ty=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;Applicatio" +
-            "nIntent=ReadWrite;MultiSubnetFailover=False")]
-        public string Connection {
+        public global::SerieDLL_EF.Models.UserApp UserRemain {
             get {
-                return ((string)(this["Connection"]));
-            }
-            set {
-                this["Connection"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::projet_dawan.Models.UserApp UserRemain {
-            get {
-                return ((global::projet_dawan.Models.UserApp)(this["UserRemain"]));
+                return ((global::SerieDLL_EF.Models.UserApp)(this["UserRemain"]));
             }
             set {
                 this["UserRemain"] = value;
@@ -59,5 +46,6 @@ namespace projet_dawan.Properties {
                 this["token"] = value;
             }
         }
+       
     }
 }
