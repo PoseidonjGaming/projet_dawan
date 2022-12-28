@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Windows\WindowAccueil.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowBibliotheque.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowGereActeur.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowsConnection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Windows\WindowAccueil.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowBibliotheque.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowGereActeur.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowsConnection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>
