@@ -59,13 +59,14 @@ namespace projet_dawan_WPF.Logic
                 img.Margin = new Thickness(10, 20, 10, 0);
                 img.Source = bitImg;
                 img.Stretch = Stretch.Fill;
-
+                
                 Grid.SetRow(img, 0);
                 grid.Children.Add(img);
 
                 Button btnSerie = new Button();
                 btnSerie.Content = serieList[i].Nom;
                 btnSerie.Margin = new Thickness(10, 0, 10, 10);
+                btnSerie.Click += Serie_Click;
                 Grid.SetRow(btnSerie, 1);
                 grid.Children.Add(btnSerie);
 
@@ -83,8 +84,8 @@ namespace projet_dawan_WPF.Logic
                 Serie? serie = serieList.Find(s => s.Nom == button.Content);
                 if (serie != null)
                 {
-                    //FormSerie formSerie = new(serie);
-                    //formSerie.ShowDialog(Form);
+                    WindowSerie formSerie = new(serie);
+                    formSerie.ShowDialog();
 
                 }
 
@@ -95,8 +96,8 @@ namespace projet_dawan_WPF.Logic
                 Serie? serie = serieList.Find(s => s.Nom == pictureBox.Name);
                 if (serie != null)
                 {
-                    //FormSerie formSerie = new(serie);
-                    //formSerie.ShowDialog(Form);
+                    WindowSerie formSerie = new(serie);
+                    formSerie.ShowDialog();
 
                 }
             }

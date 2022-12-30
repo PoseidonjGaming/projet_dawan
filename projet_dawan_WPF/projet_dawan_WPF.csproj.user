@@ -8,6 +8,9 @@
     <Compile Update="Windows\WindowBibliotheque.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\WindowCasting.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\WindowManageActeur.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -15,6 +18,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\WindowConnection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowSerie.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\WindowsManagePersonnages.xaml.cs">
@@ -34,6 +40,9 @@
     <Page Update="Windows\WindowBibliotheque.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Windows\WindowCasting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Windows\WindowManageActeur.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -41,6 +50,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\WindowConnection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowSerie.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\WindowsManagePersonnages.xaml">
