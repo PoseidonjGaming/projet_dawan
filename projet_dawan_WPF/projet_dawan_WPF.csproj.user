@@ -11,6 +11,9 @@
     <Compile Update="Windows\WindowCasting.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\WindowEpisode.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\WindowManageActeur.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -41,6 +44,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\WindowCasting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowEpisode.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\WindowManageActeur.xaml">

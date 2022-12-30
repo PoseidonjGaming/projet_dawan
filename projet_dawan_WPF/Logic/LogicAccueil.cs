@@ -85,6 +85,7 @@ namespace projet_dawan_WPF.Logic
                 if (serie != null)
                 {
                     WindowSerie formSerie = new(serie);
+                    formSerie.Owner = Window;
                     formSerie.ShowDialog();
 
                 }

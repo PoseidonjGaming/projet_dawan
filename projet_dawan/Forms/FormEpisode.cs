@@ -39,7 +39,7 @@ namespace projet_dawan_WinForm
 
         public Label GetLabelSerie()
         {
-            return lblSerie;
+            return lblEpisode;
         }
 
         public Label GetLabelSaison()

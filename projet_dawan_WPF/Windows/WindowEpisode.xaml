@@ -1,0 +1,49 @@
+﻿<Window x:Class="projet_dawan_WPF.Windows.WindowEpisode"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projet_dawan_WPF.Windows"
+        mc:Ignorable="d"
+        Title="WindowEpisode" Height="489" Width="816" WindowStartupLocation="CenterOwner">
+    <Grid x:Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="2" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="52*"></ColumnDefinition>
+                <ColumnDefinition Width="147*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <GroupBox Header="Episode" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2">
+            </GroupBox>
+            <Image x:Name="pictureBoxSaison" Grid.Row="0" Grid.Column="0" Margin="10,20,10,176" Stretch="Uniform" Grid.RowSpan="2"></Image>
+            <StackPanel  Grid.Column="1" Orientation="Vertical" Margin="0,10,0,176" Grid.RowSpan="2">
+                <Label x:Name="lblTitreEp" Content="Episode: " FontSize="15"></Label>
+                <Label x:Name="lblDateSaison" Content="Date de 1ère diffusion: " FontSize="15"></Label>
+
+            </StackPanel>
+            <Button x:Name="btnCasting" Content="Casting" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Height="20" Width="43"></Button>
+            <ListBox x:Name="lstBoxEpisode" Grid.Row="1" Margin="10,10,10,10" SelectionChanged="lstBoxEpisode_SelectionChanged"></ListBox>
+            <TextBlock x:Name="txtBoxResumeSaison" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10" TextWrapping="Wrap"></TextBlock>
+
+        </Grid>
+        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Vertical" HorizontalAlignment="Center">
+            <Label x:Name="lblEpisode" Content="Titre épisode" FontSize="30" FontWeight="Bold"></Label>
+            <Label x:Name="lblSaison" Content="Saison: " FontSize="30" HorizontalAlignment="Center"></Label>
+        </StackPanel>
+
+    </Grid>
+</Window>

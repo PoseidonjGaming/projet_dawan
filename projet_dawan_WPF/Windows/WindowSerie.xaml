@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows"
         mc:Ignorable="d"
-        Title="WindowSerie" Height="489" Width="816">
+        Title="WindowSerie" Height="489" Width="816" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="65"></RowDefinition>
@@ -27,7 +27,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Image Grid.Row="0" Stretch="UniformToFill" Name="affiche" ></Image>
+            <Image Grid.Row="0" Stretch="Fill" Name="affiche" ></Image>
             <ListBox x:Name="lstBoxSaison" Grid.Row="1" Grid.Column="0" Margin="0,10,0,0" SelectionChanged="lstBoxSaison_SelectionChanged"></ListBox>
         </Grid>
         <Label x:Name="lblSerie" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"

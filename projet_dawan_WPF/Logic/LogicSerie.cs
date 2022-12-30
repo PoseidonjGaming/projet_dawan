@@ -42,20 +42,22 @@ namespace projet_dawan_WPF.Logic
         {
             PersonnageService service = new PersonnageService();
             WindowCasting casting = new(service.GetBySerie(Serie.Id));
+            casting.Owner = Window;
             casting.ShowDialog();
         }
 
         public void LstBoxSaison_SelectedIndexChanged()
         {
-            //if (Form.GetListBoxSaison().SelectedIndex != -1)
-            //{
-            //    Saison saison = Saisons[Form.GetListBoxSaison().SelectedIndex];
-            //    saison.Serie = Serie;
-            //    FormEpisode formSaison = new(saison);
-            //    formSaison.FormClosed += OpenForm;
-            //    Form.Hide();
-            //    formSaison.ShowDialog(Form);
-            //}
+            if (Window.lstBoxSaison.SelectedIndex != -1)
+            {
+                Saison saison = Saisons[Window.lstBoxSaison.SelectedIndex];
+                saison.Serie = Serie;
+                WindowEpisode formSaison = new(saison);
+                formSaison.Owner = Window;
+                formSaison.Closed += OpenForm;
+                Window.Hide();
+                formSaison.ShowDialog();
+            }
         }
 
         public void ButtonToWatch_Click()
