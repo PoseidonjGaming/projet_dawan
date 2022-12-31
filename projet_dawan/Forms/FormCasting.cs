@@ -32,7 +32,7 @@ namespace projet_dawan.Forms
 
         public Label GetLabelCasting()
         {
-            return labelCasting;
+            return lblCasting;
         }
 
         public Label GetLabelNomPerso()
@@ -47,7 +47,7 @@ namespace projet_dawan.Forms
 
         public ListBox GetListBoxCasting()
         {
-            return listBoxCasting;
+            return lstBoxCasting;
         }
 
 

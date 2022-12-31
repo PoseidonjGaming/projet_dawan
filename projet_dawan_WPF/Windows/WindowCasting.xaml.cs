@@ -1,4 +1,5 @@
-﻿using SerieDLL_EF.Models;
+﻿using projet_dawan_WPF.Logic;
+using SerieDLL_EF.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,17 @@ namespace projet_dawan_WPF.Windows
     /// </summary>
     public partial class WindowCasting : Window
     {
-        public WindowCasting(List<Personnage> list)
+        private LogicCasting logic;
+        public WindowCasting (List<Personnage> list)
         {
             InitializeComponent();
+            logic = new(this);
+            logic.Load(list);
+        }
+
+        private void lstBoxCasting_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            logic.ListBoxCasting_SelectedIndexChanged();
         }
     }
 }
