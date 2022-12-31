@@ -120,6 +120,7 @@ namespace projet_dawan_WPF.Logic
             if (user.IsGranted(Roles.SuperAdmin))
             {
                 WindowManageActeur windowGereActeur = new();
+                windowGereActeur.Owner= Window;
                 windowGereActeur.ShowDialog();
             }
             else
