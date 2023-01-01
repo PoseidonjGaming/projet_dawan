@@ -84,8 +84,10 @@ namespace projet_dawan_WPF.Logic
                 Serie? serie = serieList.Find(s => s.Nom == button.Content);
                 if (serie != null)
                 {
-                    WindowSerie formSerie = new(serie);
-                    formSerie.Owner = Window;
+                    WindowSerie formSerie = new(serie)
+                    {
+                        Owner = Window
+                    };
                     formSerie.ShowDialog();
 
                 }
@@ -97,7 +99,10 @@ namespace projet_dawan_WPF.Logic
                 Serie? serie = serieList.Find(s => s.Nom == pictureBox.Name);
                 if (serie != null)
                 {
-                    WindowSerie formSerie = new(serie);
+                    WindowSerie formSerie = new(serie)
+                    {
+                        Owner = Window
+                    };
                     formSerie.ShowDialog();
 
                 }
@@ -186,7 +191,10 @@ namespace projet_dawan_WPF.Logic
         {
             if (Properties.Settings.Default.UserRemain != null)
             {
-                WindowWatchList watchlist = new();
+                WindowWatchList watchlist = new()
+                {
+                    Owner = Window
+                };
                 watchlist.ShowDialog();
             }
 

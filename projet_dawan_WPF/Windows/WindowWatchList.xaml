@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows"
         mc:Ignorable="d"
-        Title="WindowWatchList" Height="450" Width="800">
+        Title="WindowWatchList" Height="248" Width="523" WindowStartupLocation="CenterOwner">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Liste des série à regarder" Grid.Row="1" Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="93*"></ColumnDefinition>
+                    <ColumnDefinition Width="35*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <ListBox x:Name="lstBoxWatchlist" Grid.Row="0" Grid.Column="0" Margin="10
+                         "></ListBox>
+                <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center">
+                    <Button x:Name="btnLoad" Content="Charger" Margin="10" Click="btnLoad_Click"></Button>
+                    <Button x:Name="btnExportList" Content="Sauvegarder" Margin="10" Click="btnExportList_Click"></Button>
+                    <Button x:Name="btnClearAll" Content="Tout Supprimer" Margin="10" Click="btnClearAll_Click"></Button>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>
