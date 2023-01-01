@@ -16,38 +16,36 @@ using System.Windows.Shapes;
 namespace projet_dawan_WPF.Windows
 {
     /// <summary>
-    /// Logique d'interaction pour WindowManageActeur.xaml
+    /// Logique d'interaction pour WindowsManagePersonnages.xaml
     /// </summary>
-    
-    public partial class WindowManageActeur : Window
+    public partial class WindowManagePersonnages : Window
     {
-        private LogicManageActeur logic;
-
-        public WindowManageActeur()
+        private LogicManagePerso logic;
+        public WindowManagePersonnages()
         {
             InitializeComponent();
             logic = new(this);
             logic.Load();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        public void btnAjouter_Click(object sender, RoutedEventArgs e)
         {
-            logic.Add_Cick();
+            logic.BtnAjouter_Click();
         }
 
-        private void btnSup_Click(object sender, RoutedEventArgs e)
+        public void btnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            logic.Sup_Click();
+            
         }
 
-        private void lstBoxActeur_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        public void btnSup_Click(object sender, RoutedEventArgs e)
         {
-            logic.SelectIndexChanged();
+            logic.BtnSuppr_Click();
         }
 
-        private void btnNewActeur_Click(object sender, RoutedEventArgs e)
+        private void listBoxPerso_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            logic.BtnNewActeur_Click();
+            logic.ListBoxPerso_SelectedIndexChanged();
         }
     }
 }

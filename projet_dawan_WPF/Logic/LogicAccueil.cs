@@ -59,7 +59,7 @@ namespace projet_dawan_WPF.Logic
                 img.Margin = new Thickness(10, 20, 10, 0);
                 img.Source = bitImg;
                 img.Stretch = Stretch.Fill;
-                
+
                 Grid.SetRow(img, 0);
                 grid.Children.Add(img);
 
@@ -120,7 +120,7 @@ namespace projet_dawan_WPF.Logic
             if (user.IsGranted(Roles.SuperAdmin))
             {
                 WindowManageActeur windowGereActeur = new();
-                windowGereActeur.Owner= Window;
+                windowGereActeur.Owner = Window;
                 windowGereActeur.ShowDialog();
             }
             else
@@ -196,7 +196,10 @@ namespace projet_dawan_WPF.Logic
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
-                WindowManageEpisodes form = new();
+                WindowManageEpisodes form = new()
+                {
+                    Owner = Window
+                };
                 form.ShowDialog();
             }
 
@@ -206,7 +209,7 @@ namespace projet_dawan_WPF.Logic
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
-                WindowsManageSeries form = new WindowsManageSeries();
+                WindowManageSeries form = new();
                 form.ShowDialog();
             }
         }
@@ -215,7 +218,10 @@ namespace projet_dawan_WPF.Logic
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
-                WindowsManagePersonnages form = new();
+                WindowManagePersonnages form = new()
+                {
+                    Owner = Window
+                };
                 form.ShowDialog();
             }
 

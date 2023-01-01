@@ -26,10 +26,10 @@
     <Compile Update="Windows\WindowSerie.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\WindowsManagePersonnages.xaml.cs">
+    <Compile Update="Windows\WindowManagePersonnages.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Windows\WindowsManageSeries.xaml.cs">
+    <Compile Update="Windows\WindowManageSeries.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Windows\WindowWatchList.xaml.cs">
@@ -61,10 +61,10 @@
     <Page Update="Windows\WindowSerie.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\WindowsManagePersonnages.xaml">
+    <Page Update="Windows\WindowManagePersonnages.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\WindowsManageSeries.xaml">
+    <Page Update="Windows\WindowManageSeries.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\WindowWatchList.xaml">

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace projet_dawan_WPF.Windows
 {
     /// <summary>
-    /// Logique d'interaction pour WindowsManagePersonnages.xaml
+    /// Logique d'interaction pour WindowsManageSeries.xaml
     /// </summary>
-    public partial class WindowsManagePersonnages : Window
+    public partial class WindowManageSeries : Window
     {
-        public WindowsManagePersonnages()
+        public WindowManageSeries()
         {
             InitializeComponent();
         }

@@ -48,10 +48,10 @@
                     <Button x:Name="btnAdd" Content="Ajouter"  Click="btnAdd_Click"/>
                     <Button x:Name="btnSup" Content="Supprimer" Grid.Column="1"  Click="btnSup_Click"></Button>
                 </Grid>
-                <Button x:Name="btnNewActeur" Content="Nouvel Acteur" Grid.Row="3"></Button>
+                <Button x:Name="btnNewActeur" Content="Nouvel Acteur" Grid.Row="3" Click="btnNewActeur_Click"></Button>
             </Grid>
             
         </GroupBox>
-        <ListBox x:Name="lstBoxActeur" Grid.Row="2" Margin="5" SelectionChanged="lstBoxActeur_SelectionChanged"></ListBox>
+        <ListBox x:Name="lstBoxActeur" Grid.Row="2" Margin="5"></ListBox>
     </Grid>
 </Window>

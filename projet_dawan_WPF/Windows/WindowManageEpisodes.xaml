@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows"
         mc:Ignorable="d"
-        Title="WindowManageEpisodes" Height="430" Width="630">
+        Title="WindowManageEpisodes" Height="430" Width="630" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>
