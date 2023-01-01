@@ -209,8 +209,11 @@ namespace projet_dawan_WPF.Logic
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
-                WindowManageSeries form = new();
-                form.ShowDialog();
+                WindowManageSeries window = new()
+                {
+                    Owner = Window
+                };
+                window.ShowDialog();
             }
         }
 
