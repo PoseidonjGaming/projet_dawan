@@ -14,6 +14,7 @@ namespace projet_dawan
 
         private void button1_Click(object sender, EventArgs e)
         {
+
             UserApp user = new();
             user.Login = "TestUser";
             user.Password = "password";
@@ -21,6 +22,7 @@ namespace projet_dawan
             UserService service = new();
             user.Password = UserService.HashPassword(user.Password);
             service.Add(user);
+
         }
     }
 }
