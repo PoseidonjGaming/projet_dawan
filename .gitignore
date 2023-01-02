@@ -2,53 +2,14 @@
 # Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
 ################################################################################
 
-/projet_dawan/obj/
-/projet_dawan/bin/
-/.vs/
-/projet_dawan/obj/
-/projet_dawan_WPF/obj/Debug/net6.0-windows/
-*.lref*
-/projet_dawan_WPF/obj/*
-/SerieDLL/obj/Debug/net6.0/*
-/SerieDLL/obj/*
-/projet_dawan/.vs/*
-*.dll
-*.json
-/projet_dawan/bin/Debug/net6.0-windows/*
-/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.dll
-/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.pdb
-/projet_dawan/obj/Debug/net6.0-windows/projet_dawan_WinForm.Forms.FormEpisode.resources
-/projet_dawan/obj/Debug/net6.0-windows/projet_dawan_WinForm.FormSaison.resources
-/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.csproj.GenerateResource.cache
-/projet_dawan/bin/Debug/net6.0-windows/SerieDLL_EF.pdb
-/SerieDLL_EF/obj/Debug/net6.0/SerieDLL_EF.pdb
-/SerieDLL_EF/bin/Debug/net6.0/SerieDLL_EF.pdb
-/SerieDLL_EF/obj/Debug/net6.0/SerieDLL_EF.csproj.CoreCompileInputs.cache
-/.vs/projet_dawan/v17/.wsuo
-/SerieDLL_EF/obj/Debug/net6.0/SerieDLL_EF.assets.cache
-/SerieDLL_EF/obj/Debug/net6.0/SerieDLL_EF.csproj.AssemblyReference.cache
-/SerieDLL_EF/obj/Debug/net6.0/SerieDLL_EF.GeneratedMSBuildEditorConfig.editorconfig
-/SerieDLL_EF/obj/project.assets.json
-/SerieDLL_EF/obj/project.nuget.cache
-/SerieDLL_EF/obj/SerieDLL_EF.csproj.nuget.dgspec.json
-/SerieDLL_EF/obj/SerieDLL_EF.csproj.nuget.g.props
-/projet_dawan/obj/Debug/net6.0-windows/projet_dawan.genruntimeconfig.cache
-/SerieDLL_EF/obj/Debug/net6.0/SerieDLL_EF.csproj.FileListAbsolute.txt
-/SerieDLL_EF/obj/Debug/net6.0/SerieDLL_EF.genruntimeconfig.cache
-/projet_dawan/bin/Debug/net6.0-windows/projet_dawan.exe
-/projet_dawan/.vs/ProjectEvaluation/projet_dawan.projects.v5.1
-<<<<<<< HEAD
-
-=======
-/.vs/VSWorkspaceState.json
->>>>>>> d45a9385e966f8628e25597b71321c3965b02e68
-/SerieDLL_EF/BddprojetContext.cs
-/projet_dawan/projet_dawan.csproj.user
-<<<<<<< HEAD
-*.pdb
-*.exe
-=======
-/projet_dawan_WPF/bin/Debug/net6.0-windows/projet_dawan_WPF.pdb
-/projet_dawan_WPF/bin/Debug/net6.0-windows/projet_dawan_WPF.exe
-/.vs/slnx.sqlite
-/projet_dawan/.vs/ProjectEvaluation/projet_dawan.projects.v5.1
+/.vs
+/projet_dawan/.vs
+/projet_dawan/bin/Debug/net6.0-windows
+/projet_dawan/obj
+/projet_dawan_WPF/bin/Debug/net6.0-windows
+/projet_dawan_WPF/obj
+/SerieDLL/bin/Debug/net6.0
+/SerieDLL/obj
+/SerieDLL_EF/bin/Debug/net6.0
+/SerieDLL_EF/obj/Debug/net6.0
+/SerieDLL_EF/obj

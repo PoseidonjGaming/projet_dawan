@@ -1,9 +1,4 @@
-﻿using projet_dawan.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SerieDLL.Model;
 
 namespace SerieDLL.Interface
 {

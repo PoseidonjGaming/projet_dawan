@@ -262,11 +262,11 @@
         private ToolStripMenuItem toolStripCompte;
         private Label label1;
         private Label label2;
-        public TextBox txtRechercher;
+        private TextBox txtRechercher;
         private ToolStripMenuItem toolStripBibli;
         private ToolStripMenuItem toolStripGerer;
         private ToolStripMenuItem toolStripDeco;
-        public GroupBox groupBox1;
+        private GroupBox groupBox1;
         private Label label3;
         private ToolStripMenuItem quitterToolStripMenuItem;
         private ToolStripMenuItem watchlistToolStripMenuItem;
@@ -275,7 +275,7 @@
         private ToolStripMenuItem toolStripAddSerie;
         private ToolStripMenuItem gererLesActeursToolStripMenuItem;
         private ToolStripMenuItem ajouterEpisodeToolStripMenuItem;
-        public ToolStripMenuItem seConnecterToolStripMenuItem;
+        private ToolStripMenuItem seConnecterToolStripMenuItem;
         private ToolStripMenuItem gererPersonnagesToolStripMenuItem;
     }
 }

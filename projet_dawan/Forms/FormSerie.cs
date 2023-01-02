@@ -1,8 +1,5 @@
 using projet_dawan.FormLogic;
-using projet_dawan.Forms;
 using SerieDLL_EF.Models;
-using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
 
 namespace projet_dawan_WinForm
 {
@@ -15,7 +12,7 @@ namespace projet_dawan_WinForm
             InitializeComponent();
             logicSerie = new(this);
             logicSerie.Load(serie);
-            
+
         }
 
         private void btnCasting_Click(object sender, EventArgs e)
@@ -28,11 +25,41 @@ namespace projet_dawan_WinForm
             logicSerie.LstBoxSaison_SelectedIndexChanged();
         }
 
-        
+
 
         private void buttonToWatch_Click(object sender, EventArgs e)
         {
             logicSerie.ButtonToWatch_Click();
+        }
+
+        public Label GetLabelNom()
+        {
+            return lblSerie;
+        }
+
+        public Label GetLabelDateSerie()
+        {
+            return lblDateSerie;
+        }
+
+        public LinkLabel GetLinkLabelUrlBa()
+        {
+            return linkLblBASerie;
+        }
+
+        public TextBox GetTextBoxRsume()
+        {
+            return txtBoxResumeSerie;
+        }
+
+        public PictureBox GetPictureBoxAffiche()
+        {
+            return pictureBoxSerie;
+        }
+
+        public ListBox GetListBoxSaison()
+        {
+            return lstBoxSaison;
         }
     }
 }

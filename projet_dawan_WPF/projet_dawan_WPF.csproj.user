@@ -1,4 +1,74 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Windows\WindowAccueil.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowBibliotheque.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowCasting.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowEpisode.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowManageActeur.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowManageEpisodes.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowConnection.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowSerie.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowManagePersonnages.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowManageSeries.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Windows\WindowWatchList.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Windows\WindowAccueil.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowBibliotheque.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowCasting.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowEpisode.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowManageActeur.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowManageEpisodes.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowConnection.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowSerie.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowManagePersonnages.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowManageSeries.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowWatchList.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
 </Project>

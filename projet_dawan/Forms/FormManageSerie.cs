@@ -1,8 +1,4 @@
 ﻿using projet_dawan.FormLogic;
-using SerieDLL_EF.Models;
-using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
-using System.Security.Policy;
 
 namespace projet_dawan
 {
@@ -25,12 +21,12 @@ namespace projet_dawan
 
         private void btnAnnuler_Click(object sender, EventArgs e)
         {
-           manageSerie.BtnAnnuler_Click();
+            manageSerie.BtnAnnuler_Click();
         }
 
         private void btnSup_Click(object sender, EventArgs e)
         {
-           manageSerie.BtnSup_Click();  
+            manageSerie.BtnSup_Click();
         }
 
         private void FormAjoutSerie_Load(object sender, EventArgs e)
@@ -45,7 +41,47 @@ namespace projet_dawan
 
         private void lstBoxSerie_SelectedIndexChanged(object sender, EventArgs e)
         {
-           manageSerie.LstBoxSerie_SelectedIndexChanged();
+            manageSerie.LstBoxSerie_SelectedIndexChanged();
+        }
+
+        public TextBox GetTextBoxNomSerie()
+        {
+            return txtNomSerie;
+        }
+
+        public TextBox GetTextBoxResume()
+        {
+            return txtResume;
+        }
+
+        public TextBox GetTextBoxAffiche()
+        {
+            return txtPathAffiche;
+        }
+
+        public TextBox GetTextBoxURLBa()
+        {
+            return txtUrlBa;
+        }
+
+        public DateTimePicker GetDateDiff()
+        {
+            return dateTimeSortie;
+        }
+
+        public ListBox GetListBoxSerie()
+        {
+            return lstBoxSerie;
+        }
+
+        public OpenFileDialog GetOpenFileAffiche()
+        {
+            return openFileDialogAffiche;
+        }
+
+        public Button GetButtonAdd()
+        {
+            return btnAjouter;
         }
     }
 }

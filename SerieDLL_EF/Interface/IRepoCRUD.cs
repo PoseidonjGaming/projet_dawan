@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SerieDLL_EF.Interface
+﻿namespace SerieDLL_EF.Interface
 {
     /*
      * Contient les méthodes CRUD classiques qui sont implémentées dans les répository

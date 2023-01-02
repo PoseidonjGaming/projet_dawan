@@ -1,9 +1,5 @@
-﻿using projet_dawan;
-using projet_dawan.FormLogic;
-using projet_dawan.Forms;
+﻿using projet_dawan.FormLogic;
 using SerieDLL_EF.Models;
-using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
 
 namespace projet_dawan_WinForm
 {
@@ -30,6 +26,41 @@ namespace projet_dawan_WinForm
         {
             logicEpisodes.Casting_Click();
         }
-        
+
+        public PictureBox GetPictureBoxSaison()
+        {
+            return pictureBoxSaison;
+        }
+
+        public Label GetLabelSerie()
+        {
+            return lblEpisode;
+        }
+
+        public Label GetLabelSaison()
+        {
+            return lblSaison;
+        }
+
+        public Label GetLabelDateSaison()
+        {
+            return lblDateSaison;
+        }
+
+        public Label GetLabelTitreEp()
+        {
+            return lblTitreEp;
+        }
+
+        public ListBox GetListBoxEpisode()
+        {
+            return lstBoxEpisode;
+        }
+
+        public TextBox GetTextBoxResumeSaison()
+        {
+            return txtBoxResumeSaison;
+        }
+
     }
 }

@@ -1,14 +1,4 @@
 ﻿using projet_dawan.FormLogic;
-using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan.Forms
 {
@@ -31,7 +21,7 @@ namespace projet_dawan.Forms
             manageActeur.Load();
         }
 
-        
+
         private void btnNewActeur_Click(object sender, EventArgs e)
         {
             manageActeur.BtnNewActeur_Click();
@@ -44,7 +34,21 @@ namespace projet_dawan.Forms
 
         private void btnSup_Click(object sender, EventArgs e)
         {
-           manageActeur.Sup_Click();
+            manageActeur.Sup_Click();
+        }
+
+        public TextBox GetTextBoxNom()
+        {
+            return txtBoxNom;
+        }
+        public TextBox GetTextBoxPrenom()
+        {
+            return txtBoxPrenom;
+        }
+
+        public ListBox GetListBoxActeur()
+        {
+            return lstBoxActeur;
         }
     }
 }

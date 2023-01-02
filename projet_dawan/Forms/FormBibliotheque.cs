@@ -1,8 +1,4 @@
 ﻿using projet_dawan.FormLogic;
-using projet_dawan.Forms;
-using projet_dawan_WinForm;
-using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
 
 namespace projet_dawan
 {
@@ -19,17 +15,15 @@ namespace projet_dawan
             bibli.Load(text);
 
 
-            
 
-           
+
+
         }
 
         private void btnRetour_Click(object sender, EventArgs e)
         {
             bibli.BtnRetour_Click();
         }
-
-
 
         private void txtRechercher_TextChanged(object sender, EventArgs e)
         {
@@ -43,21 +37,28 @@ namespace projet_dawan
 
         private void buttonAddWich_Click(object sender, EventArgs e)
         {
-           bibli.ButtonAddWich_Click();
+            bibli.ButtonAddWich_Click();
         }
 
-
-
-
-
-
-      
         private void cmbFiltrer_SelectedIndexChanged(object sender, EventArgs e)
         {
             bibli.CmbFiltrer_SelectedIndexChanged();
         }
 
+        public ComboBox GetComboBoxFilter()
+        {
+            return cmbFiltrer;
+        }
 
+        public TextBox GetTextBoxRechercher()
+        {
+            return txtRechercher;
+        }
+
+        public ListBox GetListBoxSerie()
+        {
+            return lstBxSerie;
+        }
 
     }
 }

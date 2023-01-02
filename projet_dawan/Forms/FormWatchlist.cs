@@ -1,21 +1,9 @@
-﻿using Newtonsoft.Json;
-using projet_dawan.FormLogic;
-using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using projet_dawan.FormLogic;
 
 namespace projet_dawan
 {
     public partial class FormWatchlist : Form
-    { 
+    {
         private LogicWatchList logic;
 
         public FormWatchlist()
@@ -48,5 +36,21 @@ namespace projet_dawan
         }
 
         // possibilité de supprimer l'élément de la listbox séléctionné
+
+
+        public ListBox GetListBoxWatch()
+        {
+            return lstBoxWatchlist;
+        }
+
+        public OpenFileDialog GetOpenFileDialogLoad()
+        {
+            return openFileDialogLoad;
+        }
+
+        public SaveFileDialog GetSaveFileDialogWatchlist()
+        {
+            return saveFileDialogWatchList;
+        }
     }
 }

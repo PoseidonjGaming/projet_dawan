@@ -10,6 +10,7 @@ namespace SerieDLL_EF.Service
     {
         public SerieService() : base(new SerieRepository()) { }
 
+        //Récupère la liste des séries dont l'id est présent dans la liste toWatch
         public List<Serie> ExportWatchList(List<int> toWatch)
         {
             return repo.ExportWatchList(toWatch);

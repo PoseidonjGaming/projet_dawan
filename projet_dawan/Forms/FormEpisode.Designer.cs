@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblSerie = new System.Windows.Forms.Label();
+            this.lblEpisode = new System.Windows.Forms.Label();
             this.lblSaison = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblTitreEp = new System.Windows.Forms.Label();
@@ -41,15 +41,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSaison)).BeginInit();
             this.SuspendLayout();
             // 
-            // lblSerie
+            // lblEpisode
             // 
-            this.lblSerie.AutoSize = true;
-            this.lblSerie.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblSerie.Location = new System.Drawing.Point(114, 9);
-            this.lblSerie.Name = "lblSerie";
-            this.lblSerie.Size = new System.Drawing.Size(313, 54);
-            this.lblSerie.TabIndex = 0;
-            this.lblSerie.Text = "Titre de la série";
+            this.lblEpisode.AutoSize = true;
+            this.lblEpisode.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblEpisode.Location = new System.Drawing.Point(114, 9);
+            this.lblEpisode.Name = "lblEpisode";
+            this.lblEpisode.Size = new System.Drawing.Size(313, 54);
+            this.lblEpisode.TabIndex = 0;
+            this.lblEpisode.Text = "Titre de la série";
             // 
             // lblSaison
             // 
@@ -145,7 +145,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblSaison);
-            this.Controls.Add(this.lblSerie);
+            this.Controls.Add(this.lblEpisode);
             this.Name = "FormEpisode";
             this.Text = "Saison";
             this.groupBox1.ResumeLayout(false);
@@ -158,14 +158,14 @@
 
         #endregion
 
-        public Label lblSerie;
-        public Label lblSaison;
+        private Label lblEpisode;
+        private Label lblSaison;
         private GroupBox groupBox1;
         private Button btnCasting;
-        public TextBox txtBoxResumeSaison;
-        public Label lblDateSaison;
-        public PictureBox pictureBoxSaison;
-        public ListBox lstBoxEpisode;
-        public Label lblTitreEp;
+        private TextBox txtBoxResumeSaison;
+        private Label lblDateSaison;
+        private PictureBox pictureBoxSaison;
+        private ListBox lstBoxEpisode;
+        private Label lblTitreEp;
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using SerieDLL_EF.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
@@ -37,6 +36,11 @@ public partial class UserApp
             ToWatchList.Add(serie.Id);
         }
         ToWatch = JsonConvert.SerializeObject(ToWatchList);
+    }
+
+    public bool IsGranted(Roles role)
+    {
+        return this.Roles >= role;
     }
 
 

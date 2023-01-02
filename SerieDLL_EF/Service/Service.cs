@@ -1,9 +1,4 @@
 ﻿using SerieDLL_EF.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Service
 {
@@ -13,7 +8,7 @@ namespace SerieDLL_EF.Service
      * -Update: update
      * -Delete: Delete* 
      */
-    public abstract class Service <TClass, TRepo> where TClass: class where TRepo : IRepoCRUD<TClass>
+    public abstract class Service<TClass, TRepo> where TClass : class where TRepo : IRepoCRUD<TClass>
     {
 
         /*TClass: Représente la classe Model qui est manipulée
@@ -24,7 +19,7 @@ namespace SerieDLL_EF.Service
 
         public Service(TRepo repo)
         {
-            this.repo=repo;
+            this.repo = repo;
         }
 
         //Récupère la liste de tous objets de type TClass depuis la bdd
@@ -40,11 +35,11 @@ namespace SerieDLL_EF.Service
             return repo.GetById(id);
         }
 
-        
+
 
 
         //Ajoute l'objet de type TClass dans la bdd
-        public void Add(TClass item)
+        public virtual void Add(TClass item)
         {
             repo.Add(item);
         }
