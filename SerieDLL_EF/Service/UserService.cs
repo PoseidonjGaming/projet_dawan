@@ -1,4 +1,3 @@
-﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using System.Security.Cryptography;
 using System.Text;
@@ -18,8 +17,14 @@ namespace SerieDLL_EF.Service
         }
 
 
+        public override void Add(UserApp item)
+        {
+            item.Password = HashPassword(item.Password);
+            base.Add(item);
+        }
 
-        public static string HashPassword(string? pwd)
+
+        public string HashPassword(string? pwd)
         {
 
             using SHA256 sha256 = SHA256.Create();
@@ -32,10 +37,11 @@ namespace SerieDLL_EF.Service
                 builder.Append(bytes[i].ToString("x2")); // x hexadecimal / 2 : 2 digits
             }
 
-            return builder.ToString();
+                return builder.ToString();
+            }
         }
 
-
+       
     }
-}
+
 

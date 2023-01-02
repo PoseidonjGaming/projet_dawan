@@ -36,7 +36,6 @@ namespace SerieDLL_EF.Repository
         {
             using (BddprojetContext context = new())
             {
-                UserService service = new();
                 context.UserApps.Add(item);
                 context.SaveChanges();
             }
