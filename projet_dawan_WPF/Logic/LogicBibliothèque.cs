@@ -1,13 +1,8 @@
 ﻿using projet_dawan_WPF.Windows;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace projet_dawan_WPF.Logic
 {
@@ -29,7 +24,7 @@ namespace projet_dawan_WPF.Logic
             {
                 Windows.cmbFiltrer.Items.Add(item);
             }
-            
+
             Windows.cmbFiltrer.SelectedIndex = 0;
             Windows.txtRechercher.Text = text;
         }

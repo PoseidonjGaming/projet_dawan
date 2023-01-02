@@ -1,11 +1,8 @@
 ﻿using projet_dawan_WPF.Windows;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Security.Cryptography.Pkcs;
 using System.Windows;
 
 namespace projet_dawan_WPF.Logic
@@ -57,7 +54,7 @@ namespace projet_dawan_WPF.Logic
                 if (Window.listBoxPerso.SelectedIndex != -1)
                 {
                     Personnage perso = personnages[Window.listBoxPerso.SelectedIndex];
-                    perso.Nom= Window.txtBoxNom.Text;
+                    perso.Nom = Window.txtBoxNom.Text;
                     perso.SerieId = serieList[Window.comboBoxSerie.SelectedIndex].Id;
                     perso.ActeurId = acteurList[Window.comboBoxActeur.SelectedIndex].Id;
                     servicePerso.Update(perso);
@@ -77,11 +74,19 @@ namespace projet_dawan_WPF.Logic
                     MessageBox.Show("Personnage ajouté");
                 }
                 // ajouter le personnage
-              
+
                 populate();
 
-                
+
             }
+        }
+
+        public void BtnAnnuler_Click()
+        {
+            Window.txtBoxNom.Clear();
+            Window.txtBoxResume.Clear();
+            Window.comboBoxActeur.SelectedIndex= 0;
+            Window.comboBoxSerie.SelectedIndex= 0;
         }
 
         public void BtnSuppr_Click()

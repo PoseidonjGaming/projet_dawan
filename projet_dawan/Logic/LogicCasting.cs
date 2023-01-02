@@ -1,17 +1,12 @@
 ﻿using projet_dawan.Forms;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projet_dawan.FormLogic
 {
     internal class LogicCasting
     {
-        public FormCasting Form{ get; set; }
+        public FormCasting Form { get; set; }
         private List<Personnage> castList = new List<Personnage>();
         private Serie serie;
         public LogicCasting(FormCasting form)

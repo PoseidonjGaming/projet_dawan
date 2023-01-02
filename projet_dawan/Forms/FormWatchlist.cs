@@ -1,16 +1,4 @@
-﻿using Newtonsoft.Json;
-using projet_dawan.FormLogic;
-using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using projet_dawan.FormLogic;
 
 namespace projet_dawan
 {

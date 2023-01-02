@@ -1,13 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SerieDLL_EF.Models;
-using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan.FormLogic
 {
@@ -48,14 +41,14 @@ namespace projet_dawan.FormLogic
             Properties.Settings.Default.UserRemain.ToWatchList.Clear();
             Properties.Settings.Default.UserRemain.ToWatch = string.Empty;
             Properties.Settings.Default.Save();
-            UserService service= new();
+            UserService service = new();
             service.Update(Properties.Settings.Default.UserRemain);
             Form.GetListBoxWatch().Items.Clear();
         }
 
         public void BtnExportList_Click()
         {
-            
+
 
             if (Form.GetSaveFileDialogWatchlist().ShowDialog() == DialogResult.OK)
             {
@@ -83,7 +76,7 @@ namespace projet_dawan.FormLogic
                 Properties.Settings.Default.UserRemain.SetToWatchList(list);
                 Properties.Settings.Default.Save();
                 Load();
-                UserService service= new();
+                UserService service = new();
                 service.Update(Properties.Settings.Default.UserRemain);
             }
         }

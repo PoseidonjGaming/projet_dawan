@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using projet_dawan.FormLogic;
-using SerieDLL_EF.Models;
-using SerieDLL_EF.Service;
+﻿using projet_dawan.FormLogic;
 
 namespace projet_dawan.Forms
 {
@@ -31,7 +20,7 @@ namespace projet_dawan.Forms
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-           managePerso.BtnAjouter_Click();
+            managePerso.BtnAjouter_Click();
         }
 
         private void btnSuppr_Click(object sender, EventArgs e)
@@ -63,6 +52,6 @@ namespace projet_dawan.Forms
             return listBoxPerso;
         }
 
-       
+
     }
 }

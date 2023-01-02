@@ -5,9 +5,6 @@ using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace projet_dawan_WPF.Logic
@@ -134,6 +131,7 @@ namespace projet_dawan_WPF.Logic
             Window.txtUrlBa.Clear();
             Window.txtResume.Clear();
             Window.lstBoxSerie.SelectedIndex = -1;
+            Window.dateTimeSortie.SelectedDate = null;
         }
     }
 }

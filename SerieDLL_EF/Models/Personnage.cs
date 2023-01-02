@@ -1,9 +1,4 @@
-﻿using SerieDLL_EF.Models;
-using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-
-namespace SerieDLL_EF.Models;
+﻿namespace SerieDLL_EF.Models;
 
 public partial class Personnage
 {

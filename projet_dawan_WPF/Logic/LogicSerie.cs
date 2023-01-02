@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using SerieDLL_EF.Service;
+﻿using projet_dawan_WPF.Windows;
 using SerieDLL_EF.Models;
-using System.Windows;
-using projet_dawan_WPF.Windows;
-using System.Windows.Media.Imaging;
+using SerieDLL_EF.Service;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace projet_dawan_WPF.Logic
 {

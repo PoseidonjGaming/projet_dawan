@@ -1,5 +1,3 @@
-using projet_dawan.Forms;
-
 namespace projet_dawan
 {
     internal static class Program

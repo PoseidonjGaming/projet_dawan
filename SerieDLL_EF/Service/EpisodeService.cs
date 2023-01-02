@@ -6,9 +6,9 @@ namespace SerieDLL_EF.Service
     /*
      * Classe qui hérite de la classe Service et qui type Service pour le type Episode
      */
-    public class EpisodeService: Service<Episode, EpisodeRepository>
+    public class EpisodeService : Service<Episode, EpisodeRepository>
     {
-        public EpisodeService():base(new EpisodeRepository()) { }
+        public EpisodeService() : base(new EpisodeRepository()) { }
 
         //Récupère la liste des épisodes qui appartienent à la saison spécifié
         public List<Episode> GetBySaison(int saison)

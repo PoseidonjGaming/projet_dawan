@@ -35,7 +35,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                         <Label Content="Saison: "></Label>
-                        <TextBox x:Name="numSaison" Width="260" IsReadOnly="true" MouseWheel="TextBox_MouseWheel" Margin="60,0,0,0" ></TextBox>
+                        <TextBox x:Name="numSaison" Width="260" IsReadOnly="true" MouseWheel="TextBox_MouseWheel" Margin="60,0,0,0" Text="0" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                         <StackPanel Orientation="Vertical">
                             <Button x:Name="btnAddNum" Content="+" Click="btnAddNum_Click"/>
                             <Button x:Name="btnSupNum" Content="-" Click="btnSupNum_Click"/>
@@ -47,7 +47,7 @@
                     </StackPanel>
                     <Label Content="Résumé: "></Label>
                     <TextBox x:Name="txtBoxResume" TextWrapping="Wrap" Height="100" Margin="5,0,10,0"></TextBox>
-                    <CheckBox x:Name="checkBoxLastSeason" Content="Dernier épisode de la Saion" HorizontalAlignment="Left" FlowDirection="RightToLeft" Margin="5,0,0,0"></CheckBox>
+                    <CheckBox x:Name="checkBoxLastSeason" Content="Dernier épisode de la Saion" HorizontalAlignment="Left" FlowDirection="RightToLeft" Margin="5,10,0,0"></CheckBox>
                 </StackPanel>
             </GroupBox>
 

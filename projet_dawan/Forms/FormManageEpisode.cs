@@ -1,15 +1,4 @@
 ﻿using projet_dawan.FormLogic;
-using SerieDLL_EF.Models;
-using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace projet_dawan.Forms
 {
@@ -29,7 +18,7 @@ namespace projet_dawan.Forms
             manageEpisode.Load();
         }
 
-        
+
 
         private void btnAjouter_Click(object sender, EventArgs e)
         {
@@ -48,7 +37,7 @@ namespace projet_dawan.Forms
 
         private void btnSup_Click(object sender, EventArgs e)
         {
-           manageEpisode.BtnSup_Click();
+            manageEpisode.BtnSup_Click();
         }
 
         public ComboBox GetComboBoxSerie()

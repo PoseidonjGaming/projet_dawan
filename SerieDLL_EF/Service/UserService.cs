@@ -5,9 +5,9 @@ using System.Text;
 
 namespace SerieDLL_EF.Service
 {
-    public class UserService: Service<UserApp, UserAppRepository>
+    public class UserService : Service<UserApp, UserAppRepository>
     {
-        public UserService():base(new UserAppRepository())
+        public UserService() : base(new UserAppRepository())
         {
 
         }
@@ -17,11 +17,11 @@ namespace SerieDLL_EF.Service
             return repo.GetUser(login, HashPassword(pwd));
         }
 
-        
+
 
         public static string HashPassword(string? pwd)
         {
-           
+
             using SHA256 sha256 = SHA256.Create();
             byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pwd));
 

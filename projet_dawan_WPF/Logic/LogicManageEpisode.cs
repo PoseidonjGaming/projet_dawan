@@ -1,11 +1,8 @@
 ﻿using projet_dawan_WPF.Windows;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace projet_dawan_WPF.Logic
@@ -32,7 +29,7 @@ namespace projet_dawan_WPF.Logic
             {
                 Window.cmbSerie.Items.Add(serie.Nom);
             }
-           
+
             SaisonService saisonService = new SaisonService();
 
             Populate();
@@ -63,7 +60,7 @@ namespace projet_dawan_WPF.Logic
                 {
                     service.Add(ep);
                 }
-                    
+
 
 
             }
@@ -81,6 +78,14 @@ namespace projet_dawan_WPF.Logic
             }
         }
 
+        public void BtnAnnuler_Click()
+        {
+            Window.txtBoxNom.Clear();
+            Window.txtBoxResume.Clear();
+            Window.numSaison.Text = "0";
+            Window.datePremDiff.SelectedDate = null;
+        }
+
         public void CmbSerie_SelectedIndexChanged()
         {
             SaisonService saisonService = new SaisonService();
@@ -95,10 +100,10 @@ namespace projet_dawan_WPF.Logic
                 Episode ep = episodes[Window.lstBoxEpisode.SelectedIndex];
                 Window.txtBoxNom.Text = ep.Nom;
                 Window.txtBoxResume.Text = ep.Resume;
-                Window.datePremDiff.SelectedDate=ep.DatePremDiff;
+                Window.datePremDiff.SelectedDate = ep.DatePremDiff;
                 SaisonService saisonService = new();
                 saison = saisonService.GetById(episodes[Window.lstBoxEpisode.SelectedIndex].SaisonId);
-                Window.numSaison.Text= saisonService.GetById(ep.SaisonId).Numero.ToString();
+                Window.numSaison.Text = saisonService.GetById(ep.SaisonId).Numero.ToString();
                 Window.cmbSerie.SelectedIndex = serieList.IndexOf(serieList.Where(s => s.Id == saison.SerieId).SingleOrDefault());
             }
         }
@@ -120,16 +125,36 @@ namespace projet_dawan_WPF.Logic
 
         public void BtnAddNum_Click()
         {
-            int saison = int.Parse(Window.txtBoxNom.Text);
+            int saison = int.Parse(Window.numSaison.Text);
             saison++;
-            Window.txtBoxNom.Text = saison.ToString();
+            Window.numSaison.Text = saison.ToString();
         }
 
         public void BtnSupNum_Click()
         {
-            int saison = int.Parse(Window.txtBoxNom.Text);
+            int saison = int.Parse(Window.numSaison.Text);
             saison--;
-            Window.txtBoxNom.Text = saison.ToString();
+            if (saison < 0)
+            {
+                Window.numSaison.Text = "0";
+            }
+            else
+            {
+                Window.numSaison.Text = saison.ToString();
+            }
+
+        }
+
+        public void TextBox_MouseWheel(int saison)
+        {
+            if (saison >= 0)
+            {
+                BtnAddNum_Click();
+            }
+            else
+            {
+                BtnSupNum_Click();
+            }
         }
 
 

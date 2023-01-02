@@ -1,10 +1,4 @@
 ﻿using projet_dawan.FormLogic;
-using projet_dawan.Forms;
-using projet_dawan_WinForm;
-using SerieDLL_EF.Models;
-using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
-using System.Windows.Forms;
 
 namespace projet_dawan
 {
@@ -71,20 +65,20 @@ namespace projet_dawan
         }
 
 
-       
+
         private void seConnecterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             logicAccueil.SeConnecterToolStripMenuItem_Click();
         }
 
-       
+
 
         private void ajouterEpisodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             logicAccueil.ManageEpisodeToolStripMenuItem_Click();
         }
 
-       
+
 
         private void gererPersonnagesToolStripMenuItem_Click_1(object sender, EventArgs e)
         {

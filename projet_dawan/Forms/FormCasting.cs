@@ -1,8 +1,5 @@
 ﻿using projet_dawan.FormLogic;
-using projet_dawan.Forms;
 using SerieDLL_EF.Models;
-using SerieDLL_EF.Repository;
-using SerieDLL_EF.Service;
 
 namespace projet_dawan.Forms
 {
@@ -18,14 +15,14 @@ namespace projet_dawan.Forms
             FormBorderStyle = FormBorderStyle.FixedSingle;
             logicCasting = new(this);
             logicCasting.Load(list);
-           
+
         }
 
-       
+
 
         private void listBoxCasting_SelectedIndexChanged(object sender, EventArgs e)
         {
-           logicCasting.ListBoxCasting_SelectedIndexChanged();
+            logicCasting.ListBoxCasting_SelectedIndexChanged();
         }
 
         // ajouter information sur le perso et une image

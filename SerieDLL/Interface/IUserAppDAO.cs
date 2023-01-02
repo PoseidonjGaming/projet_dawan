@@ -5,6 +5,6 @@ namespace SerieDLL.Interface
 {
     public interface IUserAppDAO
     {
-        UserApp GetByLogin(string login); 
+        UserApp GetByLogin(string login);
     }
 }

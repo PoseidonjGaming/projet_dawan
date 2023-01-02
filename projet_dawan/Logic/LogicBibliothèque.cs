@@ -2,12 +2,6 @@
 using projet_dawan_WinForm;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace projet_dawan.FormLogic
 {
@@ -148,7 +142,7 @@ namespace projet_dawan.FormLogic
                     MessageBox.Show("Pas de Filtre seléctionné");
                     break;
             }
-            
+
         }
         private void Populate(List<string> list)
         {

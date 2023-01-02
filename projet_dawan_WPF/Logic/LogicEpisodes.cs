@@ -66,7 +66,7 @@ namespace projet_dawan_WPF.Logic
         private void Populate(Episode ep)
         {
             Window.txtBoxResumeSaison.Text = ep.Resume;
-            Window.lblDateSaison.Content= "Episode diffusé le " + ep.DatePremDiff.Value.ToShortDateString();
+            Window.lblDateSaison.Content = "Episode diffusé le " + ep.DatePremDiff.Value.ToShortDateString();
             Window.lblTitreEp.Content = "Détail l'épisode: " + ep.Nom;
         }
 

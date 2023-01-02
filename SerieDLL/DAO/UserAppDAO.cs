@@ -192,7 +192,7 @@ namespace SerieDLL.DAO
             return cmd;
         }
 
-        
+
     }
 
 

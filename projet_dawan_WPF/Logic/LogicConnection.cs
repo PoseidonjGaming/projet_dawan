@@ -1,13 +1,8 @@
 ﻿using projet_dawan_WPF.Windows;
 using SerieDLL_EF.Models;
-using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projet_dawan_WPF.Logic
 {

@@ -1,11 +1,6 @@
 ﻿using projet_dawan.Forms;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projet_dawan.FormLogic
 {
@@ -84,7 +79,7 @@ namespace projet_dawan.FormLogic
             Personnage perso = personnages[Form.GetListBoxPerso().SelectedIndex];
             Form.GetTextBoxNomPerso().Text = perso.Nom;
             Acteur acteur = acteurList.Find(a => a.Id == perso.ActeurId);
-            
+
             Form.GetComboBoxActeur().SelectedIndex = acteurList.IndexOf(acteur);
             Serie serie = serieList.Find(s => s.Id == perso.SerieId);
             Form.GetComboBoxSerie().SelectedIndex = serieList.IndexOf(serie);
