@@ -7,7 +7,7 @@ namespace projet_dawan_WPF.Window
     /// <summary>
     /// Logique d'interaction pour WindowsManagePersonnages.xaml
     /// </summary>
-    public partial class WindowManagePersonnages : Window
+    public partial class WindowManagePersonnages : System.Windows.Window
     {
         private LogicManagePerso logic;
         public WindowManagePersonnages()

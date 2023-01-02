@@ -8,7 +8,7 @@ namespace projet_dawan_WPF.Window
     /// <summary>
     /// Logique d'interaction pour WindowEpisode.xaml
     /// </summary>
-    public partial class WindowEpisode : Window
+    public partial class WindowEpisode : System.Windows.Window
     {
         private Saison Saison;
         private LogicEpisodes logic;

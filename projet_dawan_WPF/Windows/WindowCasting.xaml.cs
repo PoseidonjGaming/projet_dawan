@@ -9,7 +9,7 @@ namespace projet_dawan_WPF.Window
     /// <summary>
     /// Logique d'interaction pour WindowCasting.xaml
     /// </summary>
-    public partial class WindowCasting : Window
+    public partial class WindowCasting : System.Windows.Window
     {
         private LogicCasting logic;
         public WindowCasting(List<Personnage> list)

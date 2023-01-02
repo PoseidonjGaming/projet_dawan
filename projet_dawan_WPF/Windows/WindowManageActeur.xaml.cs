@@ -8,7 +8,7 @@ namespace projet_dawan_WPF.Window
     /// Logique d'interaction pour WindowManageActeur.xaml
     /// </summary>
 
-    public partial class WindowManageActeur : Window
+    public partial class WindowManageActeur : System.Windows.Window
     {
         private LogicManageActeur logic;
 

@@ -6,7 +6,7 @@ namespace projet_dawan_WPF.Window
     /// <summary>
     /// Logique d'interaction pour WindowWatchList.xaml
     /// </summary>
-    public partial class WindowWatchList : Window
+    public partial class WindowWatchList : System.Windows.Window
     {
         private LogicWatchList logic;
         public WindowWatchList()

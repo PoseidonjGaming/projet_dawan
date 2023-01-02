@@ -7,13 +7,12 @@ namespace projet_dawan_WPF.Window
     /// <summary>
     /// Logique d'interaction pour WindowBibliotheque.xaml
     /// </summary>
-    public partial class WindowBibliotheque : Window
+    public partial class WindowBibliotheque : System.Windows.Window
     {
         private LogicBibliothèque logic;
-        public WindowBibliotheque(string text, Window windows)
+        public WindowBibliotheque(string text)
         {
             InitializeComponent();
-            this.Owner = windows;
             logic = new(this);
             logic.Load(text);
         }

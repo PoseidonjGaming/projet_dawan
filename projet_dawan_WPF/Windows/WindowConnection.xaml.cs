@@ -5,7 +5,7 @@ namespace projet_dawan_WPF.Window
     /// <summary>
     /// Logique d'interaction pour WindowsConnection.xaml
     /// </summary>
-    public partial class WindowConnection : Window
+    public partial class WindowConnection : System.Windows.Window
     {
         private LogicMain logic;
         public WindowConnection()

@@ -8,7 +8,7 @@ namespace projet_dawan_WPF.Window
     /// <summary>
     /// Logique d'interaction pour WindowSerie.xaml
     /// </summary>
-    public partial class WindowSerie : Window
+    public partial class WindowSerie : System.Windows.Window
     {
         private LogicSerie logic;
         public WindowSerie(Serie serie)
