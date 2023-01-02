@@ -1,3 +1,4 @@
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using System.Security.Cryptography;
 using System.Text;
