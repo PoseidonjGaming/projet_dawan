@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace projet_dawan_WPF.Windows
+namespace projet_dawan_WPF.Window
 {
     /// <summary>
     /// Logique d'interaction pour WindowsManageSeries.xaml

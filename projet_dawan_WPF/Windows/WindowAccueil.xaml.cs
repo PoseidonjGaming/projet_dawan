@@ -1,7 +1,7 @@
 ﻿using projet_dawan_WPF.Logic;
 using System.Windows;
 
-namespace projet_dawan_WPF.Windows
+namespace projet_dawan_WPF.Window
 {
     /// <summary>
     /// Logique d'interaction pour WindowAccueil.xaml

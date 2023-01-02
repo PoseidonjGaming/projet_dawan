@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace projet_dawan_WPF.Windows
+namespace projet_dawan_WPF.Window
 {
     /// <summary>
     /// Logique d'interaction pour WindowBibliotheque.xaml
@@ -36,6 +36,11 @@ namespace projet_dawan_WPF.Windows
         private void btnDetail_Click(object sender, RoutedEventArgs e)
         {
             logic.Detail();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            logic.ButtonAddWich_Click();
         }
     }
 }
