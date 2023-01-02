@@ -108,16 +108,16 @@ namespace projet_dawan_WPF.Logic
 
         public void BtnRetour_Click()
         {
-            projet_dawan_WPF.Window.Close();
+            Window.Close();
         }
         private void Check()
         {
             List<string> list = new List<string>();
-            switch (projet_dawan_WPF.Window.cmbFiltrer.SelectedIndex)
+            switch (Window.cmbFiltrer.SelectedIndex)
             {
                 case 0:
                     SerieService serieService = new();
-                    List<Serie> series = serieService.GetByTxt(projet_dawan_WPF.Window.txtRechercher.Text);
+                    List<Serie> series = serieService.GetByTxt(Window.txtRechercher.Text);
                     foreach (Serie serie in series)
                     {
                         list.Add(serie.Nom);
@@ -127,7 +127,7 @@ namespace projet_dawan_WPF.Logic
                     break;
                 case 1:
                     EpisodeService epService = new();
-                    List<Episode> episodes = epService.GetByTxt(projet_dawan_WPF.Window.txtRechercher.Text);
+                    List<Episode> episodes = epService.GetByTxt(Window.txtRechercher.Text);
                     foreach (Episode episode in episodes)
                     {
                         list.Add(episode.Nom);
@@ -137,7 +137,7 @@ namespace projet_dawan_WPF.Logic
                     break;
                 case 2:
                     PersonnageService personnageService = new();
-                    List<Personnage> personnages = personnageService.GetByTxt(projet_dawan_WPF.Window.txtRechercher.Text);
+                    List<Personnage> personnages = personnageService.GetByTxt(Window.txtRechercher.Text);
                     foreach (Personnage personnage in personnages)
                     {
                         list.Add(personnage.Nom);
@@ -147,7 +147,7 @@ namespace projet_dawan_WPF.Logic
                     break;
                 case 3:
                     ActeurService acteurService = new();
-                    List<Acteur> acteurs = acteurService.GetByTxt(projet_dawan_WPF.Window.txtRechercher.Text);
+                    List<Acteur> acteurs = acteurService.GetByTxt(Window.txtRechercher.Text);
                     foreach (Acteur acteur in acteurs)
                     {
                         list.Add(acteur.Prenom + " " + acteur.Nom);
@@ -166,7 +166,7 @@ namespace projet_dawan_WPF.Logic
         {
             foreach (string item in list)
             {
-                projet_dawan_WPF.Window.lstBxSerie.Items.Add(item);
+                Window.lstBxSerie.Items.Add(item);
             }
         }
     }
