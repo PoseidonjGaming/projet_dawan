@@ -15,7 +15,7 @@ public partial class Serie
 
     public string? Resume { get; set; }
 
-    public string? Affiche { get; set; }
+    public string Affiche { get; set; }
 
     public string? UrlBa { get; set; }
 

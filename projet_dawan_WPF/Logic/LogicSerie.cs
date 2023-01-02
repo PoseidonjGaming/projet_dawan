@@ -28,7 +28,7 @@ namespace projet_dawan_WPF.Logic
             Window.linkLblBASerie.Content = Serie.UrlBa;
             Window.txtBoxResumeSerie.Text = Serie.Resume;
 
-            Window.affiche.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche));
+            Window.affiche.Source = new BitmapImage(new Uri(Serie.Affiche));
             SaisonService service = new SaisonService();
             foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
             {
