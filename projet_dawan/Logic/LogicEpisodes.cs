@@ -2,11 +2,6 @@
 using projet_dawan_WinForm;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projet_dawan.FormLogic
 {
@@ -42,7 +37,7 @@ namespace projet_dawan.FormLogic
                 Populate(episodes[0]);
             }
         }
-        
+
         public void LstBoxEpisode_SelectedIndexChanged()
         {
             if (Form.GetListBoxEpisode().SelectedIndex != -1)
@@ -56,7 +51,7 @@ namespace projet_dawan.FormLogic
         {
             SerieService serieService = new();
             SaisonService saisonService = new();
-            PersonnageService personnage= new ();
+            PersonnageService personnage = new();
             FormCasting casting = new(personnage.GetBySerie(serieService.GetById(saisonService.GetById(episodes[Form.GetListBoxEpisode().SelectedIndex].SaisonId).SerieId).Id));
 
             casting.ShowDialog();

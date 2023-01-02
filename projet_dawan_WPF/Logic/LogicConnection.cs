@@ -1,21 +1,16 @@
-﻿using projet_dawan_WPF.Windows;
+﻿using projet_dawan_WPF.Window;
 using SerieDLL_EF.Models;
-using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projet_dawan_WPF.Logic
 {
     internal class LogicMain
     {
-        public WindowsConnection Window { get; set; }
+        public WindowConnection Window { get; set; }
 
-        public LogicMain(WindowsConnection form)
+        public LogicMain(WindowConnection form)
         {
             Window = form;
         }
@@ -34,7 +29,7 @@ namespace projet_dawan_WPF.Logic
         public void BtnConnexion_Click()
         {
             UserService service = new();
-            UserApp user = service.GetUser(Window.txtLogin.Text, Window.txtPwd.Text);
+            UserApp user = service.GetUser(Window.txtLogin.Text, Window.txtPwd.Password);
 
             Properties.Settings.Default.UserRemain = user;
             if ((bool)Window.checkBoxCo.IsChecked)

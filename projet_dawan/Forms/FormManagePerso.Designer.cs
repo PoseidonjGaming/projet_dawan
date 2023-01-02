@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBoxNom = new System.Windows.Forms.TextBox();
             this.comboBoxSerie = new System.Windows.Forms.ComboBox();
             this.comboBoxActeur = new System.Windows.Forms.ComboBox();
             this.txtNomPerso = new System.Windows.Forms.TextBox();
@@ -45,7 +45,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtBoxNom);
             this.groupBox1.Controls.Add(this.comboBoxSerie);
             this.groupBox1.Controls.Add(this.comboBoxActeur);
             this.groupBox1.Controls.Add(this.txtNomPerso);
@@ -61,14 +61,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // textBox1
+            // txtBoxNom
             // 
-            this.textBox1.Location = new System.Drawing.Point(88, 116);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(201, 57);
-            this.textBox1.TabIndex = 7;
+            this.txtBoxNom.Location = new System.Drawing.Point(88, 116);
+            this.txtBoxNom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtBoxNom.Multiline = true;
+            this.txtBoxNom.Name = "txtBoxNom";
+            this.txtBoxNom.Size = new System.Drawing.Size(201, 57);
+            this.txtBoxNom.TabIndex = 7;
             // 
             // comboBoxSerie
             // 
@@ -194,7 +194,7 @@
         private ComboBox comboBoxSerie;
         private ComboBox comboBoxActeur;
         private TextBox txtNomPerso;
-        private TextBox textBox1;
+        private TextBox txtBoxNom;
         private Label lblNom;
         private Label lblResume;
         private Label lblSerie;

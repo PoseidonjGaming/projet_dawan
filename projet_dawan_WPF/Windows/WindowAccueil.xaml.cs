@@ -1,25 +1,12 @@
 ﻿using projet_dawan_WPF.Logic;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Printing;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
-namespace projet_dawan_WPF.Windows
+namespace projet_dawan_WPF.Window
 {
     /// <summary>
     /// Logique d'interaction pour WindowAccueil.xaml
     /// </summary>
-    public partial class WindowAccueil : Window
+    public partial class WindowAccueil : System.Windows.Window
     {
         private LogicAccueil logic;
         public WindowAccueil()
@@ -51,6 +38,26 @@ namespace projet_dawan_WPF.Windows
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             logic.Deco_Click();
+        }
+
+        private void menuItemWatchlist_Click(object sender, RoutedEventArgs e)
+        {
+            logic.WatchList_Click();
+        }
+
+        private void menuItemSeries_Click(object sender, RoutedEventArgs e)
+        {
+            logic.ToolStripAddSerie_Click();
+        }
+
+        private void menuItemEpisodes_Click(object sender, RoutedEventArgs e)
+        {
+            logic.ManageEpisodeToolStripMenuItem_Click();
+        }
+
+        private void menuItemPersonnages_Click(object sender, RoutedEventArgs e)
+        {
+            logic.gererPersonnagesToolStripMenuItem_Click();
         }
     }
 }

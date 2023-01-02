@@ -1,12 +1,7 @@
-﻿using projet_dawan_WinForm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SerieDLL_EF.Service;
-using projet_dawan.Forms;
+﻿using projet_dawan.Forms;
+using projet_dawan_WinForm;
 using SerieDLL_EF.Models;
+using SerieDLL_EF.Service;
 
 namespace projet_dawan.FormLogic
 {

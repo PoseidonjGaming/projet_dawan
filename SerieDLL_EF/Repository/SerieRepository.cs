@@ -1,11 +1,5 @@
 ﻿using SerieDLL_EF.Interface;
 using SerieDLL_EF.Models;
-using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
@@ -35,12 +29,12 @@ namespace SerieDLL_EF.Repository
             List<Serie> list = new List<Serie>();
             using (BddprojetContext context = new())
             {
-                foreach(int id in ids)
+                foreach (int id in ids)
                 {
                     list.Add(GetById(id));
                 }
             }
-          
+
             return list;
         }
 

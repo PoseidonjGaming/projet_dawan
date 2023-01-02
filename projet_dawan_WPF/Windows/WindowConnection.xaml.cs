@@ -1,14 +1,14 @@
 ﻿using projet_dawan_WPF.Logic;
 using System.Windows;
-namespace projet_dawan_WPF.Windows
+namespace projet_dawan_WPF.Window
 {
     /// <summary>
     /// Logique d'interaction pour WindowsConnection.xaml
     /// </summary>
-    public partial class WindowsConnection : Window
+    public partial class WindowConnection : System.Windows.Window
     {
         private LogicMain logic;
-        public WindowsConnection()
+        public WindowConnection()
         {
             InitializeComponent();
             logic = new(this);

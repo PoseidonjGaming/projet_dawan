@@ -1,6 +1,3 @@
-using SerieDLL_EF.Repository;
-using System.Security.Cryptography;
-using SerieDLL_EF.Service;
 using projet_dawan.FormLogic;
 
 namespace projet_dawan
@@ -32,6 +29,6 @@ namespace projet_dawan
             logicMain.Load();
         }
 
-      
+
     }
 }

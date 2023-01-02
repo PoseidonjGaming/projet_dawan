@@ -1,13 +1,10 @@
-﻿using projet_dawan_WPF.Windows;
+﻿using projet_dawan_WPF.Window;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -66,6 +63,7 @@ namespace projet_dawan_WPF.Logic
                 Button btnSerie = new Button();
                 btnSerie.Content = serieList[i].Nom;
                 btnSerie.Margin = new Thickness(10, 0, 10, 10);
+                btnSerie.Click += Serie_Click;
                 Grid.SetRow(btnSerie, 1);
                 grid.Children.Add(btnSerie);
 
@@ -83,8 +81,11 @@ namespace projet_dawan_WPF.Logic
                 Serie? serie = serieList.Find(s => s.Nom == button.Content);
                 if (serie != null)
                 {
-                    //FormSerie formSerie = new(serie);
-                    //formSerie.ShowDialog(Form);
+                    WindowSerie formSerie = new(serie)
+                    {
+                        Owner = Window
+                    };
+                    formSerie.ShowDialog();
 
                 }
 
@@ -95,8 +96,11 @@ namespace projet_dawan_WPF.Logic
                 Serie? serie = serieList.Find(s => s.Nom == pictureBox.Name);
                 if (serie != null)
                 {
-                    //FormSerie formSerie = new(serie);
-                    //formSerie.ShowDialog(Form);
+                    WindowSerie formSerie = new(serie)
+                    {
+                        Owner = Window
+                    };
+                    formSerie.ShowDialog();
 
                 }
             }
@@ -117,7 +121,8 @@ namespace projet_dawan_WPF.Logic
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
-                WindowGereActeur windowGereActeur = new();
+                WindowManageActeur windowGereActeur = new();
+                windowGereActeur.Owner = Window;
                 windowGereActeur.ShowDialog();
             }
             else
@@ -130,7 +135,7 @@ namespace projet_dawan_WPF.Logic
         {
 
             SerieService service = new();
-            WindowBibliotheque WindowsBibliotheque = new(text);
+            WindowBibliotheque WindowsBibliotheque = new(text, Window);
             WindowsBibliotheque.Closing += Form_FormClosing;
             Window.Hide();
             WindowsBibliotheque.ShowDialog();
@@ -181,46 +186,58 @@ namespace projet_dawan_WPF.Logic
 
         public void WatchList_Click()
         {
-            //if (Properties.Settings.Default.UserRemain != null)
-            //{
-            //    FormWatchlist watchlist = new();
-            //    watchlist.ShowDialog();
-            //}
+            if (Properties.Settings.Default.UserRemain != null)
+            {
+                WindowWatchList watchlist = new()
+                {
+                    Owner = Window
+                };
+                watchlist.ShowDialog();
+            }
 
         }
 
         public void ManageEpisodeToolStripMenuItem_Click()
         {
-            //if (user.IsGranted(Roles.SuperAdmin))
-            //{
-            //    FormManageEpisode form = new();
-            //    form.ShowDialog(Form);
-            //}
+            if (user.IsGranted(Roles.SuperAdmin))
+            {
+                WindowManageEpisodes form = new()
+                {
+                    Owner = Window
+                };
+                form.ShowDialog();
+            }
 
         }
 
         public void ToolStripAddSerie_Click()
         {
-            //if (user.IsGranted(Roles.SuperAdmin))
-            //{
-            //    FormManageSerie form = new FormManageSerie();
-            //    form.ShowDialog(Form);
-            //}
+            if (user.IsGranted(Roles.SuperAdmin))
+            {
+                WindowManageSeries window = new()
+                {
+                    Owner = Window
+                };
+                window.ShowDialog();
+            }
         }
 
         public void gererPersonnagesToolStripMenuItem_Click()
         {
-            //if(user.IsGranted(Roles.SuperAdmin))
-            //{
-            //    FormManagePerso form = new();
-            //    form.ShowDialog(Form);
-            //}
+            if (user.IsGranted(Roles.SuperAdmin))
+            {
+                WindowManagePersonnages form = new()
+                {
+                    Owner = Window
+                };
+                form.ShowDialog();
+            }
 
         }
 
         public void SeConnecterToolStripMenuItem_Click()
         {
-            WindowsConnection winCon = new();
+            WindowConnection winCon = new();
             winCon.Closing += FormClose;
             winCon.ShowDialog();
         }

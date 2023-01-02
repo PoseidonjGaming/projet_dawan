@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using SerieDLL_EF.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
@@ -41,7 +40,7 @@ public partial class UserApp
 
     public bool IsGranted(Roles role)
     {
-        return this.Roles>=role;
+        return this.Roles >= role;
     }
 
 

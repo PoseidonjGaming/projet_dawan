@@ -1,10 +1,5 @@
 ﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projet_dawan.FormLogic
 {
@@ -102,7 +97,7 @@ namespace projet_dawan.FormLogic
                 Form.GetDateDiff().Value = (DateTime)serie.DateDiff;
                 Form.GetButtonAdd().Text = "Modifier";
             }
-            
+
         }
 
         public void BtnAnnuler_Click()

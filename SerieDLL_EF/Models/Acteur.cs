@@ -1,11 +1,4 @@
-﻿using SerieDLL_EF.Models;
-using SerieDLL_EF.Interface;
-using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-
-namespace SerieDLL_EF.Models;
+﻿namespace SerieDLL_EF.Models;
 
 public partial class Acteur
 {

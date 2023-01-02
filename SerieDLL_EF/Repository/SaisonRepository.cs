@@ -1,11 +1,5 @@
 ﻿using SerieDLL_EF.Interface;
 using SerieDLL_EF.Models;
-using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
@@ -31,7 +25,7 @@ namespace SerieDLL_EF.Repository
             return context.Saisons.Where(sa => sa.SerieId == id).ToList();
         }
 
-      
+
 
 
         public void Add(Saison item)

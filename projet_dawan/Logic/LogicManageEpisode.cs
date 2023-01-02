@@ -1,11 +1,6 @@
 ﻿using projet_dawan.Forms;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace projet_dawan.FormLogic
 {
@@ -20,7 +15,7 @@ namespace projet_dawan.FormLogic
 
         public LogicManageEpisode(FormManageEpisode form)
         {
-            Form= form;
+            Form = form;
         }
 
         public void Load()
