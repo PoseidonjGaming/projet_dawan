@@ -135,7 +135,7 @@ namespace projet_dawan_WPF.Logic
         {
 
             SerieService service = new();
-            WindowBibliotheque WindowsBibliotheque = new(text, Window);
+            WindowBibliotheque WindowsBibliotheque = new(text);
             WindowsBibliotheque.Closing += Form_FormClosing;
             Window.Hide();
             WindowsBibliotheque.ShowDialog();
