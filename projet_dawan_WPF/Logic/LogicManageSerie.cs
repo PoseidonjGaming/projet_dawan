@@ -33,7 +33,7 @@ namespace projet_dawan_WPF.Logic
                 if (Window.lstBoxSerie.SelectedIndex != -1)
                 {
                     Serie serie = serieList[Window.lstBoxSerie.SelectedIndex];
-                    serie.Affiche = Path.GetFileName(Window.txtPathAffiche.Text);
+                    serie.Affiche = Window.txtPathAffiche.Text;
                     serie.Nom = Window.txtNomSerie.Text;
                     serie.Resume = Window.txtResume.Text;
                     serie.UrlBa = Window.txtUrlBa.Text;
@@ -75,14 +75,7 @@ namespace projet_dawan_WPF.Logic
             Populate();
         }
 
-        public void BtnParcourir_Click()
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            if (dialog.ShowDialog() == true)
-            {
-                Window.txtPathAffiche.Text = dialog.FileName;
-            }
-        }
+        
 
         public void LstBoxSerie_SelectedIndexChanged()
         {

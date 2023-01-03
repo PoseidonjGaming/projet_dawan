@@ -27,8 +27,14 @@ namespace projet_dawan_WPF.Logic
             Window.lblDateSerie.Content = "Diffusé à partir du" + Serie.DateDiff.ToString();
             Window.linkLblBASerie.Content = Serie.UrlBa;
             Window.txtBoxResumeSerie.Text = Serie.Resume;
+            try
+            {
+                Window.affiche.Source = new BitmapImage(new Uri(Serie.Affiche));
+            }
+            catch (Exception ex)
+            {
 
-            Window.affiche.Source = new BitmapImage(new Uri(Directory.GetCurrentDirectory() + "\\Photo\\" + Serie.Affiche));
+            }
             SaisonService service = new SaisonService();
             foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
             {

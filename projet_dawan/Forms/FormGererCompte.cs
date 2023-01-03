@@ -20,7 +20,7 @@ namespace projet_dawan
             user.Password = "password";
             user.Roles = Roles.User;
             UserService service = new();
-            user.Password = UserService.HashPassword(user.Password);
+            user.Password = service.HashPassword(user.Password);
             service.Add(user);
 
         }

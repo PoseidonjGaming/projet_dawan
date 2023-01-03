@@ -28,9 +28,17 @@ namespace projet_dawan_WPF.Logic
             Serie serie = serieService.GetById(saison.SerieId);
 
             BitmapImage bitImg = new BitmapImage();
-            bitImg.BeginInit();
-            bitImg.UriSource = new(Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche);
-            bitImg.EndInit();
+            try
+            {
+                bitImg.BeginInit();
+                bitImg.UriSource = new(serie.Affiche);
+                bitImg.EndInit();
+            }
+            catch
+            {
+
+            }
+            
             Window.pictureBoxSaison.Source = bitImg;
             Window.lblEpisode.Content = serie.Nom;
             Window.lblSaison.Content += saison.Numero.ToString();

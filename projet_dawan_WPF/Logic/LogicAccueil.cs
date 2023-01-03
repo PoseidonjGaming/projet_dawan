@@ -14,13 +14,12 @@ namespace projet_dawan_WPF.Logic
 {
     internal class LogicAccueil
     {
-        private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
         private UserApp user;
         public WindowAccueil Window { get; set; }
         public LogicAccueil(WindowAccueil form)
         {
-            user = projet_dawan_WPF.Properties.Settings.Default.UserRemain;
+            user =  Properties.Settings.Default.UserRemain;
             Window = form;
         }
         public void Load()
@@ -50,9 +49,16 @@ namespace projet_dawan_WPF.Logic
 
                 Image img = new();
                 BitmapImage bitImg = new BitmapImage();
-                bitImg.BeginInit();
-                bitImg.UriSource = new(path + "\\" + serieList[i].Affiche);
-                bitImg.EndInit();
+                try
+                {
+                    bitImg.BeginInit();
+                    bitImg.UriSource = new Uri(serieList[i].Affiche);
+                    bitImg.EndInit();
+                }catch(Exception ex)
+                {
+
+                }
+                
                 img.Margin = new Thickness(10, 20, 10, 0);
                 img.Source = bitImg;
                 img.Stretch = Stretch.Fill;
@@ -135,7 +141,10 @@ namespace projet_dawan_WPF.Logic
         {
 
             SerieService service = new();
-            WindowBibliotheque WindowsBibliotheque = new(text);
+            WindowBibliotheque WindowsBibliotheque = new(text)
+            {
+                Owner = Window
+            };
             WindowsBibliotheque.Closing += Form_FormClosing;
             Window.Hide();
             WindowsBibliotheque.ShowDialog();
