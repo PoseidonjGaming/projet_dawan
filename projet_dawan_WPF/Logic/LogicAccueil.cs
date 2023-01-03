@@ -113,16 +113,7 @@ namespace projet_dawan_WPF.Logic
             }
         }
 
-        public void Gerer_Click()
-        {
-            // affiche la page de gestion du compte
-            if (user.IsGranted(Roles.User))
-            {
-                //FormGererCompte compte = new();
-
-                //compte.ShowDialog();
-            }
-        }
+        
 
         public void GererLesActeurs_Click()
         {
