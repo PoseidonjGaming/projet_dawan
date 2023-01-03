@@ -26,11 +26,11 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
                     <Label Content="Mot de Passe: "></Label>
-                    <TextBox x:Name="txtBoxPWD" Margin="90,0,0,0" Width="150"></TextBox>
+                    <TextBox x:Name="txtBoxPWD" Margin="90,0,0,0" Width="150" VerticalContentAlignment="Center"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
                     <Label Content="Confirmer le mot de passe: "></Label>
-                    <TextBox x:Name="txtBoxPWDConfirm" Margin="20,0,0,0" Width="150"></TextBox>
+                    <TextBox x:Name="txtBoxPWDConfirm" Margin="20,0,0,0" Width="150" VerticalContentAlignment="Center"></TextBox>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,20">
                     <Label Content="Role: "></Label>
