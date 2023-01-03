@@ -34,6 +34,7 @@
                     <MenuItem Header="Gérer les Episodes" Name="menuItemEpisodes" Click="menuItemEpisodes_Click"/>
                     <MenuItem Header="Gérer les Personnages" Name="menuItemPersonnages" Click="menuItemPersonnages_Click"/>
                     <MenuItem Header="Gérer les Acteurs" Name="menuItemActeurs" Click="menuItemActeurs_Click"/>
+                    <MenuItem Header="Gérer les Utilisateurs" Name="menuItemUsers" Click="menuItemUsers_Click"/>
                 </MenuItem>
                 <MenuItem Header="Quitter"/>
             </MenuItem>

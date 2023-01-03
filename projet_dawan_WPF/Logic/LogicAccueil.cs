@@ -19,7 +19,7 @@ namespace projet_dawan_WPF.Logic
         public WindowAccueil Window { get; set; }
         public LogicAccueil(WindowAccueil form)
         {
-            user =  Properties.Settings.Default.UserRemain;
+            user = Properties.Settings.Default.UserRemain;
             Window = form;
         }
         public void Load()
@@ -54,11 +54,12 @@ namespace projet_dawan_WPF.Logic
                     bitImg.BeginInit();
                     bitImg.UriSource = new Uri(serieList[i].Affiche);
                     bitImg.EndInit();
-                }catch(Exception ex)
+                }
+                catch (Exception ex)
                 {
 
                 }
-                
+
                 img.Margin = new Thickness(10, 20, 10, 0);
                 img.Source = bitImg;
                 img.Stretch = Stretch.Fill;
@@ -130,6 +131,22 @@ namespace projet_dawan_WPF.Logic
                 WindowManageActeur windowGereActeur = new();
                 windowGereActeur.Owner = Window;
                 windowGereActeur.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Vous devez avoir le niveau accréditation requis");
+            }
+        }
+
+        public void GererLesUsers_Click()
+        {
+            if (user.IsGranted(Roles.SuperAdmin))
+            {
+                WindowManageUsers windowManageUser = new()
+                {
+                    Owner = Window
+                };
+                windowManageUser.ShowDialog();
             }
             else
             {
