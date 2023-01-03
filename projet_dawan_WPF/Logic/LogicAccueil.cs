@@ -49,9 +49,16 @@ namespace projet_dawan_WPF.Logic
 
                 Image img = new();
                 BitmapImage bitImg = new BitmapImage();
-                bitImg.BeginInit();
-                bitImg.UriSource = new Uri(serieList[i].Affiche);
-                bitImg.EndInit();
+                try
+                {
+                    bitImg.BeginInit();
+                    bitImg.UriSource = new Uri(serieList[i].Affiche);
+                    bitImg.EndInit();
+                }catch(Exception ex)
+                {
+
+                }
+                
                 img.Margin = new Thickness(10, 20, 10, 0);
                 img.Source = bitImg;
                 img.Stretch = Stretch.Fill;
