@@ -30,7 +30,17 @@ namespace projet_dawan_WPF.Logic
             if (Properties.Settings.Default.UserRemain != null)
             {
                 Window.menuItemSeConnecter.IsEnabled = false;
+                if (Properties.Settings.Default.UserRemain.IsGranted(Roles.SuperAdmin))
+                {
+                    Window.menuGestion.IsEnabled = true;
+                }
+                else
+                {
+                    Window.menuGestion.IsEnabled = false;
+                }
             }
+            
+            
 
             Populate(4);
         }
