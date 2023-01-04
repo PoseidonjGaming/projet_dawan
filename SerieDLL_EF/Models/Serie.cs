@@ -47,5 +47,10 @@ public partial class Serie
         return ShouldSerializeSaisons;
     }
 
+    public bool ShouldSerializeId()
+    {
+        return false;
+    }
+
 
 }

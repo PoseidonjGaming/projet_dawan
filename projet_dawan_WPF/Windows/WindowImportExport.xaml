@@ -22,12 +22,12 @@
             <GroupBox Header="Pour chaque série">
                 <StackPanel Orientation="Vertical">
                     <CheckBox x:Name="checkBoxShouldPersonnage" Content="Personnages" Margin="0,10,0,10" HorizontalAlignment="Center"></CheckBox>
-                    <GroupBox Header="Pour chaque personnage">
+                    <GroupBox Header="Pour chaque personnage" Margin="10,0,10,10">
                         <StackPanel Orientation="Vertical">
                             <CheckBox x:Name="chackBoxPerso_Acteur" Content="Acteur" Margin="0,10,0,10" HorizontalAlignment="Center"></CheckBox>
                         </StackPanel>
                     </GroupBox>
-                    <CheckBox Content="Episode" Margin="0,0,0,10"></CheckBox>
+                    <CheckBox Content="Episode" Margin="0,1,0,10" HorizontalAlignment="Center"></CheckBox>
                 </StackPanel>
             </GroupBox>
             <CheckBox Content="Exporter les personnages" HorizontalAlignment="Center" Margin="0,10,0,10"></CheckBox>
