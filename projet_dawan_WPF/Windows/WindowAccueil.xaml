@@ -41,7 +41,6 @@
             <MenuItem Header="Compte">
                 <MenuItem Header="Mon Compte"/>
                 <MenuItem Header="WatchList" Name="menuItemWatchlist" Click="menuItemWatchlist_Click"/>
-                <MenuItem Header="Déconnexion" Click="MenuItem_Click" />
             </MenuItem>
             <MenuItem HorizontalAlignment="Right" Header="Connexion" Name="menuItemSeConnecter" Click="menuItemSeConnecter_Click"/>
         </Menu>

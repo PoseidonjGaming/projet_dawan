@@ -35,11 +35,6 @@ namespace projet_dawan_WPF.Window
             logic.SeConnecterToolStripMenuItem_Click();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            logic.Deco_Click();
-        }
-
         private void menuItemWatchlist_Click(object sender, RoutedEventArgs e)
         {
             logic.WatchList_Click();

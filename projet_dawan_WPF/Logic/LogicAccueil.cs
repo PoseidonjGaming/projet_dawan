@@ -29,7 +29,6 @@ namespace projet_dawan_WPF.Logic
 
             if (Properties.Settings.Default.UserRemain != null)
             {
-                Window.menuItemSeConnecter.IsEnabled = false;
                 if (Properties.Settings.Default.UserRemain.IsGranted(Roles.SuperAdmin))
                 {
                     Window.menuGestion.IsEnabled = true;
@@ -193,23 +192,7 @@ namespace projet_dawan_WPF.Logic
             }
         }
 
-        public void Deco_Click()
-        {
-            if (Properties.Settings.Default.UserRemain != null)
-            {
-                var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
-                MessageBoxButton.YesNo, MessageBoxImage.Question);
-
-                if (deconnecter == MessageBoxResult.Yes)
-                {
-                    Properties.Settings.Default.token = string.Empty;
-                    Properties.Settings.Default.UserRemain = null;
-                    Properties.Settings.Default.Save();
-                }
-                Window.menuItemSeConnecter.IsEnabled = true;
-            }
-
-        }
+       
 
         public void WatchList_Click()
         {
@@ -264,15 +247,44 @@ namespace projet_dawan_WPF.Logic
 
         public void SeConnecterToolStripMenuItem_Click()
         {
-            WindowConnection winCon = new();
-            winCon.Closing += FormClose;
-            winCon.ShowDialog();
+            if(Properties.Settings.Default.UserRemain != null)
+            {
+                var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
+                MessageBoxButton.YesNo, MessageBoxImage.Question);
+
+                if (deconnecter == MessageBoxResult.Yes)
+                {
+                    Properties.Settings.Default.token = string.Empty;
+                    Properties.Settings.Default.UserRemain = null;
+                    Properties.Settings.Default.Save();
+                    Window.menuItemSeConnecter.Header = "Connexion";
+                }
+            }
+            else
+            {
+                WindowConnection winCon = new();
+                winCon.Closing += FormClose;
+                winCon.ShowDialog();
+            }
+            
         }
 
         private void FormClose(object sender, EventArgs e)
         {
             user = Properties.Settings.Default.UserRemain;
-            Window.menuItemSeConnecter.IsEnabled = false;
+            if(user != null)
+            {
+                Window.menuItemSeConnecter.Header = "Déconnexion";
+                if (user.IsGranted(Roles.SuperAdmin))
+                {
+                    Window.menuGestion.IsEnabled = true;
+                }
+                else
+                {
+                    Window.menuItemSeConnecter.IsEnabled = false;
+                }
+            }
+            
         }
 
     }
