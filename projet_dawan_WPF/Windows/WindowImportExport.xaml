@@ -18,10 +18,15 @@
             <ColumnDefinition Width="10"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1">
-            <CheckBox Content="Exporter les séries" HorizontalAlignment="Center" Margin="0,10,0,0"></CheckBox>
-            <GroupBox Header="Série">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                    <CheckBox Content="Personnages" Margin="0,10,0,10"></CheckBox>
+            <CheckBox x:Name="checkBoxSerie" Content="Exporter les séries" HorizontalAlignment="Center" Margin="0,10,0,0"></CheckBox>
+            <GroupBox Header="Pour chaque série">
+                <StackPanel Orientation="Vertical">
+                    <CheckBox x:Name="checkBoxShouldPersonnage" Content="Personnages" Margin="0,10,0,10" HorizontalAlignment="Center"></CheckBox>
+                    <GroupBox Header="Pour chaque personnage">
+                        <StackPanel Orientation="Vertical">
+                            <CheckBox x:Name="chackBoxPerso_Acteur" Content="Acteur" Margin="0,10,0,10" HorizontalAlignment="Center"></CheckBox>
+                        </StackPanel>
+                    </GroupBox>
                     <CheckBox Content="Episode" Margin="0,0,0,10"></CheckBox>
                 </StackPanel>
             </GroupBox>
@@ -33,7 +38,7 @@
             </GroupBox>
             <CheckBox Content="Exporter les acteurs" HorizontalAlignment="Center" Margin="0,10,0,10"></CheckBox>
             <StackPanel>
-                <Button Content="Exporter"></Button>
+                <Button x:Name="btnExport" Content="Exporter" Margin="100,0,100,0" Click="btnExport_Click"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>

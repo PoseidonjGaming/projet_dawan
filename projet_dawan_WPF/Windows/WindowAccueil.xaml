@@ -36,6 +36,7 @@
                     <MenuItem Header="Gérer les Acteurs" Name="menuItemActeurs" Click="menuItemActeurs_Click"/>
                     <MenuItem Header="Gérer les Utilisateurs" Name="menuItemUsers" Click="menuItemUsers_Click"/>
                 </MenuItem>
+                <MenuItem Header="Import/Export" Name="menuItemImport_Export" Click="menuItemImport_Export_Click"/>
                 <MenuItem Header="Quitter"/>
             </MenuItem>
             <MenuItem Header="Compte">

@@ -1,4 +1,5 @@
 ﻿using projet_dawan_WPF.Logic;
+using projet_dawan_WPF.Windows;
 using System.Windows;
 
 namespace projet_dawan_WPF.Window
@@ -58,6 +59,12 @@ namespace projet_dawan_WPF.Window
         private void menuItemUsers_Click(object sender, RoutedEventArgs e)
         {
             logic.GererLesUsers_Click();
+        }
+
+        private void menuItemImport_Export_Click(object sender, RoutedEventArgs e)
+        {
+            WindowImportExport window = new();
+            window.ShowDialog();
         }
     }
 }

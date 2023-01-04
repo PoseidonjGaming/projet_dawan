@@ -53,7 +53,6 @@ namespace projet_dawan_WPF.Logic
             {
                 SerieService service = new();
                 List<Serie> list = service.ExportWatchList(Properties.Settings.Default.UserRemain.ToWatchList);
-
                 File.WriteAllText(save.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
             }
 

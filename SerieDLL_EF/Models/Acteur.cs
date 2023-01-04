@@ -17,4 +17,14 @@ public partial class Acteur
         Nom = nom;
         Prenom = prenom;
     }
+
+    public bool ShouldSerializeId()
+    {
+        return false;
+    }
+
+    public bool ShouldSerializePersonnages()
+    {
+        return false;
+    }
 }
