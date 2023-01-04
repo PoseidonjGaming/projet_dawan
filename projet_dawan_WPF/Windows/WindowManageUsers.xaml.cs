@@ -16,14 +16,14 @@ namespace projet_dawan_WPF.Window
     {
         private UserService service = new();
         private List<UserApp> userList = new();
-        private List<string> rolesList = new() { Roles.User.ToString(), Roles.Admin.ToString(), Roles.SuperAdmin.ToString() };
+        private List<Roles> rolesList = new() { Roles.User, Roles.Admin, Roles.SuperAdmin };
         public WindowManageUsers()
         {
             InitializeComponent();
 
-            foreach (string role in rolesList)
+            foreach (Roles role in rolesList)
             {
-                cmbBoxRoles.Items.Add(role);
+                cmbBoxRoles.Items.Add(role.ToString());
             }
 
             userList = service.GetAll();
@@ -43,7 +43,6 @@ namespace projet_dawan_WPF.Window
                     if (lstBoxUsers.SelectedIndex != -1)
                     {
                         UserApp user = userList[lstBoxUsers.SelectedIndex];
-                        MessageBox.Show(user.Equals(Properties.Settings.Default.UserRemain).ToString());
                         if (user.Equals(Properties.Settings.Default.UserRemain))
                         {
                             MessageBox.Show("Vous devez être connecter à un autre compte pour pouvoir modifier ce compte");
@@ -62,20 +61,19 @@ namespace projet_dawan_WPF.Window
                         {
                             Login = txtBoxLogin.Text,
                             Password = txtBoxPWDConfirm.Text,
-                            //Roles=
+                            Roles = rolesList[cmbBoxRoles.SelectedIndex],
                         };
                         service.Add(user);
                     }
+                    Clear();
+                    Populate();
                 }
             }
         }
 
         private void btnCancel_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            txtBoxLogin.Clear();
-            txtBoxPWD.Clear();
-            txtBoxPWDConfirm.Clear();
-            cmbBoxRoles.SelectedIndex = -1;
+            Clear();
         }
 
         private void btnDelete_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -91,7 +89,7 @@ namespace projet_dawan_WPF.Window
 
         private void lstBoxUsers_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            if (lstBoxUsers.SelectedItems.Count != -1)
+            if (lstBoxUsers.SelectedIndex != -1)
             {
                 txtBoxLogin.Text = userList[lstBoxUsers.SelectedIndex].Login;
                 cmbBoxRoles.SelectedIndex = cmbBoxRoles.Items.IndexOf(rolesList.Find(r => r.ToString() == userList[lstBoxUsers.SelectedIndex].Roles.ToString()));
@@ -114,7 +112,8 @@ namespace projet_dawan_WPF.Window
             txtBoxLogin.Clear();
             txtBoxPWD.Clear();
             txtBoxPWDConfirm.Clear();
-            cmbBoxRoles.SelectedIndex = 0;
+            cmbBoxRoles.SelectedIndex = -1;
+            lstBoxUsers.SelectedIndex = -1;
         }
     }
 }
