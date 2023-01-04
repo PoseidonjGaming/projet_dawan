@@ -24,5 +24,10 @@ namespace projet_dawan_WPF.Window
         {
             logic.LstBoxEpisode_SelectedIndexChanged();
         }
+
+        private void btnCasting_Click(object sender, RoutedEventArgs e)
+        {
+            logic.Casting_Click();
+        }
     }
 }

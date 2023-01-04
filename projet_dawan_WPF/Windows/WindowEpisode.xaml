@@ -35,7 +35,7 @@
                 <Label x:Name="lblDateSaison" Content="Date de 1ère diffusion: " FontSize="15"></Label>
 
             </StackPanel>
-            <Button x:Name="btnCasting" Content="Casting" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Height="20" Width="43"></Button>
+            <Button x:Name="btnCasting" Content="Casting" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Height="20" Width="43" Click="btnCasting_Click"></Button>
             <ListBox x:Name="lstBoxEpisode" Grid.Row="1" Margin="10,10,10,10" SelectionChanged="lstBoxEpisode_SelectionChanged"></ListBox>
             <TextBlock x:Name="txtBoxResumeSaison" Grid.Row="1" Grid.Column="1" Margin="10,10,10,10" TextWrapping="Wrap"></TextBlock>
 
