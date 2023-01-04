@@ -27,8 +27,12 @@ namespace projet_dawan.FormLogic
         public void BtnConnexion_Click()
         {
             UserService service = new();
-            UserApp user = service.GetUser(Form.txtBoxLogin.Text, Form.txtBoxPwd.Text);
-
+            UserApp user = new()
+            {
+                Login=Form.txtBoxLogin.Text,
+                Password=Form.txtBoxPwd.Text
+            };
+            user = service.GetUser(user);
             Properties.Settings.Default.UserRemain = user;
             if (Form.checkBox1.Checked)
             {
