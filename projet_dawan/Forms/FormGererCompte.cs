@@ -16,11 +16,10 @@ namespace projet_dawan
         {
 
             UserApp user = new();
-            user.Login = "TestUser";
-            user.Password = "password";
-            user.Roles = Roles.User;
+            user.Login = "Admin";
+            user.Password = "P@ssw0rd";
+            user.Roles = Roles.SuperAdmin;
             UserService service = new();
-            user.Password = service.HashPassword(user.Password);
             service.Add(user);
 
         }

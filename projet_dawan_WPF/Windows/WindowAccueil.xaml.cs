@@ -59,5 +59,10 @@ namespace projet_dawan_WPF.Window
         {
             logic.gererPersonnagesToolStripMenuItem_Click();
         }
+
+        private void menuItemUsers_Click(object sender, RoutedEventArgs e)
+        {
+            logic.GererLesUsers_Click();
+        }
     }
 }

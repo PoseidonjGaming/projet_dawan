@@ -24,6 +24,12 @@ namespace SerieDLL_EF.Service
             base.Add(item);
         }
 
+        public override void Update(UserApp item)
+        {
+            item.Password = HashPassword(item.Password);
+            base.Update(item);
+        }
+
 
         public string HashPassword(string? pwd)
         {

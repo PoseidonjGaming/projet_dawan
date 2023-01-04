@@ -45,7 +45,7 @@ namespace SerieDLL_EF.Service
         }
 
         //Modifie l'objet de type TClass dans la bdd
-        public void Update(TClass item)
+        public virtual void Update(TClass item)
         {
             repo.Update(item);
         }
