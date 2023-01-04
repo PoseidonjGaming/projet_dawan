@@ -14,13 +14,12 @@ namespace projet_dawan_WPF.Logic
 {
     internal class LogicAccueil
     {
-        private string path = Directory.GetCurrentDirectory() + "\\photo\\";
         private List<Serie> serieList = new List<Serie>();
         private UserApp user;
         public WindowAccueil Window { get; set; }
         public LogicAccueil(WindowAccueil form)
         {
-            user = projet_dawan_WPF.Properties.Settings.Default.UserRemain;
+            user = Properties.Settings.Default.UserRemain;
             Window = form;
         }
         public void Load()
@@ -31,7 +30,17 @@ namespace projet_dawan_WPF.Logic
             if (Properties.Settings.Default.UserRemain != null)
             {
                 Window.menuItemSeConnecter.IsEnabled = false;
+                if (Properties.Settings.Default.UserRemain.IsGranted(Roles.SuperAdmin))
+                {
+                    Window.menuGestion.IsEnabled = true;
+                }
+                else
+                {
+                    Window.menuGestion.IsEnabled = false;
+                }
             }
+            
+            
 
             Populate(4);
         }
@@ -50,9 +59,17 @@ namespace projet_dawan_WPF.Logic
 
                 Image img = new();
                 BitmapImage bitImg = new BitmapImage();
-                bitImg.BeginInit();
-                bitImg.UriSource = new(path + "\\" + serieList[i].Affiche);
-                bitImg.EndInit();
+                try
+                {
+                    bitImg.BeginInit();
+                    bitImg.UriSource = new Uri(serieList[i].Affiche);
+                    bitImg.EndInit();
+                }
+                catch (Exception ex)
+                {
+
+                }
+
                 img.Margin = new Thickness(10, 20, 10, 0);
                 img.Source = bitImg;
                 img.Stretch = Stretch.Fill;
@@ -106,16 +123,7 @@ namespace projet_dawan_WPF.Logic
             }
         }
 
-        public void Gerer_Click()
-        {
-            // affiche la page de gestion du compte
-            if (user.IsGranted(Roles.User))
-            {
-                //FormGererCompte compte = new();
-
-                //compte.ShowDialog();
-            }
-        }
+        
 
         public void GererLesActeurs_Click()
         {
@@ -131,11 +139,30 @@ namespace projet_dawan_WPF.Logic
             }
         }
 
+        public void GererLesUsers_Click()
+        {
+            if (user.IsGranted(Roles.SuperAdmin))
+            {
+                WindowManageUsers windowManageUser = new()
+                {
+                    Owner = Window
+                };
+                windowManageUser.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Vous devez avoir le niveau accréditation requis");
+            }
+        }
+
         private void OpenFormBibli(string text)
         {
 
             SerieService service = new();
-            WindowBibliotheque WindowsBibliotheque = new(text, Window);
+            WindowBibliotheque WindowsBibliotheque = new(text)
+            {
+                Owner = Window
+            };
             WindowsBibliotheque.Closing += Form_FormClosing;
             Window.Hide();
             WindowsBibliotheque.ShowDialog();

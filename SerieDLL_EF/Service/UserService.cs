@@ -1,3 +1,4 @@
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 using System.Security.Cryptography;
 using System.Text;
@@ -21,6 +22,12 @@ namespace SerieDLL_EF.Service
         {
             item.Password = HashPassword(item.Password);
             base.Add(item);
+        }
+
+        public override void Update(UserApp item)
+        {
+            item.Password = HashPassword(item.Password);
+            base.Update(item);
         }
 
 

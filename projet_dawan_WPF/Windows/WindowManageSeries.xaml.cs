@@ -17,10 +17,7 @@ namespace projet_dawan_WPF.Window
             logic.Load();
         }
 
-        private void btnParcourir_Click(object sender, RoutedEventArgs e)
-        {
-            logic.BtnParcourir_Click();
-        }
+       
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {

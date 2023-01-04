@@ -23,7 +23,7 @@ public partial class UserApp
     public Roles Roles { get; set; }
 
     [DataMember]
-    public string ToWatch { get; set; }
+    public string? ToWatch { get; set; }
 
     [DataMember]
     [NotMapped]
@@ -41,6 +41,12 @@ public partial class UserApp
     public bool IsGranted(Roles role)
     {
         return this.Roles >= role;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        UserApp user = (UserApp)obj;
+        return Login==user.Login && Password==user.Password;
     }
 
 
