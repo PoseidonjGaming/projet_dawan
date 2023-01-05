@@ -31,5 +31,16 @@ namespace SerieDLL_EF.Service
         {
             return repo.GetByActeur(actur_id);
         }
+
+        public ICollection<Personnage> Export(ICollection<Personnage> list, bool shouldActeur)
+        {
+            ActeurService service = new ActeurService();
+            foreach (Personnage person in list)
+            {
+                person.ShouldSerializeActeurs = shouldActeur;
+                person.Acteur = service.GetById(person.ActeurId);
+            }
+            return list;
+        }
     }
 }

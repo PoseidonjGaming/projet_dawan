@@ -45,5 +45,16 @@ namespace projet_dawan_WPF.Properties {
                 this["token"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Generic.List<SerieDLL_EF.Models.Serie> Export {
+            get {
+                return ((global::System.Collections.Generic.List<SerieDLL_EF.Models.Serie>)(this["Export"]));
+            }
+            set {
+                this["Export"] = value;
+            }
+        }
     }
 }

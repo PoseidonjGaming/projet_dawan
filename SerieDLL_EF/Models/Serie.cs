@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace SerieDLL_EF.Models;
@@ -8,6 +9,7 @@ namespace SerieDLL_EF.Models;
 public partial class Serie
 {
     [DataMember]
+    [JsonIgnore]
     public int Id { get; set; }
 
     [DataMember]
@@ -32,7 +34,7 @@ public partial class Serie
     public bool ShouldSerializePersonnage { get; set; }
 
     [NotMapped]
-    public bool ShouldSerializeSaisons { get; set; }
+    public bool ShouldSerializeSaison { get; set; }
 
     [DataMember]
     public virtual ICollection<Saison> Saisons { get; set; } = new List<Saison>();
@@ -42,15 +44,12 @@ public partial class Serie
         return ShouldSerializePersonnage;
     }
 
-    public bool ShouldSerializeSaison()
+    public bool ShouldSerializeSaisons()
     {
-        return ShouldSerializeSaisons;
+        return ShouldSerializeSaison;
     }
 
-    public bool ShouldSerializeId()
-    {
-        return false;
-    }
+   
 
 
 }

@@ -63,7 +63,7 @@ namespace projet_dawan_WPF.Window
 
         private void menuItemImport_Export_Click(object sender, RoutedEventArgs e)
         {
-            WindowImportExport window = new();
+            WindowExportSerie window = new();
             window.ShowDialog();
         }
     }

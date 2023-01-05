@@ -24,7 +24,7 @@ public partial class UserApp
     public Roles Roles { get; set; }
 
     [DataMember]
-    public string? ToWatch { get; set; }
+    public string ToWatch { get; set; } = "{}";
 
     [DataMember]
     [NotMapped]

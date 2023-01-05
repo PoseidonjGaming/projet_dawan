@@ -19,6 +19,16 @@ namespace SerieDLL_EF.Service
             return repo.GetSaisonsBySerie(id);
         }
 
+        public List<Saison> Export(Serie serie)
+        {
+            List<Saison> list = repo.GetSaisonsBySerie(serie.Id);
+            EpisodeService episodeService= new EpisodeService();
+            foreach (Saison saison in list)
+            {
+                saison.Episodes=episodeService.GetBySaison(saison.Id);
+            }
+            return list;
+        }
 
     }
 }

@@ -8,5 +8,8 @@
     <Setting Name="token" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Export" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Serie&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

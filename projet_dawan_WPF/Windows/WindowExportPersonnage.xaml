@@ -1,0 +1,31 @@
+﻿<Window x:Class="projet_dawan_WPF.Windows.WindowExportPersonnage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projet_dawan_WPF.Windows"
+        mc:Ignorable="d"
+        Title="WindowExportPersonnage" Height="150" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="35*"></RowDefinition>
+            <RowDefinition Height="22*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <GroupBox Header="Pour chaque personnage" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <CheckBox x:Name="chackBoxPerso_Acteur" Content="Acteur" Margin="0,10,0,10" HorizontalAlignment="Center"></CheckBox>
+            </StackPanel>
+        </GroupBox>
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="20" Width="20">
+            <Button x:Name="btnExport" Content="Ok" Click="btnExport_Click"></Button>
+        </StackPanel>
+
+    </Grid>
+</Window>
