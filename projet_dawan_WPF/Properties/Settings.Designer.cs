@@ -67,5 +67,27 @@ namespace projet_dawan_WPF.Properties {
                 this["ExportEpisode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Generic.List<SerieDLL_EF.Models.Acteur> ExportActeur {
+            get {
+                return ((global::System.Collections.Generic.List<SerieDLL_EF.Models.Acteur>)(this["ExportActeur"]));
+            }
+            set {
+                this["ExportActeur"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Generic.List<SerieDLL_EF.Models.Personnage> ExportPersonnage {
+            get {
+                return ((global::System.Collections.Generic.List<SerieDLL_EF.Models.Personnage>)(this["ExportPersonnage"]));
+            }
+            set {
+                this["ExportPersonnage"] = value;
+            }
+        }
     }
 }

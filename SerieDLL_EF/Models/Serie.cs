@@ -28,25 +28,25 @@ public partial class Serie
     public string? UrlBa { get; set; }
 
     [DataMember]
-    public virtual ICollection<Personnage> Personnages { get; set; } = new List<Personnage>();
+    public virtual List<Personnage> Personnages { get; set; } = new List<Personnage>();
 
     [NotMapped]
-    public bool ShouldSerializePersonnage { get; set; }
+    public bool ShouldExportPersonnage { get; set; }
 
     [NotMapped]
-    public bool ShouldSerializeSaison { get; set; }
+    public bool ShouldExportSaison { get; set; }
 
     [DataMember]
-    public virtual ICollection<Saison> Saisons { get; set; } = new List<Saison>();
+    public virtual List<Saison> Saisons { get; set; } = new List<Saison>();
 
     public bool ShouldSerializePersonnages()
     {
-        return ShouldSerializePersonnage;
+        return ShouldExportPersonnage;
     }
 
     public bool ShouldSerializeSaisons()
     {
-        return ShouldSerializeSaison;
+        return ShouldExportSaison;
     }
 
    

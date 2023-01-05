@@ -31,54 +31,46 @@ namespace projet_dawan_WPF.Windows
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
-            EpisodeService episodeService = new();
-            SaisonService saisonService = new();
-            SerieService serieService = new();
-            List<Episode> list = episodeService.GetAll();
-            if ((bool)checkBoxSerie.IsChecked)
-            {
-                foreach (Episode ep in list)
-                {
-                    ep.ShouldExportSaisons = true;
-                    ep.Saison = saisonService.GetById(ep.SaisonId);
-                    ep.Saison.ShouldExportEpisode = false;
-                    if ((bool)checkBoxSerie.IsChecked)
-                    {
-
-                        ep.Saison.ShouldExportSerie = true;
-                        ep.Saison.Serie = serieService.GetById(ep.Saison.SerieId);
-                        ep.Saison.Serie.ShouldSerializeSaison = false;
-                    }
-                }
-                Properties.Settings.Default.ExportEpisode=list;
-                WindowExportSerie window = new()
-                {
-                    Owner = this
-                };
-                window.Closed += WindowClose;
-                window.ShowDialog();
-            }
-            else
-            {
-                Export(list);
-            }
-            
-            
+            EpisodeService service = new();
+            Properties.Settings.Default.ExportEpisode = service.GetAll();
+            ExportSaison();
+            ExportSerie();
+            Export();
         }
 
-        private void WindowClose(object sender, EventArgs e)
+        private void ExportSaison()
         {
-            foreach (Episode ep in Properties.Settings.Default.ExportEpisode)
+            SaisonService service= new();
+            foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
             {
-                ep.Saison.Serie = Properties.Settings.Default.ExportSerie.Find(s => s.Id == ep.Saison.SerieId);
+                episode.ShouldExportSaisons = true;
+                episode.Saison = service.GetById(episode.SaisonId);
             }
-            Export(Properties.Settings.Default.ExportEpisode);
+        }
+
+        private void ExportSerie()
+        {
+            if((bool)checkBoxSerie.IsChecked)
+            {
+                SerieService service = new();
+                foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
+                {
+                    episode.Saison.ShouldExportEpisode = false;
+                    episode.Saison.ShouldExportSerie = true;
+                    episode.Saison.Serie=service.GetById(episode.Saison.SerieId);
+                }
+
+                WindowExportSerie window= new()
+                {
+                    Owner= this
+                };
+                window.ShowDialog();
+            }
            
         }
 
-        private void Export(List<Episode> list)
+        private void Export()
         {
-            EpisodeService service = new();
             SaveFileDialog save = new SaveFileDialog()
             {
                 InitialDirectory = Directory.GetCurrentDirectory(),
@@ -89,7 +81,7 @@ namespace projet_dawan_WPF.Windows
 
             if ((bool)save.ShowDialog())
             {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
+                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.ExportEpisode, Formatting.Indented));
             }
         }
     }

@@ -14,5 +14,11 @@
     <Setting Name="ExportEpisode" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Episode&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ExportActeur" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Acteur&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExportPersonnage" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Personnage&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

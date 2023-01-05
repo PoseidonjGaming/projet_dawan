@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using projet_dawan_WPF.Window;
 using projet_dawan_WPF.Windows;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
@@ -17,6 +18,7 @@ namespace projet_dawan_WPF.Logic
     internal class LogicExportSerie
     {
         public WindowExportSerie Window { get; set; }
+        private readonly SerieService service = new();
 
         public LogicExportSerie(WindowExportSerie window)
         {
@@ -33,27 +35,41 @@ namespace projet_dawan_WPF.Logic
 
         public void BtnExport_Click()
         {
-            if (Window.checkBoxEp.IsEnabled)
+            PersonnageService Personnageservice = new();
+            if (Window.Owner.GetType() == typeof(WindowAccueil))
             {
-                SerieService service = new();
                 Properties.Settings.Default.ExportSerie = service.GetAll();
+                ExportEpisode();
+                ExportPerso();
+                Export();
             }
-            else
+            else if (Window.Owner.GetType() == typeof(WindowExportEpisode))
             {
-                List<Serie> list = new List<Serie>();
-                foreach (Episode ep in Properties.Settings.Default.ExportEpisode)
+                foreach(Episode episode in Properties.Settings.Default.ExportEpisode)
                 {
-                    list.Add(ep.Saison.Serie);
+                    Properties.Settings.Default.ExportSerie = new() { episode.Saison.Serie };
+                    
+                    episode.Saison.Serie = Properties.Settings.Default.ExportSerie.FirstOrDefault();
                 }
-                Properties.Settings.Default.ExportSerie = list;
+                ExportPerso();
+
             }
-            ExportPerso();
+            else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
+            {
+                ExportEpisode();
+                Window.Close();
+            }
         }
 
         private void ExportPerso()
         {
             if ((bool)Window.checkBoxShouldPersonnage.IsChecked)
             {
+                foreach (Serie serie in Properties.Settings.Default.ExportSerie)
+                {
+                    serie.ShouldExportPersonnage = true;
+                }
+
                 WindowExportPersonnage window = new()
                 {
                     Owner = Window
@@ -61,10 +77,7 @@ namespace projet_dawan_WPF.Logic
                 window.Closed += FormExportPersoClose;
                 window.Show();
             }
-            else
-            {
-                ExportEpisode();
-            }
+
         }
 
         private void ExportEpisode()
@@ -75,7 +88,7 @@ namespace projet_dawan_WPF.Logic
                 EpisodeService episodeService = new();
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
-                    serie.ShouldSerializeSaison = true;
+                    serie.ShouldExportSaison = true;
                     serie.Saisons = service.GetSaisonsBySerie(serie.Id);
                     foreach (Saison saison in serie.Saisons)
                     {
@@ -89,7 +102,6 @@ namespace projet_dawan_WPF.Logic
                     }
                 }
             }
-            Export();
         }
 
         private void Export()
@@ -112,15 +124,7 @@ namespace projet_dawan_WPF.Logic
 
         private void FormExportPersoClose(object sender, EventArgs e)
         {
-            if (Window.checkBoxEp.IsEnabled)
-            {
-                ExportEpisode();
-            }
-            else
-            {
-                Window.Close();
-            }
-
+            Window.Close();
         }
     }
 }

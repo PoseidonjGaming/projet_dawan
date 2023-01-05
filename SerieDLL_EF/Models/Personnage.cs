@@ -26,16 +26,20 @@ public partial class Personnage
     [DataMember]
     public virtual Acteur Acteur { get; set; } = null!;
 
-    [JsonIgnore]
+    [DataMember]
     public virtual Serie Serie { get; set; } = null!;
 
     [NotMapped]
     [JsonIgnore]
     public bool ShouldSerializeActeurs { get; set; }
 
+    [NotMapped]
+    [JsonIgnore]
+    public bool ShouldExportSerie { get; set; }
+
     public bool ShouldSerializeSerie()
     {
-        return false;
+        return ShouldExportSerie;
     }
 
     public bool ShouldSerializeActeur()

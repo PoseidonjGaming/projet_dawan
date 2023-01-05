@@ -28,7 +28,7 @@ public partial class Episode
 
     [DataMember]
     [NotMapped]
-    public Saison? Saison { get; set; }
+    public Saison Saison { get; set; }
 
     [NotMapped]
     public bool ShouldExportSaisons { get; set; }
