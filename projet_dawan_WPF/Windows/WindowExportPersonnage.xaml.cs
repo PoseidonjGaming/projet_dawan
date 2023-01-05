@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using projet_dawan_WPF.Window;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -34,6 +35,7 @@ namespace projet_dawan_WPF.Windows
             PersonnageService personnageService = new();
             if (Owner.GetType() == typeof(WindowExportSerie))
             {
+                checkBoxPerso_Serie.IsEnabled = true;
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     serie.ShouldSerializePersonnage = true;
@@ -43,10 +45,10 @@ namespace projet_dawan_WPF.Windows
                 }
                 this.Close();
             }
-            else
+            else if (Owner.GetType() == typeof(WindowAccueil))
             {
-                List<Personnage> perso=personnageService.GetAll();
-                perso=ExportActeur(perso.ToList());
+                List<Personnage> perso = personnageService.GetAll();
+                perso = ExportActeur(perso.ToList());
                 SaveFileDialog save = new SaveFileDialog()
                 {
                     InitialDirectory = Directory.GetCurrentDirectory(),
@@ -62,25 +64,33 @@ namespace projet_dawan_WPF.Windows
 
                 this.Close();
             }
-            
-            
-            
-            
+
+
+
         }
 
         private List<Personnage> ExportActeur(List<Personnage> list)
         {
-            if ((bool)chackBoxPerso_Acteur.IsChecked)
+            if ((bool)checkBoxPerso_Acteur.IsChecked)
             {
                 ActeurService acteurService = new();
                 foreach (Personnage perso in list)
                 {
                     perso.ShouldSerializeActeurs = true;
                     perso.Acteur = acteurService.GetById(perso.ActeurId);
+                    perso.Acteur.ShouldExportPersonnage = false;
                 }
             }
 
             return list;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if(Owner.GetType()==typeof(WindowExportSerie))
+            {
+                checkBoxPerso_Serie.IsEnabled = false;
+            }
         }
     }
 }

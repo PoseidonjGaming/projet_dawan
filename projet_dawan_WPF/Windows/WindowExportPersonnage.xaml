@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows"
         mc:Ignorable="d"
-        Title="WindowExportPersonnage" Height="150" Width="300">
+        Title="WindowExportPersonnage" Height="200" Width="400" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>
-            <RowDefinition Height="35*"></RowDefinition>
-            <RowDefinition Height="22*"></RowDefinition>
+            <RowDefinition Height="125*"></RowDefinition>
+            <RowDefinition Height="39*"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -20,7 +20,8 @@
         </Grid.ColumnDefinitions>
         <GroupBox Header="Pour chaque personnage" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <CheckBox x:Name="chackBoxPerso_Acteur" Content="Acteur" Margin="0,10,0,10" HorizontalAlignment="Center"></CheckBox>
+                <CheckBox x:Name="checkBoxPerso_Acteur" Content="Acteur" HorizontalAlignment="Center" Margin="0,10,0,10"/>
+                <CheckBox x:Name="checkBoxPerso_Serie" Content="Série" Margin="0,0,0,10" HorizontalAlignment="Center"></CheckBox>
             </StackPanel>
         </GroupBox>
         <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Height="20" Width="20">
