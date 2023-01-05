@@ -42,11 +42,11 @@
                     <MenuItem Header="Import/Export les Episodes" Name="menuItemImport_Export_Episodes" Click="menuItemImport_Export_Episode_Click"/>
                 </MenuItem>
                 
-                <MenuItem Header="Quitter"/>
+                <MenuItem Header="Quitter" Click="MenuItem_Click"/>
             </MenuItem>
-            <MenuItem Header="Compte">
+            <MenuItem x:Name="menuItemCompte" Header="Compte">
                 <MenuItem Header="Mon Compte"/>
-                <MenuItem Header="WatchList" Name="menuItemWatchlist" Click="menuItemWatchlist_Click"/>
+                <MenuItem Name="menuItemWatchlist" Header="WatchList"  Click="menuItemWatchlist_Click"/>
             </MenuItem>
             <MenuItem HorizontalAlignment="Right" Header="Connexion" Name="menuItemSeConnecter" Click="menuItemSeConnecter_Click"/>
         </Menu>

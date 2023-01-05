@@ -30,17 +30,24 @@ namespace projet_dawan_WPF.Logic
 
             if (Properties.Settings.Default.UserRemain != null)
             {
+                Window.menuItemSeConnecter.Header = "Déconnexion";
                 if (Properties.Settings.Default.UserRemain.IsGranted(Roles.SuperAdmin))
                 {
                     Window.menuGestion.IsEnabled = true;
+
                 }
                 else
                 {
                     Window.menuGestion.IsEnabled = false;
                 }
             }
-            
-            
+            else
+            {
+
+                Window.menuItemSeConnecter.Header = "Connexion";
+            }
+
+
 
             Populate(4);
         }
@@ -123,7 +130,7 @@ namespace projet_dawan_WPF.Logic
             }
         }
 
-        
+
 
         public void GererLesActeurs_Click()
         {
@@ -193,8 +200,6 @@ namespace projet_dawan_WPF.Logic
             }
         }
 
-       
-
         public void WatchList_Click()
         {
             if (Properties.Settings.Default.UserRemain != null)
@@ -248,7 +253,7 @@ namespace projet_dawan_WPF.Logic
 
         public void SeConnecterToolStripMenuItem_Click()
         {
-            if(Properties.Settings.Default.UserRemain != null)
+            if (Properties.Settings.Default.UserRemain != null)
             {
                 var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -259,6 +264,7 @@ namespace projet_dawan_WPF.Logic
                     Properties.Settings.Default.UserRemain = null;
                     Properties.Settings.Default.Save();
                     Window.menuItemSeConnecter.Header = "Connexion";
+                    Window.menuItemCompte.IsEnabled = false;
                 }
             }
             else
@@ -267,7 +273,7 @@ namespace projet_dawan_WPF.Logic
                 winCon.Closing += FormClose;
                 winCon.ShowDialog();
             }
-            
+
         }
 
         public void MenuItemImport_Export_Serie_Click()
@@ -282,9 +288,10 @@ namespace projet_dawan_WPF.Logic
         private void FormClose(object sender, EventArgs e)
         {
             user = Properties.Settings.Default.UserRemain;
-            if(user != null)
+            if (user != null)
             {
                 Window.menuItemSeConnecter.Header = "Déconnexion";
+                Window.menuItemCompte.IsEnabled = true;
                 if (user.IsGranted(Roles.SuperAdmin))
                 {
                     Window.menuGestion.IsEnabled = true;
@@ -294,7 +301,25 @@ namespace projet_dawan_WPF.Logic
                     Window.menuItemSeConnecter.IsEnabled = false;
                 }
             }
-            
+
+        }
+
+        public void menuItemImport_Export_Perso_Click()
+        {
+            WindowExportPersonnage window = new()
+            {
+                Owner = Window
+            };
+            window.Show();
+        }
+
+        public void menuItemImport_Export_Episode_Click()
+        {
+            WindowExportEpisode window = new()
+            {
+                Owner = Window
+            };
+            window.ShowDialog();
         }
 
     }

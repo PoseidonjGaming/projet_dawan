@@ -72,21 +72,17 @@ namespace projet_dawan_WPF.Window
 
         private void menuItemImport_Export_Perso_Click(object sender, RoutedEventArgs e)
         {
-            WindowExportPersonnage window = new()
-            {
-                Owner= this
-            };
-            window.Show();
+            logic.menuItemImport_Export_Perso_Click();
         }
 
         private void menuItemImport_Export_Episode_Click(object sender, RoutedEventArgs e)
         {
-            
-            WindowExportEpisode window = new()
-            {
-                Owner = this
-            };
-            window.ShowDialog();
+            logic.menuItemImport_Export_Episode_Click();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            logic.Quitter_Click();
         }
     }
 }
