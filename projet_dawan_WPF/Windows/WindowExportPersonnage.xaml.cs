@@ -1,7 +1,10 @@
-﻿using SerieDLL_EF.Models;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,24 +31,56 @@ namespace projet_dawan_WPF.Windows
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
-            ActeurService acteurService= new();
             PersonnageService personnageService = new();
-            
-            foreach (Serie serie in Properties.Settings.Default.Export)
+            if (Owner.GetType() == typeof(WindowExportSerie))
             {
-                serie.ShouldSerializePersonnage = true;
-                serie.Personnages = personnageService.GetBySerie(serie.Id);
-                if ((bool)chackBoxPerso_Acteur.IsChecked)
+                foreach (Serie serie in Properties.Settings.Default.Export)
                 {
-                    foreach (Personnage perso in serie.Personnages)
-                    {
-                        perso.ShouldSerializeActeurs = true;
-                        perso.Acteur = acteurService.GetById(perso.ActeurId);
-                    }
+                    serie.ShouldSerializePersonnage = true;
+                    serie.Personnages = personnageService.GetBySerie(serie.Id);
+                    serie.Personnages = ExportActeur(serie.Personnages.ToList());
+
                 }
-              
+                this.Close();
             }
-            this.Close();
+            else
+            {
+                List<Personnage> perso=personnageService.GetAll();
+                perso=ExportActeur(perso.ToList());
+                SaveFileDialog save = new SaveFileDialog()
+                {
+                    InitialDirectory = Directory.GetCurrentDirectory(),
+                    FileName = "exports.json",
+                    Filter = "File JSON|*json",
+                    Title = "Save WatchList"
+                };
+
+                if ((bool)save.ShowDialog())
+                {
+                    File.WriteAllText(save.FileName, JsonConvert.SerializeObject(perso, Formatting.Indented));
+                }
+
+                this.Close();
+            }
+            
+            
+            
+            
+        }
+
+        private List<Personnage> ExportActeur(List<Personnage> list)
+        {
+            if ((bool)chackBoxPerso_Acteur.IsChecked)
+            {
+                ActeurService acteurService = new();
+                foreach (Personnage perso in list)
+                {
+                    perso.ShouldSerializeActeurs = true;
+                    perso.Acteur = acteurService.GetById(perso.ActeurId);
+                }
+            }
+
+            return list;
         }
     }
 }

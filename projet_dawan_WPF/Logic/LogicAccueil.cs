@@ -1,4 +1,5 @@
 ﻿using projet_dawan_WPF.Window;
+using projet_dawan_WPF.Windows;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -267,6 +268,15 @@ namespace projet_dawan_WPF.Logic
                 winCon.ShowDialog();
             }
             
+        }
+
+        public void MenuItemImport_Export_Serie_Click()
+        {
+            WindowExportSerie window = new()
+            {
+                Owner = Window
+            };
+            window.ShowDialog();
         }
 
         private void FormClose(object sender, EventArgs e)
