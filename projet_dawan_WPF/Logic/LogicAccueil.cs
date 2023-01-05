@@ -43,7 +43,8 @@ namespace projet_dawan_WPF.Logic
             }
             else
             {
-
+                Window.menuItemCompte.IsEnabled = false;
+                Window.menuGestion.IsEnabled = false;
                 Window.menuItemSeConnecter.Header = "Connexion";
             }
 
@@ -298,7 +299,7 @@ namespace projet_dawan_WPF.Logic
                 }
                 else
                 {
-                    Window.menuItemSeConnecter.IsEnabled = false;
+                    Window.menuGestion.IsEnabled = false;
                 }
             }
 
