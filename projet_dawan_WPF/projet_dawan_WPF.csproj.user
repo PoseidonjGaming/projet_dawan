@@ -14,6 +14,9 @@
     <Compile Update="Windows\WindowEpisode.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\WindowExportEpisode.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\WindowExportPersonnage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -56,6 +59,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\WindowEpisode.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowExportEpisode.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\WindowExportPersonnage.xaml">

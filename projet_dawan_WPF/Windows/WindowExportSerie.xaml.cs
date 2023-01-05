@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using projet_dawan_WPF.Window;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -32,21 +33,44 @@ namespace projet_dawan_WPF.Windows
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
-            SerieService service = new();
-            Properties.Settings.Default.Export = service.GetAll();
+            if(checkBoxEp.IsEnabled)
+            {
+                SerieService service = new();
+                Properties.Settings.Default.ExportSerie = service.GetAll();
+            }
+            else
+            {
+                List<Serie> list=new List<Serie>();
+                foreach(Episode ep in Properties.Settings.Default.ExportEpisode)
+                {
+                    list.Add(ep.Saison.Serie);
+                }
+                Properties.Settings.Default.ExportSerie = list;
+            }
             ExportPerso();
         }
 
         private void FormExportPersoClose(object sender, EventArgs e)
         {
-            ExportEpisode();
+            if(checkBoxEp.IsEnabled)
+            {
+                ExportEpisode();
+            }
+            else
+            {
+                this.Close();
+            }
+            
         }
 
         private void ExportPerso()
         {
             if ((bool)checkBoxShouldPersonnage.IsChecked)
             {
-                WindowExportPersonnage window = new();
+                WindowExportPersonnage window = new()
+                {
+                    Owner = this
+                };
                 window.Closed += FormExportPersoClose;
                 window.Show();
             }
@@ -62,19 +86,23 @@ namespace projet_dawan_WPF.Windows
             {
                 SaisonService service = new();
                 EpisodeService episodeService = new();
-                foreach (Serie serie in Properties.Settings.Default.Export)
+                foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     serie.ShouldSerializeSaison = true;
                     serie.Saisons = service.GetSaisonsBySerie(serie.Id);
                     foreach (Saison saison in serie.Saisons)
                     {
                         saison.Episodes = episodeService.GetBySaison(saison.Id);
+                        saison.ShouldExportSerie = false;
+                        saison.ShouldExportEpisode = true;
+                        foreach (Episode ep in saison.Episodes)
+                        {
+                            ep.ShouldExportSaisons = false;
+                        }
                     }
                 }
             }
             Export();
-           
-
         }
 
         private void Export()
@@ -89,10 +117,18 @@ namespace projet_dawan_WPF.Windows
 
             if ((bool)save.ShowDialog())
             {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.Export, Formatting.Indented));
+                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.ExportSerie, Formatting.Indented));
             }
 
             this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (Owner.GetType() == typeof(WindowExportEpisode))
+            {
+                checkBoxEp.IsEnabled = false;
+            }
         }
     }
 }

@@ -37,8 +37,9 @@
                     <MenuItem Header="Gérer les Utilisateurs" Name="menuItemUsers" Click="menuItemUsers_Click"/>
                 </MenuItem>
                 <MenuItem Header="Import/Export">
-                    <MenuItem Header="Import/Export les séries" Name="menuItemImport_Export_Serie" Click="menuItemImport_Export_Serie_Click"/>
-                    <MenuItem Header="Import/Export les Personnages" Name="menuItemImport_Export_Episodes" Click="menuItemImport_Export_Perso_Click"/>
+                    <MenuItem Header="Import/Export les Séries" Name="menuItemImport_Export_Serie" Click="menuItemImport_Export_Serie_Click"/>
+                    <MenuItem Header="Import/Export les Personnages" Name="menuItemImport_Export_Perso" Click="menuItemImport_Export_Perso_Click"/>
+                    <MenuItem Header="Import/Export les Episodes" Name="menuItemImport_Export_Episodes" Click="menuItemImport_Export_Episode_Click"/>
                 </MenuItem>
                 
                 <MenuItem Header="Quitter"/>

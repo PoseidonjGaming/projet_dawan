@@ -1,5 +1,9 @@
-﻿using projet_dawan_WPF.Logic;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
+using projet_dawan_WPF.Logic;
 using projet_dawan_WPF.Windows;
+using SerieDLL_EF.Service;
+using System.IO;
 using System.Windows;
 
 namespace projet_dawan_WPF.Window
@@ -73,6 +77,16 @@ namespace projet_dawan_WPF.Window
                 Owner= this
             };
             window.Show();
+        }
+
+        private void menuItemImport_Export_Episode_Click(object sender, RoutedEventArgs e)
+        {
+            
+            WindowExportEpisode window = new()
+            {
+                Owner = this
+            };
+            window.ShowDialog();
         }
     }
 }

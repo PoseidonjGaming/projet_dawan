@@ -20,10 +20,26 @@ public partial class Saison
 
     [DataMember]
     public int NbEpisode { get; set; }
-    [JsonIgnore]
+
+    [DataMember]
     public virtual Serie Serie { get; set; } = null!;
 
     [NotMapped]
     [DataMember]
     public List<Episode> Episodes { get; set; }
+
+    [NotMapped]
+    public bool ShouldExportSerie { get; set; }
+
+    [NotMapped]
+    public bool ShouldExportEpisode { get; set; }
+
+    public bool ShouldSerializeSerie()
+    {
+        return ShouldExportSerie;
+    }
+    public bool ShouldSerializeEpisodes()
+    {
+        return ShouldExportEpisode;
+    }
 }

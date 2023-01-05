@@ -34,7 +34,7 @@ namespace projet_dawan_WPF.Windows
             PersonnageService personnageService = new();
             if (Owner.GetType() == typeof(WindowExportSerie))
             {
-                foreach (Serie serie in Properties.Settings.Default.Export)
+                foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     serie.ShouldSerializePersonnage = true;
                     serie.Personnages = personnageService.GetBySerie(serie.Id);

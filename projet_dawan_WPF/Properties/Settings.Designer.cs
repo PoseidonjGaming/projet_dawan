@@ -48,12 +48,23 @@ namespace projet_dawan_WPF.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.Collections.Generic.List<SerieDLL_EF.Models.Serie> Export {
+        public global::System.Collections.Generic.List<SerieDLL_EF.Models.Serie> ExportSerie {
             get {
-                return ((global::System.Collections.Generic.List<SerieDLL_EF.Models.Serie>)(this["Export"]));
+                return ((global::System.Collections.Generic.List<SerieDLL_EF.Models.Serie>)(this["ExportSerie"]));
             }
             set {
-                this["Export"] = value;
+                this["ExportSerie"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Generic.List<SerieDLL_EF.Models.Episode> ExportEpisode {
+            get {
+                return ((global::System.Collections.Generic.List<SerieDLL_EF.Models.Episode>)(this["ExportEpisode"]));
+            }
+            set {
+                this["ExportEpisode"] = value;
             }
         }
     }
