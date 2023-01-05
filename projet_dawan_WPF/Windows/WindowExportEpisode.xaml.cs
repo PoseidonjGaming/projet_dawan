@@ -55,7 +55,7 @@ namespace projet_dawan_WPF.Windows
                 {
                     Owner = this
                 };
-                window.Closing += WindowClose;
+                window.Closed += WindowClose;
                 window.ShowDialog();
             }
             else

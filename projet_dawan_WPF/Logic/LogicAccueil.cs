@@ -306,20 +306,28 @@ namespace projet_dawan_WPF.Logic
 
         public void menuItemImport_Export_Perso_Click()
         {
-            WindowExportPersonnage window = new()
+            if(user.IsGranted(Roles.SuperAdmin))
             {
-                Owner = Window
-            };
-            window.Show();
+                WindowExportPersonnage window = new()
+                {
+                    Owner = Window
+                };
+                window.Show();
+            }
+            
         }
 
         public void menuItemImport_Export_Episode_Click()
         {
-            WindowExportEpisode window = new()
+            if (user.IsGranted(Roles.SuperAdmin))
             {
-                Owner = Window
-            };
-            window.ShowDialog();
+                WindowExportEpisode window = new()
+                {
+                    Owner = Window
+                };
+                window.ShowDialog();
+            }
+            
         }
 
     }
