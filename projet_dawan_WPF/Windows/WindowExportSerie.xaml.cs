@@ -48,6 +48,8 @@ namespace projet_dawan_WPF.Windows
                 Properties.Settings.Default.ExportSerie = list;
             }
             ExportPerso();
+            
+
         }
 
         private void FormExportPersoClose(object sender, EventArgs e)

@@ -58,7 +58,11 @@ namespace projet_dawan_WPF.Windows
                 window.Closing += WindowClose;
                 window.ShowDialog();
             }
-
+            else
+            {
+                Export(list);
+            }
+            
             
         }
 
@@ -68,7 +72,12 @@ namespace projet_dawan_WPF.Windows
             {
                 ep.Saison.Serie = Properties.Settings.Default.ExportSerie.Find(s => s.Id == ep.Saison.SerieId);
             }
+            Export(Properties.Settings.Default.ExportEpisode);
+           
+        }
 
+        private void Export(List<Episode> list)
+        {
             EpisodeService service = new();
             SaveFileDialog save = new SaveFileDialog()
             {
@@ -80,7 +89,7 @@ namespace projet_dawan_WPF.Windows
 
             if ((bool)save.ShowDialog())
             {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.ExportEpisode, Formatting.Indented));
+                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
             }
         }
     }
