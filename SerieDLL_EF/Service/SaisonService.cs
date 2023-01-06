@@ -22,10 +22,10 @@ namespace SerieDLL_EF.Service
         public List<Saison> Export(Serie serie)
         {
             List<Saison> list = repo.GetSaisonsBySerie(serie.Id);
-            EpisodeService episodeService= new EpisodeService();
+            EpisodeService episodeService = new EpisodeService();
             foreach (Saison saison in list)
             {
-                saison.Episodes=episodeService.GetBySaison(saison.Id);
+                saison.Episodes = episodeService.GetBySaison(saison.Id);
             }
             return list;
         }

@@ -1,10 +1,5 @@
-﻿using Microsoft.Win32;
-using Newtonsoft.Json;
-using projet_dawan_WPF.Logic.Autre;
-using projet_dawan_WPF.Windows;
+﻿using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Export;
-using SerieDLL_EF.Service;
-using System.IO;
 using System.Windows;
 
 namespace projet_dawan_WPF.Windows.Autre
@@ -90,7 +85,7 @@ namespace projet_dawan_WPF.Windows.Autre
         {
             WindowExportActeur window = new()
             {
-                Owner= this
+                Owner = this
             };
             window.ShowDialog();
         }

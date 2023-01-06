@@ -1,5 +1,4 @@
 ﻿using projet_dawan_WPF.Logic.Export;
-using projet_dawan_WPF.Windows.Export;
 using System.Windows;
 
 namespace projet_dawan_WPF.Windows.Export
@@ -19,7 +18,7 @@ namespace projet_dawan_WPF.Windows.Export
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
             logic.BtnExport_Click();
-        }       
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

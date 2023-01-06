@@ -3,7 +3,6 @@ using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Media.Imaging;
 
 namespace projet_dawan_WPF.Logic.Detail

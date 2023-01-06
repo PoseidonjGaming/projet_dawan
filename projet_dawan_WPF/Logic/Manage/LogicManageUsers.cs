@@ -1,11 +1,7 @@
-﻿using projet_dawan_WPF.Window.Manage;
+﻿using projet_dawan_WPF.Windows.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Manage

@@ -1,7 +1,6 @@
 ﻿using projet_dawan_WPF.Logic.Detail;
 using SerieDLL_EF.Models;
 using System.Collections.Generic;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace projet_dawan_WPF.Windows.Detail

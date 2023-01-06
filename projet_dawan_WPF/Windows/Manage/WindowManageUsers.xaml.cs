@@ -1,19 +1,12 @@
 ﻿using projet_dawan_WPF.Logic.Manage;
-using SerieDLL_EF.Models;
-using SerieDLL_EF.Service;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.IO;
-using System.Security.Cryptography;
 using System.Windows;
-using System.Windows.Documents;
 
-namespace projet_dawan_WPF.Window.Manage
+namespace projet_dawan_WPF.Windows.Manage
 {
     /// <summary>
     /// Logique d'interaction pour WindowManageUsers.xaml
     /// </summary>
-    public partial class WindowManageUsers : System.Windows.Window
+    public partial class WindowManageUsers : Window
     {
         private LogicManageUsers logic;
         public WindowManageUsers()
@@ -43,6 +36,6 @@ namespace projet_dawan_WPF.Window.Manage
             logic.LstBoxUsers_SelectionChanged();
         }
 
-       
+
     }
 }

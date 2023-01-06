@@ -49,7 +49,7 @@ public partial class Serie
         return ShouldExportSaison;
     }
 
-   
+
 
 
 }

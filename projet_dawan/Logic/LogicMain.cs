@@ -29,8 +29,8 @@ namespace projet_dawan.FormLogic
             UserService service = new();
             UserApp user = new()
             {
-                Login=Form.txtBoxLogin.Text,
-                Password=Form.txtBoxPwd.Text
+                Login = Form.txtBoxLogin.Text,
+                Password = Form.txtBoxPwd.Text
             };
             user = service.GetUser(user);
             Properties.Settings.Default.UserRemain = user;
