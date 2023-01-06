@@ -36,7 +36,6 @@ namespace projet_dawan_WPF.Windows.Export
             PersonnageService service = new();
             if (Owner.GetType() == typeof(WindowAccueil))
             {
-                MessageBox.Show("test");
                 Properties.Settings.Default.ExportPersonnage=service.GetAll();
                 ExportActeur();
                 ExportSerie();
@@ -74,7 +73,7 @@ namespace projet_dawan_WPF.Windows.Export
                 {
                     perso.ShouldSerializeActeurs = true;
                     perso.Acteur = service.GetById(perso.ActeurId);
-                    //perso.Acteur.ShouldExportPersonnage = false;
+                    perso.Acteur.ShouldExportPersonnage = false;
                 }
             }
         }

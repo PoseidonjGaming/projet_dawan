@@ -49,10 +49,17 @@ namespace projet_dawan_WPF.Logic
                 foreach(Episode episode in Properties.Settings.Default.ExportEpisode)
                 {
                     Properties.Settings.Default.ExportSerie = new() { episode.Saison.Serie };
-                    
+                    ExportPerso();
                     episode.Saison.Serie = Properties.Settings.Default.ExportSerie.FirstOrDefault();
                 }
-                ExportPerso();
+
+                WindowExportPersonnage window = new()
+                {
+                    Owner = Window
+                };
+                window.Closed += FormExportPersoClose;
+                window.Show();
+
 
             }
             else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
@@ -64,19 +71,14 @@ namespace projet_dawan_WPF.Logic
 
         private void ExportPerso()
         {
+            PersonnageService service= new();
             if ((bool)Window.checkBoxShouldPersonnage.IsChecked)
             {
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     serie.ShouldExportPersonnage = true;
+                    serie.Personnages = service.GetBySerie(serie.Id);
                 }
-
-                WindowExportPersonnage window = new()
-                {
-                    Owner = Window
-                };
-                window.Closed += FormExportPersoClose;
-                window.Show();
             }
 
         }
