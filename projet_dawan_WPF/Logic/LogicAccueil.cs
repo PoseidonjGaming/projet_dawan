@@ -1,5 +1,6 @@
-﻿using projet_dawan_WPF.Window;
-using projet_dawan_WPF.Windows;
+﻿using projet_dawan_WPF.Windows.Detail;
+using projet_dawan_WPF.Window.Manage;
+using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -10,6 +11,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using projet_dawan_WPF.Window;
+using projet_dawan_WPF.Windows.Autre;
 
 namespace projet_dawan_WPF.Logic
 {

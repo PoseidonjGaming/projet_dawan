@@ -2,12 +2,12 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="Windows\WindowExportActeur.xaml.cs">
+    <Compile Update="Windows\Export\WindowExportActeur.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Windows\WindowExportActeur.xaml">
+    <Page Update="Windows\Export\WindowExportActeur.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

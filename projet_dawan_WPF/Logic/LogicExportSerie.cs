@@ -1,7 +1,8 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
 using projet_dawan_WPF.Window;
-using projet_dawan_WPF.Windows;
+using projet_dawan_WPF.Windows.Autre;
+using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;

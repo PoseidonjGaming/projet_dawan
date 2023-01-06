@@ -1,0 +1,52 @@
+﻿<Window x:Class="projet_dawan_WPF.Window.Manage.WindowManagePersonnages"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projet_dawan_WPF.Window"
+        mc:Ignorable="d"
+        Title="WindowManagePersonnages" Height="375" Width="508" WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="10"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="273*"></RowDefinition>
+                <RowDefinition Height="41*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <GroupBox Header="Gérer un personnage">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" >
+                        <Label Content="Nom: " Margin="0,10,0,10"/>
+                        <TextBox x:Name="txtBoxNom" Width="150" Margin="20,10,0,10" VerticalContentAlignment="Center"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Acteur" Margin="0,10,0,10"></Label>
+                        <ComboBox x:Name="comboBoxActeur" Margin="17,10,0,10" Width="150" HorizontalContentAlignment="Center"></ComboBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Série: " Margin="0,10,0,10"></Label>
+                        <ComboBox x:Name="comboBoxSerie" Margin="20,10,0,10" Width="150" HorizontalContentAlignment="Center"></ComboBox>
+                    </StackPanel>
+                    <Label Content="Résumé"></Label>
+                    <TextBox x:Name="txtBoxResume" Height="75" Margin="5,0,10,0"></TextBox>
+                </StackPanel>
+            </GroupBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10" Width="168">
+                <Button x:Name="btnAjouter" Content="Ajouter" Margin="0,0,10,0" Click="btnAjouter_Click"></Button>
+                <Button x:Name="btnAnnuler" Content="Annuler" Margin="0,0,10,0" Click="btnAnnuler_Click"></Button>
+                <Button x:Name="btnSup" Content="Supprimer" Click="btnSup_Click"></Button>
+            </StackPanel>
+        </Grid>
+        <ListBox x:Name="listBoxPerso" Grid.Row="1" Grid.Column="2" Margin="0,10,0,0" SelectionChanged="listBoxPerso_SelectionChanged" ></ListBox>
+    </Grid>
+</Window>
