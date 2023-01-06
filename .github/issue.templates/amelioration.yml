@@ -1,0 +1,63 @@
+name: "Requête d'amélioration'"
+description: Créer un nouveau ticket pour une nouvelle requête de feature
+title: "[REQUEST] - <title>"
+labels: [
+  "question"
+]
+body:
+  - type: input
+    id: start_date
+    attributes:
+      label: "Date de début"
+      description: Début du développement
+      placeholder: "mois/jour/année"
+    validations:
+      required: false
+  - type: textarea
+    id: implementation_pr
+    attributes:
+      label: "Implementation PR"
+      description: Pull request utilisée
+      placeholder: "#Pull Request ID"
+    validations:
+      required: false
+  - type: textarea
+    id: reference_issues
+    attributes:
+      label: "Issues de références"
+      description: Issues communes
+      placeholder: "#Issues IDs"
+    validations:
+      required: false
+  - type: textarea
+    id: summary
+    attributes:
+      label: "Résumé"
+      description: Donnez un bref résumé de la nouvelle feature
+      placeholder: Describe in a few lines your feature request Décrivez en quelques lignes votre requête d'amélioration
+    validations:
+      required: true
+  - type: textarea
+    id: basic_example
+    attributes:
+      label: "Exemple basique"
+      description: Indiquez ici quelques exemples basics de votre feature.
+      placeholder: Quelques mots spécifiques au sujet de votre requête d'amélioration.
+    validations:
+      required: true
+  - type: textarea
+    id: drawbacks
+    attributes:
+      label: "Drawbacks"
+      description: Quels sont les inconvénients / impacts de votre feaure ?
+      placeholder: Identifiez les inconvénients et impacts en étant le plus objectif possible
+    validations:
+      required: true
+  - type: textarea
+    id: unresolved_question
+    attributes:
+      label: "Questions non résolues"
+      description: Quelles sont les questions restant sans réponse ?
+      placeholder: Identify any unresolved issues. Identifiez toutes les questions sans réponse.
+    validations:
+      required: false

@@ -1,0 +1,81 @@
+﻿name: "Report de Bug"
+description: Création d'un nouveau ticket pour un bug'.
+title: " [BUG] - <title>"
+labels: [
+  "bug"
+]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Description"
+      description: Entrez une description explicite de votre problème SVP.
+      placeholder: Short and explicit description of your incident... Courte et explicite description de l'incident rencontré...
+    validations:
+      required: true
+  - type: input
+    id: reprod-url
+    attributes:
+      label: "URL de reproduction"
+      description: Saisissez SVP votre URL GitHub pour faire parvenir une reproduction du problème.
+      placeholder: ex. https://github.com/USERNAME/REPO-NAME
+    validations:
+      required: true
+  - type: textarea
+    id: reprod
+    attributes:
+      label: "Etapes de Reproduction"
+      description: SVP, entrez une description explicite du problème.
+      value: |
+        1. Aller à '...'
+        2. Clicker sur '....'
+        3. Scroller jusque '....'
+        4. les erreurs apparaissent '....'
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: "Screenshots"
+      description: Si cela est possible, ajouter un screenshot du problème.
+      value: |
+        ![DESCRIPTION](LINK.png)
+      render: bash
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Logs"
+      description: Copiez et collez toute sortie de log. Elles seront formattées en code automatiquement.
+      render: bash
+    validations:
+      required: false
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: "Navigateurs"
+      description: Sur quel navigateur le problème apparait-il ?
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Opera
+    validations:
+      required: false
+  - type: dropdown
+    id: os
+    attributes:
+      label: "OS"
+      description: Sur quel environnement êtes-vous ?
+      multiple: true
+      options:
+        - Windows 11
+        - Windows 10
+        - Linux
+        - Mac
+    validations:
+      required: false
