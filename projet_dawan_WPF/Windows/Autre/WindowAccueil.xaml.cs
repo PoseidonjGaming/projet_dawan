@@ -61,29 +61,14 @@ namespace projet_dawan_WPF.Windows.Autre
             logic.GererLesUsers_Click();
         }
 
-        private void menuItemImport_Export_Serie_Click(object sender, RoutedEventArgs e)
-        {
-            logic.MenuItemImport_Export_Serie_Click();
-        }
-
-        private void menuItemImport_Export_Perso_Click(object sender, RoutedEventArgs e)
-        {
-            logic.menuItemImport_Export_Perso_Click();
-        }
-
-        private void menuItemImport_Export_Episode_Click(object sender, RoutedEventArgs e)
-        {
-            logic.menuItemImport_Export_Episode_Click();
-        }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             logic.Quitter_Click();
         }
 
-        private void menuItemImport_Export_Acteurs_Click(object sender, RoutedEventArgs e)
+        private void menuItemImport_Export_Click(object sender, RoutedEventArgs e)
         {
-            WindowExportActeur window = new()
+            WindowImportExport window = new()
             {
                 Owner = this
             };
