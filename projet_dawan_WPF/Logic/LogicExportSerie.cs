@@ -68,7 +68,16 @@ namespace projet_dawan_WPF.Logic
             }
             else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
             {
-                ExportEpisode();
+                foreach(Acteur acteur in Properties.Settings.Default.ExportActeur)
+                {
+                    foreach(Personnage perso in acteur.Personnages)
+                    {
+                        Properties.Settings.Default.ExportSerie = new() { perso.Serie};
+                        ExportEpisode();
+                        perso.Serie = Properties.Settings.Default.ExportSerie[0];
+                    }
+                }
+                
                 Window.Close();
             }
         }

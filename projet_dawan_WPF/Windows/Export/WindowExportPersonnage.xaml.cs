@@ -36,31 +36,37 @@ namespace projet_dawan_WPF.Windows.Export
             PersonnageService service = new();
             if (Owner.GetType() == typeof(WindowAccueil))
             {
-                Properties.Settings.Default.ExportPersonnage=service.GetAll();
+                Properties.Settings.Default.ExportPersonnage = service.GetAll();
                 ExportActeur();
                 ExportSerie();
                 Export();
             }
-            else if(Owner.GetType()==typeof(WindowExportSerie))
+            else if (Owner.GetType() == typeof(WindowExportSerie))
             {
-                foreach(Episode ep in Properties.Settings.Default.ExportEpisode)
+                foreach (Episode ep in Properties.Settings.Default.ExportEpisode)
                 {
                     Properties.Settings.Default.ExportPersonnage = ep.Saison.Serie.Personnages;
                     ExportActeur();
                     ep.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
                 }
-                
+
                 this.Close();
             }
-            else if(Owner.GetType()==typeof(WindowExportActeur))
+            else if (Owner.GetType() == typeof(WindowExportActeur))
             {
                 foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
                 {
-                    Properties.Settings.Default.ExportPersonnage = service.GetByActeur(acteur.Id);
+                    Properties.Settings.Default.ExportPersonnage = acteur.Personnages;
                     ExportSerie();
                     acteur.Personnages = Properties.Settings.Default.ExportPersonnage;
                 }
-                this.Close();
+                WindowExportSerie window = new()
+                {
+                    Owner = this,
+                };
+                window.Closed += Close;
+                window.ShowDialog();
+
             }
         }
 
@@ -94,11 +100,11 @@ namespace projet_dawan_WPF.Windows.Export
         {
             if ((bool)checkBoxPerso_Serie.IsChecked)
             {
-                SerieService service= new();
-                foreach(Personnage perso in Properties.Settings.Default.ExportPersonnage)
+                SerieService service = new();
+                foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
                 {
-                    perso.ShouldExportSerie= true;
-                    perso.Serie=service.GetById(perso.SerieId);
+                    perso.ShouldExportSerie = true;
+                    perso.Serie = service.GetById(perso.SerieId);
                 }
             }
         }
@@ -118,6 +124,11 @@ namespace projet_dawan_WPF.Windows.Export
                 File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.ExportPersonnage, Formatting.Indented));
             }
 
+            this.Close();
+        }
+
+        private void Close(object sender, EventArgs e)
+        {
             this.Close();
         }
     }

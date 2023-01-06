@@ -17,7 +17,8 @@ public partial class Acteur
     [DataMember]
     public string? Prenom { get; set; }
 
-    public virtual ICollection<Personnage> Personnages { get; set; } = new List<Personnage>();
+    [DataMember]
+    public virtual List<Personnage> Personnages { get; set; } = new List<Personnage>();
 
     [JsonIgnore]
     [NotMapped]
