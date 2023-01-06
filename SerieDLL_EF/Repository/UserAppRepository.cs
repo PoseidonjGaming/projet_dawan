@@ -1,6 +1,5 @@
 ﻿using SerieDLL_EF.Interface;
 using SerieDLL_EF.Models;
-using SerieDLL_EF.Service;
 
 namespace SerieDLL_EF.Repository
 {

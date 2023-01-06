@@ -1,4 +1,4 @@
-﻿using projet_dawan_WPF.Logic;
+﻿using projet_dawan_WPF.Logic.Autre;
 using System.Windows;
 
 namespace projet_dawan_WPF.Windows.Autre

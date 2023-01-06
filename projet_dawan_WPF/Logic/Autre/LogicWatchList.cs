@@ -1,13 +1,12 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
-using projet_dawan_WPF.Window;
 using projet_dawan_WPF.Windows.Autre;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
 using System.IO;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Autre
 {
     internal class LogicWatchList
     {

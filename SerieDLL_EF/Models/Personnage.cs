@@ -31,7 +31,7 @@ public partial class Personnage
 
     [NotMapped]
     [JsonIgnore]
-    public bool ShouldSerializeActeurs { get; set; }
+    public bool ShouldExportActeur { get; set; }
 
     [NotMapped]
     [JsonIgnore]
@@ -44,10 +44,10 @@ public partial class Personnage
 
     public bool ShouldSerializeActeur()
     {
-        return ShouldSerializeActeurs;
+        return ShouldExportActeur;
     }
 
-    
 
-   
+
+
 }

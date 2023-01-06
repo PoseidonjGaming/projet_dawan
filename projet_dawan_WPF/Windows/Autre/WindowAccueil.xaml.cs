@@ -1,9 +1,5 @@
-﻿using Microsoft.Win32;
-using Newtonsoft.Json;
-using projet_dawan_WPF.Logic;
-using projet_dawan_WPF.Windows;
-using SerieDLL_EF.Service;
-using System.IO;
+﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Export;
 using System.Windows;
 
 namespace projet_dawan_WPF.Windows.Autre
@@ -83,6 +79,15 @@ namespace projet_dawan_WPF.Windows.Autre
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             logic.Quitter_Click();
+        }
+
+        private void menuItemImport_Export_Acteurs_Click(object sender, RoutedEventArgs e)
+        {
+            WindowExportActeur window = new()
+            {
+                Owner = this
+            };
+            window.ShowDialog();
         }
     }
 }

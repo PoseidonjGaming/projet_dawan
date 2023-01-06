@@ -37,7 +37,7 @@ namespace SerieDLL_EF.Service
             ActeurService service = new ActeurService();
             foreach (Personnage person in list)
             {
-                person.ShouldSerializeActeurs = shouldActeur;
+                person.ShouldExportActeur = shouldActeur;
                 person.Acteur = service.GetById(person.ActeurId);
             }
             return list;

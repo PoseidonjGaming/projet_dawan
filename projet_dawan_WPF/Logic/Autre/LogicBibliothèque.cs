@@ -1,12 +1,11 @@
-﻿using projet_dawan_WPF.Window;
-using projet_dawan_WPF.Windows.Autre;
+﻿using projet_dawan_WPF.Windows.Autre;
 using projet_dawan_WPF.Windows.Detail;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Autre
 {
 
     internal class LogicBibliothèque

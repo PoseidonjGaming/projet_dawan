@@ -3,10 +3,9 @@ using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows.Media.Imaging;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Detail
 {
     internal class LogicEpisodes
     {
@@ -38,7 +37,7 @@ namespace projet_dawan_WPF.Logic
             {
 
             }
-            
+
             Window.pictureBoxSaison.Source = bitImg;
             Window.lblEpisode.Content = serie.Nom;
             Window.lblSaison.Content += saison.Numero.ToString();

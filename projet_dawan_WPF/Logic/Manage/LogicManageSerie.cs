@@ -1,5 +1,4 @@
-﻿using Microsoft.Win32;
-using projet_dawan_WPF.Window.Manage;
+﻿using projet_dawan_WPF.Windows.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -7,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Manage
 {
     internal class LogicManageSerie
     {
@@ -75,7 +74,7 @@ namespace projet_dawan_WPF.Logic
             Populate();
         }
 
-        
+
 
         public void LstBoxSerie_SelectedIndexChanged()
         {

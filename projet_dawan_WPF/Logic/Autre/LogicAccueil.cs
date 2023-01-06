@@ -1,20 +1,18 @@
-﻿using projet_dawan_WPF.Windows.Detail;
-using projet_dawan_WPF.Window.Manage;
+﻿using projet_dawan_WPF.Windows.Autre;
+using projet_dawan_WPF.Windows.Detail;
 using projet_dawan_WPF.Windows.Export;
+using projet_dawan_WPF.Windows.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using projet_dawan_WPF.Window;
-using projet_dawan_WPF.Windows.Autre;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Autre
 {
     internal class LogicAccueil
     {
@@ -310,7 +308,7 @@ namespace projet_dawan_WPF.Logic
 
         public void menuItemImport_Export_Perso_Click()
         {
-            if(user.IsGranted(Roles.SuperAdmin))
+            if (user.IsGranted(Roles.SuperAdmin))
             {
                 WindowExportPersonnage window = new()
                 {
@@ -318,7 +316,7 @@ namespace projet_dawan_WPF.Logic
                 };
                 window.Show();
             }
-            
+
         }
 
         public void menuItemImport_Export_Episode_Click()
@@ -331,7 +329,7 @@ namespace projet_dawan_WPF.Logic
                 };
                 window.ShowDialog();
             }
-            
+
         }
 
     }

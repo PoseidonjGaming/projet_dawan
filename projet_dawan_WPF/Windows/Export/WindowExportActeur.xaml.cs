@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using projet_dawan_WPF.Logic.Export;
+using System.Windows;
 
 namespace projet_dawan_WPF.Windows.Export
 {
@@ -7,14 +8,17 @@ namespace projet_dawan_WPF.Windows.Export
     /// </summary>
     public partial class WindowExportActeur : System.Windows.Window
     {
+        private LogicExportActeur logic;
         public WindowExportActeur()
         {
             InitializeComponent();
+            logic = new(this);
         }
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
-
+            logic.BtnExport_Click();
         }
+
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System.Collections.Generic;
 
 namespace projet_dawan
 {

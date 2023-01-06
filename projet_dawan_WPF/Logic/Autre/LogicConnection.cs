@@ -1,11 +1,10 @@
-﻿using projet_dawan_WPF.Window;
-using projet_dawan_WPF.Windows.Autre;
+﻿using projet_dawan_WPF.Windows.Autre;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Security.Cryptography;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Autre
 {
     internal class LogicMain
     {
@@ -36,7 +35,7 @@ namespace projet_dawan_WPF.Logic
                 Password = Window.txtPwd.Password
             };
 
-            user=service.GetUser(user);
+            user = service.GetUser(user);
 
             Properties.Settings.Default.UserRemain = user;
             if ((bool)Window.checkBoxCo.IsChecked)
@@ -52,8 +51,8 @@ namespace projet_dawan_WPF.Logic
             {
                 using (var crypto = new RNGCryptoServiceProvider())
                 {
-                    var bits = (user.Password.Length * 6);
-                    var byte_size = ((bits + 7) / 8);
+                    var bits = user.Password.Length * 6;
+                    var byte_size = (bits + 7) / 8;
                     var bytesarray = new byte[byte_size];
                     crypto.GetBytes(bytesarray);
                     Properties.Settings.Default.token = Convert.ToBase64String(bytesarray);
