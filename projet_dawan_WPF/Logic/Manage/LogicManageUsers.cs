@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Manage
 {
     class LogicManageUsers
     {

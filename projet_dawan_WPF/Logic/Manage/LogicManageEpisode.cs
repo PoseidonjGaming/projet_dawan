@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Manage
 {
     internal class LogicManageEpisode
     {

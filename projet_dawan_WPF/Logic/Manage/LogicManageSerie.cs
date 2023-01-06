@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Manage
 {
     internal class LogicManageSerie
     {
@@ -75,7 +75,7 @@ namespace projet_dawan_WPF.Logic
             Populate();
         }
 
-        
+
 
         public void LstBoxSerie_SelectedIndexChanged()
         {

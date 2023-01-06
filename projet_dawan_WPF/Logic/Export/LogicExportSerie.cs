@@ -1,20 +1,13 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
-using projet_dawan_WPF.Window;
 using projet_dawan_WPF.Windows.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Export
 {
     internal class LogicExportSerie
     {

@@ -1,4 +1,4 @@
-﻿using projet_dawan_WPF.Logic;
+﻿using projet_dawan_WPF.Logic.Export;
 using projet_dawan_WPF.Windows.Export;
 using System.Windows;
 

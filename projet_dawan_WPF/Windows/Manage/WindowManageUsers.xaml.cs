@@ -1,4 +1,4 @@
-﻿using projet_dawan_WPF.Logic;
+﻿using projet_dawan_WPF.Logic.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;

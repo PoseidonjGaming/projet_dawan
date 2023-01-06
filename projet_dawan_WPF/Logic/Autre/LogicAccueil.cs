@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using projet_dawan_WPF.Window;
 using projet_dawan_WPF.Windows.Autre;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Autre
 {
     internal class LogicAccueil
     {
@@ -310,7 +310,7 @@ namespace projet_dawan_WPF.Logic
 
         public void menuItemImport_Export_Perso_Click()
         {
-            if(user.IsGranted(Roles.SuperAdmin))
+            if (user.IsGranted(Roles.SuperAdmin))
             {
                 WindowExportPersonnage window = new()
                 {
@@ -318,7 +318,7 @@ namespace projet_dawan_WPF.Logic
                 };
                 window.Show();
             }
-            
+
         }
 
         public void menuItemImport_Export_Episode_Click()
@@ -331,7 +331,7 @@ namespace projet_dawan_WPF.Logic
                 };
                 window.ShowDialog();
             }
-            
+
         }
 
     }

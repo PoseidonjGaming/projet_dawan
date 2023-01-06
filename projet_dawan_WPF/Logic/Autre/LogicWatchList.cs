@@ -7,7 +7,7 @@ using SerieDLL_EF.Service;
 using System.Collections.Generic;
 using System.IO;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Autre
 {
     internal class LogicWatchList
     {

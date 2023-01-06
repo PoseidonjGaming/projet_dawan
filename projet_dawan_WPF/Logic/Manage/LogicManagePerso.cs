@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography.Pkcs;
 using System.Windows;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Manage
 {
     internal class LogicManagePerso
     {
@@ -85,8 +85,8 @@ namespace projet_dawan_WPF.Logic
         {
             Window.txtBoxNom.Clear();
             Window.txtBoxResume.Clear();
-            Window.comboBoxActeur.SelectedIndex= 0;
-            Window.comboBoxSerie.SelectedIndex= 0;
+            Window.comboBoxActeur.SelectedIndex = 0;
+            Window.comboBoxSerie.SelectedIndex = 0;
         }
 
         public void BtnSuppr_Click()

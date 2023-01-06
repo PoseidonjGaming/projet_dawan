@@ -6,7 +6,7 @@ using SerieDLL_EF.Service;
 using System.Collections.Generic;
 using System.Windows;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Autre
 {
 
     internal class LogicBibliothèque

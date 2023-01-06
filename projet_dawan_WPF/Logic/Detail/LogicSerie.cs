@@ -8,7 +8,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Media.Imaging;
 
-namespace projet_dawan_WPF.Logic
+namespace projet_dawan_WPF.Logic.Detail
 {
     internal class LogicSerie
     {

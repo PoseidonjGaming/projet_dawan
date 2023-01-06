@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
-using projet_dawan_WPF.Logic;
+using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Service;

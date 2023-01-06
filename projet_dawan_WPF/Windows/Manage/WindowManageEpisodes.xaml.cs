@@ -1,4 +1,4 @@
-﻿using projet_dawan_WPF.Logic;
+﻿using projet_dawan_WPF.Logic.Manage;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
