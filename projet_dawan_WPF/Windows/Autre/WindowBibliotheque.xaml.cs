@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace projet_dawan_WPF.Window
+namespace projet_dawan_WPF.Windows.Autre
 {
     /// <summary>
     /// Logique d'interaction pour WindowBibliotheque.xaml

@@ -1,4 +1,4 @@
-﻿using projet_dawan_WPF.Window;
+﻿using projet_dawan_WPF.Window.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -54,6 +54,7 @@ namespace projet_dawan_WPF.Logic
 
                         user.Login = Window.txtBoxLogin.Text;
                         user.Password = Window.txtBoxPWDConfirm.Text;
+                        user.Roles = rolesList[Window.cmbBoxRoles.SelectedIndex];
 
                         service.Update(user);
 
@@ -96,7 +97,7 @@ namespace projet_dawan_WPF.Logic
             if (Window.lstBoxUsers.SelectedIndex != -1)
             {
                 Window.txtBoxLogin.Text = userList[Window.lstBoxUsers.SelectedIndex].Login;
-                Window.cmbBoxRoles.SelectedIndex = Window.cmbBoxRoles.Items.IndexOf(rolesList.Find(r => r.ToString() == userList[Window.lstBoxUsers.SelectedIndex].Roles.ToString()));
+                Window.cmbBoxRoles.SelectedIndex = Window.cmbBoxRoles.Items.IndexOf(rolesList.Find(r => r.ToString() == userList[Window.lstBoxUsers.SelectedIndex].Roles.ToString()).ToString());
             }
         }
 

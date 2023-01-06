@@ -1,4 +1,4 @@
-﻿<Window x:Class="projet_dawan_WPF.Window.WindowAccueil"
+﻿<Window x:Class="projet_dawan_WPF.Windows.Autre.WindowAccueil"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -36,12 +36,17 @@
                     <MenuItem Header="Gérer les Acteurs" Name="menuItemActeurs" Click="menuItemActeurs_Click"/>
                     <MenuItem Header="Gérer les Utilisateurs" Name="menuItemUsers" Click="menuItemUsers_Click"/>
                 </MenuItem>
-                <MenuItem Header="Import/Export" Name="menuItemImport_Export" Click="menuItemImport_Export_Click"/>
-                <MenuItem Header="Quitter"/>
+                <MenuItem Header="Import/Export">
+                    <MenuItem Header="Import/Export les Séries" Name="menuItemImport_Export_Serie" Click="menuItemImport_Export_Serie_Click"/>
+                    <MenuItem Header="Import/Export les Personnages" Name="menuItemImport_Export_Perso" Click="menuItemImport_Export_Perso_Click"/>
+                    <MenuItem Header="Import/Export les Episodes" Name="menuItemImport_Export_Episodes" Click="menuItemImport_Export_Episode_Click"/>
+                </MenuItem>
+                
+                <MenuItem Header="Quitter" Click="MenuItem_Click"/>
             </MenuItem>
-            <MenuItem Header="Compte">
+            <MenuItem x:Name="menuItemCompte" Header="Compte">
                 <MenuItem Header="Mon Compte"/>
-                <MenuItem Header="WatchList" Name="menuItemWatchlist" Click="menuItemWatchlist_Click"/>
+                <MenuItem Name="menuItemWatchlist" Header="WatchList"  Click="menuItemWatchlist_Click"/>
             </MenuItem>
             <MenuItem HorizontalAlignment="Right" Header="Connexion" Name="menuItemSeConnecter" Click="menuItemSeConnecter_Click"/>
         </Menu>

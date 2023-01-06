@@ -1,4 +1,6 @@
-﻿using projet_dawan_WPF.Window;
+﻿using projet_dawan_WPF.Windows.Detail;
+using projet_dawan_WPF.Window.Manage;
+using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -9,6 +11,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using projet_dawan_WPF.Window;
+using projet_dawan_WPF.Windows.Autre;
 
 namespace projet_dawan_WPF.Logic
 {
@@ -29,17 +33,25 @@ namespace projet_dawan_WPF.Logic
 
             if (Properties.Settings.Default.UserRemain != null)
             {
+                Window.menuItemSeConnecter.Header = "Déconnexion";
                 if (Properties.Settings.Default.UserRemain.IsGranted(Roles.SuperAdmin))
                 {
                     Window.menuGestion.IsEnabled = true;
+
                 }
                 else
                 {
                     Window.menuGestion.IsEnabled = false;
                 }
             }
-            
-            
+            else
+            {
+                Window.menuItemCompte.IsEnabled = false;
+                Window.menuGestion.IsEnabled = false;
+                Window.menuItemSeConnecter.Header = "Connexion";
+            }
+
+
 
             Populate(4);
         }
@@ -122,7 +134,7 @@ namespace projet_dawan_WPF.Logic
             }
         }
 
-        
+
 
         public void GererLesActeurs_Click()
         {
@@ -192,8 +204,6 @@ namespace projet_dawan_WPF.Logic
             }
         }
 
-       
-
         public void WatchList_Click()
         {
             if (Properties.Settings.Default.UserRemain != null)
@@ -247,7 +257,7 @@ namespace projet_dawan_WPF.Logic
 
         public void SeConnecterToolStripMenuItem_Click()
         {
-            if(Properties.Settings.Default.UserRemain != null)
+            if (Properties.Settings.Default.UserRemain != null)
             {
                 var deconnecter = MessageBox.Show("Etes vous sur de vouloir vous déconnecter de ce compte ?", "Se déconnecter ?",
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -258,6 +268,7 @@ namespace projet_dawan_WPF.Logic
                     Properties.Settings.Default.UserRemain = null;
                     Properties.Settings.Default.Save();
                     Window.menuItemSeConnecter.Header = "Connexion";
+                    Window.menuItemCompte.IsEnabled = false;
                 }
             }
             else
@@ -266,23 +277,59 @@ namespace projet_dawan_WPF.Logic
                 winCon.Closing += FormClose;
                 winCon.ShowDialog();
             }
-            
+
+        }
+
+        public void MenuItemImport_Export_Serie_Click()
+        {
+            WindowExportSerie window = new()
+            {
+                Owner = Window
+            };
+            window.ShowDialog();
         }
 
         private void FormClose(object sender, EventArgs e)
         {
             user = Properties.Settings.Default.UserRemain;
-            if(user != null)
+            if (user != null)
             {
                 Window.menuItemSeConnecter.Header = "Déconnexion";
+                Window.menuItemCompte.IsEnabled = true;
                 if (user.IsGranted(Roles.SuperAdmin))
                 {
                     Window.menuGestion.IsEnabled = true;
                 }
                 else
                 {
-                    Window.menuItemSeConnecter.IsEnabled = false;
+                    Window.menuGestion.IsEnabled = false;
                 }
+            }
+
+        }
+
+        public void menuItemImport_Export_Perso_Click()
+        {
+            if(user.IsGranted(Roles.SuperAdmin))
+            {
+                WindowExportPersonnage window = new()
+                {
+                    Owner = Window
+                };
+                window.Show();
+            }
+            
+        }
+
+        public void menuItemImport_Export_Episode_Click()
+        {
+            if (user.IsGranted(Roles.SuperAdmin))
+            {
+                WindowExportEpisode window = new()
+                {
+                    Owner = Window
+                };
+                window.ShowDialog();
             }
             
         }

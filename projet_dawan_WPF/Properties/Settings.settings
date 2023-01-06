@@ -2,10 +2,22 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="projet_dawan_WPF.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="UserRemain" Type="projet_dawan.Models.UserApp" Scope="User">
+    <Setting Name="UserRemain" Type="SerieDLL_EF.Models.UserApp" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="token" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExportSerie" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Serie&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExportEpisode" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Episode&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExportActeur" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Acteur&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ExportPersonnage" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Personnage&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

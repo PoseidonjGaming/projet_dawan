@@ -22,6 +22,8 @@ namespace SerieDLL_EF.Service
             return repo.GetByTxt(text);
         }
 
+        
+
 
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace projet_dawan_WPF.Window
+namespace projet_dawan_WPF.Windows.Detail
 {
     /// <summary>
     /// Logique d'interaction pour WindowCasting.xaml

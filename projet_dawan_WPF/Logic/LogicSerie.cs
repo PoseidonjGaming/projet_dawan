@@ -1,4 +1,5 @@
 ﻿using projet_dawan_WPF.Window;
+using projet_dawan_WPF.Windows.Detail;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;

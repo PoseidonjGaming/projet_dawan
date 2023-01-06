@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace projet_dawan_WPF.Window
+namespace projet_dawan_WPF.Window.Manage
 {
     /// <summary>
     /// Logique d'interaction pour WindowManageEpisodes.xaml

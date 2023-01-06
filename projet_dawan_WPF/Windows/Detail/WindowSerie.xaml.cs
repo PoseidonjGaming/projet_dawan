@@ -3,7 +3,7 @@ using SerieDLL_EF.Models;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace projet_dawan_WPF.Window
+namespace projet_dawan_WPF.Windows.Detail
 {
     /// <summary>
     /// Logique d'interaction pour WindowSerie.xaml

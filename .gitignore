@@ -4,12 +4,12 @@
 
 /.vs
 /projet_dawan/.vs
-/projet_dawan/bin
-/projet_dawan/obj
-/projet_dawan_WPF/bin
-/projet_dawan_WPF/obj
+/projet_dawan/bin/
+/projet_dawan/obj/
+/projet_dawan_WPF/bin/
+/projet_dawan_WPF/obj/
 /SerieDLL/bin/
-/SerieDLL/obj
+/SerieDLL/obj/
 /SerieDLL_EF/bin/
 /SerieDLL_EF/obj/
 /SerieDLL_EF/obj
