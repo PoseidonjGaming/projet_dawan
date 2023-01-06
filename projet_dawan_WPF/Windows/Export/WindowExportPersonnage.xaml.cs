@@ -43,13 +43,13 @@ namespace projet_dawan_WPF.Windows.Export
             }
             else if(Owner.GetType()==typeof(WindowExportSerie))
             {
-                foreach(Serie serie in Properties.Settings.Default.ExportSerie)
+                foreach(Episode ep in Properties.Settings.Default.ExportEpisode)
                 {
-                    Properties.Settings.Default.ExportPersonnage = service.GetBySerie(serie.Id);
-                    
-                    serie.Personnages = Properties.Settings.Default.ExportPersonnage;
+                    Properties.Settings.Default.ExportPersonnage = ep.Saison.Serie.Personnages;
+                    ExportActeur();
+                    ep.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
                 }
-                ExportActeur();
+                
                 this.Close();
             }
             else if(Owner.GetType()==typeof(WindowExportActeur))
@@ -71,7 +71,7 @@ namespace projet_dawan_WPF.Windows.Export
                 ActeurService service = new();
                 foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
                 {
-                    perso.ShouldSerializeActeurs = true;
+                    perso.ShouldExportActeur = true;
                     perso.Acteur = service.GetById(perso.ActeurId);
                     perso.Acteur.ShouldExportPersonnage = false;
                 }

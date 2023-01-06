@@ -32,6 +32,10 @@ namespace projet_dawan_WPF.Logic
             {
                 Window.checkBoxEp.IsEnabled = false;
             }
+            else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
+            {
+                Window.checkBoxShouldPersonnage.IsEnabled = false;
+            }
         }
 
         public void BtnExport_Click()
@@ -50,7 +54,7 @@ namespace projet_dawan_WPF.Logic
                 {
                     Properties.Settings.Default.ExportSerie = new() { episode.Saison.Serie };
                     ExportPerso();
-                    episode.Saison.Serie = Properties.Settings.Default.ExportSerie.FirstOrDefault();
+                    episode.Saison.Serie = Properties.Settings.Default.ExportSerie[0];
                 }
 
                 WindowExportPersonnage window = new()
