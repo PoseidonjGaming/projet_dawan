@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
@@ -23,7 +24,7 @@ public partial class UserApp
     public Roles Roles { get; set; }
 
     [DataMember]
-    public string? ToWatch { get; set; }
+    public string ToWatch { get; set; } = "{}";
 
     [DataMember]
     [NotMapped]
@@ -34,6 +35,15 @@ public partial class UserApp
         foreach (Serie serie in list)
         {
             ToWatchList.Add(serie.Id);
+        }
+        ToWatch = JsonConvert.SerializeObject(ToWatchList);
+    }
+
+    public void UnsetToWatchlist(List<Serie> list)
+    {
+        foreach (Serie serie in list)
+        {
+            ToWatchList.Remove(serie.Id);
         }
         ToWatch = JsonConvert.SerializeObject(ToWatchList);
     }

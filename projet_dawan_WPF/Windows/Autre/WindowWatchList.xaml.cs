@@ -1,7 +1,7 @@
 ﻿using projet_dawan_WPF.Logic;
 using System.Windows;
 
-namespace projet_dawan_WPF.Window
+namespace projet_dawan_WPF.Windows.Autre
 {
     /// <summary>
     /// Logique d'interaction pour WindowWatchList.xaml

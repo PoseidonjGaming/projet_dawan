@@ -12,30 +12,30 @@ namespace SerieDLL_EF.Service
 
         }
 
-        public UserApp GetUser(string login, string pwd)
+        public UserApp GetUser(UserApp userApp)
         {
-            return repo.GetUser(login, HashPassword(pwd));
+            return repo.GetUser(userApp.Login, HashPassword(userApp).Password);
         }
 
 
         public override void Add(UserApp item)
         {
-            item.Password = HashPassword(item.Password);
-            base.Add(item);
+            
+            base.Add(HashPassword(item));
         }
 
         public override void Update(UserApp item)
         {
-            item.Password = HashPassword(item.Password);
-            base.Update(item);
+            
+            base.Update(HashPassword(item));
         }
 
 
-        public string HashPassword(string? pwd)
+        public UserApp HashPassword(UserApp user)
         {
 
             using SHA256 sha256 = SHA256.Create();
-            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(pwd));
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(user.Password));
 
             StringBuilder builder = new();
 
@@ -44,11 +44,12 @@ namespace SerieDLL_EF.Service
                 builder.Append(bytes[i].ToString("x2")); // x hexadecimal / 2 : 2 digits
             }
 
-                return builder.ToString();
-            }
+            user.Password = builder.ToString();
+            return user;
         }
-
-       
     }
+
+
+}
 
 

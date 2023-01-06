@@ -1,9 +1,11 @@
 ﻿using projet_dawan_WPF.Window;
+using projet_dawan_WPF.Windows.Detail;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Windows.Media.Imaging;
 
 namespace projet_dawan_WPF.Logic
@@ -41,6 +43,16 @@ namespace projet_dawan_WPF.Logic
                 Saisons.Add(saison);
                 Window.lstBoxSaison.Items.Add(saison.Numero.ToString());
             }
+
+            if (Properties.Settings.Default.UserRemain.ToWatchList.Contains(Serie.Id))
+            {
+
+                Window.buttonToWatch.Content = "✔";
+            }
+            else
+            {
+                Window.buttonToWatch.Content = " Ajouter à la liste à regarder";
+            }
         }
 
         public void BtnCasting_Click()
@@ -74,6 +86,13 @@ namespace projet_dawan_WPF.Logic
                 Properties.Settings.Default.Save();
                 UserService service = new();
                 service.Update(Properties.Settings.Default.UserRemain);
+                Window.buttonToWatch.Content = "✔";
+            }
+            else
+            {
+                Properties.Settings.Default.UserRemain.UnsetToWatchlist(new() { Serie });
+                Properties.Settings.Default.Save();
+                Window.buttonToWatch.Content = " Ajouter à la liste à regarder";
             }
         }
 

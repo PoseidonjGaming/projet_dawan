@@ -1,4 +1,5 @@
 ﻿using projet_dawan_WPF.Window;
+using projet_dawan_WPF.Windows.Autre;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -29,7 +30,13 @@ namespace projet_dawan_WPF.Logic
         public void BtnConnexion_Click()
         {
             UserService service = new();
-            UserApp user = service.GetUser(Window.txtLogin.Text, Window.txtPwd.Password);
+            UserApp user = new()
+            {
+                Login = Window.txtLogin.Text,
+                Password = Window.txtPwd.Password
+            };
+
+            user=service.GetUser(user);
 
             Properties.Settings.Default.UserRemain = user;
             if ((bool)Window.checkBoxCo.IsChecked)

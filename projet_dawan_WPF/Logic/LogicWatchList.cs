@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
 using projet_dawan_WPF.Window;
+using projet_dawan_WPF.Windows.Autre;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
@@ -53,7 +54,6 @@ namespace projet_dawan_WPF.Logic
             {
                 SerieService service = new();
                 List<Serie> list = service.ExportWatchList(Properties.Settings.Default.UserRemain.ToWatchList);
-
                 File.WriteAllText(save.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
             }
 

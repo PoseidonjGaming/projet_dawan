@@ -1,4 +1,4 @@
-﻿using projet_dawan_WPF.Window;
+﻿using projet_dawan_WPF.Windows.Detail;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -67,7 +67,10 @@ namespace projet_dawan_WPF.Logic
             SerieService serieService = new();
             SaisonService saisonService = new();
             PersonnageService personnage = new();
-            WindowCasting casting = new(personnage.GetBySerie(serieService.GetById(saisonService.GetById(episodes[Window.lstBoxEpisode.SelectedIndex].SaisonId).SerieId).Id));
+            WindowCasting casting = new(personnage.GetBySerie(saison.SerieId))
+            {
+                Owner = Window
+            };
             casting.ShowDialog();
         }
 

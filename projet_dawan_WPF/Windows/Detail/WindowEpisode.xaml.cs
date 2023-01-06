@@ -3,7 +3,7 @@ using SerieDLL_EF.Models;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace projet_dawan_WPF.Window
+namespace projet_dawan_WPF.Windows.Detail
 {
     /// <summary>
     /// Logique d'interaction pour WindowEpisode.xaml
@@ -23,6 +23,11 @@ namespace projet_dawan_WPF.Window
         private void lstBoxEpisode_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             logic.LstBoxEpisode_SelectedIndexChanged();
+        }
+
+        private void btnCasting_Click(object sender, RoutedEventArgs e)
+        {
+            logic.Casting_Click();
         }
     }
 }
