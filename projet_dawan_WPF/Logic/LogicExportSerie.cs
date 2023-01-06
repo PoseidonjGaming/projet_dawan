@@ -46,11 +46,16 @@ namespace projet_dawan_WPF.Logic
                 Properties.Settings.Default.ExportSerie = service.GetAll();
                 ExportEpisode();
                 ExportPerso();
+                WindowExportPersonnage windowExportPersonnage = new()
+                {
+                    Owner = Window
+                };
+                windowExportPersonnage.ShowDialog();
                 Export();
             }
             else if (Window.Owner.GetType() == typeof(WindowExportEpisode))
             {
-                foreach(Episode episode in Properties.Settings.Default.ExportEpisode)
+                foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
                 {
                     Properties.Settings.Default.ExportSerie = new() { episode.Saison.Serie };
                     ExportPerso();
@@ -68,23 +73,23 @@ namespace projet_dawan_WPF.Logic
             }
             else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
             {
-                foreach(Acteur acteur in Properties.Settings.Default.ExportActeur)
+                foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
                 {
-                    foreach(Personnage perso in acteur.Personnages)
+                    foreach (Personnage perso in acteur.Personnages)
                     {
-                        Properties.Settings.Default.ExportSerie = new() { perso.Serie};
+                        Properties.Settings.Default.ExportSerie = new() { perso.Serie };
                         ExportEpisode();
                         perso.Serie = Properties.Settings.Default.ExportSerie[0];
                     }
                 }
-                
+
                 Window.Close();
             }
         }
 
         private void ExportPerso()
         {
-            PersonnageService service= new();
+            PersonnageService service = new();
             if ((bool)Window.checkBoxShouldPersonnage.IsChecked)
             {
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)

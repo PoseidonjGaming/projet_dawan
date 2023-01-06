@@ -43,14 +43,29 @@ namespace projet_dawan_WPF.Windows.Export
             }
             else if (Owner.GetType() == typeof(WindowExportSerie))
             {
-                foreach (Episode ep in Properties.Settings.Default.ExportEpisode)
+                if (Owner.Owner.GetType() == typeof(WindowExportEpisode))
                 {
-                    Properties.Settings.Default.ExportPersonnage = ep.Saison.Serie.Personnages;
-                    ExportActeur();
-                    ep.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
-                }
+                    foreach (Episode ep in Properties.Settings.Default.ExportEpisode)
+                    {
+                        Properties.Settings.Default.ExportPersonnage = ep.Saison.Serie.Personnages;
+                        ExportActeur();
+                        ep.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
+                    }
 
-                this.Close();
+                    this.Close();
+
+                }
+                else if (Owner.Owner.GetType() == typeof(WindowAccueil))
+                {
+                    foreach(Serie serie in Properties.Settings.Default.ExportSerie)
+                    {
+                        Properties.Settings.Default.ExportPersonnage = serie.Personnages;
+                        ExportActeur();
+                        serie.Personnages = Properties.Settings.Default.ExportPersonnage;
+                    }
+                    this.Close();
+                }
+                
             }
             else if (Owner.GetType() == typeof(WindowExportActeur))
             {
