@@ -29,11 +29,13 @@ namespace projet_dawan_WPF.Windows.Export
         private List<Episode> episodeList = new();
         private List<Acteur> acteurList = new();
         private List<Personnage> personnagesList = new();
+        private List<Saison> saisonList = new();
 
         private SerieService serieService = new();
         private PersonnageService personnageService = new();
         private ActeurService acteurService = new();
         private EpisodeService episodeService = new();
+        private SaisonService saisonService = new();
 
 
         public WindowImportExport()
@@ -140,6 +142,24 @@ namespace projet_dawan_WPF.Windows.Export
             }
         }
 
+        private void btnImport_Episodes_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    episodeList = JsonConvert.DeserializeObject<List<Episode>>(File.ReadAllText(fileDialog.FileName));
+                    ImportEpisode();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
         private void ImportSerie()
         {
 
@@ -149,6 +169,9 @@ namespace projet_dawan_WPF.Windows.Export
                 {
                     personnagesList = newSerie.Personnages;
                     newSerie.Personnages = new();
+                    saisonList = newSerie.Saisons;
+                    newSerie.Saisons = null;
+
                     if (!serieService.CompareTo(newSerie))
                     {
                         serieService.Add(newSerie);
@@ -160,12 +183,16 @@ namespace projet_dawan_WPF.Windows.Export
                         {
                             personnage.SerieId = serieService.GetCompareTo(newSerie).Id;
                         }
-                        
                         ImportPersonnages();
-
                     }
-
-
+                    if (newSerie.Saisons.Count > 0)
+                    {
+                        foreach (Saison saison in saisonList)
+                        {
+                            saisonList = newSerie.Saisons;
+                            ImportSaison();
+                        }
+                    }
                 }
             }
         }
@@ -196,6 +223,56 @@ namespace projet_dawan_WPF.Windows.Export
                 }
             }
         }
+
+        private void ImportEpisode()
+        {
+            foreach (Episode episode in episodeList)
+            {
+                if(episode.Saison!= null)
+                {
+                    saisonList = new() { episode.Saison };
+                    ImportSaison();
+                    
+                }
+                episode.SaisonId = saisonService.GetCompareTo(episode.Saison).Id;
+                if (!episodeService.CompareTo(episode))
+                {
+                    episodeService.Add(episode);
+                }
+
+            }
+        }
+
+        private void ImportSaison()
+        {
+            foreach (Saison saison in saisonList)
+            {
+                if (saison.Serie != null)
+                {
+                    seriesList = new() { saison.Serie };
+                    ImportSerie();
+                    saison.SerieId = serieService.GetCompareTo(seriesList[0]).Id;
+                    saison.Serie = serieService.GetCompareTo(seriesList[0]);
+                    
+                }
+                else if (saison.Episodes != null)
+                {
+                    saison.Serie = null;
+                    episodeList=saison.Episodes;
+                    saison.Episodes = null;
+                    ImportEpisode();
+                }
+                if (!saisonService.CompareTo(saison))
+                {
+                    saison.Serie = null;
+                    saison.Episodes = null;
+                    saisonService.Add(saison);
+                }
+
+
+            }
+        }
+
 
     }
 }

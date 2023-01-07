@@ -25,7 +25,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <CheckBox x:Name="checkBoxExportEpisodes" Content="Exporter les épisodes"></CheckBox>
-                <Button Content="Importer des épisodes" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="77,0,10,0"></Button>
+                <Button x:Name="btnImport_Episodes" Content="Importer des épisodes" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="77,0,10,0" Click="btnImport_Episodes_Click"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <CheckBox x:Name="checkBoxExportPersonnages" Content="Exporter les pesronnages" VerticalAlignment="Center" VerticalContentAlignment="Center"></CheckBox>

@@ -19,16 +19,14 @@ namespace SerieDLL_EF.Service
             return repo.GetSaisonsBySerie(id);
         }
 
-        public List<Saison> Export(Serie serie)
+        public bool CompareTo(Saison saison)
         {
-            List<Saison> list = repo.GetSaisonsBySerie(serie.Id);
-            EpisodeService episodeService = new EpisodeService();
-            foreach (Saison saison in list)
-            {
-                saison.Episodes = episodeService.GetBySaison(saison.Id);
-            }
-            return list;
+            return repo.CompareTo(saison);
         }
 
+        public Saison GetCompareTo(Saison saison)
+        {
+            return repo.GetCompareTo(saison);
+        }
     }
 }

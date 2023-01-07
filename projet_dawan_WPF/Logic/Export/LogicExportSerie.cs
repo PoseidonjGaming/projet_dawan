@@ -40,8 +40,8 @@ namespace projet_dawan_WPF.Logic.Export
                 Properties.Settings.Default.ExportSerie = service.GetAll();
                 ExportEpisode();
                 ExportPerso();
-                OpenExportPersonnages();
-                Window.Close();
+                
+                
             }
             else if (Window.Owner.GetType() == typeof(WindowExportEpisode))
             {
@@ -81,6 +81,12 @@ namespace projet_dawan_WPF.Logic.Export
                     serie.ShouldExportPersonnage = true;
                     serie.Personnages = service.GetBySerie(serie.Id);
                 }
+                WindowExportPersonnage window = new()
+                {
+                    Owner = Window
+                };
+                window.Closed += FormExportPersoClose;
+                window.Show();
             }
 
         }
@@ -123,9 +129,8 @@ namespace projet_dawan_WPF.Logic.Export
                 {
                     Owner = Window
                 };
-                window.Closed += FormExportPersoClose;
                 window.Show();
-                
+                Window.Close();
             }
         }
     }
