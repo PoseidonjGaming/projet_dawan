@@ -33,12 +33,12 @@ namespace projet_dawan_WPF.Logic.Export
         public void BtnExport_Click()
         {
             PersonnageService service = new();
-            if (Window.Owner.GetType() == typeof(WindowAccueil))
+            if (Window.Owner.GetType() == typeof(WindowImportExport))
             {
                 Properties.Settings.Default.ExportPersonnage = service.GetAll();
                 ExportActeur();
                 ExportSerie();
-                Export();
+                Window.Close();
             }
             else if (Window.Owner.GetType() == typeof(WindowExportSerie))
             {
@@ -54,7 +54,7 @@ namespace projet_dawan_WPF.Logic.Export
                     Window.Close();
 
                 }
-                else if (Window.Owner.Owner.GetType() == typeof(WindowAccueil))
+                else if (Window.Owner.Owner.GetType() == typeof(WindowImportExport))
                 {
                     foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                     {
@@ -111,23 +111,6 @@ namespace projet_dawan_WPF.Logic.Export
             }
         }
 
-        private void Export()
-        {
-            SaveFileDialog save = new SaveFileDialog()
-            {
-                InitialDirectory = Directory.GetCurrentDirectory(),
-                FileName = "exports.json",
-                Filter = "File JSON|*json",
-                Title = "Save WatchList"
-            };
-
-            if ((bool)save.ShowDialog())
-            {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.ExportPersonnage, Formatting.Indented));
-            }
-
-            Window.Close();
-        }
 
         private void Close(object sender, EventArgs e)
         {

@@ -43,12 +43,12 @@ namespace projet_dawan_WPF.Logic.Manage
                 Window.comboBoxActeur.SelectedIndex = 0;
             }
 
-            populate();
+            Populate();
         }
 
         public void BtnAjouter_Click()
         {
-            if (Window.txtBoxNom.Text != string.Empty && Window.txtBoxResume.Text != string.Empty)
+            if (Window.txtBoxNom.Text != string.Empty)
             {
                 if (Window.listBoxPerso.SelectedIndex != -1)
                 {
@@ -74,7 +74,7 @@ namespace projet_dawan_WPF.Logic.Manage
                 }
                 // ajouter le personnage
 
-                populate();
+                Populate();
 
 
             }
@@ -93,7 +93,7 @@ namespace projet_dawan_WPF.Logic.Manage
             if (Window.listBoxPerso.SelectedIndex != -1)
             {
                 servicePerso.Delete(personnages[Window.listBoxPerso.SelectedIndex]);
-                populate();
+                Populate();
 
                 MessageBox.Show("Personnage supprimé");
             }
@@ -110,9 +110,9 @@ namespace projet_dawan_WPF.Logic.Manage
             Window.comboBoxSerie.SelectedIndex = serieList.IndexOf(serie);
         }
 
-        private void populate()
+        private void Populate()
         {
-            Window.listBoxPerso.Items.Clear();
+            BtnAnnuler_Click();
             personnages = servicePerso.GetAll();
             foreach (Personnage perso in personnages)
             {

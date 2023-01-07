@@ -35,10 +35,7 @@
                     <MenuItem Header="Gérer les Acteurs" Name="menuItemActeurs" Click="menuItemActeurs_Click"/>
                     <MenuItem Header="Gérer les Utilisateurs" Name="menuItemUsers" Click="menuItemUsers_Click"/>
                 </MenuItem>
-                <MenuItem Header="Import/Export">
-                    <MenuItem Header="Import/Export" Name="menuItemImport_Export" Click="menuItemImport_Export_Click"/>
-                </MenuItem>
-                
+                <MenuItem Header="Import/Export" Click="menuItemImport_Export_Click"/>
                 <MenuItem Header="Quitter" Click="MenuItem_Click"/>
             </MenuItem>
             <MenuItem x:Name="menuItemCompte" Header="Compte">

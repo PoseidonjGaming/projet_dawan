@@ -22,7 +22,7 @@ namespace projet_dawan_WPF.Logic.Export
             Properties.Settings.Default.ExportEpisode = service.GetAll();
             ExportSaison();
             ExportSerie();
-            Export();
+            Window.Close();
         }
 
         private void ExportSaison()
@@ -56,20 +56,6 @@ namespace projet_dawan_WPF.Logic.Export
 
         }
 
-        private void Export()
-        {
-            SaveFileDialog save = new SaveFileDialog()
-            {
-                InitialDirectory = Directory.GetCurrentDirectory(),
-                FileName = "exports.json",
-                Filter = "File JSON|*json",
-                Title = "Save WatchList"
-            };
-
-            if ((bool)save.ShowDialog())
-            {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.ExportEpisode, Formatting.Indented));
-            }
-        }
+       
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows.Export"
         mc:Ignorable="d"
-        Title="WindowImportExport" Height="250" Width="300" WindowStartupLocation="CenterOwner">
+        Title="WindowImportExport" Height="250" Width="400" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>
@@ -20,24 +20,24 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
-                <CheckBox Content="Exporter les séries" VerticalAlignment="Center"></CheckBox>
-                <Button Content="Importer des séries" VerticalAlignment="Center" Margin="10,0,10,0"></Button>
+                <CheckBox x:Name="checkBoxExportSeries" Content="Exporter les séries" VerticalAlignment="Center" VerticalContentAlignment="Center"></CheckBox>
+                <Button Content="Importer des séries" VerticalAlignment="Center"  Margin="100,0,10,0"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
-                <CheckBox Content="Exporter les épisodes"></CheckBox>
-                <Button Content="Importer des épisodes" VerticalAlignment="Center" Margin="10,0,10,0"></Button>
+                <CheckBox x:Name="checkBoxExportEpisodes" Content="Exporter les épisodes"></CheckBox>
+                <Button Content="Importer des épisodes" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="77,0,10,0"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
-                <CheckBox Content="Exporter les pesronnages"></CheckBox>
-                <Button Content="Importer des personnages" VerticalAlignment="Center" Margin="10,0,10,0"></Button>
+                <CheckBox x:Name="checkBoxExportPersonnages" Content="Exporter les pesronnages" VerticalAlignment="Center" VerticalContentAlignment="Center"></CheckBox>
+                <Button Content="Importer des personnages" VerticalAlignment="Center" Margin="45,0,10,0"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
-                <CheckBox Content="Exporter les acteurs"></CheckBox>
-                <Button Content="Importer des acteurs" VerticalAlignment="Center" Margin="10,0,10,0"></Button>
+                <CheckBox x:Name="checkBoxActeurs" Content="Exporter les acteurs" VerticalAlignment="Center"></CheckBox>
+                <Button Content="Importer des acteurs" VerticalAlignment="Center" Margin="85,0,10,0"></Button>
             </StackPanel>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1">
-            <Button Content="Exporter"></Button>
+            <Button x:Name="btnExport" Content="Exporter" Click="btnExport_Click"></Button>
         </StackPanel>
     </Grid>
 </Window>

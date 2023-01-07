@@ -21,7 +21,7 @@ namespace projet_dawan_WPF.Logic.Export
             ActeurService service = new();
             Properties.Settings.Default.ExportActeur = service.GetAll();
             ExportPersonnage();
-            Export();
+            Window.Close();
         }
 
         private void ExportPersonnage()
