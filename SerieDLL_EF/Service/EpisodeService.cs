@@ -1,4 +1,5 @@
-﻿using SerieDLL_EF.Models;
+﻿using Microsoft.Identity.Client;
+using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 
 namespace SerieDLL_EF.Service
@@ -20,6 +21,18 @@ namespace SerieDLL_EF.Service
         public List<Episode> GetByTxt(string text)
         {
             return repo.GetByTxt(text);
+        }
+
+        //Vérifie si l'épisode passé en paramètre existe dans la base de donnée.
+        //Revoie true si elle existe et false dans le cas contraire
+        public bool CompareTo(Episode episode)
+        {
+            return repo.CompareTo(episode);
+        }
+
+        public Episode GetCompareTo(Episode episode)
+        {
+            return repo.GetCompareTo(episode);
         }
     }
 }

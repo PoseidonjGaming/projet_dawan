@@ -74,12 +74,16 @@ namespace projet_dawan_WPF.Logic.Export
                     ExportSerie();
                     acteur.Personnages = Properties.Settings.Default.ExportPersonnage;
                 }
-                WindowExportSerie window = new()
+                if(Window.checkBoxPerso_Serie.IsChecked== true)
                 {
-                    Owner = Window,
-                };
-                window.Closed += Close;
-                window.ShowDialog();
+                    WindowExportSerie window = new()
+                    {
+                        Owner = Window,
+                    };
+                    window.Closed += Close;
+                    window.ShowDialog();
+                }
+                
 
             }
         }

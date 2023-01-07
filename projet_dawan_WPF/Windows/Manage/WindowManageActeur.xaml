@@ -51,6 +51,6 @@
             </Grid>
             
         </GroupBox>
-        <ListBox x:Name="lstBoxActeur" Grid.Row="2" Margin="5"></ListBox>
+        <ListBox x:Name="lstBoxActeur" Grid.Row="2" Margin="5" SelectionChanged="lstBoxActeur_SelectionChanged"></ListBox>
     </Grid>
 </Window>

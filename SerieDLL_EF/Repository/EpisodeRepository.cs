@@ -49,5 +49,20 @@ namespace SerieDLL_EF.Repository
             context.Episodes.Remove(item);
             context.SaveChanges();
         }
+
+        public bool CompareTo(Episode item)
+        {
+            using BddprojetContext context = new();
+            Episode? episode = context.Episodes.Where(e => e.Nom == item.Nom
+            && e.DatePremDiff == item.DatePremDiff && e.Resume == item.Resume).FirstOrDefault();
+            return episode != null;
+        }
+
+        public Episode GetCompareTo(Episode item)
+        {
+            using BddprojetContext context = new();
+            return context.Episodes.Where(e => e.Nom == item.Nom
+            && e.DatePremDiff == item.DatePremDiff && e.Resume == item.Resume).FirstOrDefault();
+        }
     }
 }

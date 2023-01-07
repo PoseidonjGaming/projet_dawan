@@ -21,7 +21,7 @@
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <CheckBox x:Name="checkBoxExportSeries" Content="Exporter les séries" VerticalAlignment="Center" VerticalContentAlignment="Center"></CheckBox>
-                <Button Content="Importer des séries" VerticalAlignment="Center"  Margin="100,0,10,0"></Button>
+                <Button x:Name="btnImport_Serie" Content="Importer des séries" VerticalAlignment="Center"  Margin="100,0,10,0" Click="btnImport_Serie_Click"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <CheckBox x:Name="checkBoxExportEpisodes" Content="Exporter les épisodes"></CheckBox>

@@ -73,5 +73,18 @@ namespace SerieDLL_EF.Repository
             context.Personnages.Remove(item);
             context.SaveChanges();
         }
+
+        public bool CompareTo(Personnage item)
+        {
+            using BddprojetContext context = new();
+            Personnage? personnage = context.Personnages.Where(p => p.Nom == item.Nom).FirstOrDefault();
+            return personnage != null;
+        }
+
+        public Personnage GetCompareTo(Personnage item)
+        {
+            using BddprojetContext context = new();
+            return context.Personnages.Where(p => p.Nom == item.Nom).FirstOrDefault();
+        }
     }
 }

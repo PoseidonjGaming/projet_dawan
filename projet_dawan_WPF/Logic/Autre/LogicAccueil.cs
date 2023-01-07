@@ -50,8 +50,15 @@ namespace projet_dawan_WPF.Logic.Autre
             }
 
 
-
-            Populate(4);
+            if(serieList.Count >= 4)
+            {
+                Populate(4);
+            }
+            else
+            {
+                Populate(serieList.Count);
+            }
+            
         }
 
         private void Populate(int I)

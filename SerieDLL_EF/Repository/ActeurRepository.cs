@@ -54,5 +54,18 @@ namespace SerieDLL_EF.Repository
             context.SaveChanges();
         }
 
+        public bool CompareTo(Acteur item)
+        {
+            using BddprojetContext context = new();
+            Acteur? acteur = context.Acteurs.Where(a => a.Nom == item.Nom && a.Prenom == item.Prenom).FirstOrDefault();
+            return acteur != null;
+        }
+
+        public Acteur GetCompareTo(Acteur item)
+        {
+            using BddprojetContext context = new();
+            return context.Acteurs.Where(a => a.Nom == item.Nom && a.Prenom == item.Prenom).FirstOrDefault();
+        }
+
     }
 }

@@ -84,8 +84,10 @@ namespace projet_dawan_WPF.Logic.Manage
         {
             Window.txtBoxNom.Clear();
             Window.txtBoxResume.Clear();
+            Window.listBoxPerso.Items.Clear();
             Window.comboBoxActeur.SelectedIndex = 0;
             Window.comboBoxSerie.SelectedIndex = 0;
+            Window.listBoxPerso.SelectedIndex = -1;
         }
 
         public void BtnSuppr_Click()

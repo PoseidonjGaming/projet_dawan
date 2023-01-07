@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
 using SerieDLL_EF.Models;
+using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -28,6 +29,13 @@ namespace projet_dawan_WPF.Windows.Export
         private List<Episode> episodeList = new();
         private List<Acteur> acteurList = new();
         private List<Personnage> personnagesList = new();
+
+        private SerieService serieService = new();
+        private PersonnageService personnageService = new();
+        private ActeurService acteurService = new();
+        private EpisodeService episodeService = new();
+
+
         public WindowImportExport()
         {
             InitializeComponent();
@@ -43,7 +51,7 @@ namespace projet_dawan_WPF.Windows.Export
                 };
                 windowExportSerie.Closed += SerieClose;
                 windowExportSerie.ShowDialog();
-                Export<Serie>(seriesList, "exportSerie", "Séries");
+                Export(seriesList, "exportSerie", "Séries");
 
             }
             if (checkBoxExportEpisodes.IsChecked == true)
@@ -54,7 +62,7 @@ namespace projet_dawan_WPF.Windows.Export
                 };
                 windowExportEpisode.Closed += EpisodeClose;
                 windowExportEpisode.ShowDialog();
-                Export<Episode>(episodeList, "exportsEpisode", "Episodes");
+                Export(episodeList, "exportsEpisode", "Episodes");
             }
             if (checkBoxExportPersonnages.IsChecked == true)
             {
@@ -64,7 +72,7 @@ namespace projet_dawan_WPF.Windows.Export
                 };
                 windowExportPersonnage.Closed += PersonnagesClose;
                 windowExportPersonnage.ShowDialog();
-                Export<Personnage>(personnagesList, "exportsPersonnage", "Personnages");
+                Export(personnagesList, "exportsPersonnage", "Personnages");
             }
             if (checkBoxActeurs.IsChecked == true)
             {
@@ -74,7 +82,7 @@ namespace projet_dawan_WPF.Windows.Export
                 };
                 windowExportActeur.Closed += ActeurClose;
                 windowExportActeur.ShowDialog();
-                Export<Acteur>(acteurList, "exportsActeurs", "Acteurs");
+                Export(acteurList, "exportsActeurs", "Acteurs");
             }
         }
 
@@ -113,5 +121,81 @@ namespace projet_dawan_WPF.Windows.Export
                 File.WriteAllText(save.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
             }
         }
+
+        private void btnImport_Serie_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            if (fileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    seriesList = JsonConvert.DeserializeObject<List<Serie>>(File.ReadAllText(fileDialog.FileName));
+                    ImportSerie();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.InnerException.Message);
+                }
+            }
+        }
+
+        private void ImportSerie()
+        {
+
+            foreach (Serie newSerie in seriesList)
+            {
+                if (!serieService.CompareTo(newSerie))
+                {
+                    personnagesList = newSerie.Personnages;
+                    newSerie.Personnages = new();
+                    if (!serieService.CompareTo(newSerie))
+                    {
+                        serieService.Add(newSerie);
+                    }
+                    if (personnagesList.Count > 0)
+                    {
+
+                        foreach (Personnage personnage in personnagesList)
+                        {
+                            personnage.SerieId = serieService.GetCompareTo(newSerie).Id;
+                        }
+                        
+                        ImportPersonnages();
+
+                    }
+
+
+                }
+            }
+        }
+
+        private void ImportPersonnages()
+        {
+            foreach (Personnage personnage in personnagesList)
+            {
+                if (personnage.Acteur != null)
+                {
+                    acteurList = new() { personnage.Acteur };
+                    personnage.Acteur = null;
+                    ImportActeur();
+                    personnage.ActeurId = acteurService.GetCompareTo(acteurList[0]).Id;
+                    personnageService.Add(personnage);
+                }
+            }
+
+        }
+
+        private void ImportActeur()
+        {
+            foreach (Acteur acteur in acteurList)
+            {
+                if (!acteurService.CompareTo(acteur))
+                {
+                    acteurService.Add(acteur);
+                }
+            }
+        }
+
     }
 }

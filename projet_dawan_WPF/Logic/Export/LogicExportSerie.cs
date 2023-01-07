@@ -6,6 +6,7 @@ using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace projet_dawan_WPF.Logic.Export
 {
@@ -39,11 +40,7 @@ namespace projet_dawan_WPF.Logic.Export
                 Properties.Settings.Default.ExportSerie = service.GetAll();
                 ExportEpisode();
                 ExportPerso();
-                WindowExportPersonnage windowExportPersonnage = new()
-                {
-                    Owner = Window
-                };
-                windowExportPersonnage.ShowDialog();
+                OpenExportPersonnages();
                 Window.Close();
             }
             else if (Window.Owner.GetType() == typeof(WindowExportEpisode))
@@ -54,13 +51,8 @@ namespace projet_dawan_WPF.Logic.Export
                     ExportPerso();
                     episode.Saison.Serie = Properties.Settings.Default.ExportSerie[0];
                 }
-
-                WindowExportPersonnage window = new()
-                {
-                    Owner = Window
-                };
-                window.Closed += FormExportPersoClose;
-                window.Show();
+                OpenExportPersonnages();
+                Window.Close();
 
 
             }
@@ -75,7 +67,6 @@ namespace projet_dawan_WPF.Logic.Export
                         perso.Serie = Properties.Settings.Default.ExportSerie[0];
                     }
                 }
-
                 Window.Close();
             }
         }
@@ -122,6 +113,20 @@ namespace projet_dawan_WPF.Logic.Export
         private void FormExportPersoClose(object sender, EventArgs e)
         {
             Window.Close();
+        }
+
+        private void OpenExportPersonnages()
+        {
+            if (Window.checkBoxShouldPersonnage.IsChecked == true)
+            {
+                WindowExportPersonnage window = new()
+                {
+                    Owner = Window
+                };
+                window.Closed += FormExportPersoClose;
+                window.Show();
+                
+            }
         }
     }
 }

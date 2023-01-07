@@ -68,7 +68,6 @@ namespace projet_dawan_WPF.Logic.Manage
             if (annuler == MessageBoxResult.Yes)
             {
                 SerieService service = new();
-                File.Delete(Directory.GetCurrentDirectory() + "\\Photo\\" + serieList[Window.lstBoxSerie.SelectedIndex].Affiche);
                 service.Delete(serieList[Window.lstBoxSerie.SelectedIndex]);
             }
             Populate();

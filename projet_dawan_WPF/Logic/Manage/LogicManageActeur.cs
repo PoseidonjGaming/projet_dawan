@@ -2,6 +2,7 @@
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Manage
 {
@@ -38,6 +39,8 @@ namespace projet_dawan_WPF.Logic.Manage
                 currentActeur = acteurs[Window.lstBoxActeur.SelectedIndex];
                 Window.txtBoxNom.Text = currentActeur.Nom;
                 Window.txtBoxPrenom.Text = currentActeur.Prenom;
+
+
             }
         }
 
