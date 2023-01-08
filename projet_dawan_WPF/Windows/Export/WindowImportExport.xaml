@@ -29,7 +29,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <CheckBox x:Name="checkBoxExportPersonnages" Content="Exporter les pesronnages" VerticalAlignment="Center" VerticalContentAlignment="Center"></CheckBox>
-                <Button Content="Importer des personnages" VerticalAlignment="Center" Margin="45,0,10,0"></Button>
+                <Button x:Name="btnImport_Personnages" Content="Importer des personnages" VerticalAlignment="Center" Margin="45,0,10,0" Click="btnImport_Personnages_Click"></Button>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <CheckBox x:Name="checkBoxActeurs" Content="Exporter les acteurs" VerticalAlignment="Center"></CheckBox>

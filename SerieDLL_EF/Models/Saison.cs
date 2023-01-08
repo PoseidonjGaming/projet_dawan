@@ -22,6 +22,7 @@ public partial class Saison
     public int NbEpisode { get; set; }
 
     [DataMember]
+    [NotMapped]
     public virtual Serie Serie { get; set; } = null!;
 
     [NotMapped]

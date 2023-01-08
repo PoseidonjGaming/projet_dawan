@@ -28,7 +28,6 @@ public partial class Serie
     public string? UrlBa { get; set; }
 
     [DataMember]
-    [NotMapped]
     public virtual List<Personnage> Personnages { get; set; } = new List<Personnage>();
 
     [NotMapped]
@@ -38,7 +37,6 @@ public partial class Serie
     public bool ShouldExportSaison { get; set; }
 
     [DataMember]
-    [NotMapped]
     public virtual List<Saison> Saisons { get; set; } = new List<Saison>();
 
     public bool ShouldSerializePersonnages()

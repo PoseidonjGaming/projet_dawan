@@ -126,7 +126,7 @@ namespace projet_dawan_WPF.Windows.Export
 
         private void btnImport_Serie_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
+            OpenFileDialog fileDialog = new();
             if (fileDialog.ShowDialog() == true)
             {
                 try
@@ -144,7 +144,7 @@ namespace projet_dawan_WPF.Windows.Export
 
         private void btnImport_Episodes_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
+            OpenFileDialog fileDialog = new();
             if (fileDialog.ShowDialog() == true)
             {
                 try
@@ -156,6 +156,23 @@ namespace projet_dawan_WPF.Windows.Export
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
+        private void btnImport_Personnages_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog= new();
+            if(fileDialog.ShowDialog()==true)
+            {
+                try
+                {
+                    personnagesList = JsonConvert.DeserializeObject<List<Personnage>>(File.ReadAllText(fileDialog.FileName));
+                    ImportPersonnages();
+                }
+                catch
+                {
+
                 }
             }
         }
@@ -207,8 +224,21 @@ namespace projet_dawan_WPF.Windows.Export
                     personnage.Acteur = null;
                     ImportActeur();
                     personnage.ActeurId = acteurService.GetCompareTo(acteurList[0]).Id;
+                    
+                }
+                if(personnage.Serie!= null)
+                {
+                    seriesList=new() { personnage.Serie };
+                    personnage.Serie = null;
+                    ImportSerie();
+                    personnage.SerieId = serieService.GetCompareTo(seriesList[0]).Id;
+
+                }
+                if (!personnageService.CompareTo(personnage))
+                {
                     personnageService.Add(personnage);
                 }
+               
             }
 
         }
@@ -273,6 +303,6 @@ namespace projet_dawan_WPF.Windows.Export
             }
         }
 
-
+        
     }
 }

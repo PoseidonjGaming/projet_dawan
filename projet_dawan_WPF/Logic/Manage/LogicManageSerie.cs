@@ -68,7 +68,27 @@ namespace projet_dawan_WPF.Logic.Manage
             if (annuler == MessageBoxResult.Yes)
             {
                 SerieService service = new();
-                service.Delete(serieList[Window.lstBoxSerie.SelectedIndex]);
+                PersonnageService personnageService = new();
+                SaisonService saisonService = new();
+                EpisodeService episodeService = new();
+                Serie serie = serieList[Window.lstBoxSerie.SelectedIndex];
+                serie.Personnages = personnageService.GetBySerie(serie.Id);
+                serie.Saisons=saisonService.GetSaisonsBySerie(serie.Id);
+                foreach (Personnage personnage in serie.Personnages)
+                {
+
+                    personnageService.Delete(personnage);
+                }
+                foreach (Saison saison in serie.Saisons)
+                {
+                    saison.Episodes=episodeService.GetBySaison(saison.Id);
+                    foreach(Episode episode in saison.Episodes)
+                    {
+                        episodeService.Delete(episode);
+                    }
+                    saisonService.Delete(saison);
+                }
+                service.Delete(serie);
             }
             Populate();
         }
