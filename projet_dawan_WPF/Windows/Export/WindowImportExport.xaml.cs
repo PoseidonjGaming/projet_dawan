@@ -265,14 +265,14 @@ namespace projet_dawan_WPF.Windows.Export
         {
             foreach (Acteur acteur in acteurList)
             {
+                personnagesList = acteur.Personnages;
+                acteur.Personnages = new();
                 if (!acteurService.CompareTo(acteur))
                 {
                     acteurService.Add(acteur);
                 }
-                if (acteur.Personnages.Count > 0)
+                if (personnagesList.Count > 0)
                 {
-                    personnagesList = acteur.Personnages;
-                    acteur.Personnages = new();
                     foreach (Personnage personnage in personnagesList)
                     {
                         personnage.ActeurId = acteurService.GetCompareTo(acteur).Id;
