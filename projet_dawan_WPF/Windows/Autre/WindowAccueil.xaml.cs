@@ -68,11 +68,7 @@ namespace projet_dawan_WPF.Windows.Autre
 
         private void menuItemImport_Export_Click(object sender, RoutedEventArgs e)
         {
-            WindowImportExport window = new()
-            {
-                Owner = this
-            };
-            window.ShowDialog();
+            logic.MenuItemImport_Export_Click();
         }
     }
 }

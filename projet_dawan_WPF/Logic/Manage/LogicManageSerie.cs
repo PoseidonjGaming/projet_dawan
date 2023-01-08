@@ -63,7 +63,7 @@ namespace projet_dawan_WPF.Logic.Manage
 
         public void BtnSup_Click()
         {
-            var annuler = MessageBox.Show("Etes vous sur de vouloir annuler l'ajout ?", "Annuler ajout ?",
+            var annuler = MessageBox.Show("Etes vous sur de vouloir supprimé cette série ?", "Supprimer la série ?",
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (annuler == MessageBoxResult.Yes)
             {
@@ -78,9 +78,9 @@ namespace projet_dawan_WPF.Logic.Manage
                     serie.Saisons = saisonService.GetSaisonsBySerie(serie.Id);
                     foreach (Personnage personnage in serie.Personnages)
                     {
-
                         personnageService.Delete(personnage);
                     }
+                    serie.Personnages.Clear();
                     foreach (Saison saison in serie.Saisons)
                     {
                         saison.Episodes = episodeService.GetBySaison(saison.Id);
@@ -90,6 +90,7 @@ namespace projet_dawan_WPF.Logic.Manage
                         }
                         saisonService.Delete(saison);
                     }
+                    serie.Saisons.Clear();
                     service.Delete(serie);
                 }
                 catch(Exception ex)

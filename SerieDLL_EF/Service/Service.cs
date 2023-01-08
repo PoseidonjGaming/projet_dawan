@@ -56,5 +56,27 @@ namespace SerieDLL_EF.Service
             repo.Delete(item);
         }
 
+
+        //Vérifie si la série passée en paramètre existe dans la base de donnée.
+        //Revoie true si elle existe et false dans le cas contraire
+        public bool CompareTo(TClass item)
+        {
+            return repo.CompareTo(item);
+        }
+
+        public TClass Import(TClass item)
+        {
+            if (!CompareTo(item))
+            {
+                repo.Add(item);
+            }
+
+            return GetCompareTo(item);
+        }
+
+        public TClass GetCompareTo(TClass serie)
+        {
+            return repo.GetCompareTo(serie);
+        }
     }
 }

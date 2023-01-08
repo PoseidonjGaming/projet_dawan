@@ -9,9 +9,5 @@
         //Récupère la liste des objets de type T dont les champs,
         //spécifiés dans les implémentation contiennent la chaîne txt
         List<T> GetByTxt(string txt);
-
-        bool CompareTo(T obj);
-
-        T GetCompareTo(T obj);
     }
 }

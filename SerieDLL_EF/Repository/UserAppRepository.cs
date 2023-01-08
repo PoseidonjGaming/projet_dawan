@@ -58,5 +58,15 @@ namespace SerieDLL_EF.Repository
                 context.SaveChanges();
             }
         }
+
+        public bool CompareTo(UserApp obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public UserApp GetCompareTo(UserApp obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

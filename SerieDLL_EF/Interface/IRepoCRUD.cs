@@ -21,5 +21,8 @@
         //Supprime l'objet de type T dans la bdd
         void Delete(T item);
 
+        bool CompareTo(T obj);
+
+        T GetCompareTo(T obj);
     }
 }

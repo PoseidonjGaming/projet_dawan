@@ -205,16 +205,13 @@ namespace projet_dawan_WPF.Windows.Export
                     saisonList = newSerie.Saisons;
                     newSerie.Saisons = new();
 
-                    if (!serieService.CompareTo(newSerie))
-                    {
-                        serieService.Add(newSerie);
-                    }
+                    int serieId=serieService.Import(newSerie).Id;
                     if (personnagesList.Count > 0)
                     {
 
                         foreach (Personnage personnage in personnagesList)
                         {
-                            personnage.SerieId = serieService.GetCompareTo(newSerie).Id;
+                            personnage.SerieId = serieId;
                             personnage.Serie = null;
                         }
                         ImportPersonnages();

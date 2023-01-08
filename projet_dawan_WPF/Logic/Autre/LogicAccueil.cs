@@ -16,8 +16,9 @@ namespace projet_dawan_WPF.Logic.Autre
 {
     internal class LogicAccueil
     {
-        private List<Serie> serieList = new List<Serie>();
+        private List<Serie> serieList = new();
         private UserApp user;
+        private Grid grid;
         public WindowAccueil Window { get; set; }
         public LogicAccueil(WindowAccueil form)
         {
@@ -26,8 +27,7 @@ namespace projet_dawan_WPF.Logic.Autre
         }
         public void Load()
         {
-            SerieService service = new();
-            serieList = service.GetAll();
+
 
             if (Properties.Settings.Default.UserRemain != null)
             {
@@ -48,9 +48,18 @@ namespace projet_dawan_WPF.Logic.Autre
                 Window.menuGestion.IsEnabled = false;
                 Window.menuItemSeConnecter.Header = "Connexion";
             }
+            Refresh();
 
+        }
 
-            if(serieList.Count >= 4)
+        private void Refresh()
+        {
+            
+            Window.GridMain.Children.Remove(grid);
+
+            SerieService service = new();
+            serieList = service.GetAll();
+            if (serieList.Count >= 4)
             {
                 Populate(4);
             }
@@ -58,18 +67,21 @@ namespace projet_dawan_WPF.Logic.Autre
             {
                 Populate(serieList.Count);
             }
-            
         }
 
         private void Populate(int I)
         {
             for (int i = 0; i < I; i++)
             {
-                Grid grid = new Grid();
-                RowDefinition rowImg = new();
-                rowImg.Height = new GridLength(225, GridUnitType.Star);
-                RowDefinition rowBtn = new();
-                rowBtn.Height = new GridLength(30, GridUnitType.Pixel);
+                grid = new();
+                RowDefinition rowImg = new()
+                {
+                    Height = new GridLength(225, GridUnitType.Star)
+                };
+                RowDefinition rowBtn = new()
+                {
+                    Height = new GridLength(30, GridUnitType.Pixel)
+                };
                 grid.RowDefinitions.Add(rowImg);
                 grid.RowDefinitions.Add(rowBtn);
 
@@ -244,6 +256,8 @@ namespace projet_dawan_WPF.Logic.Autre
                     Owner = Window
                 };
                 window.ShowDialog();
+                
+                Refresh();
             }
         }
 
@@ -285,15 +299,6 @@ namespace projet_dawan_WPF.Logic.Autre
 
         }
 
-        public void MenuItemImport_Export_Serie_Click()
-        {
-            WindowExportSerie window = new()
-            {
-                Owner = Window
-            };
-            window.ShowDialog();
-        }
-
         private void FormClose(object sender, EventArgs e)
         {
             user = Properties.Settings.Default.UserRemain;
@@ -313,31 +318,14 @@ namespace projet_dawan_WPF.Logic.Autre
 
         }
 
-        public void menuItemImport_Export_Perso_Click()
+        public void MenuItemImport_Export_Click()
         {
-            if (user.IsGranted(Roles.SuperAdmin))
+            WindowImportExport window = new()
             {
-                WindowExportPersonnage window = new()
-                {
-                    Owner = Window
-                };
-                window.Show();
-            }
-
+                Owner = Window
+            };
+            window.ShowDialog();
+            Refresh();
         }
-
-        public void menuItemImport_Export_Episode_Click()
-        {
-            if (user.IsGranted(Roles.SuperAdmin))
-            {
-                WindowExportEpisode window = new()
-                {
-                    Owner = Window
-                };
-                window.ShowDialog();
-            }
-
-        }
-
     }
 }

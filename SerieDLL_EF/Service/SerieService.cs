@@ -1,5 +1,6 @@
 ﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
+using System.Xml.Serialization;
 
 namespace SerieDLL_EF.Service
 {
@@ -22,17 +23,10 @@ namespace SerieDLL_EF.Service
             return repo.GetByTxt(text);
         }
 
-        //Vérifie si la série passée en paramètre existe dans la base de donnée.
-        //Revoie true si elle existe et false dans le cas contraire
-        public bool CompareTo(Serie serie)
-        {
-            return repo.CompareTo(serie);
-        }
 
-        public Serie GetCompareTo(Serie serie)
-        {
-            return repo.GetCompareTo(serie);
-        }
+        
+
+        
 
 
     }

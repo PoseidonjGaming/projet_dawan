@@ -67,5 +67,9 @@ namespace SerieDLL_EF.Repository
             return context.Acteurs.Where(a => a.Nom == item.Nom && a.Prenom == item.Prenom).FirstOrDefault();
         }
 
+        public bool CompareTo<T>(T obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
