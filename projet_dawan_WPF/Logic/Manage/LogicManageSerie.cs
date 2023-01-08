@@ -67,28 +67,36 @@ namespace projet_dawan_WPF.Logic.Manage
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (annuler == MessageBoxResult.Yes)
             {
-                SerieService service = new();
-                PersonnageService personnageService = new();
-                SaisonService saisonService = new();
-                EpisodeService episodeService = new();
-                Serie serie = serieList[Window.lstBoxSerie.SelectedIndex];
-                serie.Personnages = personnageService.GetBySerie(serie.Id);
-                serie.Saisons=saisonService.GetSaisonsBySerie(serie.Id);
-                foreach (Personnage personnage in serie.Personnages)
+                try
                 {
-
-                    personnageService.Delete(personnage);
-                }
-                foreach (Saison saison in serie.Saisons)
-                {
-                    saison.Episodes=episodeService.GetBySaison(saison.Id);
-                    foreach(Episode episode in saison.Episodes)
+                    SerieService service = new();
+                    PersonnageService personnageService = new();
+                    SaisonService saisonService = new();
+                    EpisodeService episodeService = new();
+                    Serie serie = serieList[Window.lstBoxSerie.SelectedIndex];
+                    serie.Personnages = personnageService.GetBySerie(serie.Id);
+                    serie.Saisons = saisonService.GetSaisonsBySerie(serie.Id);
+                    foreach (Personnage personnage in serie.Personnages)
                     {
-                        episodeService.Delete(episode);
+
+                        personnageService.Delete(personnage);
                     }
-                    saisonService.Delete(saison);
+                    foreach (Saison saison in serie.Saisons)
+                    {
+                        saison.Episodes = episodeService.GetBySaison(saison.Id);
+                        foreach (Episode episode in saison.Episodes)
+                        {
+                            episodeService.Delete(episode);
+                        }
+                        saisonService.Delete(saison);
+                    }
+                    service.Delete(serie);
                 }
-                service.Delete(serie);
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+               
             }
             Populate();
         }
@@ -101,15 +109,6 @@ namespace projet_dawan_WPF.Logic.Manage
             {
                 Serie serie = serieList[Window.lstBoxSerie.SelectedIndex];
                 Window.txtNomSerie.Text = serie.Nom;
-                if (File.Exists(Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche))
-                {
-                    Window.txtPathAffiche.Text = Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche;
-                }
-                else
-                {
-                    Window.txtPathAffiche.Text = serie.Affiche;
-                }
-
                 Window.txtResume.Text = serie.Resume;
                 Window.txtUrlBa.Text = serie.UrlBa;
                 Window.dateTimeSortie.SelectedDate = (DateTime)serie.DateDiff;

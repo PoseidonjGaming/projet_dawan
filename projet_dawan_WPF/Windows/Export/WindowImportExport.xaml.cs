@@ -162,8 +162,8 @@ namespace projet_dawan_WPF.Windows.Export
 
         private void btnImport_Personnages_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog= new();
-            if(fileDialog.ShowDialog()==true)
+            OpenFileDialog fileDialog = new();
+            if (fileDialog.ShowDialog() == true)
             {
                 try
                 {
@@ -177,9 +177,25 @@ namespace projet_dawan_WPF.Windows.Export
             }
         }
 
+        private void btnImport_Acteur_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new();
+            if (fileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    acteurList = JsonConvert.DeserializeObject<List<Acteur>>(File.ReadAllText(fileDialog.FileName));
+                    ImportActeur();
+                }
+                catch
+                {
+
+                }
+            }
+        }
+
         private void ImportSerie()
         {
-
             foreach (Serie newSerie in seriesList)
             {
                 if (!serieService.CompareTo(newSerie))
@@ -187,7 +203,7 @@ namespace projet_dawan_WPF.Windows.Export
                     personnagesList = newSerie.Personnages;
                     newSerie.Personnages = new();
                     saisonList = newSerie.Saisons;
-                    newSerie.Saisons = null;
+                    newSerie.Saisons = new();
 
                     if (!serieService.CompareTo(newSerie))
                     {
@@ -199,14 +215,16 @@ namespace projet_dawan_WPF.Windows.Export
                         foreach (Personnage personnage in personnagesList)
                         {
                             personnage.SerieId = serieService.GetCompareTo(newSerie).Id;
+                            personnage.Serie = null;
                         }
                         ImportPersonnages();
                     }
-                    if (newSerie.Saisons.Count > 0)
+                    if (saisonList.Count > 0)
                     {
                         foreach (Saison saison in saisonList)
                         {
-                            saisonList = newSerie.Saisons;
+                            saison.SerieId = serieService.GetCompareTo(newSerie).Id;
+                            saison.Serie = null;
                             ImportSaison();
                         }
                     }
@@ -224,11 +242,11 @@ namespace projet_dawan_WPF.Windows.Export
                     personnage.Acteur = null;
                     ImportActeur();
                     personnage.ActeurId = acteurService.GetCompareTo(acteurList[0]).Id;
-                    
+
                 }
-                if(personnage.Serie!= null)
+                if (personnage.Serie != null)
                 {
-                    seriesList=new() { personnage.Serie };
+                    seriesList = new() { personnage.Serie };
                     personnage.Serie = null;
                     ImportSerie();
                     personnage.SerieId = serieService.GetCompareTo(seriesList[0]).Id;
@@ -238,7 +256,7 @@ namespace projet_dawan_WPF.Windows.Export
                 {
                     personnageService.Add(personnage);
                 }
-               
+
             }
 
         }
@@ -251,6 +269,17 @@ namespace projet_dawan_WPF.Windows.Export
                 {
                     acteurService.Add(acteur);
                 }
+                if (acteur.Personnages.Count > 0)
+                {
+                    personnagesList = acteur.Personnages;
+                    acteur.Personnages = new();
+                    foreach (Personnage personnage in personnagesList)
+                    {
+                        personnage.ActeurId = acteurService.GetCompareTo(acteur).Id;
+                    }
+                    ImportPersonnages();
+                }
+
             }
         }
 
@@ -258,13 +287,11 @@ namespace projet_dawan_WPF.Windows.Export
         {
             foreach (Episode episode in episodeList)
             {
-                if(episode.Saison!= null)
+                if (episode.Saison != null)
                 {
                     saisonList = new() { episode.Saison };
                     ImportSaison();
-                    
                 }
-                episode.SaisonId = saisonService.GetCompareTo(episode.Saison).Id;
                 if (!episodeService.CompareTo(episode))
                 {
                     episodeService.Add(episode);
@@ -277,32 +304,33 @@ namespace projet_dawan_WPF.Windows.Export
         {
             foreach (Saison saison in saisonList)
             {
+
                 if (saison.Serie != null)
                 {
                     seriesList = new() { saison.Serie };
                     ImportSerie();
-                    saison.SerieId = serieService.GetCompareTo(seriesList[0]).Id;
-                    saison.Serie = serieService.GetCompareTo(seriesList[0]);
-                    
-                }
-                else if (saison.Episodes != null)
-                {
-                    saison.Serie = null;
-                    episodeList=saison.Episodes;
-                    saison.Episodes = null;
-                    ImportEpisode();
+                    saison.SerieId = serieService.GetCompareTo(saison.Serie).Id;
                 }
                 if (!saisonService.CompareTo(saison))
                 {
                     saison.Serie = null;
-                    saison.Episodes = null;
                     saisonService.Add(saison);
+                    saison.Serie = serieService.GetById(saison.SerieId);
                 }
-
-
+                episodeList = saison.Episodes;
+                saison.Episodes = new();
+                if (episodeList.Count > 0)
+                {
+                    foreach (Episode episode in episodeList)
+                    {
+                        episode.SaisonId = saisonService.GetCompareTo(saison).Id;
+                        episode.Saison = saison;
+                    }
+                    ImportEpisode();
+                }
             }
         }
 
-        
+
     }
 }

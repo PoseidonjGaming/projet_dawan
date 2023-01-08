@@ -33,7 +33,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <CheckBox x:Name="checkBoxActeurs" Content="Exporter les acteurs" VerticalAlignment="Center"></CheckBox>
-                <Button Content="Importer des acteurs" VerticalAlignment="Center" Margin="85,0,10,0"></Button>
+                <Button x:Name="btnImport_Acteur" Content="Importer des acteurs" VerticalAlignment="Center" Margin="85,0,10,0" Click="btnImport_Acteur_Click"></Button>
             </StackPanel>
         </StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1">
