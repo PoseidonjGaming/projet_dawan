@@ -264,15 +264,12 @@ namespace projet_dawan_WPF.Windows.Export
             {
                 personnagesList = acteur.Personnages;
                 acteur.Personnages = new();
-                if (!acteurService.CompareTo(acteur))
-                {
-                    acteurService.Add(acteur);
-                }
+                int index = acteurService.Import(acteur).Id;
                 if (personnagesList.Count > 0)
                 {
                     foreach (Personnage personnage in personnagesList)
                     {
-                        personnage.ActeurId = acteurService.GetCompareTo(acteur).Id;
+                        personnage.ActeurId = index;
                     }
                     ImportPersonnages();
                 }
@@ -308,6 +305,7 @@ namespace projet_dawan_WPF.Windows.Export
                     ImportSerie();
                     saison.SerieId = serieService.GetCompareTo(saison.Serie).Id;
                 }
+
                 if (!saisonService.CompareTo(saison))
                 {
                     saison.Serie = null;

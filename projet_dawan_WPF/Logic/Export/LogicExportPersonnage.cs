@@ -38,7 +38,7 @@ namespace projet_dawan_WPF.Logic.Export
                 Properties.Settings.Default.ExportPersonnage = service.GetAll();
                 ExportActeur();
                 ExportSerie();
-                Window.Close();
+                
             }
             else if (Window.Owner.GetType() == typeof(WindowExportSerie))
             {
