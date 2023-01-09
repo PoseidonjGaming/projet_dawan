@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using projet_dawan_WPF.Logic.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -25,156 +26,34 @@ namespace projet_dawan_WPF.Windows.Export
     /// </summary>
     public partial class WindowImportExport : Window
     {
-        private List<Serie> seriesList = new();
-        private List<Episode> episodeList = new();
-        private List<Acteur> acteurList = new();
-        private List<Personnage> personnagesList = new();
-        private List<Saison> saisonList = new();
 
-        private SerieService serieService = new();
-        private PersonnageService personnageService = new();
-        private ActeurService acteurService = new();
-        private EpisodeService episodeService = new();
-        private SaisonService saisonService = new();
-
+        private LogicImportExport logic;
 
         public WindowImportExport()
         {
             InitializeComponent();
+            logic = new(this);
         }
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
-            if (checkBoxExportSeries.IsChecked == true)
-            {
-                WindowExportSerie windowExportSerie = new()
-                {
-                    Owner = this
-                };
-                windowExportSerie.Closed += SerieClose;
-                windowExportSerie.ShowDialog();
-                Export(seriesList, "exportSerie", "Séries");
-
-            }
-            if (checkBoxExportEpisodes.IsChecked == true)
-            {
-                WindowExportEpisode windowExportEpisode = new()
-                {
-                    Owner = this
-                };
-                windowExportEpisode.Closed += EpisodeClose;
-                windowExportEpisode.ShowDialog();
-                Export(episodeList, "exportsEpisode", "Episodes");
-            }
-            if (checkBoxExportPersonnages.IsChecked == true)
-            {
-                WindowExportPersonnage windowExportPersonnage = new()
-                {
-                    Owner = this
-                };
-                windowExportPersonnage.Closed += PersonnagesClose;
-                windowExportPersonnage.ShowDialog();
-                Export(personnagesList, "exportsPersonnage", "Personnages");
-            }
-            if (checkBoxActeurs.IsChecked == true)
-            {
-                WindowExportActeur windowExportActeur = new()
-                {
-                    Owner = this
-                };
-                windowExportActeur.Closed += ActeurClose;
-                windowExportActeur.ShowDialog();
-                Export(acteurList, "exportsActeurs", "Acteurs");
-            }
+            logic.BtnExport_Click();
         }
 
-        private void SerieClose(object sender, EventArgs e)
-        {
-            seriesList = Properties.Settings.Default.ExportSerie;
-        }
-
-        private void EpisodeClose(object sender, EventArgs e)
-        {
-            episodeList = Properties.Settings.Default.ExportEpisode;
-        }
-
-        private void PersonnagesClose(object sender, EventArgs e)
-        {
-            personnagesList = Properties.Settings.Default.ExportPersonnage;
-        }
-
-        private void ActeurClose(object sender, EventArgs e)
-        {
-            acteurList = Properties.Settings.Default.ExportActeur;
-        }
-
-        private void Export<T>(List<T> list, string defaultFileName, string title)
-        {
-            SaveFileDialog save = new SaveFileDialog()
-            {
-                InitialDirectory = Directory.GetCurrentDirectory(),
-                FileName = defaultFileName + ".json",
-                Filter = "File JSON|*json",
-                Title = "Exportation des " + title
-            };
-
-            if ((bool)save.ShowDialog())
-            {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
-            }
-        }
-
+        
         private void btnImport_Serie_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new();
-            if (fileDialog.ShowDialog() == true)
-            {
-                try
-                {
-                    seriesList = JsonConvert.DeserializeObject<List<Serie>>(File.ReadAllText(fileDialog.FileName));
-                    ImportSerie();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.InnerException.Message);
-                }
-            }
+           logic.BtnImport_Serie_Click();
         }
 
         private void btnImport_Episodes_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new();
-            if (fileDialog.ShowDialog() == true)
-            {
-                try
-                {
-                    episodeList = JsonConvert.DeserializeObject<List<Episode>>(File.ReadAllText(fileDialog.FileName));
-                    ImportEpisode();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
+            logic.BtnImport_Episodes_Click() ;
         }
 
         private void btnImport_Personnages_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new();
-            if (fileDialog.ShowDialog() == true)
-            {
-                try
-                {
-                    personnagesList = JsonConvert.DeserializeObject<List<Personnage>>(File.ReadAllText(fileDialog.FileName));
-                    ImportPersonnages();
-                }
-                catch
-                {
-
-                }
-            }
+            logic.BtnImport_Personnages_Click();
         }
 
         private void btnImport_Acteur_Click(object sender, RoutedEventArgs e)
@@ -264,12 +143,15 @@ namespace projet_dawan_WPF.Windows.Export
             {
                 personnagesList = acteur.Personnages;
                 acteur.Personnages = new();
-                int index = acteurService.Import(acteur).Id;
+                if (!acteurService.CompareTo(acteur))
+                {
+                    acteurService.Add(acteur);
+                }
                 if (personnagesList.Count > 0)
                 {
                     foreach (Personnage personnage in personnagesList)
                     {
-                        personnage.ActeurId = index;
+                        personnage.ActeurId = acteurService.GetCompareTo(acteur).Id;
                     }
                     ImportPersonnages();
                 }
