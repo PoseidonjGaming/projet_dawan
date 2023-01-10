@@ -91,7 +91,6 @@ namespace projet_dawan_WPF.Logic.Export
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     serie.ShouldExportPersonnage = true;
-                    serie.ShouldExportSaison = false;
                     serie.Personnages = service.GetBySerie(serie.Id);
                 }
             }
@@ -113,7 +112,6 @@ namespace projet_dawan_WPF.Logic.Export
             if ((bool)Window.checkBoxEp.IsChecked)
             {
                 SaisonService saisonService = new();
-                Properties.Settings.Default.ExportSerie = service.GetAll();
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     Properties.Settings.Default.ExportSaison = saisonService.GetSaisonsBySerie(serie.Id);
