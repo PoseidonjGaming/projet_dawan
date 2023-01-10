@@ -18,44 +18,53 @@ namespace projet_dawan_WPF.Logic.Export
 
         public void BtnExport_Click()
         {
-            EpisodeService service = new();
-            Properties.Settings.Default.ExportEpisode = service.GetAll();
-            ExportSaison();
-            ExportSerie();
-            Window.Close();
+            if (Window.Owner.GetType() == typeof(WindowImportExport))
+            {
+                EpisodeService service = new();
+                Properties.Settings.Default.ExportEpisode = service.GetAll();
+                ExportSaison();
+                OpenWindowExportSerie();
+                Window.Close();
+            }
         }
 
         private void ExportSaison()
         {
-            SaisonService service = new();
-            foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
+            if ((bool)Window.checkBoxSerie.IsChecked)
             {
-                episode.ShouldExportSaisons = true;
-                episode.Saison = service.GetById(episode.SaisonId);
+                SaisonService service = new();
+                foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
+                {
+                    episode.ShouldExportSaisons = true;
+                    episode.Saison = service.GetById(episode.SaisonId);
+                    episode.Saison.ShouldExportEpisode = false;
+                    Properties.Settings.Default.ExportSaison = new() { episode.Saison };
+                    ExportSerie();
+                    episode.Saison = Properties.Settings.Default.ExportSaison[0];
+                }
+
             }
+
         }
 
         private void ExportSerie()
         {
-            if ((bool)Window.checkBoxSerie.IsChecked)
+            Properties.Settings.Default.ExportSerie = new();
+            SerieService service = new();
+            foreach (Saison saison in Properties.Settings.Default.ExportSaison)
             {
-                SerieService service = new();
-                foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
-                {
-                    episode.Saison.ShouldExportEpisode = false;
-                    episode.Saison.ShouldExportSerie = true;
-                    episode.Saison.Serie = service.GetById(episode.Saison.SerieId);
-                }
-
-                WindowExportSerie window = new()
-                {
-                    Owner = Window
-                };
-                window.ShowDialog();
+                saison.ShouldExportSerie = true;
+                saison.Serie = service.GetById(saison.SerieId);
             }
-
         }
 
-       
+        private void OpenWindowExportSerie()
+        {
+            WindowExportSerie window = new()
+            {
+                Owner = Window
+            };
+            window.ShowDialog();
+        }
     }
 }

@@ -6,6 +6,7 @@ using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.IO;
+using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Export
 {
@@ -24,68 +25,23 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 Window.checkBoxPerso_Serie.IsEnabled = false;
             }
-            else if (Window.Owner.GetType() == typeof(WindowExportActeur))
-            {
-                Window.checkBoxPerso_Acteur.IsEnabled = false;
-            }
         }
 
         public void BtnExport_Click()
         {
-            PersonnageService service = new();
-            if (Window.Owner.GetType() == typeof(WindowImportExport))
-            {
-                Properties.Settings.Default.ExportPersonnage = service.GetAll();
-                ExportActeur();
-                ExportSerie();
-                
-            }
-            else if (Window.Owner.GetType() == typeof(WindowExportSerie))
+            if (Window.Owner.GetType() == typeof(WindowExportSerie))
             {
                 if (Window.Owner.Owner.GetType() == typeof(WindowExportEpisode))
                 {
-                    foreach (Episode ep in Properties.Settings.Default.ExportEpisode)
+                    foreach(Episode episode in Properties.Settings.Default.ExportEpisode)
                     {
-                        Properties.Settings.Default.ExportPersonnage = ep.Saison.Serie.Personnages;
+                        Properties.Settings.Default.ExportPersonnage = episode.Saison.Serie.Personnages;
                         ExportActeur();
-                        ep.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
+                        episode.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
                     }
-
-                    Window.Close();
-
                 }
-                else if (Window.Owner.Owner.GetType() == typeof(WindowImportExport))
-                {
-                    foreach (Serie serie in Properties.Settings.Default.ExportSerie)
-                    {
-                        Properties.Settings.Default.ExportPersonnage = serie.Personnages;
-                        ExportActeur();
-                        serie.Personnages = Properties.Settings.Default.ExportPersonnage;
-                    }
-                    Window.Close();
-                }
-
             }
-            else if (Window.Owner.GetType() == typeof(WindowExportActeur))
-            {
-                foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
-                {
-                    Properties.Settings.Default.ExportPersonnage = acteur.Personnages;
-                    ExportSerie();
-                    acteur.Personnages = Properties.Settings.Default.ExportPersonnage;
-                }
-                if(Window.checkBoxPerso_Serie.IsChecked== true)
-                {
-                    WindowExportSerie window = new()
-                    {
-                        Owner = Window,
-                    };
-                    window.Closed += Close;
-                    window.ShowDialog();
-                }
-                
-
-            }
+            Window.Close();
         }
 
         private void ExportActeur()
@@ -93,26 +49,18 @@ namespace projet_dawan_WPF.Logic.Export
             if ((bool)Window.checkBoxPerso_Acteur.IsChecked)
             {
                 ActeurService service = new();
-                foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
+                foreach(Personnage perso in Properties.Settings.Default.ExportPersonnage)
                 {
                     perso.ShouldExportActeur = true;
+                    perso.ShouldExportSerie = false;
                     perso.Acteur = service.GetById(perso.ActeurId);
-                    perso.Acteur.ShouldExportPersonnage = false;
                 }
             }
         }
 
         private void ExportSerie()
         {
-            if ((bool)Window.checkBoxPerso_Serie.IsChecked)
-            {
-                SerieService service = new();
-                foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
-                {
-                    perso.ShouldExportSerie = true;
-                    perso.Serie = service.GetById(perso.SerieId);
-                }
-            }
+           
         }
 
 

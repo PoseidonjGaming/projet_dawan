@@ -63,7 +63,7 @@ namespace projet_dawan_WPF.Windows.Export
             {
                 try
                 {
-                    acteurList = JsonConvert.DeserializeObject<List<Acteur>>(File.ReadAllText(fileDialog.FileName));
+                    Properties.Settings.Default.ExportActeur = JsonConvert.DeserializeObject<List<Acteur>>(File.ReadAllText(fileDialog.FileName));
                     ImportActeur();
                 }
                 catch
@@ -75,137 +75,28 @@ namespace projet_dawan_WPF.Windows.Export
 
         private void ImportSerie()
         {
-            foreach (Serie newSerie in seriesList)
-            {
-                if (!serieService.CompareTo(newSerie))
-                {
-                    personnagesList = newSerie.Personnages;
-                    newSerie.Personnages = new();
-                    saisonList = newSerie.Saisons;
-                    newSerie.Saisons = new();
-
-                    int serieId=serieService.Import(newSerie).Id;
-                    if (personnagesList.Count > 0)
-                    {
-
-                        foreach (Personnage personnage in personnagesList)
-                        {
-                            personnage.SerieId = serieId;
-                            personnage.Serie = null;
-                        }
-                        ImportPersonnages();
-                    }
-                    if (saisonList.Count > 0)
-                    {
-                        foreach (Saison saison in saisonList)
-                        {
-                            saison.SerieId = serieService.GetCompareTo(newSerie).Id;
-                            saison.Serie = null;
-                            ImportSaison();
-                        }
-                    }
-                }
-            }
+            
         }
 
         private void ImportPersonnages()
         {
-            foreach (Personnage personnage in personnagesList)
-            {
-                if (personnage.Acteur != null)
-                {
-                    acteurList = new() { personnage.Acteur };
-                    personnage.Acteur = null;
-                    ImportActeur();
-                    personnage.ActeurId = acteurService.GetCompareTo(acteurList[0]).Id;
-
-                }
-                if (personnage.Serie != null)
-                {
-                    seriesList = new() { personnage.Serie };
-                    personnage.Serie = null;
-                    ImportSerie();
-                    personnage.SerieId = serieService.GetCompareTo(seriesList[0]).Id;
-
-                }
-                if (!personnageService.CompareTo(personnage))
-                {
-                    personnageService.Add(personnage);
-                }
-
-            }
+            
 
         }
 
         private void ImportActeur()
         {
-            foreach (Acteur acteur in acteurList)
-            {
-                personnagesList = acteur.Personnages;
-                acteur.Personnages = new();
-                if (!acteurService.CompareTo(acteur))
-                {
-                    acteurService.Add(acteur);
-                }
-                if (personnagesList.Count > 0)
-                {
-                    foreach (Personnage personnage in personnagesList)
-                    {
-                        personnage.ActeurId = acteurService.GetCompareTo(acteur).Id;
-                    }
-                    ImportPersonnages();
-                }
 
-            }
         }
 
         private void ImportEpisode()
         {
-            foreach (Episode episode in episodeList)
-            {
-                if (episode.Saison != null)
-                {
-                    saisonList = new() { episode.Saison };
-                    ImportSaison();
-                }
-                if (!episodeService.CompareTo(episode))
-                {
-                    episodeService.Add(episode);
-                }
-
-            }
+            
         }
 
         private void ImportSaison()
         {
-            foreach (Saison saison in saisonList)
-            {
-
-                if (saison.Serie != null)
-                {
-                    seriesList = new() { saison.Serie };
-                    ImportSerie();
-                    saison.SerieId = serieService.GetCompareTo(saison.Serie).Id;
-                }
-
-                if (!saisonService.CompareTo(saison))
-                {
-                    saison.Serie = null;
-                    saisonService.Add(saison);
-                    saison.Serie = serieService.GetById(saison.SerieId);
-                }
-                episodeList = saison.Episodes;
-                saison.Episodes = new();
-                if (episodeList.Count > 0)
-                {
-                    foreach (Episode episode in episodeList)
-                    {
-                        episode.SaisonId = saisonService.GetCompareTo(saison).Id;
-                        episode.Saison = saison;
-                    }
-                    ImportEpisode();
-                }
-            }
+            
         }
 
 
