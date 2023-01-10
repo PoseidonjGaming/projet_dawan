@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.Win32;
 using Newtonsoft.Json;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
@@ -86,7 +87,7 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 try
                 {
-                    seriesList = JsonConvert.DeserializeObject<List<Serie>>(File.ReadAllText(fileDialog.FileName));
+                    seriesList = (List<Serie>)JsonConvert.DeserializeObject(File.ReadAllText(fileDialog.FileName));
                     ImportSerie();
 
                 }
@@ -104,7 +105,7 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 try
                 {
-                    episodeList = JsonConvert.DeserializeObject<List<Episode>>(File.ReadAllText(fileDialog.FileName));
+                    episodeList = (List<Episode>)JsonConvert.DeserializeObject(File.ReadAllText(fileDialog.FileName));
                     ImportEpisode();
 
                 }
@@ -122,7 +123,7 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 try
                 {
-                    personnagesList = JsonConvert.DeserializeObject<List<Personnage>>(File.ReadAllText(fileDialog.FileName));
+                    personnagesList = (List<Personnage>)JsonConvert.DeserializeObject(File.ReadAllText(fileDialog.FileName));
                     ImportPersonnages();
                 }
                 catch
