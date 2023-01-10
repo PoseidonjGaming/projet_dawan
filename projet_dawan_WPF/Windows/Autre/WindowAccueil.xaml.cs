@@ -1,5 +1,4 @@
 ﻿using projet_dawan_WPF.Logic.Autre;
-using projet_dawan_WPF.Windows.Export;
 using System.Windows;
 
 namespace projet_dawan_WPF.Windows.Autre

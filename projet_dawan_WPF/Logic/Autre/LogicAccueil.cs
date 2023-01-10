@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 
 namespace projet_dawan_WPF.Logic.Autre
 {
-    internal class LogicAccueil: BaseLogic
+    internal class LogicAccueil
     {
         private List<Serie> serieList = new();
         private UserApp user;
@@ -54,10 +54,10 @@ namespace projet_dawan_WPF.Logic.Autre
 
         private void Refresh()
         {
-            
+
             Window.GridMain.Children.Remove(grid);
 
-            SerieService service = new(Cnx);
+            SerieService service = new();
             serieList = service.GetAll();
             if (serieList.Count >= 4)
             {
@@ -186,7 +186,7 @@ namespace projet_dawan_WPF.Logic.Autre
         private void OpenFormBibli(string text)
         {
 
-            SerieService service = new(Cnx);
+            SerieService service = new();
             WindowBibliotheque WindowsBibliotheque = new(text)
             {
                 Owner = Window
@@ -256,7 +256,7 @@ namespace projet_dawan_WPF.Logic.Autre
                     Owner = Window
                 };
                 window.ShowDialog();
-                
+
                 Refresh();
             }
         }

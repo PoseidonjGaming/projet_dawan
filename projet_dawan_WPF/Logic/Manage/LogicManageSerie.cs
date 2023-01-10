@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Manage
 {
-    internal class LogicManageSerie : BaseLogic
+    internal class LogicManageSerie
     {
         public WindowManageSeries Window { get; set; }
         private SerieService serieService;
@@ -18,7 +18,7 @@ namespace projet_dawan_WPF.Logic.Manage
         public LogicManageSerie(WindowManageSeries window)
         {
             Window = window;
-            serieService = new(Cnx);
+            serieService = new();
         }
 
         public void Load()
@@ -71,10 +71,10 @@ namespace projet_dawan_WPF.Logic.Manage
             {
                 try
                 {
-                    SerieService service = new(Cnx);
-                    PersonnageService personnageService = new(Cnx);
-                    SaisonService saisonService = new(Cnx);
-                    EpisodeService episodeService = new(Cnx);
+                    SerieService service = new();
+                    PersonnageService personnageService = new();
+                    SaisonService saisonService = new();
+                    EpisodeService episodeService = new();
                     Serie serie = serieList[Window.lstBoxSerie.SelectedIndex];
                     serie.Personnages = personnageService.GetBySerie(serie.Id);
                     serie.Saisons = saisonService.GetSaisonsBySerie(serie.Id);

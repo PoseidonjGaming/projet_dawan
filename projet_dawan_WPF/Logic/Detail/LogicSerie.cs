@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace projet_dawan_WPF.Logic.Detail
 {
-    internal class LogicSerie: BaseLogic
+    internal class LogicSerie
     {
         private Serie Serie = new();
         private List<Saison> Saisons = new List<Saison>();
@@ -35,7 +35,7 @@ namespace projet_dawan_WPF.Logic.Detail
             {
 
             }
-            SaisonService service = new(Cnx);
+            SaisonService service = new();
             foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
             {
                 Saisons.Add(saison);
@@ -55,7 +55,7 @@ namespace projet_dawan_WPF.Logic.Detail
 
         public void BtnCasting_Click()
         {
-            PersonnageService service = new(Cnx);
+            PersonnageService service = new();
             WindowCasting casting = new(service.GetBySerie(Serie.Id));
             casting.Owner = Window;
             casting.ShowDialog();

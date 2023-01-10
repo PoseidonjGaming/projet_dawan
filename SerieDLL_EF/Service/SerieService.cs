@@ -1,6 +1,5 @@
 ﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
-using System.Xml.Serialization;
 
 namespace SerieDLL_EF.Service
 {
@@ -9,7 +8,7 @@ namespace SerieDLL_EF.Service
     */
     public class SerieService : Service<Serie, SerieRepository>
     {
-        public SerieService(string Cnx) : base() { repo = new(Cnx); }
+        public SerieService() : base(new SerieRepository()) {  }
 
         //Récupère la liste des séries dont l'id est présent dans la liste toWatch
         public List<Serie> ExportWatchList(List<int> toWatch)
@@ -24,9 +23,9 @@ namespace SerieDLL_EF.Service
         }
 
 
-        
 
-        
+
+
 
 
     }

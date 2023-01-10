@@ -8,9 +8,9 @@ namespace SerieDLL_EF.Service
      */
     public class ActeurService : Service<Acteur, ActeurRepository>
     {
-        public ActeurService(string Cnx) : base()
+        public ActeurService() : base(new ActeurRepository())
         {
-            repo = new ActeurRepository(Cnx);
+            
         }
 
         //Récupère la liste des Acteur dont le nom et/ou le prénom contient la chaîne txt

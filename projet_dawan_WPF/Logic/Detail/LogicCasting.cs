@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace projet_dawan_WPF.Logic.Detail
 {
-    internal class LogicCasting : BaseLogic
+    internal class LogicCasting
     {
         public WindowCasting Window { get; set; }
         private List<Personnage> castList = new List<Personnage>();
@@ -19,11 +19,11 @@ namespace projet_dawan_WPF.Logic.Detail
 
         public void Load(List<Personnage> list)
         {
-            SerieService serieService = new(Cnx);
+            SerieService serieService = new();
             castList = list;
             serie = serieService.GetById(castList[0].SerieId);
             Window.lblCasting.Content = "Casting " + serie.Nom;
-            ActeurService acteurService = new(Cnx);
+            ActeurService acteurService = new();
 
             foreach (Personnage personnage in castList)
             {
@@ -40,7 +40,7 @@ namespace projet_dawan_WPF.Logic.Detail
         {
             if (Window.lstBoxCasting.SelectedIndex != -1)
             {
-                ActeurService acteurService = new(Cnx);
+                ActeurService acteurService = new();
                 Personnage perso = castList[Window.lstBoxCasting.SelectedIndex];
                 Acteur acteur = acteurService.GetById(perso.ActeurId);
                 Populate(perso, acteur);

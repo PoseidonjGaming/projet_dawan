@@ -9,7 +9,7 @@ namespace SerieDLL_EF.Service
     public class PersonnageService : Service<Personnage, PersonnageRepository>
     {
 
-        public PersonnageService(string Cnx) : base() { repo = new(Cnx); }
+        public PersonnageService() : base(new PersonnageRepository()) { }
 
         //Récupère la liste des personnages en fonction de la série dont l'id est passé en paramètre
         public List<Personnage> GetBySerie(int serie_id)

@@ -1,5 +1,4 @@
-﻿using Microsoft.Identity.Client;
-using SerieDLL_EF.Models;
+﻿using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 
 namespace SerieDLL_EF.Service
@@ -9,7 +8,7 @@ namespace SerieDLL_EF.Service
      */
     public class EpisodeService : Service<Episode, EpisodeRepository>
     {
-        public EpisodeService(string Cnx) : base() { repo = new(Cnx); }
+        public EpisodeService() : base(new EpisodeRepository()) { }
 
         //Récupère la liste des épisodes qui appartienent à la saison spécifié
         public List<Episode> GetBySaison(int saison)

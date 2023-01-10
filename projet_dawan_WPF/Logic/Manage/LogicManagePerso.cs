@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Manage
 {
-    internal class LogicManagePerso : BaseLogic
+    internal class LogicManagePerso 
     {
         public WindowManagePersonnages Window { get; set; }
         private List<Personnage> personnages = new List<Personnage>();
@@ -18,12 +18,12 @@ namespace projet_dawan_WPF.Logic.Manage
         public LogicManagePerso(WindowManagePersonnages form)
         {
             Window = form;
-            servicePerso = new(Cnx);
+            servicePerso = new();
         }
 
         public void Load()
         {
-            SerieService serieService = new(Cnx);
+            SerieService serieService = new();
             serieList = serieService.GetAll();
             foreach (Serie serie in serieList)
             {
@@ -34,7 +34,7 @@ namespace projet_dawan_WPF.Logic.Manage
                 Window.comboBoxSerie.SelectedIndex = 0;
             }
 
-            ActeurService acteurService = new(Cnx);
+            ActeurService acteurService = new();
             acteurList = acteurService.GetAll();
             foreach (Acteur acteur in acteurList)
             {

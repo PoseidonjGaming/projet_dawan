@@ -1,5 +1,4 @@
 ﻿using SerieDLL_EF.Interface;
-using System.Net;
 
 namespace SerieDLL_EF.Service
 {
@@ -19,7 +18,7 @@ namespace SerieDLL_EF.Service
         protected TRepo repo;
         protected string Cnx;
 
-        public Service()
+        public Service(TRepo repo)
         {
             this.repo = repo;
         }

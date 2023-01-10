@@ -1,17 +1,12 @@
-﻿using Microsoft.Win32;
-using Newtonsoft.Json;
-using projet_dawan_WPF.Logic.Autre;
-using projet_dawan_WPF.Windows.Autre;
+﻿using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
-using System.IO;
-using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Export
 {
-    internal class LogicExportPersonnage: BaseLogic
+    internal class LogicExportPersonnage
     {
         public WindowExportPersonnage Window { get; set; }
 
@@ -36,8 +31,8 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if (Window.Owner.GetType() == typeof(WindowImportExport))
             {
-                PersonnageService service= new(Cnx);
-                Properties.Settings.Default.ExportPersonnage=service.GetAll();
+                PersonnageService service = new();
+                Properties.Settings.Default.ExportPersonnage = service.GetAll();
                 ExportActeur();
                 ExportSerie();
                 OpenWindowSerie();
@@ -69,7 +64,7 @@ namespace projet_dawan_WPF.Logic.Export
             }
             else if (Window.Owner.GetType() == typeof(WindowExportActeur))
             {
-                PersonnageService service = new(Cnx);
+                PersonnageService service = new();
                 foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
                 {
                     foreach (Personnage perso in acteur.Personnages)
@@ -89,7 +84,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if ((bool)Window.checkBoxPerso_Acteur.IsChecked)
             {
-                ActeurService service = new(Cnx);
+                ActeurService service = new();
                 foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
                 {
                     perso.ShouldExportActeur = true;
@@ -102,7 +97,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if ((bool)Window.checkBoxPerso_Serie.IsChecked)
             {
-                SerieService service = new(Cnx);
+                SerieService service = new();
                 foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
                 {
                     perso.ShouldExportSerie = true;

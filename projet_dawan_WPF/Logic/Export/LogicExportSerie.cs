@@ -1,20 +1,12 @@
-﻿using Microsoft.Win32;
-using Newtonsoft.Json;
-using projet_dawan_WPF.Logic.Autre;
-using projet_dawan_WPF.Windows.Autre;
+﻿using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
-using System.IO;
-using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Automation.Provider;
-using System.Windows.Documents;
 
 namespace projet_dawan_WPF.Logic.Export
 {
-    internal class LogicExportSerie : BaseLogic
+    internal class LogicExportSerie
     {
         public WindowExportSerie Window { get; set; }
         private readonly SerieService service;
@@ -22,7 +14,7 @@ namespace projet_dawan_WPF.Logic.Export
         public LogicExportSerie(WindowExportSerie window)
         {
             Window = window;
-            service = new(Cnx);
+            service = new();
         }
 
         public void Load()
@@ -51,7 +43,7 @@ namespace projet_dawan_WPF.Logic.Export
             }
             else if (Window.Owner.GetType() == typeof(WindowImportExport))
             {
-                SerieService service = new(Cnx);
+                SerieService service = new();
                 Properties.Settings.Default.ExportSerie = service.GetAll();
                 ExportSaison();
                 ExportPerso();
@@ -89,7 +81,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if ((bool)Window.checkBoxPersonnage.IsChecked)
             {
-                PersonnageService service = new(Cnx);
+                PersonnageService service = new();
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     serie.ShouldExportPersonnage = true;
@@ -101,7 +93,7 @@ namespace projet_dawan_WPF.Logic.Export
 
         private void ExportEpisode()
         {
-            EpisodeService service = new(Cnx);
+            EpisodeService service = new();
             foreach (Saison saison in Properties.Settings.Default.ExportSaison)
             {
                 saison.ShouldExportEpisode = true;

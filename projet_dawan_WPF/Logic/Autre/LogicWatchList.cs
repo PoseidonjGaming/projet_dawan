@@ -8,7 +8,7 @@ using System.IO;
 
 namespace projet_dawan_WPF.Logic.Autre
 {
-    internal class LogicWatchList:BaseLogic
+    internal class LogicWatchList
     {
         private List<Serie> series = new List<Serie>();
         public WindowWatchList Window { get; set; }
@@ -20,7 +20,7 @@ namespace projet_dawan_WPF.Logic.Autre
 
         public void Load()
         {
-            SerieService service = new(Cnx);
+            SerieService service = new();
             foreach (int serieid in Properties.Settings.Default.UserRemain.ToWatchList)
             {
                 Serie serie = service.GetById(serieid);
@@ -51,7 +51,7 @@ namespace projet_dawan_WPF.Logic.Autre
 
             if (save.ShowDialog() == true)
             {
-                SerieService service = new(Cnx);
+                SerieService service = new();
                 List<Serie> list = service.ExportWatchList(Properties.Settings.Default.UserRemain.ToWatchList);
                 File.WriteAllText(save.FileName, JsonConvert.SerializeObject(list, Formatting.Indented));
             }

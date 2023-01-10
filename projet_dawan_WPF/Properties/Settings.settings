@@ -23,8 +23,5 @@
     <Setting Name="ExportSaison" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Saison&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Cnx" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BDDProjet;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

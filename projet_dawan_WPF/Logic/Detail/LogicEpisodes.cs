@@ -8,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace projet_dawan_WPF.Logic.Detail
 {
-    internal class LogicEpisodes : BaseLogic
+    internal class LogicEpisodes
     {
         private Saison saison;
         private List<Episode> episodes = new List<Episode>();
@@ -18,14 +18,14 @@ namespace projet_dawan_WPF.Logic.Detail
         public LogicEpisodes(WindowEpisode window)
         {
             Window = window;
-            service = new(Cnx);
+            service = new();
         }
 
         public void Load(Saison saison)
         {
             this.saison = saison;
             episodes = service.GetBySaison(saison.Id);
-            SerieService serieService = new(Cnx);
+            SerieService serieService = new();
             Serie serie = serieService.GetById(saison.SerieId);
 
             BitmapImage bitImg = new BitmapImage();
@@ -65,9 +65,9 @@ namespace projet_dawan_WPF.Logic.Detail
 
         public void Casting_Click()
         {
-            SerieService serieService = new(Cnx);
-            SaisonService saisonService = new(Cnx);
-            PersonnageService personnage = new(Cnx);
+            SerieService serieService = new();
+            SaisonService saisonService = new();
+            PersonnageService personnage = new();
             WindowCasting casting = new(personnage.GetBySerie(saison.SerieId))
             {
                 Owner = Window

@@ -8,7 +8,7 @@ using System.Windows;
 namespace projet_dawan_WPF.Logic.Autre
 {
 
-    internal class LogicBibliothèque: BaseLogic
+    internal class LogicBibliothèque
     {
         public WindowBibliotheque Window { get; set; }
         private List<int> Ids = new List<int>();
@@ -55,7 +55,7 @@ namespace projet_dawan_WPF.Logic.Autre
                 switch (Window.cmbFiltrer.SelectedIndex)
                 {
                     case 0:
-                        SerieService serieService = new(Cnx);
+                        SerieService serieService = new();
                         WindowSerie windowSerie = new(serieService.GetById(Ids[Window.lstBxSerie.SelectedIndex]))
                         {
                             Owner = Window
@@ -63,8 +63,8 @@ namespace projet_dawan_WPF.Logic.Autre
                         windowSerie.ShowDialog();
                         break;
                     case 1:
-                        EpisodeService episodeService = new(Cnx);
-                        SaisonService saisonService = new(Cnx);
+                        EpisodeService episodeService = new();
+                        SaisonService saisonService = new();
                         WindowEpisode windowEpisode = new(saisonService.GetById(episodeService.GetById(Ids[Window.lstBxSerie.SelectedIndex]).SaisonId))
                         {
                             Owner = Window
@@ -72,7 +72,7 @@ namespace projet_dawan_WPF.Logic.Autre
                         windowEpisode.ShowDialog();
                         break;
                     case 2:
-                        PersonnageService personnageService = new(Cnx);
+                        PersonnageService personnageService = new();
                         WindowCasting windowCasting = new(personnageService.GetBySerie(Ids[Window.lstBxSerie.SelectedIndex]))
                         {
                             Owner = Window
@@ -80,7 +80,7 @@ namespace projet_dawan_WPF.Logic.Autre
                         windowCasting.ShowDialog();
                         break;
                     case 3:
-                        PersonnageService personnageServiceA = new(Cnx);
+                        PersonnageService personnageServiceA = new();
                         WindowCasting form = new(personnageServiceA.GetByActeur(Ids[Window.lstBxSerie.SelectedIndex]))
                         {
                             Owner = Window
@@ -117,7 +117,7 @@ namespace projet_dawan_WPF.Logic.Autre
             switch (Window.cmbFiltrer.SelectedIndex)
             {
                 case 0:
-                    SerieService serieService = new(Cnx);
+                    SerieService serieService = new();
                     List<Serie> series = serieService.GetByTxt(Window.txtRechercher.Text);
                     foreach (Serie serie in series)
                     {
@@ -127,7 +127,7 @@ namespace projet_dawan_WPF.Logic.Autre
                     Populate(list);
                     break;
                 case 1:
-                    EpisodeService epService = new(Cnx);
+                    EpisodeService epService = new();
                     List<Episode> episodes = epService.GetByTxt(Window.txtRechercher.Text);
                     foreach (Episode episode in episodes)
                     {
@@ -137,7 +137,7 @@ namespace projet_dawan_WPF.Logic.Autre
                     Populate(list);
                     break;
                 case 2:
-                    PersonnageService personnageService = new(Cnx);
+                    PersonnageService personnageService = new();
                     List<Personnage> personnages = personnageService.GetByTxt(Window.txtRechercher.Text);
                     foreach (Personnage personnage in personnages)
                     {
@@ -147,7 +147,7 @@ namespace projet_dawan_WPF.Logic.Autre
                     Populate(list);
                     break;
                 case 3:
-                    ActeurService acteurService = new(Cnx);
+                    ActeurService acteurService = new();
                     List<Acteur> acteurs = acteurService.GetByTxt(Window.txtRechercher.Text);
                     foreach (Acteur acteur in acteurs)
                     {

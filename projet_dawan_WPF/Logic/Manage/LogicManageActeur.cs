@@ -3,11 +3,10 @@ using projet_dawan_WPF.Windows.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
-using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Manage
 {
-    internal class LogicManageActeur : BaseLogic
+    internal class LogicManageActeur
     {
         public WindowManageActeur Window { get; set; }
 
@@ -18,7 +17,7 @@ namespace projet_dawan_WPF.Logic.Manage
         {
             Window = window;
             currentActeur = new Acteur();
-            service = new(Cnx);
+            service = new();
         }
 
         public void Load()
