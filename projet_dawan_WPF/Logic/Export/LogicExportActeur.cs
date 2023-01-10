@@ -45,6 +45,10 @@ namespace projet_dawan_WPF.Logic.Export
                 window.Closed += Close;
                 window.ShowDialog();
             }
+            else
+            {
+                Close();
+            }
         }
 
         private void ExportPersonnage()
@@ -61,6 +65,11 @@ namespace projet_dawan_WPF.Logic.Export
         }
 
         private void Close(object sender, EventArgs args)
+        {
+            Window.Close();
+        }
+
+        private void Close()
         {
             Window.Close();
         }

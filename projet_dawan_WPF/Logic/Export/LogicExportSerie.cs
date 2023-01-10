@@ -39,7 +39,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if (Window.Owner.GetType() == typeof(WindowExportEpisode))
             {
-                foreach(Episode episode in Properties.Settings.Default.ExportEpisode)
+                foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
                 {
                     Properties.Settings.Default.ExportSerie = new() { episode.Saison.Serie };
                     ExportPerso();
@@ -57,25 +57,38 @@ namespace projet_dawan_WPF.Logic.Export
             }
             else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
             {
-                foreach(Acteur acteur in Properties.Settings.Default.ExportActeur)
+                if (Window.Owner.Owner.GetType() == typeof(WindowImportExport))
                 {
-                    foreach(Personnage personnage in acteur.Personnages)
+                    foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
                     {
-                        Properties.Settings.Default.ExportSerie = new() { personnage.Serie };
+                        Properties.Settings.Default.ExportSerie = new() { perso.Serie };
                         ExportSaison();
-                        personnage.Serie = Properties.Settings.Default.ExportSerie[0];
+                        perso.Serie = Properties.Settings.Default.ExportSerie[0];
                     }
                 }
+                else if (Window.Owner.Owner.GetType() == typeof(WindowExportActeur))
+                {
+                    foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
+                    {
+                        foreach (Personnage personnage in acteur.Personnages)
+                        {
+                            Properties.Settings.Default.ExportSerie = new() { personnage.Serie };
+                            ExportSaison();
+                            personnage.Serie = Properties.Settings.Default.ExportSerie[0];
+                        }
+                    }
+                }
+                
                 Close();
             }
         }
 
         private void ExportPerso()
         {
-            if((bool)Window.checkBoxPersonnage.IsChecked)
+            if ((bool)Window.checkBoxPersonnage.IsChecked)
             {
                 PersonnageService service = new();
-                foreach(Serie serie in Properties.Settings.Default.ExportSerie)
+                foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     serie.ShouldExportPersonnage = true;
                     serie.ShouldExportSaison = false;
@@ -97,7 +110,7 @@ namespace projet_dawan_WPF.Logic.Export
 
         private void ExportSaison()
         {
-            if((bool)Window.checkBoxEp.IsChecked)
+            if ((bool)Window.checkBoxEp.IsChecked)
             {
                 SaisonService saisonService = new();
                 Properties.Settings.Default.ExportSerie = service.GetAll();
@@ -113,7 +126,7 @@ namespace projet_dawan_WPF.Logic.Export
 
         private void OpenWindowPersonnage()
         {
-            if((bool)Window.checkBoxPersonnage.IsChecked)
+            if ((bool)Window.checkBoxPersonnage.IsChecked)
             {
                 WindowExportPersonnage window = new()
                 {
@@ -122,7 +135,11 @@ namespace projet_dawan_WPF.Logic.Export
                 window.Closed += Close;
                 window.Show();
             }
-            
+            else
+            {
+                Close();
+            }
+
         }
 
         private void Close(object sender, EventArgs args)

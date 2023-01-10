@@ -33,7 +33,15 @@ namespace projet_dawan_WPF.Logic.Export
 
         public void BtnExport_Click()
         {
-            if (Window.Owner.GetType() == typeof(WindowExportSerie))
+            if (Window.Owner.GetType() == typeof(WindowImportExport))
+            {
+                PersonnageService service= new();
+                Properties.Settings.Default.ExportPersonnage=service.GetAll();
+                ExportActeur();
+                ExportSerie();
+                OpenWindowSerie();
+            }
+            else if (Window.Owner.GetType() == typeof(WindowExportSerie))
             {
                 if (Window.Owner.Owner.GetType() == typeof(WindowExportEpisode))
                 {

@@ -60,11 +60,15 @@ namespace projet_dawan_WPF.Logic.Export
 
         private void OpenWindowExportSerie()
         {
-            WindowExportSerie window = new()
+            if((bool)Window.checkBoxSerie.IsChecked)
             {
-                Owner = Window
-            };
-            window.ShowDialog();
+                WindowExportSerie window = new()
+                {
+                    Owner = Window
+                };
+                window.ShowDialog();
+            }
+            
         }
     }
 }
