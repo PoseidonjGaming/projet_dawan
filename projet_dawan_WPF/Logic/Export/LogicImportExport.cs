@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
@@ -14,7 +15,7 @@ using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Export
 {
-    internal class LogicImportExport
+    internal class LogicImportExport : BaseLogic
     {
         private List<Serie> seriesList = new();
         private List<Episode> episodeList = new();
@@ -22,17 +23,21 @@ namespace projet_dawan_WPF.Logic.Export
         private List<Personnage> personnagesList = new();
         private List<Saison> saisonList = new();
 
-        private SerieService serieService = new();
-        private PersonnageService personnageService = new();
-        private ActeurService acteurService = new();
-        private EpisodeService episodeService = new();
-        private SaisonService saisonService = new();
+        private SerieService serieService;
+        private PersonnageService personnageService;
+        private ActeurService acteurService;
+        private EpisodeService episodeService;
+        private SaisonService saisonService;
 
         public WindowImportExport Window { get; set; }
 
         public LogicImportExport(WindowImportExport window)
         {
             Window = window;
+            serieService = new(Cnx);
+            acteurService = new(Cnx);
+            episodeService = new(Cnx);
+            saisonService = new(Cnx);
         }
 
         public void BtnExport_Click()

@@ -7,10 +7,7 @@ namespace SerieDLL_EF.Service
 {
     public class UserService : Service<UserApp, UserAppRepository>
     {
-        public UserService() : base(new UserAppRepository())
-        {
-
-        }
+        public UserService() : base() { repo = new(Cnx); }
 
         public UserApp GetUser(UserApp userApp)
         {

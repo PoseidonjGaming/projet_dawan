@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
@@ -13,14 +14,15 @@ using System.Windows.Documents;
 
 namespace projet_dawan_WPF.Logic.Export
 {
-    internal class LogicExportSerie
+    internal class LogicExportSerie : BaseLogic
     {
         public WindowExportSerie Window { get; set; }
-        private readonly SerieService service = new();
+        private readonly SerieService service;
 
         public LogicExportSerie(WindowExportSerie window)
         {
             Window = window;
+            service = new(Cnx);
         }
 
         public void Load()
@@ -49,7 +51,7 @@ namespace projet_dawan_WPF.Logic.Export
             }
             else if (Window.Owner.GetType() == typeof(WindowImportExport))
             {
-                SerieService service = new();
+                SerieService service = new(Cnx);
                 Properties.Settings.Default.ExportSerie = service.GetAll();
                 ExportSaison();
                 ExportPerso();
@@ -78,7 +80,7 @@ namespace projet_dawan_WPF.Logic.Export
                         }
                     }
                 }
-                
+
                 Close();
             }
         }
@@ -87,7 +89,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if ((bool)Window.checkBoxPersonnage.IsChecked)
             {
-                PersonnageService service = new();
+                PersonnageService service = new(Cnx);
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     serie.ShouldExportPersonnage = true;
@@ -98,7 +100,7 @@ namespace projet_dawan_WPF.Logic.Export
 
         private void ExportEpisode()
         {
-            EpisodeService service = new();
+            EpisodeService service = new(Cnx);
             foreach (Saison saison in Properties.Settings.Default.ExportSaison)
             {
                 saison.ShouldExportEpisode = true;
@@ -111,7 +113,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if ((bool)Window.checkBoxEp.IsChecked)
             {
-                SaisonService saisonService = new();
+                SaisonService saisonService = new(Cnx);
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     Properties.Settings.Default.ExportSaison = saisonService.GetSaisonsBySerie(serie.Id);

@@ -5,14 +5,18 @@ namespace SerieDLL_EF;
 
 public partial class BddprojetContext : DbContext
 {
-    public BddprojetContext()
+    public string Cnx { get; set; }
+    public BddprojetContext(string cnx)
     {
+        Cnx = cnx;
     }
 
     public BddprojetContext(DbContextOptions<BddprojetContext> options)
         : base(options)
     {
     }
+
+    
 
     public virtual DbSet<Acteur> Acteurs { get; set; }
 
@@ -29,7 +33,7 @@ public partial class BddprojetContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
 
-        optionsBuilder.UseSqlServer("Data Source=P3570-7D6Q;Initial Catalog=serie_list;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
+        optionsBuilder.UseSqlServer(Cnx);
 
     }
 

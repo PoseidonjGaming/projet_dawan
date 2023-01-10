@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SerieDLL_EF\SerieDLL_EF.csproj" />
+    <ProjectReference Include="..\SerieDLL\SerieDLL.csproj" />
   </ItemGroup>
 
   <ItemGroup>

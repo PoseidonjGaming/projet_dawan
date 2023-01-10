@@ -1,6 +1,7 @@
 ﻿using Azure.Identity;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
@@ -10,7 +11,7 @@ using System.Windows.Documents;
 
 namespace projet_dawan_WPF.Logic.Export
 {
-    internal class LogicExportActeur
+    internal class LogicExportActeur : BaseLogic
     {
         public WindowExportActeur Window { get; set; }
 
@@ -27,7 +28,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if (Window.Owner.GetType() == typeof(WindowImportExport))
             {
-                ActeurService service = new();
+                ActeurService service = new(Cnx);
                 Properties.Settings.Default.ExportActeur = service.GetAll();
                 ExportPersonnage();
                 OpenWindowPersonnage();
@@ -55,7 +56,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if ((bool)Window.checkBoxPerso.IsChecked)
             {
-                PersonnageService service = new();
+                PersonnageService service = new(Cnx);
                 foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
                 {
                     acteur.ShouldExportPersonnage = true;

@@ -1,4 +1,5 @@
-﻿using projet_dawan_WPF.Windows.Detail;
+﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Detail;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -7,7 +8,7 @@ using System.Windows.Media.Imaging;
 
 namespace projet_dawan_WPF.Logic.Detail
 {
-    internal class LogicSerie
+    internal class LogicSerie: BaseLogic
     {
         private Serie Serie = new();
         private List<Saison> Saisons = new List<Saison>();
@@ -34,7 +35,7 @@ namespace projet_dawan_WPF.Logic.Detail
             {
 
             }
-            SaisonService service = new SaisonService();
+            SaisonService service = new(Cnx);
             foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
             {
                 Saisons.Add(saison);
@@ -54,7 +55,7 @@ namespace projet_dawan_WPF.Logic.Detail
 
         public void BtnCasting_Click()
         {
-            PersonnageService service = new PersonnageService();
+            PersonnageService service = new(Cnx);
             WindowCasting casting = new(service.GetBySerie(Serie.Id));
             casting.Owner = Window;
             casting.ShowDialog();

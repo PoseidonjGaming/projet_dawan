@@ -7,7 +7,7 @@ namespace projet_dawan_WPF.Windows.Autre
     /// <summary>
     /// Logique d'interaction pour WindowAccueil.xaml
     /// </summary>
-    public partial class WindowAccueil : System.Windows.Window
+    public partial class WindowAccueil : Window
     {
         private LogicAccueil logic;
         public WindowAccueil()

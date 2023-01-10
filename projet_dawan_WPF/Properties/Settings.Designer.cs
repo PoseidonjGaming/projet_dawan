@@ -100,5 +100,19 @@ namespace projet_dawan_WPF.Properties {
                 this["ExportSaison"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BDDProjet;Integrated Security=" +
+            "True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIn" +
+            "tent=ReadWrite;MultiSubnetFailover=False")]
+        public string Cnx {
+            get {
+                return ((string)(this["Cnx"]));
+            }
+            set {
+                this["Cnx"] = value;
+            }
+        }
     }
 }

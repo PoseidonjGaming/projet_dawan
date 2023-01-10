@@ -1,4 +1,5 @@
-﻿using projet_dawan_WPF.Windows.Manage;
+﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
@@ -6,22 +7,23 @@ using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Manage
 {
-    internal class LogicManagePerso
+    internal class LogicManagePerso : BaseLogic
     {
         public WindowManagePersonnages Window { get; set; }
         private List<Personnage> personnages = new List<Personnage>();
         private List<Serie> serieList = new List<Serie>();
         private List<Acteur> acteurList = new List<Acteur>();
-        private PersonnageService servicePerso = new();
+        private PersonnageService servicePerso;
 
         public LogicManagePerso(WindowManagePersonnages form)
         {
             Window = form;
+            servicePerso = new(Cnx);
         }
 
         public void Load()
         {
-            SerieService serieService = new();
+            SerieService serieService = new(Cnx);
             serieList = serieService.GetAll();
             foreach (Serie serie in serieList)
             {
@@ -32,7 +34,7 @@ namespace projet_dawan_WPF.Logic.Manage
                 Window.comboBoxSerie.SelectedIndex = 0;
             }
 
-            ActeurService acteurService = new();
+            ActeurService acteurService = new(Cnx);
             acteurList = acteurService.GetAll();
             foreach (Acteur acteur in acteurList)
             {

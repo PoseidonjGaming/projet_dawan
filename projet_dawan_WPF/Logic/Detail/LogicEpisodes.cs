@@ -1,4 +1,5 @@
-﻿using projet_dawan_WPF.Windows.Detail;
+﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Detail;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -7,23 +8,24 @@ using System.Windows.Media.Imaging;
 
 namespace projet_dawan_WPF.Logic.Detail
 {
-    internal class LogicEpisodes
+    internal class LogicEpisodes : BaseLogic
     {
         private Saison saison;
         private List<Episode> episodes = new List<Episode>();
-        private EpisodeService service = new();
+        private EpisodeService service;
         public WindowEpisode Window { get; set; }
 
         public LogicEpisodes(WindowEpisode window)
         {
             Window = window;
+            service = new(Cnx);
         }
 
         public void Load(Saison saison)
         {
             this.saison = saison;
             episodes = service.GetBySaison(saison.Id);
-            SerieService serieService = new();
+            SerieService serieService = new(Cnx);
             Serie serie = serieService.GetById(saison.SerieId);
 
             BitmapImage bitImg = new BitmapImage();
@@ -63,9 +65,9 @@ namespace projet_dawan_WPF.Logic.Detail
 
         public void Casting_Click()
         {
-            SerieService serieService = new();
-            SaisonService saisonService = new();
-            PersonnageService personnage = new();
+            SerieService serieService = new(Cnx);
+            SaisonService saisonService = new(Cnx);
+            PersonnageService personnage = new(Cnx);
             WindowCasting casting = new(personnage.GetBySerie(saison.SerieId))
             {
                 Owner = Window

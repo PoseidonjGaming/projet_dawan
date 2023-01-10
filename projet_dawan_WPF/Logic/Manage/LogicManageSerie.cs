@@ -1,4 +1,5 @@
-﻿using projet_dawan_WPF.Windows.Manage;
+﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -8,15 +9,16 @@ using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Manage
 {
-    internal class LogicManageSerie
+    internal class LogicManageSerie : BaseLogic
     {
         public WindowManageSeries Window { get; set; }
-        private SerieService serieService = new();
+        private SerieService serieService;
         private List<Serie> serieList = new();
 
         public LogicManageSerie(WindowManageSeries window)
         {
             Window = window;
+            serieService = new(Cnx);
         }
 
         public void Load()
@@ -69,10 +71,10 @@ namespace projet_dawan_WPF.Logic.Manage
             {
                 try
                 {
-                    SerieService service = new();
-                    PersonnageService personnageService = new();
-                    SaisonService saisonService = new();
-                    EpisodeService episodeService = new();
+                    SerieService service = new(Cnx);
+                    PersonnageService personnageService = new(Cnx);
+                    SaisonService saisonService = new(Cnx);
+                    EpisodeService episodeService = new(Cnx);
                     Serie serie = serieList[Window.lstBoxSerie.SelectedIndex];
                     serie.Personnages = personnageService.GetBySerie(serie.Id);
                     serie.Saisons = saisonService.GetSaisonsBySerie(serie.Id);
@@ -93,11 +95,11 @@ namespace projet_dawan_WPF.Logic.Manage
                     serie.Saisons.Clear();
                     service.Delete(serie);
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-               
+
             }
             Populate();
         }

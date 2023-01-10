@@ -1,13 +1,15 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.IO;
+using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Export
 {
-    internal class LogicExportEpisode
+    internal class LogicExportEpisode : BaseLogic
     {
         public WindowExportEpisode Window { get; set; }
 
@@ -20,7 +22,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if (Window.Owner.GetType() == typeof(WindowImportExport))
             {
-                EpisodeService service = new();
+                EpisodeService service = new(Cnx);
                 Properties.Settings.Default.ExportEpisode = service.GetAll();
                 ExportSaison();
                 OpenWindowExportSerie();
@@ -32,7 +34,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if ((bool)Window.checkBoxSerie.IsChecked)
             {
-                SaisonService service = new();
+                SaisonService service = new(Cnx);
                 foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
                 {
                     episode.ShouldExportSaisons = true;
@@ -50,7 +52,7 @@ namespace projet_dawan_WPF.Logic.Export
         private void ExportSerie()
         {
             Properties.Settings.Default.ExportSerie = new();
-            SerieService service = new();
+            SerieService service = new(Cnx);
             foreach (Saison saison in Properties.Settings.Default.ExportSaison)
             {
                 saison.ShouldExportSerie = true;
@@ -60,7 +62,7 @@ namespace projet_dawan_WPF.Logic.Export
 
         private void OpenWindowExportSerie()
         {
-            if((bool)Window.checkBoxSerie.IsChecked)
+            if ((bool)Window.checkBoxSerie.IsChecked)
             {
                 WindowExportSerie window = new()
                 {
@@ -68,7 +70,7 @@ namespace projet_dawan_WPF.Logic.Export
                 };
                 window.ShowDialog();
             }
-            
+
         }
     }
 }

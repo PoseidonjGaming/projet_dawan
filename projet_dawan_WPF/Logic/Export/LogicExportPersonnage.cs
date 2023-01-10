@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using Newtonsoft.Json;
+using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
@@ -10,7 +11,7 @@ using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Export
 {
-    internal class LogicExportPersonnage
+    internal class LogicExportPersonnage: BaseLogic
     {
         public WindowExportPersonnage Window { get; set; }
 
@@ -35,7 +36,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if (Window.Owner.GetType() == typeof(WindowImportExport))
             {
-                PersonnageService service= new();
+                PersonnageService service= new(Cnx);
                 Properties.Settings.Default.ExportPersonnage=service.GetAll();
                 ExportActeur();
                 ExportSerie();
@@ -68,7 +69,7 @@ namespace projet_dawan_WPF.Logic.Export
             }
             else if (Window.Owner.GetType() == typeof(WindowExportActeur))
             {
-                PersonnageService service = new();
+                PersonnageService service = new(Cnx);
                 foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
                 {
                     foreach (Personnage perso in acteur.Personnages)
@@ -88,7 +89,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if ((bool)Window.checkBoxPerso_Acteur.IsChecked)
             {
-                ActeurService service = new();
+                ActeurService service = new(Cnx);
                 foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
                 {
                     perso.ShouldExportActeur = true;
@@ -101,7 +102,7 @@ namespace projet_dawan_WPF.Logic.Export
         {
             if ((bool)Window.checkBoxPerso_Serie.IsChecked)
             {
-                SerieService service = new();
+                SerieService service = new(Cnx);
                 foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
                 {
                     perso.ShouldExportSerie = true;

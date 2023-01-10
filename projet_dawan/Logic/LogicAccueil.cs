@@ -18,7 +18,7 @@ namespace projet_dawan.FormLogic
         }
         public void Load()
         {
-            SerieService service = new();
+            SerieService service = new(Cnx);
             serieList = service.GetAll();
 
             if (Properties.Settings.Default.UserRemain != null)

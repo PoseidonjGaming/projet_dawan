@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
-using SerieDLL_EF.Models;
-using SerieDLL_EF.Service;
+using SerieDLL.Model;
 
 namespace projet_dawan
 {
@@ -23,7 +22,7 @@ namespace projet_dawan
             //UserService service = new();
             //service.Add(user);
 
-            SerieService service = new();
+            SerieService service = new(Cnx);
             List<Serie> series = service.GetAll();
             SaveFileDialog save = new SaveFileDialog()
             {
