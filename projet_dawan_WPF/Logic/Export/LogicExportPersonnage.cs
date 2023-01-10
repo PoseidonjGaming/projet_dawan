@@ -40,6 +40,19 @@ namespace projet_dawan_WPF.Logic.Export
                         episode.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
                     }
                 }
+                else if(Window.Owner.Owner.GetType()==typeof(WindowImportExport))
+                {
+                    foreach(Serie serie in Properties.Settings.Default.ExportSerie)
+                    {
+                        foreach(Personnage perso in serie.Personnages)
+                        {
+                            perso.ShouldExportSerie= false;
+                        }
+                        Properties.Settings.Default.ExportPersonnage = serie.Personnages;
+                        ExportActeur();
+                        serie.Personnages=Properties.Settings.Default.ExportPersonnage;
+                    }
+                }
             }
             Window.Close();
         }
@@ -52,7 +65,6 @@ namespace projet_dawan_WPF.Logic.Export
                 foreach(Personnage perso in Properties.Settings.Default.ExportPersonnage)
                 {
                     perso.ShouldExportActeur = true;
-                    perso.ShouldExportSerie = false;
                     perso.Acteur = service.GetById(perso.ActeurId);
                 }
             }

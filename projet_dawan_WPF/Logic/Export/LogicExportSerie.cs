@@ -8,6 +8,7 @@ using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows;
+using System.Windows.Automation.Provider;
 using System.Windows.Documents;
 
 namespace projet_dawan_WPF.Logic.Export
@@ -41,13 +42,20 @@ namespace projet_dawan_WPF.Logic.Export
                     episode.Saison.Serie = Properties.Settings.Default.ExportSerie[0];
                 }
                 OpenWindowPersonnage();
-                
+            }
+            else if (Window.Owner.GetType() == typeof(WindowImportExport))
+            {
+                SerieService service = new();
+                Properties.Settings.Default.ExportSerie = service.GetAll();
+                ExportSaison();
+                ExportPerso();
+                OpenWindowPersonnage();
             }
         }
 
         private void ExportPerso()
         {
-            if((bool)Window.checkBoxShouldPersonnage.IsChecked)
+            if((bool)Window.checkBoxPersonnage.IsChecked)
             {
                 PersonnageService service = new();
                 foreach(Serie serie in Properties.Settings.Default.ExportSerie)
@@ -56,32 +64,55 @@ namespace projet_dawan_WPF.Logic.Export
                     serie.ShouldExportSaison = false;
                     serie.Personnages = service.GetBySerie(serie.Id);
                 }
-                
-
             }
         }
 
         private void ExportEpisode()
         {
-
+            EpisodeService service = new();
+            foreach (Saison saison in Properties.Settings.Default.ExportSaison)
+            {
+                saison.ShouldExportEpisode = true;
+                saison.ShouldExportSerie = false;
+                saison.Episodes = service.GetBySaison(saison.Id);
+            }
         }
 
         private void ExportSaison()
         {
-            
+            if((bool)Window.checkBoxEp.IsChecked)
+            {
+                SaisonService saisonService = new();
+                Properties.Settings.Default.ExportSerie = service.GetAll();
+                foreach (Serie serie in Properties.Settings.Default.ExportSerie)
+                {
+                    Properties.Settings.Default.ExportSaison = saisonService.GetSaisonsBySerie(serie.Id);
+                    serie.ShouldExportSaison = true;
+                    ExportEpisode();
+                    serie.Saisons = Properties.Settings.Default.ExportSaison;
+                }
+            }
         }
 
         private void OpenWindowPersonnage()
         {
-            WindowExportPersonnage window = new()
+            if((bool)Window.checkBoxPersonnage.IsChecked)
             {
-                Owner = Window
-            };
-            window.Closed += Close;
-            window.Show();
+                WindowExportPersonnage window = new()
+                {
+                    Owner = Window
+                };
+                window.Closed += Close;
+                window.Show();
+            }
+            
         }
 
         private void Close(object sender, EventArgs args)
+        {
+            Window.Close();
+        }
+        private void Close()
         {
             Window.Close();
         }
