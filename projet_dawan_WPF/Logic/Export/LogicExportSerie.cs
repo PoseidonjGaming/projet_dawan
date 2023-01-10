@@ -29,6 +29,10 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 Window.checkBoxEp.IsEnabled = false;
             }
+            else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
+            {
+                Window.checkBoxPersonnage.IsEnabled = false;
+            }
         }
 
         public void BtnExport_Click()
@@ -50,6 +54,19 @@ namespace projet_dawan_WPF.Logic.Export
                 ExportSaison();
                 ExportPerso();
                 OpenWindowPersonnage();
+            }
+            else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
+            {
+                foreach(Acteur acteur in Properties.Settings.Default.ExportActeur)
+                {
+                    foreach(Personnage personnage in acteur.Personnages)
+                    {
+                        Properties.Settings.Default.ExportSerie = new() { personnage.Serie };
+                        ExportSaison();
+                        personnage.Serie = Properties.Settings.Default.ExportSerie[0];
+                    }
+                }
+                Close();
             }
         }
 

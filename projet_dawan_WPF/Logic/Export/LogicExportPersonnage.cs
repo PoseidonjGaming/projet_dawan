@@ -25,6 +25,10 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 Window.checkBoxPerso_Serie.IsEnabled = false;
             }
+            else if (Window.Owner.GetType() == typeof(WindowExportActeur))
+            {
+                Window.checkBoxPerso_Acteur.IsEnabled = false;
+            }
         }
 
         public void BtnExport_Click()
@@ -33,26 +37,41 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 if (Window.Owner.Owner.GetType() == typeof(WindowExportEpisode))
                 {
-                    foreach(Episode episode in Properties.Settings.Default.ExportEpisode)
+                    foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
                     {
                         Properties.Settings.Default.ExportPersonnage = episode.Saison.Serie.Personnages;
                         ExportActeur();
                         episode.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
                     }
                 }
-                else if(Window.Owner.Owner.GetType()==typeof(WindowImportExport))
+                else if (Window.Owner.Owner.GetType() == typeof(WindowImportExport))
                 {
-                    foreach(Serie serie in Properties.Settings.Default.ExportSerie)
+                    foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                     {
-                        foreach(Personnage perso in serie.Personnages)
+                        foreach (Personnage perso in serie.Personnages)
                         {
-                            perso.ShouldExportSerie= false;
+                            perso.ShouldExportSerie = false;
                         }
                         Properties.Settings.Default.ExportPersonnage = serie.Personnages;
                         ExportActeur();
-                        serie.Personnages=Properties.Settings.Default.ExportPersonnage;
+                        serie.Personnages = Properties.Settings.Default.ExportPersonnage;
                     }
                 }
+            }
+            else if (Window.Owner.GetType() == typeof(WindowExportActeur))
+            {
+                PersonnageService service = new();
+                foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
+                {
+                    foreach (Personnage perso in acteur.Personnages)
+                    {
+                        perso.ShouldExportActeur = false;
+                    }
+                    Properties.Settings.Default.ExportPersonnage = acteur.Personnages;
+                    ExportSerie();
+                    acteur.Personnages = Properties.Settings.Default.ExportPersonnage;
+                }
+                OpenWindowSerie();
             }
             Window.Close();
         }
@@ -62,7 +81,7 @@ namespace projet_dawan_WPF.Logic.Export
             if ((bool)Window.checkBoxPerso_Acteur.IsChecked)
             {
                 ActeurService service = new();
-                foreach(Personnage perso in Properties.Settings.Default.ExportPersonnage)
+                foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
                 {
                     perso.ShouldExportActeur = true;
                     perso.Acteur = service.GetById(perso.ActeurId);
@@ -72,7 +91,28 @@ namespace projet_dawan_WPF.Logic.Export
 
         private void ExportSerie()
         {
-           
+            if ((bool)Window.checkBoxPerso_Serie.IsChecked)
+            {
+                SerieService service = new();
+                foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
+                {
+                    perso.ShouldExportSerie = true;
+                    perso.Serie = service.GetById(perso.SerieId);
+                }
+            }
+        }
+
+        private void OpenWindowSerie()
+        {
+            if ((bool)Window.checkBoxPerso_Serie.IsChecked)
+            {
+                WindowExportSerie window = new()
+                {
+                    Owner = Window
+                };
+                window.Closed += Close;
+                window.ShowDialog();
+            }
         }
 
 

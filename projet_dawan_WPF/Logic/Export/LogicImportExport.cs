@@ -47,36 +47,36 @@ namespace projet_dawan_WPF.Logic.Export
                 Export(seriesList, "exportSerie", "Séries");
 
             }
-            //if (Window.checkBoxExportEpisodes.IsChecked == true)
-            //{
-            //    WindowExportEpisode windowExportEpisode = new()
-            //    {
-            //        Owner = Window
-            //    };
-            //    windowExportEpisode.Closed += EpisodeClose;
-            //    windowExportEpisode.ShowDialog();
-            //    Export(episodeList, "exportsEpisode", "Episodes");
-            //}
-            //if (Window.checkBoxExportPersonnages.IsChecked == true)
-            //{
-            //    WindowExportPersonnage windowExportPersonnage = new()
-            //    {
-            //        Owner = Window
-            //    };
-            //    windowExportPersonnage.Closed += PersonnagesClose;
-            //    windowExportPersonnage.ShowDialog();
-            //    Export(personnagesList, "exportsPersonnage", "Personnages");
-            //}
-            //if (Window.checkBoxActeurs.IsChecked == true)
-            //{
-            //    WindowExportActeur windowExportActeur = new()
-            //    {
-            //        Owner = Window
-            //    };
-            //    windowExportActeur.Closed += ActeurClose;
-            //    windowExportActeur.ShowDialog();
-            //    Export(acteurList, "exportsActeurs", "Acteurs");
-            //}
+            if (Window.checkBoxExportEpisodes.IsChecked == true)
+            {
+                WindowExportEpisode windowExportEpisode = new()
+                {
+                    Owner = Window
+                };
+                windowExportEpisode.Closed += EpisodeClose;
+                windowExportEpisode.ShowDialog();
+                Export(episodeList, "exportsEpisode", "Episodes");
+            }
+            if (Window.checkBoxExportPersonnages.IsChecked == true)
+            {
+                WindowExportPersonnage windowExportPersonnage = new()
+                {
+                    Owner = Window
+                };
+                windowExportPersonnage.Closed += PersonnagesClose;
+                windowExportPersonnage.ShowDialog();
+                Export(personnagesList, "exportsPersonnage", "Personnages");
+            }
+            if (Window.checkBoxActeurs.IsChecked == true)
+            {
+                WindowExportActeur windowExportActeur = new()
+                {
+                    Owner = Window
+                };
+                windowExportActeur.Closed += ActeurClose;
+                windowExportActeur.ShowDialog();
+                Export(acteurList, "exportsActeurs", "Acteurs");
+            }
         }
 
         public void BtnImport_Serie_Click()
