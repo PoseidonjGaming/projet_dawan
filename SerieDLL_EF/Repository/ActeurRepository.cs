@@ -1,5 +1,7 @@
 ﻿using SerieDLL_EF.Interface;
 using SerieDLL_EF.Models;
+using System.Linq.Expressions;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SerieDLL_EF.Repository
 {
@@ -8,68 +10,34 @@ namespace SerieDLL_EF.Repository
      * Dans notre cas, elles implèment les interfaces du dossier Interface, pour plus de simplicité
      * Cette classe implémente les interfaces IRepoCRUD et IRepSpecials pour gérer la table acteur
      */
-    public class ActeurRepository :  IRepoCRUD<Acteur>, IRepSpecials<Acteur>
+    public class ActeurRepository : BaseRepo<Acteur>,  IRepoCRUD<Acteur>, IRepSpecials<Acteur>
     {
-        public List<Acteur> GetAll()
+        public ActeurRepository():base()
         {
-            using BddprojetContext context = new();
-            return context.Acteurs.ToList();
+            DbSet = Context.Acteurs;
         }
 
         public Acteur GetById(int id)
         {
-            using BddprojetContext context = new();
-            return context.Acteurs.Where(p => p.Id == id).ToList()[0];
+            return GetById(p=> p.Id==id);
         }
+
         public List<Acteur> GetByTxt(string txt)
         {
-            using BddprojetContext context = new();
-            return context.Acteurs.Where(a => a.Nom.Contains(txt) || a.Prenom.Contains(txt)).ToList();
-        }
-
-        public Acteur Export(int acteur_id)
-        {
-            using BddprojetContext context = new();
-            return context.Acteurs.Where(a => a.Id == acteur_id).ToList()[0];
-        }
-
-        public void Add(Acteur item)
-        {
-            using BddprojetContext context = new();
-            context.Acteurs.Add(item);
-            context.SaveChanges();
-        }
-
-        public void Update(Acteur item)
-        {
-            using BddprojetContext context = new();
-            context.Acteurs.Update(item);
-            context.SaveChanges();
-        }
-
-        public void Delete(Acteur item)
-        {
-            using BddprojetContext context = new();
-            context.Acteurs.Remove(item);
-            context.SaveChanges();
+            return GetByTxt(a => a.Nom.Contains(txt) || a.Prenom.Contains(txt));
         }
 
         public bool CompareTo(Acteur item)
         {
-            using BddprojetContext context = new();
-            Acteur? acteur = context.Acteurs.Where(a => a.Nom == item.Nom && a.Prenom == item.Prenom).FirstOrDefault();
-            return acteur != null;
+            return CompareTo(a => a.Nom == item.Nom && a.Prenom == item.Prenom);
         }
 
         public Acteur GetCompareTo(Acteur item)
         {
-            using BddprojetContext context = new();
-            return context.Acteurs.Where(a => a.Nom == item.Nom && a.Prenom == item.Prenom).FirstOrDefault();
+            
+            return GetCompareTo(a => a.Nom == item.Nom && a.Prenom == item.Prenom);
         }
 
-        public bool CompareTo<T>(T obj)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

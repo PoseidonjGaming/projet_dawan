@@ -1,4 +1,6 @@
-﻿namespace SerieDLL_EF.Interface
+﻿using System.Linq.Expressions;
+
+namespace SerieDLL_EF.Interface
 {
     /*
      * Contient les méthodes CRUD classiques qui sont implémentées dans les répository
