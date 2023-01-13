@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="WindowManageActeur" Height="426" Width="215" WindowStartupLocation="CenterOwner">
+        Title="WindowManageActeur" Height="430" Width="215" WindowStartupLocation="CenterOwner">
     <Grid x:Name="main">
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>
-            <RowDefinition Height="5*"></RowDefinition>
-            <RowDefinition Height="8*"></RowDefinition>
+            <RowDefinition Height="215*"></RowDefinition>
+            <RowDefinition Height="179*"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
         <GroupBox Grid.Row="1" Header="Gérer un acteur" Margin="10,0,10,10" >
@@ -44,13 +44,13 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btnAdd" Content="Ajouter"  Click="btnAdd_Click"/>
+                    <Button x:Name="btnAdd" Content="Ajouter"  Click="btnAdd_Click" Margin="10" VerticalContentAlignment="Center"/>
                     <Button x:Name="btnSup" Content="Supprimer" Grid.Column="1"  Click="btnSup_Click"></Button>
                 </Grid>
                 <Button x:Name="btnNewActeur" Content="Nouvel Acteur" Grid.Row="3" Click="btnNewActeur_Click"></Button>
             </Grid>
-            
+
         </GroupBox>
-        <ListBox x:Name="lstBoxActeur" Grid.Row="2" Margin="5" SelectionChanged="lstBoxActeur_SelectionChanged"></ListBox>
+        <ListBox x:Name="lstBoxActeur" Grid.Row="2" Margin="5,5,5,5" SelectionChanged="lstBoxActeur_SelectionChanged"></ListBox>
     </Grid>
 </Window>

@@ -11,11 +11,11 @@ namespace SerieDLL_EF.Repository
     public class BaseRepo<TClass> where TClass : class
     {
         protected DbSet<TClass> DbSet;
-        protected BddprojetContext Context = new();
+        protected BddprojetContext Context;
 
         public BaseRepo()
         {
-            
+            Context= new BddprojetContext();
         }
 
         public void Add(TClass item)

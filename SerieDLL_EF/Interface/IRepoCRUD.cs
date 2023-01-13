@@ -23,8 +23,10 @@ namespace SerieDLL_EF.Interface
         //Supprime l'objet de type T dans la bdd
         void Delete(T item);
 
+        //Vérifie si l'objet de type T existe dans la bdd
         bool CompareTo(T obj);
 
+        //Vérifie si l'objet de type T existe dans la bdd et le récupère
         T? GetCompareTo(T obj);
     }
 }
