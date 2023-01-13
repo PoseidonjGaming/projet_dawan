@@ -32,9 +32,8 @@ namespace SerieDLL_EF.Repository
             return CompareTo(a => a.Nom == item.Nom && a.Prenom == item.Prenom);
         }
 
-        public Acteur GetCompareTo(Acteur item)
+        public Acteur? GetCompareTo(Acteur item)
         {
-            
             return GetCompareTo(a => a.Nom == item.Nom && a.Prenom == item.Prenom);
         }
 
