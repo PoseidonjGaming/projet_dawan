@@ -14,51 +14,74 @@ namespace SerieDLL_EF.Repository
      */
     public class ActeurRepository : IRepoCRUD<Acteur>, IRepSpecials<Acteur>
     {
-        private readonly BaseRepo<Acteur> BaseRepo;
-        public ActeurRepository()
-        {
-            BaseRepo = new BaseRepo<Acteur>();
-            BaseRepo.DbSet = BaseRepo.Context.Acteurs;
-        }
 
         public List<Acteur> GetAll()
         {
-            return BaseRepo.GetAll();
+            using (BddprojetContext context = new())
+            {
+                return context.Acteurs.ToList();
+            };
+
         }
 
         public Acteur GetById(int id)
         {
-            return BaseRepo.GetById(p => p.Id == id);
+            using (BddprojetContext context = new())
+            {
+                return context.Acteurs.Where(a => a.Id == id).FirstOrDefault();
+            };
         }
 
         public List<Acteur> GetByTxt(string txt)
         {
-            return BaseRepo.GetByTxt(a => a.Nom.Contains(txt) || a.Prenom.Contains(txt));
+            using (BddprojetContext context = new())
+            {
+                return context.Acteurs.Where(a => a.Nom.Contains(txt) || a.Prenom.Contains(txt)).ToList();
+            };
         }
 
         public bool CompareTo(Acteur item)
         {
-            return BaseRepo.CompareTo(a => a.Nom == item.Nom && a.Prenom == item.Prenom);
+            using (BddprojetContext context = new())
+            {
+                return context.Acteurs.Where(a => a.Nom == item.Nom && a.Prenom == item.Prenom).FirstOrDefault() != null;
+            };
         }
 
         public Acteur? GetCompareTo(Acteur item)
         {
-            return BaseRepo.GetCompareTo(a => a.Nom == item.Nom && a.Prenom == item.Prenom);
+            using (BddprojetContext context = new())
+            {
+                return context.Acteurs.Where(a => a.Nom == item.Nom && a.Prenom == item.Prenom).FirstOrDefault();
+            };
         }
 
         public void Add(Acteur item)
         {
-            BaseRepo.Add(item);
+            using (BddprojetContext context = new())
+            {
+                context.Acteurs.Add(item);
+                context.SaveChanges();
+            };
+            
         }
 
         public void Update(Acteur item)
         {
-            BaseRepo.Update(item);
+            using (BddprojetContext context = new())
+            {
+                context.Acteurs.Update(item);
+                context.SaveChanges();
+            };
         }
 
         public void Delete(Acteur item)
         {
-            BaseRepo.Delete(item);
+            using (BddprojetContext context = new())
+            {
+                context.Acteurs.Remove(item);
+                context.SaveChanges();
+            };
         }
 
 
