@@ -9,7 +9,7 @@ public partial class BddprojetContext : DbContext
 
     public BddprojetContext()
     {
-        connection = new("(localdb)\\MSSQLLocalDB", "BDDProjet");
+        connection = new("(localdb)\\MSSQLLocalDB", "BDDProjetTest");
        
     }
 
