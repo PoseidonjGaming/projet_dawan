@@ -89,5 +89,16 @@ namespace projet_dawan_WPF.Properties {
                 this["ExportPersonnage"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Collections.Generic.List<SerieDLL_EF.Models.Saison> ExportSaison {
+            get {
+                return ((global::System.Collections.Generic.List<SerieDLL_EF.Models.Saison>)(this["ExportSaison"]));
+            }
+            set {
+                this["ExportSaison"] = value;
+            }
+        }
     }
 }

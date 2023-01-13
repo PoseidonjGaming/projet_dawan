@@ -1,11 +1,8 @@
-﻿using Microsoft.Win32;
-using Newtonsoft.Json;
-using projet_dawan_WPF.Windows.Autre;
+﻿using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
-using System.IO;
 
 namespace projet_dawan_WPF.Logic.Export
 {
@@ -32,56 +29,55 @@ namespace projet_dawan_WPF.Logic.Export
 
         public void BtnExport_Click()
         {
-            PersonnageService service = new();
-            if (Window.Owner.GetType() == typeof(WindowAccueil))
+            if (Window.Owner.GetType() == typeof(WindowImportExport))
             {
+                PersonnageService service = new();
                 Properties.Settings.Default.ExportPersonnage = service.GetAll();
                 ExportActeur();
                 ExportSerie();
-                Export();
+                OpenWindowSerie();
             }
             else if (Window.Owner.GetType() == typeof(WindowExportSerie))
             {
                 if (Window.Owner.Owner.GetType() == typeof(WindowExportEpisode))
                 {
-                    foreach (Episode ep in Properties.Settings.Default.ExportEpisode)
+                    foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
                     {
-                        Properties.Settings.Default.ExportPersonnage = ep.Saison.Serie.Personnages;
+                        Properties.Settings.Default.ExportPersonnage = episode.Saison.Serie.Personnages;
                         ExportActeur();
-                        ep.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
+                        episode.Saison.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
                     }
-
-                    Window.Close();
-
                 }
-                else if (Window.Owner.Owner.GetType() == typeof(WindowAccueil))
+                else if (Window.Owner.Owner.GetType() == typeof(WindowImportExport))
                 {
                     foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                     {
+                        foreach (Personnage perso in serie.Personnages)
+                        {
+                            perso.ShouldExportSerie = false;
+                        }
                         Properties.Settings.Default.ExportPersonnage = serie.Personnages;
                         ExportActeur();
                         serie.Personnages = Properties.Settings.Default.ExportPersonnage;
                     }
-                    Window.Close();
                 }
-
             }
             else if (Window.Owner.GetType() == typeof(WindowExportActeur))
             {
+                PersonnageService service = new();
                 foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
                 {
+                    foreach (Personnage perso in acteur.Personnages)
+                    {
+                        perso.ShouldExportActeur = false;
+                    }
                     Properties.Settings.Default.ExportPersonnage = acteur.Personnages;
                     ExportSerie();
                     acteur.Personnages = Properties.Settings.Default.ExportPersonnage;
                 }
-                WindowExportSerie window = new()
-                {
-                    Owner = Window,
-                };
-                window.Closed += Close;
-                window.ShowDialog();
-
+                OpenWindowSerie();
             }
+            Window.Close();
         }
 
         private void ExportActeur()
@@ -93,7 +89,6 @@ namespace projet_dawan_WPF.Logic.Export
                 {
                     perso.ShouldExportActeur = true;
                     perso.Acteur = service.GetById(perso.ActeurId);
-                    perso.Acteur.ShouldExportPersonnage = false;
                 }
             }
         }
@@ -111,23 +106,19 @@ namespace projet_dawan_WPF.Logic.Export
             }
         }
 
-        private void Export()
+        private void OpenWindowSerie()
         {
-            SaveFileDialog save = new SaveFileDialog()
+            if ((bool)Window.checkBoxPerso_Serie.IsChecked)
             {
-                InitialDirectory = Directory.GetCurrentDirectory(),
-                FileName = "exports.json",
-                Filter = "File JSON|*json",
-                Title = "Save WatchList"
-            };
-
-            if ((bool)save.ShowDialog())
-            {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.ExportPersonnage, Formatting.Indented));
+                WindowExportSerie window = new()
+                {
+                    Owner = Window
+                };
+                window.Closed += Close;
+                window.ShowDialog();
             }
-
-            Window.Close();
         }
+
 
         private void Close(object sender, EventArgs e)
         {

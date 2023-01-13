@@ -21,5 +21,17 @@ namespace SerieDLL_EF.Service
         {
             return repo.GetByTxt(text);
         }
+
+        //Vérifie si l'épisode passé en paramètre existe dans la base de donnée.
+        //Revoie true si elle existe et false dans le cas contraire
+        public bool CompareTo(Episode episode)
+        {
+            return repo.CompareTo(episode);
+        }
+
+        public Episode GetCompareTo(Episode episode)
+        {
+            return repo.GetCompareTo(episode);
+        }
     }
 }

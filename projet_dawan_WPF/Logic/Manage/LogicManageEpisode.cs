@@ -1,4 +1,5 @@
-﻿using projet_dawan_WPF.Windows.Manage;
+﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ namespace projet_dawan_WPF.Logic.Manage
 {
     internal class LogicManageEpisode
     {
-        private EpisodeService service = new();
+        private EpisodeService service;
         private List<Episode> episodes = new List<Episode>();
         private List<Serie> serieList = new List<Serie>();
         private Saison saison = new();
@@ -19,6 +20,7 @@ namespace projet_dawan_WPF.Logic.Manage
         public LogicManageEpisode(WindowManageEpisodes window)
         {
             Window = window;
+            service = new();
         }
 
         public void Load()
@@ -30,14 +32,14 @@ namespace projet_dawan_WPF.Logic.Manage
                 Window.cmbSerie.Items.Add(serie.Nom);
             }
 
-            SaisonService saisonService = new SaisonService();
+            SaisonService saisonService = new(); ;
 
             Populate();
         }
 
         public void BtnAjouter_Click()
         {
-            SaisonService saisonService = new SaisonService();
+            SaisonService saisonService = new();
             List<Saison> saisonList = saisonService.GetSaisonsBySerie(serieList[Window.cmbSerie.SelectedIndex].Id);
             if (Window.txtBoxNom.Text != string.Empty && Window.txtBoxResume.Text != string.Empty
                )
@@ -88,7 +90,7 @@ namespace projet_dawan_WPF.Logic.Manage
 
         public void CmbSerie_SelectedIndexChanged()
         {
-            SaisonService saisonService = new SaisonService();
+            SaisonService saisonService = new();
             Window.numSaison.Text = saisonService.GetSaisonsBySerie(serieList[Window.cmbSerie.SelectedIndex].Id).MaxBy(e => e.Numero).Numero.ToString();
         }
 

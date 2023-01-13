@@ -8,7 +8,7 @@ namespace SerieDLL_EF.Service
     */
     public class SerieService : Service<Serie, SerieRepository>
     {
-        public SerieService() : base(new SerieRepository()) { }
+        public SerieService() : base(new SerieRepository()) {  }
 
         //Récupère la liste des séries dont l'id est présent dans la liste toWatch
         public List<Serie> ExportWatchList(List<int> toWatch)
@@ -21,6 +21,14 @@ namespace SerieDLL_EF.Service
         {
             return repo.GetByTxt(text);
         }
+
+        public List<Serie> LastAdd()
+        {
+            return repo.LastAdd();
+        }
+
+
+
 
 
 

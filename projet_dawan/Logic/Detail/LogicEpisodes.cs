@@ -3,7 +3,7 @@ using projet_dawan_WinForm;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 
-namespace projet_dawan.FormLogic
+namespace projet_dawan.Logic.Detail
 {
     internal class LogicEpisodes
     {

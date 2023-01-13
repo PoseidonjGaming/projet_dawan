@@ -1,4 +1,4 @@
-﻿using projet_dawan.FormLogic;
+﻿using projet_dawan.Logic.Detail;
 using SerieDLL_EF.Models;
 
 namespace projet_dawan.Forms

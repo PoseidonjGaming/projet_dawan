@@ -9,10 +9,7 @@ namespace SerieDLL_EF.Service
     public class PersonnageService : Service<Personnage, PersonnageRepository>
     {
 
-        public PersonnageService() : base(new PersonnageRepository())
-        {
-
-        }
+        public PersonnageService() : base(new PersonnageRepository()) { }
 
         //Récupère la liste des personnages en fonction de la série dont l'id est passé en paramètre
         public List<Personnage> GetBySerie(int serie_id)
@@ -32,15 +29,17 @@ namespace SerieDLL_EF.Service
             return repo.GetByActeur(actur_id);
         }
 
-        public ICollection<Personnage> Export(ICollection<Personnage> list, bool shouldActeur)
+        //Vérifie si le personnage passé en paramètre existe dans la base de donnée.
+        //Revoie true si elle existe et false dans le cas contraire
+        public bool CompareTo(Personnage personnage)
         {
-            ActeurService service = new ActeurService();
-            foreach (Personnage person in list)
-            {
-                person.ShouldExportActeur = shouldActeur;
-                person.Acteur = service.GetById(person.ActeurId);
-            }
-            return list;
+            return repo.CompareTo(personnage);
         }
+
+        public Personnage GetCompareTo(Personnage personnage)
+        {
+            return repo.GetCompareTo(personnage);
+        }
+
     }
 }

@@ -7,12 +7,15 @@ public partial class BddprojetContext : DbContext
 {
     public BddprojetContext()
     {
+
     }
 
     public BddprojetContext(DbContextOptions<BddprojetContext> options)
         : base(options)
     {
     }
+
+
 
     public virtual DbSet<Acteur> Acteurs { get; set; }
 

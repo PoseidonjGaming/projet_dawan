@@ -1,4 +1,5 @@
-﻿using projet_dawan_WPF.Windows.Manage;
+﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
@@ -10,12 +11,13 @@ namespace projet_dawan_WPF.Logic.Manage
         public WindowManageActeur Window { get; set; }
 
         private Acteur currentActeur;
-        private ActeurService service = new();
+        private ActeurService service;
         private List<Acteur> acteurs = new();
         public LogicManageActeur(WindowManageActeur window)
         {
             Window = window;
             currentActeur = new Acteur();
+            service = new();
         }
 
         public void Load()
@@ -38,6 +40,8 @@ namespace projet_dawan_WPF.Logic.Manage
                 currentActeur = acteurs[Window.lstBoxActeur.SelectedIndex];
                 Window.txtBoxNom.Text = currentActeur.Nom;
                 Window.txtBoxPrenom.Text = currentActeur.Prenom;
+
+
             }
         }
 

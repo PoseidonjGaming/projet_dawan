@@ -3,7 +3,7 @@ using projet_dawan_WinForm;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 
-namespace projet_dawan.FormLogic
+namespace projet_dawan.Logic.Autre
 {
     internal class LogicAccueil
     {
@@ -34,7 +34,7 @@ namespace projet_dawan.FormLogic
             for (int i = 0; i < I; i++)
             {
                 PictureBox pictureBox = new PictureBox();
-                pictureBox.Location = new Point((95 * i * 2) + 25, 50);
+                pictureBox.Location = new Point(95 * i * 2 + 25, 50);
                 pictureBox.Size = new Size(138, 170);
                 pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox.Name = serieList[i].Nom;
@@ -44,7 +44,7 @@ namespace projet_dawan.FormLogic
                 Form.Controls[Form.Controls.IndexOf(Form.GetGroupBox())].Controls.Add(pictureBox);
 
                 Button btnSerie = new Button();
-                btnSerie.Location = new Point((95 * i * 2) + 25, 225);
+                btnSerie.Location = new Point(95 * i * 2 + 25, 225);
                 btnSerie.Size = new Size(138, 50);
                 btnSerie.Text = serieList[i].Nom;
                 btnSerie.Click += Serie_Click;

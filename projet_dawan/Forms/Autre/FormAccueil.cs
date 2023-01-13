@@ -1,4 +1,4 @@
-﻿using projet_dawan.FormLogic;
+﻿using projet_dawan.Logic.Autre;
 
 namespace projet_dawan
 {

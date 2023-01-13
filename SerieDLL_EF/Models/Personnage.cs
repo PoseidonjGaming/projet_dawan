@@ -24,9 +24,11 @@ public partial class Personnage
     public string Nom { get; set; } = null!;
 
     [DataMember]
+    [NotMapped]
     public virtual Acteur Acteur { get; set; } = null!;
 
     [DataMember]
+    [NotMapped]
     public virtual Serie Serie { get; set; } = null!;
 
     [NotMapped]

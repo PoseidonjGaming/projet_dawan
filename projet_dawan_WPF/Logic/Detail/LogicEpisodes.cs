@@ -1,4 +1,5 @@
-﻿using projet_dawan_WPF.Windows.Detail;
+﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Detail;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
@@ -11,12 +12,13 @@ namespace projet_dawan_WPF.Logic.Detail
     {
         private Saison saison;
         private List<Episode> episodes = new List<Episode>();
-        private EpisodeService service = new();
+        private EpisodeService service;
         public WindowEpisode Window { get; set; }
 
         public LogicEpisodes(WindowEpisode window)
         {
             Window = window;
+            service = new();
         }
 
         public void Load(Saison saison)

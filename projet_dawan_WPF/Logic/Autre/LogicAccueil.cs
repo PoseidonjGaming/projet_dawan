@@ -16,19 +16,18 @@ namespace projet_dawan_WPF.Logic.Autre
 {
     internal class LogicAccueil
     {
-        private List<Serie> serieList = new List<Serie>();
+        private List<Serie> serieList = new();
         private UserApp user;
+        private Grid Grid;
         public WindowAccueil Window { get; set; }
         public LogicAccueil(WindowAccueil form)
         {
             user = Properties.Settings.Default.UserRemain;
             Window = form;
+            Grid = new();
         }
         public void Load()
         {
-            SerieService service = new();
-            serieList = service.GetAll();
-
             if (Properties.Settings.Default.UserRemain != null)
             {
                 Window.menuItemSeConnecter.Header = "Déconnexion";
@@ -48,26 +47,39 @@ namespace projet_dawan_WPF.Logic.Autre
                 Window.menuGestion.IsEnabled = false;
                 Window.menuItemSeConnecter.Header = "Connexion";
             }
+            Refresh();
 
+        }
 
+        private void Refresh()
+        {
 
-            Populate(4);
+            Window.GridMain.Children.Remove(Grid);
+
+            SerieService service = new();
+            serieList = service.LastAdd();
+
+            Populate(serieList.Count);
         }
 
         private void Populate(int I)
         {
             for (int i = 0; i < I; i++)
             {
-                Grid grid = new Grid();
-                RowDefinition rowImg = new();
-                rowImg.Height = new GridLength(225, GridUnitType.Star);
-                RowDefinition rowBtn = new();
-                rowBtn.Height = new GridLength(30, GridUnitType.Pixel);
-                grid.RowDefinitions.Add(rowImg);
-                grid.RowDefinitions.Add(rowBtn);
+                Grid=new();
+                RowDefinition rowImg = new()
+                {
+                    Height = new GridLength(225, GridUnitType.Star)
+                };
+                RowDefinition rowBtn = new()
+                {
+                    Height = new GridLength(30, GridUnitType.Pixel)
+                };
+                Grid.RowDefinitions.Add(rowImg);
+                Grid.RowDefinitions.Add(rowBtn);
 
                 Image img = new();
-                BitmapImage bitImg = new BitmapImage();
+                BitmapImage bitImg = new();
                 try
                 {
                     bitImg.BeginInit();
@@ -84,25 +96,24 @@ namespace projet_dawan_WPF.Logic.Autre
                 img.Stretch = Stretch.Fill;
 
                 Grid.SetRow(img, 0);
-                grid.Children.Add(img);
+                Grid.Children.Add(img);
 
                 Button btnSerie = new Button();
                 btnSerie.Content = serieList[i].Nom;
                 btnSerie.Margin = new Thickness(10, 0, 10, 10);
                 btnSerie.Click += Serie_Click;
                 Grid.SetRow(btnSerie, 1);
-                grid.Children.Add(btnSerie);
+                Grid.Children.Add(btnSerie);
 
-                Grid.SetColumn(grid, 1 + i);
-                Grid.SetRow(grid, 2);
-                Window.GridMain.Children.Add(grid);
+                Grid.SetColumn(Grid, 1 + i);
+                Grid.SetRow(Grid, 2);
+                Window.GridMain.Children.Add(Grid);
             }
         }
 
         private void Serie_Click(object sender, EventArgs e)
         {
-            Button? button = sender as Button;
-            if (button != null)
+            if (sender is Button button)
             {
                 Serie? serie = serieList.Find(s => s.Nom == button.Content);
                 if (serie != null)
@@ -118,8 +129,8 @@ namespace projet_dawan_WPF.Logic.Autre
             }
             else
             {
-                Image? pictureBox = sender as Image;
-                Serie? serie = serieList.Find(s => s.Nom == pictureBox.Name);
+                Image? img = sender as Image;
+                Serie? serie = serieList.Find(s => s.Nom == img.Name);
                 if (serie != null)
                 {
                     WindowSerie formSerie = new(serie)
@@ -138,8 +149,10 @@ namespace projet_dawan_WPF.Logic.Autre
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
-                WindowManageActeur windowGereActeur = new();
-                windowGereActeur.Owner = Window;
+                WindowManageActeur windowGereActeur = new()
+                {
+                    Owner = Window
+                };
                 windowGereActeur.ShowDialog();
             }
             else
@@ -167,7 +180,6 @@ namespace projet_dawan_WPF.Logic.Autre
         private void OpenFormBibli(string text)
         {
 
-            SerieService service = new();
             WindowBibliotheque WindowsBibliotheque = new(text)
             {
                 Owner = Window
@@ -237,10 +249,12 @@ namespace projet_dawan_WPF.Logic.Autre
                     Owner = Window
                 };
                 window.ShowDialog();
+
+                Refresh();
             }
         }
 
-        public void gererPersonnagesToolStripMenuItem_Click()
+        public void GererPersonnagesToolStripMenuItem_Click()
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
@@ -278,15 +292,6 @@ namespace projet_dawan_WPF.Logic.Autre
 
         }
 
-        public void MenuItemImport_Export_Serie_Click()
-        {
-            WindowExportSerie window = new()
-            {
-                Owner = Window
-            };
-            window.ShowDialog();
-        }
-
         private void FormClose(object sender, EventArgs e)
         {
             user = Properties.Settings.Default.UserRemain;
@@ -306,31 +311,14 @@ namespace projet_dawan_WPF.Logic.Autre
 
         }
 
-        public void menuItemImport_Export_Perso_Click()
+        public void MenuItemImport_Export_Click()
         {
-            if (user.IsGranted(Roles.SuperAdmin))
+            WindowImportExport window = new()
             {
-                WindowExportPersonnage window = new()
-                {
-                    Owner = Window
-                };
-                window.Show();
-            }
-
+                Owner = Window
+            };
+            window.ShowDialog();
+            Refresh();
         }
-
-        public void menuItemImport_Export_Episode_Click()
-        {
-            if (user.IsGranted(Roles.SuperAdmin))
-            {
-                WindowExportEpisode window = new()
-                {
-                    Owner = Window
-                };
-                window.ShowDialog();
-            }
-
-        }
-
     }
 }

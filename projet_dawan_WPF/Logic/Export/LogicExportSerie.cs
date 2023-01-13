@@ -1,22 +1,20 @@
-﻿using Microsoft.Win32;
-using Newtonsoft.Json;
-using projet_dawan_WPF.Windows.Autre;
+﻿using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
-using System.IO;
 
 namespace projet_dawan_WPF.Logic.Export
 {
     internal class LogicExportSerie
     {
         public WindowExportSerie Window { get; set; }
-        private readonly SerieService service = new();
+        private readonly SerieService service;
 
         public LogicExportSerie(WindowExportSerie window)
         {
             Window = window;
+            service = new();
         }
 
         public void Load()
@@ -27,26 +25,13 @@ namespace projet_dawan_WPF.Logic.Export
             }
             else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
             {
-                Window.checkBoxShouldPersonnage.IsEnabled = false;
+                Window.checkBoxPersonnage.IsEnabled = false;
             }
         }
 
         public void BtnExport_Click()
         {
-            PersonnageService Personnageservice = new();
-            if (Window.Owner.GetType() == typeof(WindowAccueil))
-            {
-                Properties.Settings.Default.ExportSerie = service.GetAll();
-                ExportEpisode();
-                ExportPerso();
-                WindowExportPersonnage windowExportPersonnage = new()
-                {
-                    Owner = Window
-                };
-                windowExportPersonnage.ShowDialog();
-                Export();
-            }
-            else if (Window.Owner.GetType() == typeof(WindowExportEpisode))
+            if (Window.Owner.GetType() == typeof(WindowExportEpisode))
             {
                 foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
                 {
@@ -54,89 +39,108 @@ namespace projet_dawan_WPF.Logic.Export
                     ExportPerso();
                     episode.Saison.Serie = Properties.Settings.Default.ExportSerie[0];
                 }
-
-                WindowExportPersonnage window = new()
-                {
-                    Owner = Window
-                };
-                window.Closed += FormExportPersoClose;
-                window.Show();
-
-
+                OpenWindowPersonnage();
+            }
+            else if (Window.Owner.GetType() == typeof(WindowImportExport))
+            {
+                SerieService service = new();
+                Properties.Settings.Default.ExportSerie = service.GetAll();
+                ExportSaison();
+                ExportPerso();
+                OpenWindowPersonnage();
             }
             else if (Window.Owner.GetType() == typeof(WindowExportPersonnage))
             {
-                foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
+                if (Window.Owner.Owner.GetType() == typeof(WindowImportExport))
                 {
-                    foreach (Personnage perso in acteur.Personnages)
+                    foreach (Personnage perso in Properties.Settings.Default.ExportPersonnage)
                     {
                         Properties.Settings.Default.ExportSerie = new() { perso.Serie };
-                        ExportEpisode();
+                        ExportSaison();
                         perso.Serie = Properties.Settings.Default.ExportSerie[0];
                     }
                 }
+                else if (Window.Owner.Owner.GetType() == typeof(WindowExportActeur))
+                {
+                    foreach (Acteur acteur in Properties.Settings.Default.ExportActeur)
+                    {
+                        foreach (Personnage personnage in acteur.Personnages)
+                        {
+                            Properties.Settings.Default.ExportSerie = new() { personnage.Serie };
+                            ExportSaison();
+                            personnage.Serie = Properties.Settings.Default.ExportSerie[0];
+                        }
+                    }
+                }
 
-                Window.Close();
+                Close();
             }
         }
 
         private void ExportPerso()
         {
-            PersonnageService service = new();
-            if ((bool)Window.checkBoxShouldPersonnage.IsChecked)
+            if ((bool)Window.checkBoxPersonnage.IsChecked)
             {
+                PersonnageService service = new();
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
                     serie.ShouldExportPersonnage = true;
+                    serie.ShouldExportSaison = false;
                     serie.Personnages = service.GetBySerie(serie.Id);
                 }
             }
-
         }
 
         private void ExportEpisode()
         {
+            EpisodeService service = new();
+            foreach (Saison saison in Properties.Settings.Default.ExportSaison)
+            {
+                saison.ShouldExportEpisode = true;
+                saison.ShouldExportSerie = false;
+                saison.Episodes = service.GetBySaison(saison.Id);
+            }
+        }
+
+        private void ExportSaison()
+        {
             if ((bool)Window.checkBoxEp.IsChecked)
             {
-                SaisonService service = new();
-                EpisodeService episodeService = new();
+                SaisonService saisonService = new();
+                Properties.Settings.Default.ExportSerie = service.GetAll();
                 foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                 {
+                    Properties.Settings.Default.ExportSaison = saisonService.GetSaisonsBySerie(serie.Id);
                     serie.ShouldExportSaison = true;
-                    serie.Saisons = service.GetSaisonsBySerie(serie.Id);
-                    foreach (Saison saison in serie.Saisons)
-                    {
-                        saison.Episodes = episodeService.GetBySaison(saison.Id);
-                        saison.ShouldExportSerie = false;
-                        saison.ShouldExportEpisode = true;
-                        foreach (Episode ep in saison.Episodes)
-                        {
-                            ep.ShouldExportSaisons = false;
-                        }
-                    }
+                    ExportEpisode();
+                    serie.Saisons = Properties.Settings.Default.ExportSaison;
                 }
             }
         }
 
-        private void Export()
+        private void OpenWindowPersonnage()
         {
-            SaveFileDialog save = new SaveFileDialog()
+            if ((bool)Window.checkBoxPersonnage.IsChecked)
             {
-                InitialDirectory = Directory.GetCurrentDirectory(),
-                FileName = "exports.json",
-                Filter = "File JSON|*json",
-                Title = "Save WatchList"
-            };
-
-            if ((bool)save.ShowDialog())
+                WindowExportPersonnage window = new()
+                {
+                    Owner = Window
+                };
+                window.Closed += Close;
+                window.Show();
+            }
+            else
             {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.ExportSerie, Formatting.Indented));
+                Close();
             }
 
-            Window.Close();
         }
 
-        private void FormExportPersoClose(object sender, EventArgs e)
+        private void Close(object sender, EventArgs args)
+        {
+            Window.Close();
+        }
+        private void Close()
         {
             Window.Close();
         }

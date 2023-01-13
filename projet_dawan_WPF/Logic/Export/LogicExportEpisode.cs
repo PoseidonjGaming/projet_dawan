@@ -1,9 +1,7 @@
-﻿using Microsoft.Win32;
-using Newtonsoft.Json;
+﻿using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
-using System.IO;
 
 namespace projet_dawan_WPF.Logic.Export
 {
@@ -18,35 +16,50 @@ namespace projet_dawan_WPF.Logic.Export
 
         public void BtnExport_Click()
         {
-            EpisodeService service = new();
-            Properties.Settings.Default.ExportEpisode = service.GetAll();
-            ExportSaison();
-            ExportSerie();
-            Export();
+            if (Window.Owner.GetType() == typeof(WindowImportExport))
+            {
+                EpisodeService service = new();
+                Properties.Settings.Default.ExportEpisode = service.GetAll();
+                ExportSaison();
+                OpenWindowExportSerie();
+                Window.Close();
+            }
         }
 
         private void ExportSaison()
         {
-            SaisonService service = new();
-            foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
+            if ((bool)Window.checkBoxSerie.IsChecked)
             {
-                episode.ShouldExportSaisons = true;
-                episode.Saison = service.GetById(episode.SaisonId);
+                SaisonService service = new();
+                foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
+                {
+                    episode.ShouldExportSaisons = true;
+                    episode.Saison = service.GetById(episode.SaisonId);
+                    episode.Saison.ShouldExportEpisode = false;
+                    Properties.Settings.Default.ExportSaison = new() { episode.Saison };
+                    ExportSerie();
+                    episode.Saison = Properties.Settings.Default.ExportSaison[0];
+                }
+
             }
+
         }
 
         private void ExportSerie()
         {
+            Properties.Settings.Default.ExportSerie = new();
+            SerieService service = new();
+            foreach (Saison saison in Properties.Settings.Default.ExportSaison)
+            {
+                saison.ShouldExportSerie = true;
+                saison.Serie = service.GetById(saison.SerieId);
+            }
+        }
+
+        private void OpenWindowExportSerie()
+        {
             if ((bool)Window.checkBoxSerie.IsChecked)
             {
-                SerieService service = new();
-                foreach (Episode episode in Properties.Settings.Default.ExportEpisode)
-                {
-                    episode.Saison.ShouldExportEpisode = false;
-                    episode.Saison.ShouldExportSerie = true;
-                    episode.Saison.Serie = service.GetById(episode.Saison.SerieId);
-                }
-
                 WindowExportSerie window = new()
                 {
                     Owner = Window
@@ -54,22 +67,6 @@ namespace projet_dawan_WPF.Logic.Export
                 window.ShowDialog();
             }
 
-        }
-
-        private void Export()
-        {
-            SaveFileDialog save = new SaveFileDialog()
-            {
-                InitialDirectory = Directory.GetCurrentDirectory(),
-                FileName = "exports.json",
-                Filter = "File JSON|*json",
-                Title = "Save WatchList"
-            };
-
-            if ((bool)save.ShowDialog())
-            {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(Properties.Settings.Default.ExportEpisode, Formatting.Indented));
-            }
         }
     }
 }

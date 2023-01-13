@@ -1,4 +1,5 @@
-﻿using projet_dawan_WPF.Windows.Detail;
+﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Detail;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace projet_dawan_WPF.Logic.Detail
 
         public void Load(List<Personnage> list)
         {
-            SerieService serieService = new SerieService();
+            SerieService serieService = new();
             castList = list;
             serie = serieService.GetById(castList[0].SerieId);
             Window.lblCasting.Content = "Casting " + serie.Nom;
