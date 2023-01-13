@@ -75,5 +75,20 @@ namespace SerieDLL_EF.Repository
             return context.Series.Where(s => s.Nom == item.Nom && item.Affiche == item.Affiche
             && s.DateDiff == item.DateDiff && s.Resume == item.Resume).FirstOrDefault();
         }
+
+        public List<Serie> LastAdd()
+        {
+            using BddprojetContext context = new();
+            var list = context.Series;
+            if (list.Count()>4)
+            {
+                return list.OrderByDescending(s => s.Id).Take(4).ToList();
+            }
+            else
+            {
+                return list.OrderByDescending(s => s.Id).ToList();
+            }
+            
+        }
     }
 }

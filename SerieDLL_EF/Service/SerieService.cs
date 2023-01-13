@@ -22,6 +22,11 @@ namespace SerieDLL_EF.Service
             return repo.GetByTxt(text);
         }
 
+        public List<Serie> LastAdd()
+        {
+            return repo.LastAdd();
+        }
+
 
 
 

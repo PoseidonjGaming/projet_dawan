@@ -58,15 +58,9 @@ namespace projet_dawan_WPF.Logic.Autre
             Window.GridMain.Children.Remove(grid);
 
             SerieService service = new();
-            serieList = service.GetAll();
-            if (serieList.Count >= 4)
-            {
-                Populate(4);
-            }
-            else
-            {
-                Populate(serieList.Count);
-            }
+            serieList = service.LastAdd();
+
+            Populate(serieList.Count);
         }
 
         private void Populate(int I)
