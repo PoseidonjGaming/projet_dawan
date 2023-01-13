@@ -9,8 +9,8 @@ public partial class BddprojetContext : DbContext
 
     public BddprojetContext()
     {
-        connection = new("(localdb)\\MSSQLLocalDB", "BDDProjetTest");
-       
+        connection = new("BDDProjet");
+
     }
 
     public BddprojetContext(DbContextOptions<BddprojetContext> options)

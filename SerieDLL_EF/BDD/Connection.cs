@@ -16,6 +16,11 @@ namespace SerieDLL_EF.BDD
             DataSource = dataSource;
             Catalog = catalog;
         }
+        public Connection(string catalog)
+        {
+            DataSource = "(localdb)\\MSSQLLocalDB";
+            Catalog = catalog;
+        }
 
         public string GetConnectionString()
         {
