@@ -1,4 +1,5 @@
-﻿using SerieDLL_EF.Interface;
+﻿using SerieDLL_EF.BDD;
+using SerieDLL_EF.Interface;
 using SerieDLL_EF.Models;
 
 namespace SerieDLL_EF.Repository
@@ -37,7 +38,21 @@ namespace SerieDLL_EF.Repository
             return context.Personnages.Where(p => p.ActeurId == acteur_id).ToList();
         }
 
-       
+        public List<Personnage> Export(int serie_id)
+        {
+            List<Personnage> list = new List<Personnage>();
+            using BddprojetContext context = new();
+            list = context.Personnages.Where(p => p.SerieId == serie_id).ToList();
+            foreach (Personnage person in list)
+            {
+                ActeurRepository repo = new();
+                person.Acteur = repo.Export(person.ActeurId);
+            }
+
+            return list;
+
+
+        }
 
         public void Add(Personnage item)
         {
