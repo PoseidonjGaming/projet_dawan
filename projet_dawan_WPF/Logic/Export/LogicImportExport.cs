@@ -19,11 +19,11 @@ namespace projet_dawan_WPF.Logic.Export
         private List<Personnage> personnagesList = new();
         private List<Saison> saisonList = new();
 
-        private SerieService serieService;
-        private PersonnageService personnageService;
-        private ActeurService acteurService;
-        private EpisodeService episodeService;
-        private SaisonService saisonService;
+        private readonly SerieService serieService;
+        private readonly PersonnageService personnageService;
+        private readonly ActeurService acteurService;
+        private readonly EpisodeService episodeService;
+        private readonly SaisonService saisonService;
 
         public WindowImportExport Window { get; set; }
 
