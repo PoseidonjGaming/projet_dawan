@@ -52,7 +52,7 @@ namespace projet_dawan_WPF.Windows.Autre
 
         private void menuItemPersonnages_Click(object sender, RoutedEventArgs e)
         {
-            logic.gererPersonnagesToolStripMenuItem_Click();
+            logic.GererPersonnagesToolStripMenuItem_Click();
         }
 
         private void menuItemUsers_Click(object sender, RoutedEventArgs e)

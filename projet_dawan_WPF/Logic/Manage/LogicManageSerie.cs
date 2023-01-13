@@ -29,7 +29,7 @@ namespace projet_dawan_WPF.Logic.Manage
         public void BtnAjouter_Click()
         {
             if (Window.txtNomSerie.Text != string.Empty && Window.txtResume.Text != string.Empty
-                && Window.txtPathAffiche.Text != string.Empty)
+                && Window.txtPathAffiche.Text != string.Empty && Window.txtUrlBa .Text!= string.Empty)
             {
                 if (Window.lstBoxSerie.SelectedIndex != -1)
                 {
@@ -49,10 +49,9 @@ namespace projet_dawan_WPF.Logic.Manage
                         DateDiff = Window.dateTimeSortie.SelectedDate,
                         Resume = Window.txtResume.Text,
                         UrlBa = Window.txtUrlBa.Text,
-                        Affiche = Path.GetFileName(Window.txtPathAffiche.Text)
+                        Affiche = Window.txtPathAffiche.Text
 
                     };
-                    File.Copy(Window.txtPathAffiche.Text, Directory.GetCurrentDirectory() + "\\Photo\\" + serie.Affiche);
                     serieService.Add(serie);
                 }
                 Populate();

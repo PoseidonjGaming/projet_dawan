@@ -22,7 +22,7 @@ public partial class Serie
     public string? Resume { get; set; }
 
     [DataMember]
-    public string? Affiche { get; set; }
+    public string Affiche { get; set; } = string.Empty;
 
     [DataMember]
     public string? UrlBa { get; set; }

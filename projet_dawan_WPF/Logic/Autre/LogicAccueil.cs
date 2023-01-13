@@ -18,17 +18,16 @@ namespace projet_dawan_WPF.Logic.Autre
     {
         private List<Serie> serieList = new();
         private UserApp user;
-        private Grid grid;
+        private Grid Grid;
         public WindowAccueil Window { get; set; }
         public LogicAccueil(WindowAccueil form)
         {
             user = Properties.Settings.Default.UserRemain;
             Window = form;
+            Grid = new();
         }
         public void Load()
         {
-
-
             if (Properties.Settings.Default.UserRemain != null)
             {
                 Window.menuItemSeConnecter.Header = "Déconnexion";
@@ -55,7 +54,7 @@ namespace projet_dawan_WPF.Logic.Autre
         private void Refresh()
         {
 
-            Window.GridMain.Children.Remove(grid);
+            Window.GridMain.Children.Remove(Grid);
 
             SerieService service = new();
             serieList = service.LastAdd();
@@ -67,7 +66,7 @@ namespace projet_dawan_WPF.Logic.Autre
         {
             for (int i = 0; i < I; i++)
             {
-                grid = new();
+                Grid=new();
                 RowDefinition rowImg = new()
                 {
                     Height = new GridLength(225, GridUnitType.Star)
@@ -76,11 +75,11 @@ namespace projet_dawan_WPF.Logic.Autre
                 {
                     Height = new GridLength(30, GridUnitType.Pixel)
                 };
-                grid.RowDefinitions.Add(rowImg);
-                grid.RowDefinitions.Add(rowBtn);
+                Grid.RowDefinitions.Add(rowImg);
+                Grid.RowDefinitions.Add(rowBtn);
 
                 Image img = new();
-                BitmapImage bitImg = new BitmapImage();
+                BitmapImage bitImg = new();
                 try
                 {
                     bitImg.BeginInit();
@@ -97,25 +96,24 @@ namespace projet_dawan_WPF.Logic.Autre
                 img.Stretch = Stretch.Fill;
 
                 Grid.SetRow(img, 0);
-                grid.Children.Add(img);
+                Grid.Children.Add(img);
 
                 Button btnSerie = new Button();
                 btnSerie.Content = serieList[i].Nom;
                 btnSerie.Margin = new Thickness(10, 0, 10, 10);
                 btnSerie.Click += Serie_Click;
                 Grid.SetRow(btnSerie, 1);
-                grid.Children.Add(btnSerie);
+                Grid.Children.Add(btnSerie);
 
-                Grid.SetColumn(grid, 1 + i);
-                Grid.SetRow(grid, 2);
-                Window.GridMain.Children.Add(grid);
+                Grid.SetColumn(Grid, 1 + i);
+                Grid.SetRow(Grid, 2);
+                Window.GridMain.Children.Add(Grid);
             }
         }
 
         private void Serie_Click(object sender, EventArgs e)
         {
-            Button? button = sender as Button;
-            if (button != null)
+            if (sender is Button button)
             {
                 Serie? serie = serieList.Find(s => s.Nom == button.Content);
                 if (serie != null)
@@ -131,8 +129,8 @@ namespace projet_dawan_WPF.Logic.Autre
             }
             else
             {
-                Image? pictureBox = sender as Image;
-                Serie? serie = serieList.Find(s => s.Nom == pictureBox.Name);
+                Image? img = sender as Image;
+                Serie? serie = serieList.Find(s => s.Nom == img.Name);
                 if (serie != null)
                 {
                     WindowSerie formSerie = new(serie)
@@ -151,8 +149,10 @@ namespace projet_dawan_WPF.Logic.Autre
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
-                WindowManageActeur windowGereActeur = new();
-                windowGereActeur.Owner = Window;
+                WindowManageActeur windowGereActeur = new()
+                {
+                    Owner = Window
+                };
                 windowGereActeur.ShowDialog();
             }
             else
@@ -180,7 +180,6 @@ namespace projet_dawan_WPF.Logic.Autre
         private void OpenFormBibli(string text)
         {
 
-            SerieService service = new();
             WindowBibliotheque WindowsBibliotheque = new(text)
             {
                 Owner = Window
@@ -255,7 +254,7 @@ namespace projet_dawan_WPF.Logic.Autre
             }
         }
 
-        public void gererPersonnagesToolStripMenuItem_Click()
+        public void GererPersonnagesToolStripMenuItem_Click()
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
