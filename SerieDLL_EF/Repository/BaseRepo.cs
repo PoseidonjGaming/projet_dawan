@@ -57,7 +57,7 @@ namespace SerieDLL_EF.Repository
             return acteur != null;
         }
 
-        public TClass GetCompareTo(Expression<Func<TClass, bool>> predicate)
+        public TClass? GetCompareTo(Expression<Func<TClass, bool>> predicate)
         {
             return DbSet.Where(predicate).FirstOrDefault();
         }
