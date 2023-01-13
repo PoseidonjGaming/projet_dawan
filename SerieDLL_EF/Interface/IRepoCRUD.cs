@@ -25,6 +25,6 @@ namespace SerieDLL_EF.Interface
 
         bool CompareTo(T obj);
 
-        T GetCompareTo(T obj);
+        T? GetCompareTo(T obj);
     }
 }
