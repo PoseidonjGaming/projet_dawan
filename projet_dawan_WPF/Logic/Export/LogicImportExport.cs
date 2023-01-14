@@ -91,6 +91,7 @@ namespace projet_dawan_WPF.Logic.Export
                 {
                     seriesList = JsonConvert.DeserializeObject<List<Serie>>(File.ReadAllText(fileDialog.FileName));
                     ImportSerie();
+                    MessageBox.Show($"{seriesList.Count} ont été importées");
 
                 }
                 catch (Exception ex)
