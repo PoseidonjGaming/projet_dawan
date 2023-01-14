@@ -34,6 +34,7 @@ namespace projet_dawan_WPF.Logic.Export
             acteurService = new();
             episodeService = new();
             saisonService = new();
+            personnageService = new();
         }
 
         public void BtnExport_Click()
@@ -88,7 +89,7 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 try
                 {
-                    seriesList = (List<Serie>)JsonConvert.DeserializeObject(File.ReadAllText(fileDialog.FileName));
+                    seriesList = JsonConvert.DeserializeObject<List<Serie>>(File.ReadAllText(fileDialog.FileName));
                     ImportSerie();
 
                 }
