@@ -15,10 +15,6 @@ namespace projet_dawan_WPF.Logic.Export
             Window = window;
         }
 
-        public void Load()
-        {
-
-        }
         public void BtnExport_Click()
         {
             if (Window.Owner.GetType() == typeof(WindowImportExport))

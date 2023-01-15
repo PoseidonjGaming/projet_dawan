@@ -10,7 +10,7 @@ namespace projet_dawan_WPF.Windows.Detail
     /// </summary>
     public partial class WindowCasting : System.Windows.Window
     {
-        private LogicCasting logic;
+        private readonly LogicCasting logic;
         public WindowCasting(List<Personnage> list)
         {
             InitializeComponent();

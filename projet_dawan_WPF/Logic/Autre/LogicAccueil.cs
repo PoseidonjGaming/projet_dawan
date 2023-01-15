@@ -16,7 +16,7 @@ namespace projet_dawan_WPF.Logic.Autre
 {
     internal class LogicAccueil
     {
-        private List<Serie> serieList = new();
+        private List<Serie> serieList;
         private UserApp user;
         private Grid Grid;
         public WindowAccueil Window { get; set; }
@@ -25,21 +25,36 @@ namespace projet_dawan_WPF.Logic.Autre
             user = Properties.Settings.Default.UserRemain;
             Window = form;
             Grid = new();
+            serieList = new();
+            user = Properties.Settings.Default.UserRemain;
         }
         public void Load()
         {
+
             if (Properties.Settings.Default.UserRemain != null)
             {
-                Window.menuItemSeConnecter.Header = "Déconnexion";
-                if (Properties.Settings.Default.UserRemain.IsGranted(Roles.SuperAdmin))
+                UserService service=new();
+                user=service.GetUser(Properties.Settings.Default.UserRemain);
+                if (user != null)
                 {
-                    Window.menuGestion.IsEnabled = true;
+                    Window.menuItemSeConnecter.Header = "Déconnexion";
+                    if (user.IsGranted(Roles.SuperAdmin))
+                    {
+                        Window.menuGestion.IsEnabled = true;
 
+                    }
+                    else
+                    {
+                        Window.menuGestion.IsEnabled = false;
+                    }
                 }
                 else
                 {
+                    Properties.Settings.Default.UserRemain = null;
                     Window.menuGestion.IsEnabled = false;
+                    Window.menuItemCompte.IsEnabled = false;
                 }
+               
             }
             else
             {
@@ -66,7 +81,7 @@ namespace projet_dawan_WPF.Logic.Autre
         {
             for (int i = 0; i < I; i++)
             {
-                Grid=new();
+                Grid = new();
                 RowDefinition rowImg = new()
                 {
                     Height = new GridLength(225, GridUnitType.Star)
@@ -142,8 +157,6 @@ namespace projet_dawan_WPF.Logic.Autre
                 }
             }
         }
-
-
 
         public void GererLesActeurs_Click()
         {
@@ -231,11 +244,11 @@ namespace projet_dawan_WPF.Logic.Autre
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
-                WindowManageEpisodes form = new()
+                WindowManageEpisodes window = new()
                 {
                     Owner = Window
                 };
-                form.ShowDialog();
+                window.ShowDialog();
             }
 
         }
@@ -258,11 +271,11 @@ namespace projet_dawan_WPF.Logic.Autre
         {
             if (user.IsGranted(Roles.SuperAdmin))
             {
-                WindowManagePersonnages form = new()
+                WindowManagePersonnages window = new()
                 {
                     Owner = Window
                 };
-                form.ShowDialog();
+                window.ShowDialog();
             }
 
         }
@@ -285,7 +298,10 @@ namespace projet_dawan_WPF.Logic.Autre
             }
             else
             {
-                WindowConnection winCon = new();
+                WindowConnection winCon = new()
+                {
+                    Owner = Window
+                };
                 winCon.Closing += FormClose;
                 winCon.ShowDialog();
             }

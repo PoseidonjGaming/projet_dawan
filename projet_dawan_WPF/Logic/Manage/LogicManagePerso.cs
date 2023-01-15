@@ -7,18 +7,21 @@ using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Manage
 {
-    internal class LogicManagePerso 
+    internal class LogicManagePerso
     {
         public WindowManagePersonnages Window { get; set; }
-        private List<Personnage> personnages = new List<Personnage>();
-        private List<Serie> serieList = new List<Serie>();
-        private List<Acteur> acteurList = new List<Acteur>();
+        private List<Personnage> personnages;
+        private List<Serie> serieList;
+        private List<Acteur> acteurList;
         private PersonnageService servicePerso;
 
         public LogicManagePerso(WindowManagePersonnages form)
         {
             Window = form;
             servicePerso = new();
+            personnages = new();
+            serieList = new();
+            acteurList = new();
         }
 
         public void Load()
@@ -70,11 +73,9 @@ namespace projet_dawan_WPF.Logic.Manage
                         SerieId = serieList[Window.comboBoxSerie.SelectedIndex].Id,
                     };
 
-
                     servicePerso.Add(perso);
                     MessageBox.Show("Personnage ajouté");
                 }
-                // ajouter le personnage
 
                 Populate();
 

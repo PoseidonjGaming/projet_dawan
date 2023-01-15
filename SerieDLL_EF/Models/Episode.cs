@@ -23,11 +23,11 @@ public partial class Episode
     public string Resume { get; set; } = null!;
 
     [DataMember]
-    public DateTime? DatePremDiff { get; set; }
+    public DateTime DatePremDiff { get; set; }
 
     [DataMember]
     [NotMapped]
-    public Saison Saison { get; set; }
+    public Saison Saison { get; set; } = null!;
 
     [NotMapped]
     public bool ShouldExportSaisons { get; set; }

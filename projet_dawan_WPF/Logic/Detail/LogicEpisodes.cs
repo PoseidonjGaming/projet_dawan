@@ -10,29 +10,29 @@ namespace projet_dawan_WPF.Logic.Detail
 {
     internal class LogicEpisodes
     {
-        private Saison saison;
-        private List<Episode> episodes = new List<Episode>();
-        private EpisodeService service;
+        private Saison Saison;
+        private readonly EpisodeService service;
         public WindowEpisode Window { get; set; }
 
         public LogicEpisodes(WindowEpisode window)
         {
             Window = window;
             service = new();
+            service=new();
         }
 
         public void Load(Saison saison)
         {
-            this.saison = saison;
-            episodes = service.GetBySaison(saison.Id);
+            Saison = saison;
+            Saison.Episodes = service.GetBySaison(saison.Id);
             SerieService serieService = new();
-            Serie serie = serieService.GetById(saison.SerieId);
+            Saison.Serie = serieService.GetById(saison.SerieId);
 
-            BitmapImage bitImg = new BitmapImage();
+            BitmapImage bitImg = new();
             try
             {
                 bitImg.BeginInit();
-                bitImg.UriSource = new(serie.Affiche);
+                bitImg.UriSource = new(Saison.Serie.Affiche);
                 bitImg.EndInit();
             }
             catch
@@ -41,16 +41,15 @@ namespace projet_dawan_WPF.Logic.Detail
             }
 
             Window.pictureBoxSaison.Source = bitImg;
-            Window.lblEpisode.Content = serie.Nom;
+            Window.lblEpisode.Content = Saison.Serie.Nom;
             Window.lblSaison.Content += saison.Numero.ToString();
-            foreach (Episode episode in service.GetBySaison(saison.Id))
+            foreach (Episode episode in Saison.Episodes)
             {
-                episodes.Add(episode);
                 Window.lstBoxEpisode.Items.Add(episode.Nom);
             }
             if (Window.lstBoxEpisode.Items.Count > 0)
             {
-                Populate(episodes[0]);
+                Populate(Saison.Episodes[0]);
             }
         }
 
@@ -58,17 +57,16 @@ namespace projet_dawan_WPF.Logic.Detail
         {
             if (Window.lstBoxEpisode.SelectedIndex != -1)
             {
-                Episode ep = episodes[Window.lstBoxEpisode.SelectedIndex];
+                Episode ep = Saison.Episodes[Window.lstBoxEpisode.SelectedIndex];
                 Populate(ep);
             }
         }
 
         public void Casting_Click()
         {
-            SerieService serieService = new();
-            SaisonService saisonService = new();
+            
             PersonnageService personnage = new();
-            WindowCasting casting = new(personnage.GetBySerie(saison.SerieId))
+            WindowCasting casting = new(personnage.GetBySerie(Saison.SerieId))
             {
                 Owner = Window
             };
@@ -78,13 +76,10 @@ namespace projet_dawan_WPF.Logic.Detail
         private void Populate(Episode ep)
         {
             Window.txtBoxResumeSaison.Text = ep.Resume;
-            Window.lblDateSaison.Content = "Episode diffusé le " + ep.DatePremDiff.Value.ToShortDateString();
+            Window.lblDateSaison.Content = "Episode diffusé le " + ep.DatePremDiff.ToShortDateString();
             Window.lblTitreEp.Content = "Détail l'épisode: " + ep.Nom;
         }
 
-        private void OpenForm(object sender, EventArgs e)
-        {
-            Window.Show();
-        }
+        
     }
 }

@@ -11,12 +11,12 @@ namespace projet_dawan_WPF.Logic.Detail
     internal class LogicSerie
     {
         private Serie Serie = new();
-        private List<Saison> Saisons = new List<Saison>();
         public WindowSerie Window { get; set; }
 
         public LogicSerie(WindowSerie window)
         {
             Window = window;
+            Saisons = new();
 
         }
 
@@ -31,14 +31,14 @@ namespace projet_dawan_WPF.Logic.Detail
             {
                 Window.affiche.Source = new BitmapImage(new Uri(Serie.Affiche));
             }
-            catch (Exception ex)
+            catch
             {
 
             }
             SaisonService service = new();
-            foreach (Saison saison in service.GetSaisonsBySerie(Serie.Id))
+            Serie.Saisons = service.GetSaisonsBySerie(Serie.Id);
+            foreach (Saison saison in Serie.Saisons)
             {
-                Saisons.Add(saison);
                 Window.lstBoxSaison.Items.Add(saison.Numero.ToString());
             }
 
@@ -56,8 +56,10 @@ namespace projet_dawan_WPF.Logic.Detail
         public void BtnCasting_Click()
         {
             PersonnageService service = new();
-            WindowCasting casting = new(service.GetBySerie(Serie.Id));
-            casting.Owner = Window;
+            WindowCasting casting = new(service.GetBySerie(Serie.Id))
+            {
+                Owner = Window
+            };
             casting.ShowDialog();
         }
 
@@ -65,13 +67,15 @@ namespace projet_dawan_WPF.Logic.Detail
         {
             if (Window.lstBoxSaison.SelectedIndex != -1)
             {
-                Saison saison = Saisons[Window.lstBoxSaison.SelectedIndex];
+                Saison saison = Serie.Saisons[Window.lstBoxSaison.SelectedIndex];
                 saison.Serie = Serie;
-                WindowEpisode formSaison = new(saison);
-                formSaison.Owner = Window;
-                formSaison.Closed += OpenForm;
+                WindowEpisode window = new(saison)
+                {
+                    Owner = Window
+                };
+                window.Closed += OpenForm;
                 Window.Hide();
-                formSaison.ShowDialog();
+                window.ShowDialog();
             }
         }
 

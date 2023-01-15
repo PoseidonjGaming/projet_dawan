@@ -9,12 +9,14 @@ namespace projet_dawan_WPF.Logic.Detail
     internal class LogicCasting
     {
         public WindowCasting Window { get; set; }
-        private List<Personnage> castList = new List<Personnage>();
+        private List<Personnage> castList;
         private Serie serie;
 
         public LogicCasting(WindowCasting window)
         {
             Window = window;
+            castList = new();
+            serie = new();
         }
 
         public void Load(List<Personnage> list)
@@ -32,8 +34,8 @@ namespace projet_dawan_WPF.Logic.Detail
 
             Window.lstBoxCasting.SelectedIndex = 0;
             Personnage perso = castList[Window.lstBoxCasting.SelectedIndex];
-            Acteur acteur = acteurService.GetById(perso.ActeurId);
-            Populate(perso, acteur);
+            perso.Acteur = acteurService.GetById(perso.ActeurId);
+            Populate(perso);
         }
 
         public void ListBoxCasting_SelectedIndexChanged()
@@ -42,15 +44,15 @@ namespace projet_dawan_WPF.Logic.Detail
             {
                 ActeurService acteurService = new();
                 Personnage perso = castList[Window.lstBoxCasting.SelectedIndex];
-                Acteur acteur = acteurService.GetById(perso.ActeurId);
-                Populate(perso, acteur);
+                perso.Acteur = acteurService.GetById(perso.ActeurId);
+                Populate(perso);
             }
         }
 
-        private void Populate(Personnage perso, Acteur acteur)
+        private void Populate(Personnage perso)
         {
             Window.lblNomPerso.Content = perso.Nom;
-            Window.lblActeur.Content = acteur.Nom + " " + acteur.Prenom;
+            Window.lblActeur.Content = perso.Acteur.Prenom + " " + perso.Acteur.Nom;
         }
     }
 }

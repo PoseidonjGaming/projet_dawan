@@ -29,7 +29,6 @@ namespace SerieDLL_EF.Repository
         public List<Serie> ExportWatchList(List<int> ids)
         {
             List<Serie> list = new();
-            using BddprojetContext context = new();
             foreach (int id in ids)
             {
                 list.Add(GetById(id));

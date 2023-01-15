@@ -10,12 +10,13 @@ namespace projet_dawan_WPF.Logic.Autre
 {
     internal class LogicWatchList
     {
-        private List<Serie> series = new List<Serie>();
+        private readonly List<Serie> series;
         public WindowWatchList Window { get; set; }
 
         public LogicWatchList(WindowWatchList window)
         {
             Window = window;
+            series = new();
         }
 
         public void Load()
@@ -41,7 +42,7 @@ namespace projet_dawan_WPF.Logic.Autre
 
         public void BtnExportList_Click()
         {
-            SaveFileDialog save = new SaveFileDialog()
+            SaveFileDialog save = new()
             {
                 InitialDirectory = Directory.GetCurrentDirectory(),
                 FileName = "exports.json",
@@ -60,7 +61,7 @@ namespace projet_dawan_WPF.Logic.Autre
 
         public void Import()
         {
-            OpenFileDialog fileDialog = new OpenFileDialog()
+            OpenFileDialog fileDialog = new()
             {
                 InitialDirectory = Directory.GetCurrentDirectory(),
                 FileName = string.Empty,
@@ -70,10 +71,10 @@ namespace projet_dawan_WPF.Logic.Autre
 
             if (fileDialog.ShowDialog() == true)
             {
-                List<Serie> list = new List<Serie>();
+                List<Serie> list = new();
                 using (StreamReader file = File.OpenText(fileDialog.FileName))
                 {
-                    JsonSerializer serializer = new JsonSerializer();
+                    JsonSerializer serializer = new();
                     list = (List<Serie>)serializer.Deserialize(file, typeof(List<Serie>));
                 }
                 Window.lstBoxWatchlist.Items.Clear();

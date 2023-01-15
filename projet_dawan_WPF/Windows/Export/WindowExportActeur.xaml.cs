@@ -19,10 +19,5 @@ namespace projet_dawan_WPF.Windows.Export
         {
             logic.BtnExport_Click();
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            logic.Load();
-        }
     }
 }

@@ -16,6 +16,7 @@ public partial class BddprojetContext : DbContext
     public BddprojetContext(DbContextOptions<BddprojetContext> options)
         : base(options)
     {
+        connection = new("serie_list");
     }
 
 
@@ -171,6 +172,7 @@ public partial class BddprojetContext : DbContext
 
         });
 
+       
         OnModelCreatingPartial(modelBuilder);
     }
 

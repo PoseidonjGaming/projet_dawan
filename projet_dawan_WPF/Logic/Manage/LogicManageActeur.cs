@@ -9,15 +9,14 @@ namespace projet_dawan_WPF.Logic.Manage
     internal class LogicManageActeur
     {
         public WindowManageActeur Window { get; set; }
+        private readonly ActeurService service;
+        private List<Acteur> acteurs;
 
-        private Acteur currentActeur;
-        private ActeurService service;
-        private List<Acteur> acteurs = new();
         public LogicManageActeur(WindowManageActeur window)
         {
             Window = window;
-            currentActeur = new Acteur();
             service = new();
+            acteurs = new();
         }
 
         public void Load()
@@ -28,7 +27,6 @@ namespace projet_dawan_WPF.Logic.Manage
 
         public void BtnNewActeur_Click()
         {
-            currentActeur = new();
             Window.txtBoxNom.Clear();
             Window.txtBoxPrenom.Clear();
         }
@@ -37,11 +35,9 @@ namespace projet_dawan_WPF.Logic.Manage
         {
             if (Window.lstBoxActeur.SelectedIndex != -1)
             {
-                currentActeur = acteurs[Window.lstBoxActeur.SelectedIndex];
-                Window.txtBoxNom.Text = currentActeur.Nom;
-                Window.txtBoxPrenom.Text = currentActeur.Prenom;
-
-
+                Acteur acteur = acteurs[Window.lstBoxActeur.SelectedIndex];
+                Window.txtBoxNom.Text = acteur.Nom;
+                Window.txtBoxPrenom.Text = acteur.Prenom;
             }
         }
 
@@ -49,15 +45,19 @@ namespace projet_dawan_WPF.Logic.Manage
         {
             if (Window.txtBoxPrenom.Text != string.Empty && Window.txtBoxNom.Text != string.Empty)
             {
-                currentActeur.Prenom = Window.txtBoxPrenom.Text;
-                currentActeur.Nom = Window.txtBoxNom.Text;
-                if (currentActeur.Id == 0)
+                Acteur acteur = new()
                 {
-                    service.Add(currentActeur);
+                    Nom = Window.txtBoxNom.Text,
+                    Prenom = Window.txtBoxPrenom.Text
+                };
+                if (service.CompareTo(acteur))
+                {
+                    service.Add(acteur);
                 }
                 else
                 {
-                    service.Update(currentActeur);
+                    acteur=service.GetCompareTo(acteur);
+                    service.Update(acteur);
                 }
 
             }
@@ -66,9 +66,10 @@ namespace projet_dawan_WPF.Logic.Manage
 
         public void Sup_Click()
         {
-            if (currentActeur.Id != 0)
+            Acteur acteur = acteurs[Window.lstBoxActeur.SelectedIndex];
+            if (service.CompareTo(acteur))
             {
-                service.Delete(currentActeur);
+                service.Delete(acteur);
             }
             Populate();
         }

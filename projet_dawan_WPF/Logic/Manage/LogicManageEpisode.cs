@@ -51,7 +51,7 @@ namespace projet_dawan_WPF.Logic.Manage
                 {
                     Nom = Window.txtBoxNom.Text,
                     Resume = Window.txtBoxResume.Text,
-                    DatePremDiff = Window.datePremDiff.SelectedDate,
+                    DatePremDiff = (System.DateTime)Window.datePremDiff.SelectedDate,
                     SaisonId = saison.Id
                 };
                 if (Window.lstBoxEpisode.SelectedIndex != -1)

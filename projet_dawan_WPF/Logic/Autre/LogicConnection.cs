@@ -3,6 +3,7 @@ using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Security.Cryptography;
+using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Autre
 {
@@ -19,9 +20,8 @@ namespace projet_dawan_WPF.Logic.Autre
         {
             if (Properties.Settings.Default.UserRemain != null)
             {
-                UserService service = new UserService();
+                UserService service = new();
                 UserApp user = service.GetById(Properties.Settings.Default.UserRemain.Id);
-
                 Login(user);
             }
         }

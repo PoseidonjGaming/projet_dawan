@@ -13,9 +13,9 @@ namespace projet_dawan_WPF.Logic.Autre
         public WindowBibliotheque Window { get; set; }
         private List<int> Ids = new List<int>();
 
-        public LogicBibliothèque(WindowBibliotheque form)
+        public LogicBibliothèque(WindowBibliotheque window)
         {
-            Window = form;
+            Window = window;
         }
 
         public void Load(string text)
@@ -96,15 +96,16 @@ namespace projet_dawan_WPF.Logic.Autre
 
         public void ButtonAddWich_Click()
         {
-            //if (Windows.GetListBoxSerie().SelectedIndex != -1)
-            //{
-            //    SerieService serieService = new();
-            //    Serie serie = serieService.GetById(Ids[Windows.GetListBoxSerie().SelectedIndex]);
-            //    Properties.Settings.Default.UserRemain.SetToWatchList(new() { serie });
-            //    Properties.Settings.Default.Save();
-            //    UserService service = new();
-            //    service.Update(Properties.Settings.Default.UserRemain);
-            //}
+            if (Window.lstBxSerie.SelectedIndex != -1 && Window.cmbFiltrer.SelectedIndex == 0)
+            {
+                SerieService serieService = new();
+                Serie serie = serieService.GetById(Ids[Window.lstBxSerie.SelectedIndex]);
+                Properties.Settings.Default.UserRemain.SetToWatchList(new() { serie });
+                Properties.Settings.Default.Save();
+                UserService service = new();
+                service.Update(Properties.Settings.Default.UserRemain);
+                Window.btnAddWitch.Content = "✔";
+            }
         }
 
         public void BtnRetour_Click()
