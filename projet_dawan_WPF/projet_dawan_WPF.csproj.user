@@ -10,12 +10,18 @@
     <Compile Update="Windows\Export\WindowImportExport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\WindowTest.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Windows\Export\WindowExportActeur.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Export\WindowImportExport.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\WindowTest.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

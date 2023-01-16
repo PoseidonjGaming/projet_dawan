@@ -41,6 +41,9 @@ public partial class Serie
     [NotMapped]
     public virtual List<Saison> Saisons { get; set; } = new List<Saison>();
 
+    [NotMapped]
+    public List<Note> Notes { get; set; } = new List<Note>();
+
     public bool ShouldSerializePersonnages()
     {
         return ShouldExportPersonnage;
