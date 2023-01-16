@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SerieDLL_EF.Models;
+using SerieDLL_EF.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,24 +21,68 @@ namespace projet_dawan_WPF.Windows.Autre
     /// </summary>
     public partial class WindowNote : Window
     {
-        public WindowNote()
+        private readonly int SerieId;
+        private readonly NoteService service;
+        public WindowNote(int serieId)
         {
             InitializeComponent();
+            SerieId = serieId;
         }
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
         {
-            if()
+            if (txtBoxCommentaire.Text != string.Empty)
+            {
+                int nbNote = 0;
+                if (ch1.IsChecked == true)
+                {
+                    nbNote++;
+                }
+                if(ch2.IsChecked == true)
+                {
+                    nbNote++;
+                }
+                if (ch3.IsChecked == true)
+                {
+                    nbNote++;
+                }
+                if (ch4.IsChecked == true)
+                {
+                    nbNote++;
+                }
+                if (ch5.IsChecked == true)
+                {
+                    nbNote++;
+                }
+                Note note = new()
+                {
+                    SerieId = SerieId,
+                    UserId = Properties.Settings.Default.UserRemain.Id,
+                    Commentaire=txtBoxCommentaire.Text
+                };
+
+                if (service.CompareTo(note))
+                {
+                    service.Update(note);
+                }
+                else
+                {
+                    service.Add(note);
+                }
+
+
+
+            }
         }
 
         private void ch1_Click(object sender, RoutedEventArgs e)
         {
-            if(ch1.IsChecked==false && ch2.IsChecked==true)
+            if (ch1.IsChecked == false && ch2.IsChecked == true)
             {
                 Ch1(true);
                 Ch2(false);
                 Ch3(false);
-                Ch4(false); 
+                Ch4(false);
                 Ch5(false);
             }
         }
