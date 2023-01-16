@@ -24,7 +24,6 @@ namespace projet_dawan
         private void UpdateForm()
         {
             UserApp user = Properties.Settings.Default.UserRemain;
-            MessageBox.Show(Properties.Settings.Default.UserRemain.Login);
             UserName.Text = user.Login;
             Password.Text = user.Password;
             ConfirmPassword.Text = user.Password;
