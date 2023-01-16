@@ -10,7 +10,6 @@ public partial class BddprojetContext : DbContext
     public BddprojetContext()
     {
         connection = new("serie_list");
-
     }
 
     public BddprojetContext(DbContextOptions<BddprojetContext> options)
