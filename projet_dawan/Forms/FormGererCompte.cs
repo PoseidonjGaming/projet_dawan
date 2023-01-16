@@ -7,7 +7,6 @@ namespace projet_dawan
 {
     public partial class FormGererCompte : Form
     {
-        private UserService serviceUser = new();
 
         public FormGererCompte()
         {
@@ -25,13 +24,13 @@ namespace projet_dawan
         {
             UserApp user = Properties.Settings.Default.UserRemain;
             UserName.Text = user.Login;
-            Password.Text = user.Password;
-            ConfirmPassword.Text = user.Password;
+            //Password.Text = user.Password;
+            //ConfirmPassword.Text = user.Password;
         }
 
         private void ModifierLogin_Click(object sender, EventArgs e)
         {
-            UserApp user = serviceUser.GetUser(Properties.Settings.Default.UserRemain);
+            UserApp user = Properties.Settings.Default.UserRemain;
 
             if (UserName.Text != user.Login)
             {
@@ -39,25 +38,38 @@ namespace projet_dawan
               MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (modifier == DialogResult.Yes)
                 {
-                    //user.Login = UserName.Text;
-                    //UpdateForm();
+                    user.Login = UserName.Text;
+                    UpdateForm();
                 }
             }
         }
 
         private void ModifierPassword_Click(object sender, EventArgs e)
         {
-            UserApp user = serviceUser.GetUser(Properties.Settings.Default.UserRemain);
+            UserApp user = Properties.Settings.Default.UserRemain;
 
-            if (Password.Text != user.Password && Password.Text == ConfirmPassword.Text)
+            if (Password.Text != user.Password)
             {
-                var modifier = MessageBox.Show("Etes vous sur de vouloir modifier le mot de passe ?", "Modifier mot de passe ?",
-              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (modifier == DialogResult.Yes)
+                if (Password.Text == ConfirmPassword.Text)
                 {
-                    //user.Password = Password.Text;
-                    //UpdateForm();
+                    var modifier = MessageBox.Show("Etes vous sur de vouloir modifier le mot de passe ?", "Modifier mot de passe ?",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (modifier == DialogResult.Yes)
+                    {
+                        //user.Password = Password.Text;
+                        //UpdateForm();
+                    }
                 }
+                else
+                {
+                    var message = MessageBox.Show("Le mot de passe et la confimation du mot de passe ne corresponde pas.", "Erreur mot de passe",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                var message = MessageBox.Show("Mot de passe identique à l'ancien", "Erreur mot de passe",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
