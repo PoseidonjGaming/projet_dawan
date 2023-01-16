@@ -21,11 +21,66 @@
         <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel  Orientation="Horizontal">
                 <Label Content="Note"></Label>
-                <CheckBox x:Name="ch1" VerticalContentAlignment="Center" Click="ch1_Click"></CheckBox>
-                <CheckBox x:Name="ch2" VerticalContentAlignment="Center" Click="ch2_Click"></CheckBox>
-                <CheckBox x:Name="ch3" VerticalContentAlignment="Center" Click="ch3_Click"></CheckBox>
-                <CheckBox x:Name="ch4" VerticalContentAlignment="Center" Click="ch4_Click"></CheckBox>
-                <CheckBox x:Name="ch5" VerticalContentAlignment="Center" Click="ch5_Click"></CheckBox>
+                <CheckBox x:Name="ch1" VerticalContentAlignment="Center" Click="ch1_Click">
+                    <CheckBox.Template>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <Image x:Name="pic1" Source="E:\Projet perso\projet_dawan\etoile_note_none.png"></Image>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="pic1" Property="Source" Value="E:\Projet perso\projet_dawan\etoile_note_check.png"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </CheckBox.Template>
+                </CheckBox>
+                <CheckBox x:Name="ch2" VerticalContentAlignment="Center" Click="ch2_Click">
+                    <CheckBox.Template>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <Image x:Name="pic2" Source="E:\Projet perso\projet_dawan\etoile_note_none.png"></Image>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="pic2" Property="Source" Value="E:\Projet perso\projet_dawan\etoile_note_check.png"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </CheckBox.Template>
+                </CheckBox>
+                <CheckBox x:Name="ch3" VerticalContentAlignment="Center" Click="ch3_Click">
+                    <CheckBox.Template>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <Image x:Name="pic3" Source="E:\Projet perso\projet_dawan\etoile_note_none.png"></Image>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="pic3" Property="Source" Value="E:\Projet perso\projet_dawan\etoile_note_check.png"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </CheckBox.Template>
+                </CheckBox>
+                <CheckBox x:Name="ch4" VerticalContentAlignment="Center" Click="ch4_Click">
+                    <CheckBox.Template>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <Image x:Name="pic4" Source="E:\Projet perso\projet_dawan\etoile_note_none.png"></Image>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="pic4" Property="Source" Value="E:\Projet perso\projet_dawan\etoile_note_check.png"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </CheckBox.Template>
+                </CheckBox>
+                <CheckBox x:Name="ch5" VerticalContentAlignment="Center" Click="ch5_Click">
+                    <CheckBox.Template>
+                        <ControlTemplate TargetType="{x:Type CheckBox}">
+                            <Image x:Name="pic5" Source="E:\Projet perso\projet_dawan\etoile_note_none.png"></Image>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="true">
+                                    <Setter TargetName="pic5" Property="Source" Value="E:\Projet perso\projet_dawan\etoile_note_check.png"></Setter>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </CheckBox.Template>
+                </CheckBox>
             </StackPanel>
             <TextBox x:Name="comm" Width="150" TextWrapping="Wrap"></TextBox>
             <Button x:Name="btnValider" Content="Valider" Click="btnValider_Click"></Button>
