@@ -21,7 +21,6 @@ namespace projet_dawan_WPF.Logic.Manage
 
         public void Load()
         {
-            acteurs = service.GetAll();
             Populate();
         }
 
@@ -50,13 +49,15 @@ namespace projet_dawan_WPF.Logic.Manage
                     Nom = Window.txtBoxNom.Text,
                     Prenom = Window.txtBoxPrenom.Text
                 };
-                if (service.CompareTo(acteur))
+                if (!service.CompareTo(acteur))
                 {
                     service.Add(acteur);
                 }
                 else
                 {
                     acteur=service.GetCompareTo(acteur);
+                    acteur.Nom = Window.txtBoxNom.Text;
+                    acteur.Prenom = Window.txtBoxPrenom.Text;
                     service.Update(acteur);
                 }
 

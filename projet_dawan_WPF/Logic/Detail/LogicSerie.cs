@@ -16,7 +16,6 @@ namespace projet_dawan_WPF.Logic.Detail
         public LogicSerie(WindowSerie window)
         {
             Window = window;
-            Saisons = new();
 
         }
 

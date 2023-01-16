@@ -8,15 +8,18 @@ namespace projet_dawan_WPF.Logic.Manage
 {
     class LogicManageUsers
     {
-        private UserService service = new();
-        private List<UserApp> userList = new();
-        private List<Roles> rolesList = new() { Roles.User, Roles.Admin, Roles.SuperAdmin };
+        private readonly UserService service;
+        private List<UserApp> userList;
+        private readonly List<Roles> rolesList;
 
         public WindowManageUsers Window { get; set; }
 
         public LogicManageUsers(WindowManageUsers window)
         {
             Window = window;
+            service = new();
+            rolesList = new() { Roles.User, Roles.Admin, Roles.SuperAdmin };
+            userList = new();
         }
 
         public void Load()
@@ -35,7 +38,8 @@ namespace projet_dawan_WPF.Logic.Manage
 
         public void BtnAdd_Click()
         {
-            if (Window.txtBoxLogin.Text != string.Empty && Window.txtBoxPWD.Text != string.Empty && Window.txtBoxPWDConfirm.Text != string.Empty)
+            if (Window.txtBoxLogin.Text != string.Empty && Window.txtBoxPWD.Text != string.Empty
+                && Window.txtBoxPWDConfirm.Text != string.Empty)
             {
                 if (Window.txtBoxPWD.Text == Window.txtBoxPWDConfirm.Text)
                 {
@@ -65,8 +69,11 @@ namespace projet_dawan_WPF.Logic.Manage
                         };
                         service.Add(user);
                     }
-                    Clear();
                     Populate();
+                }
+                else
+                {
+                    MessageBox.Show("Les mots de passe no correspondent pas");
                 }
             }
 

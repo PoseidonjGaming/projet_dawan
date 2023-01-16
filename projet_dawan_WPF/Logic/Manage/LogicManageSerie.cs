@@ -12,13 +12,14 @@ namespace projet_dawan_WPF.Logic.Manage
     internal class LogicManageSerie
     {
         public WindowManageSeries Window { get; set; }
-        private SerieService serieService;
-        private List<Serie> serieList = new();
+        private readonly SerieService serieService;
+        private List<Serie> serieList;
 
         public LogicManageSerie(WindowManageSeries window)
         {
             Window = window;
             serieService = new();
+            serieList = new();
         }
 
         public void Load()
@@ -70,7 +71,6 @@ namespace projet_dawan_WPF.Logic.Manage
             {
                 try
                 {
-                    SerieService service = new();
                     PersonnageService personnageService = new();
                     SaisonService saisonService = new();
                     EpisodeService episodeService = new();
@@ -92,7 +92,7 @@ namespace projet_dawan_WPF.Logic.Manage
                         saisonService.Delete(saison);
                     }
                     serie.Saisons.Clear();
-                    service.Delete(serie);
+                    serieService.Delete(serie);
                 }
                 catch (Exception ex)
                 {

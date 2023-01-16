@@ -13,7 +13,7 @@ namespace projet_dawan_WPF.Logic.Manage
         private List<Personnage> personnages;
         private List<Serie> serieList;
         private List<Acteur> acteurList;
-        private PersonnageService servicePerso;
+        private readonly PersonnageService servicePerso;
 
         public LogicManagePerso(WindowManagePersonnages form)
         {
@@ -22,6 +22,7 @@ namespace projet_dawan_WPF.Logic.Manage
             personnages = new();
             serieList = new();
             acteurList = new();
+            servicePerso = new();
         }
 
         public void Load()

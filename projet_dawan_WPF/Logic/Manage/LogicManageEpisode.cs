@@ -11,9 +11,9 @@ namespace projet_dawan_WPF.Logic.Manage
     internal class LogicManageEpisode
     {
         private EpisodeService service;
-        private List<Episode> episodes = new List<Episode>();
-        private List<Serie> serieList = new List<Serie>();
-        private Saison saison = new();
+        private List<Episode> episodes;
+        private List<Serie> serieList;
+        private Saison saison;
 
         public WindowManageEpisodes Window { get; set; }
 
@@ -21,6 +21,9 @@ namespace projet_dawan_WPF.Logic.Manage
         {
             Window = window;
             service = new();
+            episodes = new();
+            serieList = new();
+            saison = new();
         }
 
         public void Load()
@@ -32,8 +35,6 @@ namespace projet_dawan_WPF.Logic.Manage
                 Window.cmbSerie.Items.Add(serie.Nom);
             }
 
-            SaisonService saisonService = new(); ;
-
             Populate();
         }
 
@@ -41,10 +42,9 @@ namespace projet_dawan_WPF.Logic.Manage
         {
             SaisonService saisonService = new();
             List<Saison> saisonList = saisonService.GetSaisonsBySerie(serieList[Window.cmbSerie.SelectedIndex].Id);
-            if (Window.txtBoxNom.Text != string.Empty && Window.txtBoxResume.Text != string.Empty
-               )
+            if (Window.txtBoxNom.Text != string.Empty && Window.txtBoxResume.Text != string.Empty)
             {
-                Saison saison = (Saison)saisonList.Where(e => e.Numero == int.Parse(Window.numSaison.Text));
+                Saison saison = saisonList.Where(e => e.Numero == int.Parse(Window.numSaison.Text)).FirstOrDefault();
                 saison.NbEpisode++;
                 saisonService.Update(saison);
                 Episode ep = new()
@@ -69,7 +69,7 @@ namespace projet_dawan_WPF.Logic.Manage
 
             if ((bool)Window.checkBoxLastSeason.IsChecked)
             {
-                Saison saison = new Saison
+                Saison saison = new()
                 {
                     NbEpisode = 0,
                     SerieId = serieList[Window.cmbSerie.SelectedIndex].Id,
@@ -103,6 +103,7 @@ namespace projet_dawan_WPF.Logic.Manage
                 Window.txtBoxNom.Text = ep.Nom;
                 Window.txtBoxResume.Text = ep.Resume;
                 Window.datePremDiff.SelectedDate = ep.DatePremDiff;
+
                 SaisonService saisonService = new();
                 saison = saisonService.GetById(episodes[Window.lstBoxEpisode.SelectedIndex].SaisonId);
                 Window.numSaison.Text = saisonService.GetById(ep.SaisonId).Numero.ToString();
