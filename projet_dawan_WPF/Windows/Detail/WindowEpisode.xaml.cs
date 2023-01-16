@@ -1,4 +1,4 @@
-﻿using projet_dawan_WPF.Logic;
+﻿using projet_dawan_WPF.Logic.Detail;
 using SerieDLL_EF.Models;
 using System.Windows;
 using System.Windows.Controls;

@@ -1,28 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="FormMain.cs">
+    <Compile Update="Forms\FormAccueil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormActeur.cs">
+    <Compile Update="Forms\FormBibliotheque.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormCasting.cs">
+    <Compile Update="Forms\Autre\FormCreerCompte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormCreerCompte.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FormEpisode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormPersonnage.cs">
+    <Compile Update="Forms\FormGererCompte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormSaison.cs">
+    <Compile Update="Forms\FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormManageActeur.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormManageEpisode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormManagePerso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Forms\FormManageSerie.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\FormSerie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="PageAcceuil.cs">
+    <Compile Update="Forms\FormWatchlist.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

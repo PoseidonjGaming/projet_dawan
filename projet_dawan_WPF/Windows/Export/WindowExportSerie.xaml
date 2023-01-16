@@ -19,7 +19,7 @@
         </Grid.ColumnDefinitions>
         <GroupBox Header="Pour chaque série" Grid.Row="1" Grid.Column="1">
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <CheckBox x:Name="checkBoxShouldPersonnage" Content="Personnages" Margin="0,10,0,10" HorizontalAlignment="Center"></CheckBox>
+                <CheckBox x:Name="checkBoxPersonnage" Content="Personnages" Margin="0,10,0,10" HorizontalAlignment="Center"></CheckBox>
                 <CheckBox x:Name="checkBoxEp" Content="Episode" Margin="0,1,0,10" HorizontalAlignment="Center"></CheckBox>
             </StackPanel>
         </GroupBox>
