@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SerieDLL_EF.BDD;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
@@ -54,7 +55,7 @@ public partial class Serie
         return ShouldExportSaison;
     }
 
-
+    
 
 
 }

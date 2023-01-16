@@ -26,7 +26,6 @@ namespace projet_dawan_WPF.Logic.Autre
             Window = form;
             Grid = new();
             serieList = new();
-            user = Properties.Settings.Default.UserRemain;
         }
         public void Load()
         {
@@ -34,9 +33,9 @@ namespace projet_dawan_WPF.Logic.Autre
             if (Properties.Settings.Default.UserRemain != null)
             {
                 UserService service=new();
-                user=service.GetUser(Properties.Settings.Default.UserRemain);
-                if (user != null)
+                if (service.CompareTo(Properties.Settings.Default.UserRemain))
                 {
+                    user=Properties.Settings.Default.UserRemain;
                     Window.menuItemSeConnecter.Header = "Déconnexion";
                     if (user.IsGranted(Roles.SuperAdmin))
                     {
@@ -50,7 +49,6 @@ namespace projet_dawan_WPF.Logic.Autre
                 }
                 else
                 {
-                    Properties.Settings.Default.UserRemain = null;
                     Window.menuGestion.IsEnabled = false;
                     Window.menuItemCompte.IsEnabled = false;
                 }
