@@ -36,7 +36,7 @@ namespace projet_dawan_WPF.Windows.Detail
 
         private void btnNote_Click(object sender, RoutedEventArgs e)
         {
-            WindowNote window = new()
+            WindowNote window = new(0)
             {
                 Owner = this
             };

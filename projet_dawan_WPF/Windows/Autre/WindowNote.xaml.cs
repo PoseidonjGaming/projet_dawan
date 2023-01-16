@@ -155,5 +155,16 @@ namespace projet_dawan_WPF.Windows.Autre
         {
             ch5.IsChecked = check;
         }
+
+        private void ch1_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Ch1(true);
+        }
+
+        private void ch2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Ch1(true);
+            Ch2(true);
+        }
     }
 }

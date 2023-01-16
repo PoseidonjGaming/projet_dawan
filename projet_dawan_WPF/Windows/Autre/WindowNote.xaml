@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows.Autre"
         mc:Ignorable="d"
-        Title="WindowNote" Height="225" Width="450" WindowStartupLocation="CenterOwner">
+        Title="WindowNote" Height="250" Width="500" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>
@@ -20,9 +20,9 @@
         </Grid.ColumnDefinitions>
         <Label Grid.Row="1" Grid.Column="1" Content="Noter la série " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Height="44" Width="174"></Label>
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <Label Content="Note sur 5: "></Label>
-                <CheckBox x:Name="ch1" VerticalContentAlignment="Center" Click="ch1_Click">
+                <CheckBox x:Name="ch1" VerticalContentAlignment="Center" Click="ch1_Click" MouseEnter="ch1_MouseEnter">
                     <CheckBox.Template>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
                             <Image x:Name="pic1" Source="E:\Projet perso\projet_dawan\etoile_note_none.png"></Image>
@@ -34,7 +34,7 @@
                         </ControlTemplate>
                     </CheckBox.Template>
                 </CheckBox>
-                <CheckBox x:Name="ch2" VerticalContentAlignment="Center" Click="ch2_Click">
+                <CheckBox x:Name="ch2" VerticalContentAlignment="Center" Click="ch2_Click" MouseEnter="ch2_MouseEnter">
                     <CheckBox.Template>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
                             <Image x:Name="pic2" Source="E:\Projet perso\projet_dawan\etoile_note_none.png"></Image>
