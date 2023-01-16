@@ -133,6 +133,18 @@ namespace SerieDLLEF.Migrations
                 name: "IX_saison_serie_id",
                 table: "saison",
                 column: "serie_id");
+
+            migrationBuilder.InsertData("userApp",
+                new[] { "login", "password", "roles", "WatchList" },
+                new object[,]
+                {
+                    {
+                        "Admin",
+                        "5aeda0c049486eaf36b0fe0bdbcde089bc0de2d29461b620c3d35ae1bf012fd7",
+                        2,
+                        "{}"
+                    }
+                });
         }
 
         /// <inheritdoc />
