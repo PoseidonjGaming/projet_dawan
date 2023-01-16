@@ -12,8 +12,8 @@ using SerieDLL_EF.BDD;
 namespace SerieDLLEF.Migrations
 {
     [DbContext(typeof(BddprojetContext))]
-    [Migration("20230116142525_InitMig")]
-    partial class InitMig
+    [Migration("20230116162008_InitDB")]
+    partial class InitDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -99,13 +99,20 @@ namespace SerieDLLEF.Migrations
 
                     b.Property<string>("Commentaire")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("commentaire");
 
                     b.Property<int>("SerieId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("serie_id");
 
                     b.Property<int>("UserId")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
+                    b.Property<int>("nbNote")
+                        .HasColumnType("int")
+                        .HasColumnName("note");
 
                     b.HasKey("Id")
                         .HasName("PK__note__3213E83F012BD232");
@@ -273,7 +280,7 @@ namespace SerieDLLEF.Migrations
                         .WithMany("Notes")
                         .HasForeignKey("UserId")
                         .IsRequired()
-                        .HasConstraintName("FK__note__user__38996AB5");
+                        .HasConstraintName("FK__note__user__231223151");
 
                     b.Navigation("Serie");
 

@@ -28,7 +28,7 @@ public partial class UserApp
     public List<int> ToWatchList { get; set; } = new List<int>();
 
     [NotMapped]
-    public List<Note> Notes { get; set; }=new List<Note>();
+    public List<Note> Notes { get; set; } = new List<Note>();
 
     public void SetToWatchList(List<Serie> list)
     {

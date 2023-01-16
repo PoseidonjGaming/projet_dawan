@@ -1,4 +1,5 @@
 ﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Autre;
 using projet_dawan_WPF.Windows.Detail;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
@@ -95,6 +96,15 @@ namespace projet_dawan_WPF.Logic.Detail
                 Properties.Settings.Default.Save();
                 Window.buttonToWatch.Content = " Ajouter à la liste à regarder";
             }
+        }
+
+        public void BtnNote_Click()
+        {
+            WindowNote window = new(Serie.Id)
+            {
+                Owner = Window
+            };
+            window.ShowDialog();
         }
 
         private void OpenForm(object sender, EventArgs e)

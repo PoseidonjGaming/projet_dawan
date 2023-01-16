@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Repository
 {
-    public class NoteRepo : IRepoCRUD<Note>
+    public class NoteRepository : IRepoCRUD<Note>
     {
         public List<Note> GetAll()
         {
@@ -27,17 +27,20 @@ namespace SerieDLL_EF.Repository
         {
             using BddprojetContext context = new();
             context.Notes.Add(item);
+            context.SaveChanges();
         }
 
         public void Update(Note item)
         {
             using BddprojetContext context = new();
             context.Notes.Update(item);
+            context.SaveChanges();
         }
         public void Delete(Note item)
         {
             using BddprojetContext context = new();
             context.Notes.Remove(item);
+            context.SaveChanges();
         }
 
         public bool CompareTo(Note obj)
@@ -51,6 +54,12 @@ namespace SerieDLL_EF.Repository
         {
             using BddprojetContext context = new();
             return context.Notes.Where(n => n.SerieId == obj.SerieId && n.UserId == obj.UserId).FirstOrDefault();
+        }
+
+        public Note? GetNote(int serieId, int userId)
+        {
+            using BddprojetContext context = new();
+            return context.Notes.Where(n => n.SerieId == serieId && n.UserId == userId).FirstOrDefault();
         }
     }
 }

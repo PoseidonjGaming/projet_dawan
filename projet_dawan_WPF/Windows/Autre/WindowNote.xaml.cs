@@ -27,6 +27,7 @@ namespace projet_dawan_WPF.Windows.Autre
         {
             InitializeComponent();
             SerieId = serieId;
+            service = new();
         }
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
@@ -58,9 +59,10 @@ namespace projet_dawan_WPF.Windows.Autre
                 {
                     SerieId = SerieId,
                     UserId = Properties.Settings.Default.UserRemain.Id,
-                    Commentaire=txtBoxCommentaire.Text
+                    Commentaire=txtBoxCommentaire.Text,
+                    nbNote=nbNote
                 };
-
+                MessageBox.Show(note.SerieId.ToString());
                 if (service.CompareTo(note))
                 {
                     service.Update(note);
@@ -89,9 +91,9 @@ namespace projet_dawan_WPF.Windows.Autre
 
         private void ch2_Click(object sender, RoutedEventArgs e)
         {
+            Ch1(true);
             if (ch2.IsChecked == false && ch3.IsChecked == true)
             {
-                Ch1(true);
                 Ch2(true);
                 Ch3(false);
                 Ch4(false);
@@ -101,10 +103,10 @@ namespace projet_dawan_WPF.Windows.Autre
 
         private void ch3_Click(object sender, RoutedEventArgs e)
         {
+            Ch1(true);
+            Ch2(true);
             if (ch3.IsChecked == false && ch4.IsChecked == true)
             {
-                Ch1(true);
-                Ch2(true);
                 Ch3(true);
                 Ch4(false);
                 Ch5(false);
@@ -113,11 +115,11 @@ namespace projet_dawan_WPF.Windows.Autre
 
         private void ch4_Click(object sender, RoutedEventArgs e)
         {
+            Ch1(true);
+            Ch2(true);
+            Ch3(true);
             if (ch4.IsChecked == false && ch5.IsChecked == true)
             {
-                Ch1(true);
-                Ch2(true);
-                Ch3(true);
                 Ch4(true);
                 Ch5(false);
             }
@@ -156,15 +158,45 @@ namespace projet_dawan_WPF.Windows.Autre
             ch5.IsChecked = check;
         }
 
-        private void ch1_MouseEnter(object sender, MouseEventArgs e)
-        {
-            Ch1(true);
-        }
+       
 
-        private void ch2_MouseEnter(object sender, MouseEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Ch1(true);
-            Ch2(true);
+            Note note = service.GetNote(SerieId, Properties.Settings.Default.UserRemain.Id);
+            if (note != null)
+            {
+                txtBoxCommentaire.Text=note.Commentaire;
+                switch (note.nbNote)
+                {
+                    case 1:
+                        Ch1(true);
+                        break;
+                    case 2:
+                        Ch1(true);
+                        Ch2(true);
+                        break;
+                    case 3:
+                        Ch1(true);
+                        Ch2(true);
+                        Ch3(true);
+                        break;
+                    case 4:
+                        Ch1(true);
+                        Ch2(true);
+                        Ch3(true);
+                        Ch4(true);
+                        break;
+                    case 5:
+                        Ch1(true);
+                        Ch2(true);
+                        Ch3(true);
+                        Ch4(true);
+                        Ch5(true);
+                        break;
+                }
+            }
+
+            
         }
     }
 }

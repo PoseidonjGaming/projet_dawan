@@ -51,6 +51,14 @@ public partial class BddprojetContext : DbContext
 
             entity.Property(n => n.Id).HasColumnName("id");
 
+            entity.Property(n=>n.Commentaire).HasColumnName("commentaire");
+
+            entity.Property(n => n.nbNote).HasColumnName("note");
+
+            entity.Property(n => n.SerieId).HasColumnName("serie_id");
+
+            entity.Property(n => n.UserId).HasColumnName("user_id");
+
             entity.HasOne(n=> n.Serie).WithMany(s => s.Notes)
                 .HasForeignKey(n => n.SerieId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -59,7 +67,7 @@ public partial class BddprojetContext : DbContext
             entity.HasOne(n => n.User).WithMany(u => u.Notes)
                 .HasForeignKey(n => n.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__note__user__38996AB5");
+                .HasConstraintName("FK__note__user__231223151");
 
         });
 

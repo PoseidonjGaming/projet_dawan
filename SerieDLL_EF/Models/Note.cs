@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,13 +13,17 @@ namespace SerieDLL_EF.Models
 
         public int SerieId { get; set; }
 
-        public Serie Serie { get; set; } = new();
+        [NotMapped]
+        public Serie Serie { get; set; } = null!;
 
         public int UserId { get; set; }
 
-        public UserApp User { get; set; } = new();
+        [NotMapped]
+        public UserApp User { get; set; } = null!;
 
         public string Commentaire { get; set; } = string.Empty;
+
+        public int nbNote { get; set; }
 
 
     }

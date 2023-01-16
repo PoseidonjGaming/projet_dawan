@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 
 namespace SerieDLL_EF.Service
 {
-    public class NoteService: Service<Note, NoteRepo>
+    public class NoteService: Service<Note, NoteRepository>
     {
-        public NoteService():base(new NoteRepo()) { }
+        public NoteService():base(new NoteRepository()) { }
+
+        public Note GetNote(int serieId, int userId)
+        {
+            return repo.GetNote(serieId, userId);
+        }
     }
 }
