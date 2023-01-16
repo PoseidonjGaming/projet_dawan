@@ -38,6 +38,7 @@
             <StackPanel Orientation="Horizontal">
                 <Button x:Name="buttonToWatch" Content="Ajouter à la liste Ma liste" Margin="5,0,0,0" Click="buttonToWatch_Click"/>
                 <Button x:Name="btnCasting" Content="Casting" Margin="5,0,0,0" Click="btnCasting_Click"/>
+                <Button x:Name="btnNote" Content="Noter la série" Margin="5,0,0,0" Click="btnNote_Click"/>
             </StackPanel>
         </StackPanel>
         <TextBlock x:Name="txtBoxResumeSerie" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Margin="10,1,10,0"/>

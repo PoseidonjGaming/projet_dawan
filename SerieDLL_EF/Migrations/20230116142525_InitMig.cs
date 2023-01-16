@@ -34,7 +34,7 @@ namespace SerieDLLEF.Migrations
                     saisonid = table.Column<int>(name: "saison_id", type: "int", nullable: false),
                     nom = table.Column<string>(type: "varchar(255)", unicode: false, maxLength: 255, nullable: true),
                     resume = table.Column<string>(type: "varchar(max)", unicode: false, nullable: false),
-                    datepremdiff = table.Column<DateTime>(name: "date_prem_diff", type: "date", nullable: true)
+                    datepremdiff = table.Column<DateTime>(name: "date_prem_diff", type: "date", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -119,6 +119,41 @@ namespace SerieDLLEF.Migrations
                         principalColumn: "id");
                 });
 
+            migrationBuilder.CreateTable(
+                name: "note",
+                columns: table => new
+                {
+                    id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SerieId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Commentaire = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK__note__3213E83F012BD232", x => x.id);
+                    table.ForeignKey(
+                        name: "FK__note__serie__38996AB5",
+                        column: x => x.SerieId,
+                        principalTable: "serie",
+                        principalColumn: "id");
+                    table.ForeignKey(
+                        name: "FK__note__user__38996AB5",
+                        column: x => x.UserId,
+                        principalTable: "userApp",
+                        principalColumn: "id");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_note_SerieId",
+                table: "note",
+                column: "SerieId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_note_UserId",
+                table: "note",
+                column: "UserId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_personnage_acteur_id",
                 table: "personnage",
@@ -145,6 +180,7 @@ namespace SerieDLLEF.Migrations
                         "{}"
                     }
                 });
+
         }
 
         /// <inheritdoc />
@@ -152,6 +188,9 @@ namespace SerieDLLEF.Migrations
         {
             migrationBuilder.DropTable(
                 name: "episode");
+
+            migrationBuilder.DropTable(
+                name: "note");
 
             migrationBuilder.DropTable(
                 name: "personnage");

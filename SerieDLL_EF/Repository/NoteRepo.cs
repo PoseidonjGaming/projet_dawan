@@ -43,16 +43,14 @@ namespace SerieDLL_EF.Repository
         public bool CompareTo(Note obj)
         {
             using BddprojetContext context = new();
-            Note? note = context.Notes.Where(n => n.Commentaire == obj.Commentaire 
-            && n.SerieId==obj.SerieId && n.UserId==obj.UserId).FirstOrDefault();
+            Note? note = context.Notes.Where(n => n.SerieId==obj.SerieId && n.UserId==obj.UserId).FirstOrDefault();
             return note != null;
         }
 
         public Note? GetCompareTo(Note obj)
         {
             using BddprojetContext context = new();
-            return context.Notes.Where(n => n.Commentaire == obj.Commentaire
-            && n.SerieId == obj.SerieId && n.UserId == obj.UserId).FirstOrDefault();
+            return context.Notes.Where(n => n.SerieId == obj.SerieId && n.UserId == obj.UserId).FirstOrDefault();
         }
     }
 }

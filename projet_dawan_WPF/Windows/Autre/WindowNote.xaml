@@ -1,26 +1,27 @@
-﻿<Window x:Class="projet_dawan_WPF.Windows.WindowTest"
+﻿<Window x:Class="projet_dawan_WPF.Windows.Autre.WindowNote"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:projet_dawan_WPF.Windows"
+        xmlns:local="clr-namespace:projet_dawan_WPF.Windows.Autre"
         mc:Ignorable="d"
-        Title="WindowTest" Height="450" Width="800" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+        Title="WindowNote" Height="225" Width="450" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="64*"></RowDefinition>
+            <RowDefinition Height="125*"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="10"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <StackPanel  Orientation="Horizontal">
-                <Label Content="Note"></Label>
+        <Label Grid.Row="1" Grid.Column="1" Content="Noter la série " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Height="44" Width="174"></Label>
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Note sur 5: "></Label>
                 <CheckBox x:Name="ch1" VerticalContentAlignment="Center" Click="ch1_Click">
                     <CheckBox.Template>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
@@ -82,11 +83,8 @@
                     </CheckBox.Template>
                 </CheckBox>
             </StackPanel>
-            <TextBox x:Name="comm" Width="150" TextWrapping="Wrap"></TextBox>
-            <Button x:Name="btnValider" Content="Valider" Click="btnValider_Click"></Button>
+            <TextBox x:Name="txtBoxCommentaire" Margin="0,10,0,10" TextWrapping="Wrap" MinHeight="50"></TextBox>
+            <Button x:Name="btnValider" Content="Valider" Click="btnValider_Click" Margin="0,0,0,10"></Button>
         </StackPanel>
-        <ListBox x:Name="lstBoxSerie" Grid.Row="1" Grid.Column="2"></ListBox>
-        
-        
     </Grid>
 </Window>
