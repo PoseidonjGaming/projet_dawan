@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows.Autre"
         mc:Ignorable="d"
-        Title="WindowNote" Height="250" Width="500" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+        Title="WindowNote" Height="220" Width="200" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>
-            <RowDefinition Height="64*"></RowDefinition>
-            <RowDefinition Height="125*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+            <RowDefinition Height="17*"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -19,7 +19,7 @@
             <ColumnDefinition Width="10"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Label Grid.Row="1" Grid.Column="1" Content="Noter la série " VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Height="44" Width="174"></Label>
-        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+        <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" Height="135" Width="156">
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <Label Content="Note sur 5: "></Label>
                 <CheckBox x:Name="chcBox1" VerticalContentAlignment="Center" Click="chcBox1_Click">
