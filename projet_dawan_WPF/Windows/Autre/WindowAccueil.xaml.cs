@@ -1,5 +1,6 @@
 ﻿using projet_dawan_WPF.Logic.Autre;
 using System.Windows;
+using System.Windows.Input;
 
 namespace projet_dawan_WPF.Windows.Autre
 {
@@ -68,6 +69,11 @@ namespace projet_dawan_WPF.Windows.Autre
         private void menuItemImport_Export_Click(object sender, RoutedEventArgs e)
         {
             logic.MenuItemImport_Export_Click();
+        }
+
+        private void txtRechercher_KeyUp(object sender, KeyEventArgs e)
+        {
+            logic.TxtRechercher_KeyUp(e);
         }
     }
 }

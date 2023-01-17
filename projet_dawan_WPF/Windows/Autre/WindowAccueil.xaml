@@ -27,7 +27,6 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem x:Name="menuGestion" Header="_Menu">
-                <MenuItem Name="menuItemBibli" Header="Bibliothèque" Click="menuItemBibli_Click"/>
                 <MenuItem Header="Gérer la base">
                     <MenuItem Header="Gérer les Series" Name="menuItemSeries" Click="menuItemSeries_Click"/>
                     <MenuItem Header="Gérer les Episodes" Name="menuItemEpisodes" Click="menuItemEpisodes_Click"/>
@@ -42,6 +41,7 @@
                 <MenuItem Header="Mon Compte"/>
                 <MenuItem Name="menuItemWatchlist" Header="WatchList"  Click="menuItemWatchlist_Click"/>
             </MenuItem>
+            <MenuItem Name="menuItemBibli" Header="Bibliothèque" Click="menuItemBibli_Click"/>
             <MenuItem HorizontalAlignment="Right" Header="Connexion" Name="menuItemSeConnecter" Click="menuItemSeConnecter_Click"/>
         </Menu>
         <GroupBox x:Name="LastAdd" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Header="Dernières Séries ajoutées" />
@@ -53,12 +53,12 @@
             <Label Content="Accueil" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="20" Grid.Row="0"/>
             <StackPanel Orientation="Horizontal" Grid.Row="1"  HorizontalAlignment="Center">
                 <Label Content="Rechercher: " VerticalAlignment="Center" FontStyle="Italic"></Label>
-                <TextBox x:Name="txtRechercher" Height="20" Width="200" Margin="0, 0, 10, 0"></TextBox> 
+                <TextBox x:Name="txtRechercher" Height="20" Width="200" Margin="0, 0, 10, 0" KeyUp="txtRechercher_KeyUp"></TextBox>
                 <Button x:Name="btnSearch" Height="20" Width="100" Margin="0, 0, 10, 0" Content="Rechercher" VerticalAlignment="center" Click="btnSearch_Click"></Button>
             </StackPanel>
 
         </Grid>
-       
+
     </Grid>
 
 

@@ -43,15 +43,24 @@ namespace projet_dawan_WPF.Logic.Detail
                 Window.lstBoxSaison.Items.Add(saison.Numero.ToString());
             }
 
-            if (Properties.Settings.Default.UserRemain.ToWatchList.Contains(Serie.Id))
+            if (Properties.Settings.Default.UserRemain != null)
             {
+                if (Properties.Settings.Default.UserRemain.ToWatchList.Contains(Serie.Id))
+                {
 
-                Window.buttonToWatch.Content = "✔";
+                    Window.btnToWatch.Content = "✔";
+                }
+                else
+                {
+                    Window.btnToWatch.Content = " Ajouter à la liste à regarder";
+                }
             }
             else
             {
-                Window.buttonToWatch.Content = " Ajouter à la liste à regarder";
+                Window.btnToWatch.IsEnabled = false;
             }
+
+
         }
 
         public void BtnCasting_Click()
@@ -89,13 +98,13 @@ namespace projet_dawan_WPF.Logic.Detail
                 Properties.Settings.Default.Save();
                 UserService service = new();
                 service.Update(Properties.Settings.Default.UserRemain);
-                Window.buttonToWatch.Content = "✔";
+                Window.btnToWatch.Content = "✔";
             }
             else
             {
                 Properties.Settings.Default.UserRemain.UnsetToWatchlist(new() { Serie });
                 Properties.Settings.Default.Save();
-                Window.buttonToWatch.Content = " Ajouter à la liste à regarder";
+                Window.btnToWatch.Content = " Ajouter à la liste à regarder";
             }
         }
 

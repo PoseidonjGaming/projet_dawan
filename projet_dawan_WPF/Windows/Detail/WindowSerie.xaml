@@ -36,7 +36,7 @@
             <Label x:Name="lblDateSerie" Content="Date de 1ère diffusion" FontSize="15"></Label>
             <Label x:Name="linkLblBASerie" Content="Bande annonce" FontSize="15"></Label>
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="buttonToWatch" Content="Ajouter à la liste Ma liste" Margin="5,0,0,0" Click="buttonToWatch_Click"/>
+                <Button x:Name="btnToWatch" Content="Ajouter à Ma liste" Margin="5,0,0,0" Click="buttonToWatch_Click"/>
                 <Button x:Name="btnCasting" Content="Casting" Margin="5,0,0,0" Click="btnCasting_Click"/>
                 <Button x:Name="btnNote" Content="Noter la série" Margin="5,0,0,0" Click="btnNote_Click"/>
             </StackPanel>

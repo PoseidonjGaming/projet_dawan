@@ -28,6 +28,11 @@ namespace projet_dawan_WPF.Logic.Autre
 
             Window.cmbFiltrer.SelectedIndex = 0;
             Window.txtRechercher.Text = text;
+
+            if (Properties.Settings.Default.UserRemain == null)
+            {
+                Window.btnAddWitch.IsEnabled = false;
+            }
         }
 
         public void ChangeText()
@@ -50,7 +55,7 @@ namespace projet_dawan_WPF.Logic.Autre
         public void Detail()
         {
 
-            if (Window.cmbFiltrer.SelectedIndex != -1)
+            if (Window.cmbFiltrer.SelectedIndex != -1 && Window.lstBxSerie.SelectedIndex != -1)
             {
                 switch (Window.cmbFiltrer.SelectedIndex)
                 {
