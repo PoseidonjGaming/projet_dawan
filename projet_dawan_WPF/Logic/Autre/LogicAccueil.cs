@@ -33,10 +33,10 @@ namespace projet_dawan_WPF.Logic.Autre
 
             if (Properties.Settings.Default.UserRemain != null)
             {
-                UserService service=new();
+                UserService service = new();
                 if (service.CompareTo(Properties.Settings.Default.UserRemain))
                 {
-                    user=Properties.Settings.Default.UserRemain;
+                    user = Properties.Settings.Default.UserRemain;
                     Window.menuItemSeConnecter.Header = "Déconnexion";
                     if (user.IsGranted(Roles.SuperAdmin))
                     {
@@ -53,7 +53,7 @@ namespace projet_dawan_WPF.Logic.Autre
                     Window.menuGestion.IsEnabled = false;
                     Window.menuItemCompte.IsEnabled = false;
                 }
-               
+
             }
             else
             {
@@ -108,6 +108,7 @@ namespace projet_dawan_WPF.Logic.Autre
                 img.Margin = new Thickness(10, 20, 10, 0);
                 img.Source = bitImg;
                 img.Stretch = Stretch.Fill;
+                img.MouseLeftButtonDown += Serie_Click;
 
                 Grid.SetRow(img, 0);
                 Grid.Children.Add(img);
@@ -143,8 +144,8 @@ namespace projet_dawan_WPF.Logic.Autre
             }
             else
             {
-                Image? img = sender as Image;
-                Serie? serie = serieList.Find(s => s.Nom == img.Name);
+                Image img = sender as Image;
+                Serie? serie = serieList.Find(s => s.Affiche == img.Source.ToString());
                 if (serie != null)
                 {
                     WindowSerie formSerie = new(serie)
