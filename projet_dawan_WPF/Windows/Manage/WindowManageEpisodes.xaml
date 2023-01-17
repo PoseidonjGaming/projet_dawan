@@ -34,10 +34,10 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                         <Label Content="Saison: "></Label>
-                        <TextBox x:Name="numSaison" Width="260" IsReadOnly="true" MouseWheel="TextBox_MouseWheel" Margin="60,0,0,0" Text="0" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox x:Name="numSaison" Width="260" IsReadOnly="true" MouseWheel="TextBox_MouseWheel" Margin="60,0,0,0" Text="0" TextAlignment="Center" VerticalContentAlignment="Center" KeyUp="numSaison_KeyUp" ></TextBox>
                         <StackPanel Orientation="Vertical">
-                            <Button x:Name="btnAddNum" Content="+" Click="btnAddNum_Click"/>
-                            <Button x:Name="btnSupNum" Content="-" Click="btnSupNum_Click"/>
+                            <RepeatButton x:Name="btnAddNum" Content="+" Click="btnAddNum_Click"/>
+                            <RepeatButton x:Name="btnSupNum" Content="-" Click="btnSupNum_Click"/>
                         </StackPanel>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal">
@@ -50,7 +50,7 @@
                 </StackPanel>
             </GroupBox>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10" Width="168">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1" Margin="0,10,0,10">
                 <Button x:Name="btnAjouter" Content="Ajouter" Margin="0,0,10,0" Click="btnAjouter_Click"></Button>
                 <Button x:Name="btnAnnuler" Content="Annuler" Margin="0,0,10,0" Click="btnAnnuler_Click"></Button>
                 <Button x:Name="btnSup" Content="Supprimer" Click="btnSup_Click"></Button>
