@@ -71,7 +71,7 @@ namespace projet_dawan_WPF.Windows.Autre
             logic.MenuItemImport_Export_Click();
         }
 
-        private void txtRechercher_KeyUp(object sender, KeyEventArgs e)
+        private void txtRechercher_KeyDown(object sender, KeyEventArgs e)
         {
             logic.TxtRechercher_KeyUp(e);
         }

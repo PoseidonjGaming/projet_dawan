@@ -4,6 +4,8 @@ using SerieDLL_EF.Service;
 using System;
 using System.Security.Cryptography;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace projet_dawan_WPF.Logic.Autre
 {
@@ -28,21 +30,25 @@ namespace projet_dawan_WPF.Logic.Autre
 
         public void BtnConnexion_Click()
         {
-            UserService service = new();
-            UserApp user = new()
+            if(Window.txtLogin.Text!=string.Empty && Window.txtPwd.Password!=string.Empty)
             {
-                Login = Window.txtLogin.Text,
-                Password = Window.txtPwd.Password
-            };
+                UserService service = new();
+                UserApp user = new()
+                {
+                    Login = Window.txtLogin.Text,
+                    Password = Window.txtPwd.Password
+                };
 
-            user = service.GetUser(user);
+                user = service.GetUser(user);
 
-            Properties.Settings.Default.UserRemain = user;
-            if ((bool)Window.checkBoxCo.IsChecked)
-            {
-                Properties.Settings.Default.Save();
+                Properties.Settings.Default.UserRemain = user;
+                if ((bool)Window.checkBoxCo.IsChecked)
+                {
+                    Properties.Settings.Default.Save();
+                }
+                Login(user);
             }
-            Login(user);
+           
         }
 
         private void Login(UserApp user)
@@ -60,6 +66,19 @@ namespace projet_dawan_WPF.Logic.Autre
                 Window.Close();
             }
 
+        }
+
+        public void Txt_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if (e.Key == Key.Enter)
+            {
+                if (sender is CheckBox check)
+                {
+                    check.IsChecked = true;
+                }
+                BtnConnexion_Click();
+            }
         }
 
 

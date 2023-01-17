@@ -53,7 +53,7 @@
             <Label Content="Accueil" HorizontalAlignment="Center"  FontWeight="Bold" FontSize="20" Grid.Row="0"/>
             <StackPanel Orientation="Horizontal" Grid.Row="1"  HorizontalAlignment="Center">
                 <Label Content="Rechercher: " VerticalAlignment="Center" FontStyle="Italic"></Label>
-                <TextBox x:Name="txtRechercher" Height="20" Width="200" Margin="0, 0, 10, 0" KeyUp="txtRechercher_KeyUp"></TextBox>
+                <TextBox x:Name="txtRechercher" Height="20" Width="200" Margin="0, 0, 10, 0" KeyDown="txtRechercher_KeyDown"></TextBox>
                 <Button x:Name="btnSearch" Height="20" Width="100" Margin="0, 0, 10, 0" Content="Rechercher" VerticalAlignment="center" Click="btnSearch_Click"></Button>
             </StackPanel>
 
