@@ -22,7 +22,7 @@
         <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <Label Content="Note sur 5: "></Label>
-                <CheckBox x:Name="ch1" VerticalContentAlignment="Center" Click="ch1_Click">
+                <CheckBox x:Name="chcBox1" VerticalContentAlignment="Center" Click="chcBox1_Click">
                     <CheckBox.Template>
                         <ControlTemplate TargetType="{x:Type CheckBox}" >
                             <Image x:Name="pic1" Source="/projet_dawan_WPF;component/Ressources/etoile_note_none.png"></Image>
@@ -34,7 +34,7 @@
                         </ControlTemplate>
                     </CheckBox.Template>
                 </CheckBox>
-                <CheckBox x:Name="ch2" VerticalContentAlignment="Center" Click="ch2_Click" >
+                <CheckBox x:Name="chcBox2" VerticalContentAlignment="Center" Click="chcBox2_Click" >
                     <CheckBox.Template>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
                             <Image x:Name="pic2" Source="/projet_dawan_WPF;component/Ressources/etoile_note_none.png"></Image>
@@ -46,7 +46,7 @@
                         </ControlTemplate>
                     </CheckBox.Template>
                 </CheckBox>
-                <CheckBox x:Name="ch3" VerticalContentAlignment="Center" Click="ch3_Click">
+                <CheckBox x:Name="chcBox3" VerticalContentAlignment="Center" Click="chcBox3_Click">
                     <CheckBox.Template>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
                             <Image x:Name="pic3" Source="/projet_dawan_WPF;component/Ressources/etoile_note_none.png"></Image>
@@ -58,7 +58,7 @@
                         </ControlTemplate>
                     </CheckBox.Template>
                 </CheckBox>
-                <CheckBox x:Name="ch4" VerticalContentAlignment="Center" Click="ch4_Click">
+                <CheckBox x:Name="chcBox4" VerticalContentAlignment="Center" Click="chcBox4_Click">
                     <CheckBox.Template>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
                             <Image x:Name="pic4" Source="/projet_dawan_WPF;component/Ressources/etoile_note_none.png"></Image>
@@ -70,7 +70,7 @@
                         </ControlTemplate>
                     </CheckBox.Template>
                 </CheckBox>
-                <CheckBox x:Name="ch5" VerticalContentAlignment="Center" Click="ch5_Click">
+                <CheckBox x:Name="chcBox5" VerticalContentAlignment="Center" Click="chcBox5_Click">
                     <CheckBox.Template>
                         <ControlTemplate TargetType="{x:Type CheckBox}">
                             <Image x:Name="pic5" Source="/projet_dawan_WPF;component/Ressources/etoile_note_none.png"></Image>
@@ -83,8 +83,8 @@
                     </CheckBox.Template>
                 </CheckBox>
             </StackPanel>
-            <TextBox x:Name="txtBoxCommentaire" Margin="0,10,0,10" TextWrapping="Wrap" MinHeight="50" MinWidth="150"></TextBox>
-            <Button x:Name="btnValider" Content="Valider" Click="btnValider_Click" Margin="0,0,0,10"></Button>
+            <TextBox x:Name="txtBoxCommentaire" Margin="0,10,0,10" TextWrapping="Wrap" MinHeight="50" Width="150"></TextBox>
+            <Button x:Name="btnValider" Content="Valider" Click="btnValider_Click" Margin="10,0,10,10" VerticalAlignment="Center"></Button>
         </StackPanel>
     </Grid>
 </Window>

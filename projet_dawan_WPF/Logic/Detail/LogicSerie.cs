@@ -27,7 +27,7 @@ namespace projet_dawan_WPF.Logic.Detail
             Window.lblDateSerie.Content = "Diffusé à partir du" + Serie.DateDiff.ToString();
             Window.linkLblBASerie.Content = Serie.UrlBa;
             Window.txtBoxResumeSerie.Text = Serie.Resume;
-            Window.lblAvg.Content += new NoteService().GetNoteAverage(serie.Id).ToString();
+            Window.lblAvg.Content += " " + new NoteService().GetNoteAverage(serie.Id).ToString() + "/5";
             try
             {
                 Window.affiche.Source = new BitmapImage(new Uri(Serie.Affiche));
