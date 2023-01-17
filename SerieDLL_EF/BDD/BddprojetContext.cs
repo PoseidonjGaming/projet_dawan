@@ -9,7 +9,7 @@ public partial class BddprojetContext : DbContext
 
     public BddprojetContext()
     {
-        connection = new("serie_list");
+        connection = new("P3570-7D6Q","serie_list");
 
     }
 

@@ -62,7 +62,6 @@ namespace projet_dawan_WPF.Windows.Autre
                     Commentaire=txtBoxCommentaire.Text,
                     nbNote=nbNote
                 };
-                MessageBox.Show(note.SerieId.ToString());
                 if (service.CompareTo(note))
                 {
                     service.Update(note);

@@ -8,7 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Ressources\etoile_note_check.png" />
+    <None Remove="Ressources\etoile_note_none.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SerieDLL_EF\SerieDLL_EF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Ressources\etoile_note_check.png" />
+    <Resource Include="Ressources\etoile_note_none.png" />
   </ItemGroup>
 
   <ItemGroup>
