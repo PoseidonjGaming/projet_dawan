@@ -29,7 +29,7 @@ namespace projet_dawan_WPF.Logic.Detail
             Window.linkLblBASerie.Content = Serie.UrlBa;
             Window.txtBoxResumeSerie.Text = Serie.Resume;
             NoteService noteService = new();
-            double avg = noteService.GetNoteAverage(serie.Id);
+            double avg = noteService.GetNoteAverage(Serie.Id);
             if (!double.IsNaN(avg))
             {
                 Window.lblAvg.Content += " " + avg + "/5";
