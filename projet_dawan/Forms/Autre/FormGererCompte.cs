@@ -1,12 +1,13 @@
 ﻿using Newtonsoft.Json;
 using SerieDLL_EF.Models;
+using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 
 namespace projet_dawan
 {
     public partial class FormGererCompte : Form
     {
-
+        UserService userService = new UserService();
         public FormGererCompte()
         {
             InitializeComponent();
@@ -23,8 +24,8 @@ namespace projet_dawan
         {
             UserApp user = Properties.Settings.Default.UserRemain;
             UserName.Text = user.Login;
-            //Password.Text = user.Password;
-            //ConfirmPassword.Text = user.Password;
+            Password.Text = null;
+            ConfirmPassword.Text = null;
         }
 
         private void ModifierLogin_Click(object sender, EventArgs e)
@@ -38,6 +39,7 @@ namespace projet_dawan
                 if (modifier == DialogResult.Yes)
                 {
                     user.Login = UserName.Text;
+                    userService.Update(user);
                     UpdateForm();
                 }
             }
@@ -55,8 +57,9 @@ namespace projet_dawan
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (modifier == DialogResult.Yes)
                     {
-                        //user.Password = Password.Text;
-                        //UpdateForm();
+                        user.Password = Password.Text;
+                        userService.Update(user);
+                        UpdateForm();
                     }
                 }
                 else

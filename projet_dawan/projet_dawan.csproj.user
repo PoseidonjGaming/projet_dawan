@@ -1,46 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Forms\FormAccueil.cs">
+    <Compile Update="Forms\Autre\FormAccueil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormBibliotheque.cs">
+    <Compile Update="Forms\Autre\FormBibliotheque.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Autre\FormCreerCompte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormCreerCompte.cs">
+    <Compile Update="Forms\Autre\FormGererCompte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormCreerCompte.cs">
+    <Compile Update="Forms\Autre\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormEpisode.cs">
+    <Compile Update="Forms\Autre\FormWatchlist.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormGererCompte.cs">
+    <Compile Update="Forms\Detail\FormCasting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormMain.cs">
+    <Compile Update="Forms\Detail\FormEpisode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormManageActeur.cs">
+    <Compile Update="Forms\Detail\FormSerie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormManageEpisode.cs">
+    <Compile Update="Forms\Manage\FormManageActeur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormManagePerso.cs">
+    <Compile Update="Forms\Manage\FormManageEpisode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormManageSerie.cs">
+    <Compile Update="Forms\Manage\FormManagePerso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormSerie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormWatchlist.cs">
+    <Compile Update="Forms\Manage\FormManageSerie.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

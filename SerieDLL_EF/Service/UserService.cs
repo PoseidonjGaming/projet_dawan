@@ -23,7 +23,7 @@ namespace SerieDLL_EF.Service
 
         public override void Update(UserApp item)
         {
-
+            
             base.Update(HashPassword(item));
         }
 
