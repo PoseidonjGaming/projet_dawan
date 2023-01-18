@@ -55,8 +55,8 @@ public partial class UserApp
 
     public override bool Equals(object? obj)
     {
-        UserApp user = (UserApp)obj;
-        return Login == user.Login && Password == user.Password;
+        UserApp? user = obj as UserApp;
+        return Login == user?.Login && Password == user.Password;
     }
 
 

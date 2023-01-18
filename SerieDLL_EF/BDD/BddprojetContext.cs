@@ -9,13 +9,13 @@ public partial class BddprojetContext : DbContext
 
     public BddprojetContext()
     {
-        connection = new("serie_list");
+        connection = new("P3570-7D6Q","serie_list");
     }
 
     public BddprojetContext(DbContextOptions<BddprojetContext> options)
         : base(options)
     {
-        connection = new("serie_list");
+
     }
 
 
@@ -31,6 +31,7 @@ public partial class BddprojetContext : DbContext
     public virtual DbSet<Serie> Series { get; set; }
 
     public virtual DbSet<UserApp> UserApps { get; set; }
+
     public virtual DbSet<Note> Notes { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

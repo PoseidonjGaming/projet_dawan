@@ -58,16 +58,17 @@ namespace projet_dawan_WPF.Logic.Detail
                 if (Properties.Settings.Default.UserRemain.ToWatchList.Contains(Serie.Id))
                 {
 
-                    Window.btnToWatch.Content = "✔";
+                    Window.menuItemToWatch.Header = "✔";
                 }
                 else
                 {
-                    Window.btnToWatch.Content = " Ajouter à la liste à regarder";
+                    Window.menuItemToWatch.Header = " Ajouter à la liste à regarder";
                 }
             }
             else
             {
-                Window.btnToWatch.IsEnabled = false;
+                Window.menuItemToWatch.IsEnabled = false;
+                Window.menuItemNote.IsEnabled = false;
             }
 
 
@@ -108,13 +109,13 @@ namespace projet_dawan_WPF.Logic.Detail
                 Properties.Settings.Default.Save();
                 UserService service = new();
                 service.Update(Properties.Settings.Default.UserRemain);
-                Window.btnToWatch.Content = "✔";
+                Window.menuItemToWatch.Header = "✔";
             }
             else
             {
                 Properties.Settings.Default.UserRemain.UnsetToWatchlist(new() { Serie });
                 Properties.Settings.Default.Save();
-                Window.btnToWatch.Content = " Ajouter à la liste à regarder";
+                Window.menuItemToWatch.Header = " Ajouter à la liste à regarder";
             }
         }
 

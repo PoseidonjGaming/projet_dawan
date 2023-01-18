@@ -7,9 +7,10 @@
         Title="WindowSerie" Height="489" Width="816" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="65*"></RowDefinition>
-            <RowDefinition Height="168*"></RowDefinition>
-            <RowDefinition Height="230*"></RowDefinition>
+            <RowDefinition Height="28"></RowDefinition>
+            <RowDefinition Height="16*"></RowDefinition>
+            <RowDefinition Height="42*"></RowDefinition>
+            <RowDefinition Height="29*"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -18,7 +19,16 @@
             <ColumnDefinition Width="303*"></ColumnDefinition>
             <ColumnDefinition Width="10"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Grid.RowSpan="3" Margin="0,15,0,0">
+        <Menu Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch"/>
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem x:Name="menuItemToWatch" Header="Ajouter à Ma Liste" Click="buttonToWatch_Click" HorizontalAlignment="Center"></MenuItem>
+            <MenuItem x:Name="menuItemNote" Header="Noter" HorizontalAlignment="Left" ></MenuItem>
+        </Menu>
+        <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="0,15,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="170"></RowDefinition>
@@ -29,19 +39,17 @@
             <Image Grid.Row="0" Stretch="Fill" Name="affiche" ></Image>
             <ListBox x:Name="lstBoxSaison" Grid.Row="1" Grid.Column="0" Margin="0,10,0,0" SelectionChanged="lstBoxSaison_SelectionChanged"></ListBox>
         </Grid>
-        <Label x:Name="lblSerie" Grid.Column="2"
+        <Label x:Name="lblSerie" Grid.Row="1" Grid.Column="2"
                HorizontalAlignment="Center" VerticalAlignment="Center"
                FontSize="30" FontWeight="Bold" Content="Titre de la série" Height="48" Width="226"/>
-        <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Vertical" Margin="5,10,10,10">
+        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical" Margin="5,10,10,10" VerticalAlignment="Center">
             <Label x:Name="lblDateSerie" Content="Date de 1ère diffusion" FontSize="15"></Label>
             <Label x:Name="linkLblBASerie" Content="Bande annonce" FontSize="15"></Label>
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnToWatch" Content="Ajouter à Ma liste" Margin="5,0,0,0" Click="buttonToWatch_Click"/>
                 <Button x:Name="btnCasting" Content="Casting" Margin="5,0,0,0" Click="btnCasting_Click"/>
-                <Button x:Name="btnNote" Content="Noter la série" Margin="5,0,0,0" Click="btnNote_Click"/>
             </StackPanel>
             <Label x:Name="lblAvg" Content="Note Moyenne: " FontSize="15"></Label>
         </StackPanel>
-        <TextBlock x:Name="txtBoxResumeSerie" Grid.Row="2" Grid.Column="2" TextWrapping="Wrap" Margin="10,1,10,0"/>
+        <TextBlock x:Name="txtBoxResumeSerie" Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Margin="10,1,10,0"/>
     </Grid>
 </Window>
