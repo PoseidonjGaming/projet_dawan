@@ -1,4 +1,5 @@
 ﻿using projet_dawan_WPF.Logic.Detail;
+using projet_dawan_WPF.Windows.Autre;
 using SerieDLL_EF.Models;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +32,11 @@ namespace projet_dawan_WPF.Windows.Detail
         private void lstBoxSaison_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             logic.LstBoxSaison_SelectedIndexChanged();
+        }
+
+        private void btnNote_Click(object sender, RoutedEventArgs e)
+        {
+            logic.BtnNote_Click();
         }
     }
 }

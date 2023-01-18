@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using SerieDLL_EF.BDD;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
@@ -41,6 +42,9 @@ public partial class Serie
     [NotMapped]
     public virtual List<Saison> Saisons { get; set; } = new List<Saison>();
 
+    [NotMapped]
+    public List<Note> Notes { get; set; } = new List<Note>();
+
     public bool ShouldSerializePersonnages()
     {
         return ShouldExportPersonnage;
@@ -51,7 +55,7 @@ public partial class Serie
         return ShouldExportSaison;
     }
 
-
+    
 
 
 }

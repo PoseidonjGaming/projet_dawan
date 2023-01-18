@@ -17,7 +17,7 @@ namespace SerieDLLEF.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.1")
+                .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -59,7 +59,7 @@ namespace SerieDLLEF.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("DatePremDiff")
+                    b.Property<DateTime>("DatePremDiff")
                         .HasColumnType("date")
                         .HasColumnName("date_prem_diff");
 
@@ -83,6 +83,42 @@ namespace SerieDLLEF.Migrations
                         .HasName("PK__episode__3213E83F07132552");
 
                     b.ToTable("episode", (string)null);
+                });
+
+            modelBuilder.Entity("SerieDLL_EF.Models.Note", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Commentaire")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("commentaire");
+
+                    b.Property<int>("SerieId")
+                        .HasColumnType("int")
+                        .HasColumnName("serie_id");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int")
+                        .HasColumnName("user_id");
+
+                    b.Property<int>("nbNote")
+                        .HasColumnType("int")
+                        .HasColumnName("note");
+
+                    b.HasKey("Id")
+                        .HasName("PK__note__3213E83F012BD232");
+
+                    b.HasIndex("SerieId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("note", (string)null);
                 });
 
             modelBuilder.Entity("SerieDLL_EF.Models.Personnage", b =>
@@ -229,6 +265,25 @@ namespace SerieDLLEF.Migrations
                     b.ToTable("userApp", (string)null);
                 });
 
+            modelBuilder.Entity("SerieDLL_EF.Models.Note", b =>
+                {
+                    b.HasOne("SerieDLL_EF.Models.Serie", "Serie")
+                        .WithMany("Notes")
+                        .HasForeignKey("SerieId")
+                        .IsRequired()
+                        .HasConstraintName("FK__note__serie__38996AB5");
+
+                    b.HasOne("SerieDLL_EF.Models.UserApp", "User")
+                        .WithMany("Notes")
+                        .HasForeignKey("UserId")
+                        .IsRequired()
+                        .HasConstraintName("FK__note__user__231223151");
+
+                    b.Navigation("Serie");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("SerieDLL_EF.Models.Personnage", b =>
                 {
                     b.HasOne("SerieDLL_EF.Models.Acteur", "Acteur")
@@ -266,9 +321,16 @@ namespace SerieDLLEF.Migrations
 
             modelBuilder.Entity("SerieDLL_EF.Models.Serie", b =>
                 {
+                    b.Navigation("Notes");
+
                     b.Navigation("Personnages");
 
                     b.Navigation("Saisons");
+                });
+
+            modelBuilder.Entity("SerieDLL_EF.Models.UserApp", b =>
+                {
+                    b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618
         }

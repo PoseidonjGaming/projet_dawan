@@ -4,6 +4,9 @@
     <_LastSelectedProfileId>C:\Users\Admin Stagiaire\Desktop\projet_dawan\projet_dawan_WPF\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Windows\Autre\WindowNote.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\Export\WindowExportActeur.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -12,6 +15,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Windows\Autre\WindowNote.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Windows\Export\WindowExportActeur.xaml">
       <SubType>Designer</SubType>
     </Page>

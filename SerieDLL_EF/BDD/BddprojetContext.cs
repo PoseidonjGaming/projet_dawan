@@ -9,13 +9,13 @@ public partial class BddprojetContext : DbContext
 
     public BddprojetContext()
     {
-        connection = new("serie_list");
+        connection = new("P3570-7D6Q","serie_list");
     }
 
     public BddprojetContext(DbContextOptions<BddprojetContext> options)
         : base(options)
     {
-        connection = new("serie_list");
+
     }
 
 
@@ -32,6 +32,8 @@ public partial class BddprojetContext : DbContext
 
     public virtual DbSet<UserApp> UserApps { get; set; }
 
+    public virtual DbSet<Note> Notes { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
 
@@ -41,6 +43,34 @@ public partial class BddprojetContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Note>(entity =>
+        {
+            entity.HasKey(n => n.Id).HasName("PK__note__3213E83F012BD232");
+
+            entity.ToTable("note");
+
+            entity.Property(n => n.Id).HasColumnName("id");
+
+            entity.Property(n=>n.Commentaire).HasColumnName("commentaire");
+
+            entity.Property(n => n.nbNote).HasColumnName("note");
+
+            entity.Property(n => n.SerieId).HasColumnName("serie_id");
+
+            entity.Property(n => n.UserId).HasColumnName("user_id");
+
+            entity.HasOne(n=> n.Serie).WithMany(s => s.Notes)
+                .HasForeignKey(n => n.SerieId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__note__serie__38996AB5");
+
+            entity.HasOne(n => n.User).WithMany(u => u.Notes)
+                .HasForeignKey(n => n.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__note__user__231223151");
+
+        });
+
         modelBuilder.Entity<Acteur>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK__acteur__3213E83F012BD232");

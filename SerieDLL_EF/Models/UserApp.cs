@@ -17,8 +17,6 @@ public partial class UserApp
     [DataMember]
     public string Password { get; set; } = null!;
 
-
-
     [DataMember]
     public Roles Roles { get; set; }
 
@@ -28,6 +26,9 @@ public partial class UserApp
     [DataMember]
     [NotMapped]
     public List<int> ToWatchList { get; set; } = new List<int>();
+
+    [NotMapped]
+    public List<Note> Notes { get; set; } = new List<Note>();
 
     public void SetToWatchList(List<Serie> list)
     {
@@ -54,8 +55,8 @@ public partial class UserApp
 
     public override bool Equals(object? obj)
     {
-        UserApp user = (UserApp)obj;
-        return Login == user.Login && Password == user.Password;
+        UserApp? user = obj as UserApp;
+        return Login == user?.Login && Password == user.Password;
     }
 
 

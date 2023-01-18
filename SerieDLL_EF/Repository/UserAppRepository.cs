@@ -50,7 +50,9 @@ namespace SerieDLL_EF.Repository
 
         public bool CompareTo(UserApp obj)
         {
-            throw new NotImplementedException();
+            using BddprojetContext context= new();
+            return context.UserApps.Where(u => u.Login == obj.Login && u.Password==obj.Password
+            && u.Roles == obj.Roles)!=null;
         }
 
         public UserApp GetCompareTo(UserApp obj)

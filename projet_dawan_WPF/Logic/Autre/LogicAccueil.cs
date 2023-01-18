@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
@@ -26,17 +27,16 @@ namespace projet_dawan_WPF.Logic.Autre
             Window = form;
             Grid = new();
             serieList = new();
-            user = Properties.Settings.Default.UserRemain;
         }
         public void Load()
         {
 
             if (Properties.Settings.Default.UserRemain != null)
             {
-                UserService service=new();
-                user=service.GetUser(Properties.Settings.Default.UserRemain);
-                if (user != null)
+                UserService service = new();
+                if (service.CompareTo(Properties.Settings.Default.UserRemain))
                 {
+                    user = Properties.Settings.Default.UserRemain;
                     Window.menuItemSeConnecter.Header = "Déconnexion";
                     if (user.IsGranted(Roles.SuperAdmin))
                     {
@@ -50,11 +50,10 @@ namespace projet_dawan_WPF.Logic.Autre
                 }
                 else
                 {
-                    Properties.Settings.Default.UserRemain = null;
                     Window.menuGestion.IsEnabled = false;
                     Window.menuItemCompte.IsEnabled = false;
                 }
-               
+
             }
             else
             {
@@ -109,6 +108,7 @@ namespace projet_dawan_WPF.Logic.Autre
                 img.Margin = new Thickness(10, 20, 10, 0);
                 img.Source = bitImg;
                 img.Stretch = Stretch.Fill;
+                img.MouseLeftButtonDown += Serie_Click;
 
                 Grid.SetRow(img, 0);
                 Grid.Children.Add(img);
@@ -145,7 +145,7 @@ namespace projet_dawan_WPF.Logic.Autre
             else
             {
                 Image? img = sender as Image;
-                Serie? serie = serieList.Find(s => s.Nom == img.Name);
+                Serie? serie = serieList.Find(s => s.Affiche == img?.Source.ToString());
                 if (serie != null)
                 {
                     WindowSerie formSerie = new(serie)
@@ -335,6 +335,14 @@ namespace projet_dawan_WPF.Logic.Autre
             };
             window.ShowDialog();
             Refresh();
+        }
+
+        public void TxtRechercher_KeyUp(KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                Search_Click();
+            }
         }
     }
 }

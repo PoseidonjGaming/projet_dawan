@@ -60,7 +60,7 @@ namespace projet_dawan.Logic.Detail
         private void Populate(Episode ep)
         {
             Form.GetTextBoxResumeSaison().Text = ep.Resume;
-            Form.GetLabelDateSaison().Text = "Episode diffusé le " + ep.DatePremDiff.Value.ToShortDateString();
+            Form.GetLabelDateSaison().Text = "Episode diffusé le " + ep.DatePremDiff.ToShortDateString();
             Form.GetLabelTitreEp().Text = "Détail l'épisode: " + ep.Nom;
         }
 
