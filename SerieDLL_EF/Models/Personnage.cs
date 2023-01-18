@@ -24,14 +24,16 @@ public partial class Personnage
     public string Nom { get; set; } = null!;
 
     [DataMember]
+    [NotMapped]
     public virtual Acteur Acteur { get; set; } = null!;
 
     [DataMember]
+    [NotMapped]
     public virtual Serie Serie { get; set; } = null!;
 
     [NotMapped]
     [JsonIgnore]
-    public bool ShouldSerializeActeurs { get; set; }
+    public bool ShouldExportActeur { get; set; }
 
     [NotMapped]
     [JsonIgnore]
@@ -44,10 +46,10 @@ public partial class Personnage
 
     public bool ShouldSerializeActeur()
     {
-        return ShouldSerializeActeurs;
+        return ShouldExportActeur;
     }
 
-    
 
-   
+
+
 }
