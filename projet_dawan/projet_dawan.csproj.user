@@ -1,43 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="Forms\Autre\FormAccueil.cs">
+    <Compile Update="Forms\FormAccueil.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Autre\FormBibliotheque.cs">
+    <Compile Update="Forms\FormBibliotheque.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Forms\Autre\FormCreerCompte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Autre\FormGererCompte.cs">
+    <Compile Update="Forms\FormCreerCompte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Autre\FormMain.cs">
+    <Compile Update="Forms\FormEpisode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Autre\FormWatchlist.cs">
+    <Compile Update="Forms\FormGererCompte.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Detail\FormCasting.cs">
+    <Compile Update="Forms\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Detail\FormEpisode.cs">
+    <Compile Update="Forms\FormManageActeur.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Detail\FormSerie.cs">
+    <Compile Update="Forms\FormManageEpisode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Manage\FormManageActeur.cs">
+    <Compile Update="Forms\FormManagePerso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Manage\FormManageEpisode.cs">
+    <Compile Update="Forms\FormManageSerie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Manage\FormManagePerso.cs">
+    <Compile Update="Forms\FormSerie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\Manage\FormManageSerie.cs">
+    <Compile Update="Forms\FormWatchlist.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
