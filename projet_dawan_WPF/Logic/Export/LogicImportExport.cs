@@ -161,7 +161,7 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 try
                 {
-                    noteList = JsonConvert.DeserializeObject<List<Note>>(fileDialog.FileName);
+                    noteList = JsonConvert.DeserializeObject<List<Note>>(File.ReadAllText(fileDialog.FileName));
                     ImportNote();
                 }
                 catch(Exception ex)
