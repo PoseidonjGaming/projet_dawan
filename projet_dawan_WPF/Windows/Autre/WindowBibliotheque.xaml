@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:projet_dawan_WPF.Window"
         mc:Ignorable="d"
         Title="WindowBibliotheque" Height="378" Width="716" WindowStartupLocation="CenterOwner">
     <Grid>
@@ -34,7 +33,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button x:Name="btnDetail" Grid.Row="0" Grid.Column="0" Margin="30,10,30,20" Content="Détail" Click="btnDetail_Click"></Button>
-            <Button Grid.Row="1" Grid.Column="0" Margin="30,10,30,20" Content="A regarder" Click="Button_Click"></Button>
+            <Button x:Name="btnAddWitch" Grid.Row="1" Grid.Column="0" Margin="30,10,30,20" Content="A regarder" Click="Button_Click"></Button>
             <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Orientation="Horizontal">
                 <Label Grid.Row="0" Grid.Column="1" Content="Rechercher" VerticalAlignment="Center"></Label>
                 <TextBox x:Name="txtRechercher" Width="100" VerticalContentAlignment="Center" TextChanged="txtRechercher_TextChanged"></TextBox>

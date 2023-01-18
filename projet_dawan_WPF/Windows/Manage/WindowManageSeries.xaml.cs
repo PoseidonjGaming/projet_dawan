@@ -1,8 +1,8 @@
-﻿using projet_dawan_WPF.Logic;
+﻿using projet_dawan_WPF.Logic.Manage;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace projet_dawan_WPF.Window.Manage
+namespace projet_dawan_WPF.Windows.Manage
 {
     /// <summary>
     /// Logique d'interaction pour WindowsManageSeries.xaml
@@ -17,7 +17,7 @@ namespace projet_dawan_WPF.Window.Manage
             logic.Load();
         }
 
-       
+
 
         private void btnAjouter_Click(object sender, RoutedEventArgs e)
         {

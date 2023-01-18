@@ -7,10 +7,7 @@ namespace SerieDLL_EF.Service
 {
     public class UserService : Service<UserApp, UserAppRepository>
     {
-        public UserService() : base(new UserAppRepository())
-        {
-
-        }
+        public UserService() : base(new UserAppRepository()) { }
 
         public UserApp GetUser(UserApp userApp)
         {
@@ -20,13 +17,13 @@ namespace SerieDLL_EF.Service
 
         public override void Add(UserApp item)
         {
-            
+
             base.Add(HashPassword(item));
         }
 
         public override void Update(UserApp item)
         {
-            
+
             base.Update(HashPassword(item));
         }
 

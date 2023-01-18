@@ -1,9 +1,4 @@
-﻿using Microsoft.Win32;
-using Newtonsoft.Json;
-using projet_dawan_WPF.Logic;
-using projet_dawan_WPF.Windows;
-using SerieDLL_EF.Service;
-using System.IO;
+﻿using projet_dawan_WPF.Logic.Autre;
 using System.Windows;
 
 namespace projet_dawan_WPF.Windows.Autre
@@ -11,7 +6,7 @@ namespace projet_dawan_WPF.Windows.Autre
     /// <summary>
     /// Logique d'interaction pour WindowAccueil.xaml
     /// </summary>
-    public partial class WindowAccueil : System.Windows.Window
+    public partial class WindowAccueil : Window
     {
         private LogicAccueil logic;
         public WindowAccueil()
@@ -57,7 +52,7 @@ namespace projet_dawan_WPF.Windows.Autre
 
         private void menuItemPersonnages_Click(object sender, RoutedEventArgs e)
         {
-            logic.gererPersonnagesToolStripMenuItem_Click();
+            logic.GererPersonnagesToolStripMenuItem_Click();
         }
 
         private void menuItemUsers_Click(object sender, RoutedEventArgs e)
@@ -65,24 +60,14 @@ namespace projet_dawan_WPF.Windows.Autre
             logic.GererLesUsers_Click();
         }
 
-        private void menuItemImport_Export_Serie_Click(object sender, RoutedEventArgs e)
-        {
-            logic.MenuItemImport_Export_Serie_Click();
-        }
-
-        private void menuItemImport_Export_Perso_Click(object sender, RoutedEventArgs e)
-        {
-            logic.menuItemImport_Export_Perso_Click();
-        }
-
-        private void menuItemImport_Export_Episode_Click(object sender, RoutedEventArgs e)
-        {
-            logic.menuItemImport_Export_Episode_Click();
-        }
-
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             logic.Quitter_Click();
+        }
+
+        private void menuItemImport_Export_Click(object sender, RoutedEventArgs e)
+        {
+            logic.MenuItemImport_Export_Click();
         }
     }
 }

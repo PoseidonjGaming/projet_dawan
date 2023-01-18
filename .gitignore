@@ -12,4 +12,5 @@
 /SerieDLL/obj/
 /SerieDLL_EF/bin/
 /SerieDLL_EF/obj/
-/SerieDLL_EF/obj
+/SerieDLL_EF/obj/Release/net6.0/
+/projet_dawan_WPF/Properties/PublishProfiles

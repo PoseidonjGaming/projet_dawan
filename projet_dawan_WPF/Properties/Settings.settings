@@ -20,5 +20,8 @@
     <Setting Name="ExportPersonnage" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Personnage&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ExportSaison" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Saison&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
@@ -56,7 +55,7 @@ public partial class UserApp
     public override bool Equals(object? obj)
     {
         UserApp user = (UserApp)obj;
-        return Login==user.Login && Password==user.Password;
+        return Login == user.Login && Password == user.Password;
     }
 
 

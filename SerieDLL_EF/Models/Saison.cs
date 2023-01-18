@@ -22,11 +22,12 @@ public partial class Saison
     public int NbEpisode { get; set; }
 
     [DataMember]
+    [NotMapped]
     public virtual Serie Serie { get; set; } = null!;
 
     [NotMapped]
     [DataMember]
-    public List<Episode> Episodes { get; set; }
+    public List<Episode> Episodes { get; set; } = new List<Episode>();
 
     [NotMapped]
     public bool ShouldExportSerie { get; set; }
