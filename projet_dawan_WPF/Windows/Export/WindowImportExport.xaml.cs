@@ -47,5 +47,10 @@ namespace projet_dawan_WPF.Windows.Export
         {
             logic.BtnImport_Acteur_Click();
         }
+
+        private void btnImport_Notes_Click(object sender, RoutedEventArgs e)
+        {
+            logic.BtnImport_Notes_Click();
+        }
     }
 }

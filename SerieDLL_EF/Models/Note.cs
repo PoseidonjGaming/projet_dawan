@@ -16,7 +16,6 @@ namespace SerieDLL_EF.Models
         [JsonIgnore]
         public int Id { get; set; }
 
-        [DataMember]
         public int SerieId { get; set; }
 
         [DataMember]

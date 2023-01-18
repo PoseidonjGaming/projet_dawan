@@ -37,7 +37,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                 <CheckBox x:Name="checkBox_Notes" Content="Exporter les Notes" VerticalAlignment="Center"></CheckBox>
-                <Button x:Name="btnImport_Notes" Content="Importer des notes" Margin="95,0,0,0"/>
+                <Button x:Name="btnImport_Notes" Content="Importer des notes" Margin="95,0,0,0" Click="btnImport_Notes_Click"/>
             </StackPanel>
         </StackPanel>
        

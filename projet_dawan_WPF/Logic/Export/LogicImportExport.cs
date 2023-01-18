@@ -152,6 +152,23 @@ namespace projet_dawan_WPF.Logic.Export
             }
         }
 
+        public void BtnImport_Notes_Click()
+        {
+            OpenFileDialog fileDialog = new();
+            if (fileDialog.ShowDialog() == true)
+            {
+                try
+                {
+                    noteList = JsonConvert.DeserializeObject<List<Note>>(fileDialog.FileName);
+                    ImportNote();
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
         public void BtnImport_Acteur_Click()
         {
             OpenFileDialog fileDialog = new();
@@ -344,6 +361,19 @@ namespace projet_dawan_WPF.Logic.Export
                 }
             }
         }
+
+        private void ImportNote()
+        {
+            foreach (Note note in noteList)
+            {
+                MessageBox.Show(note.Serie.Nom);
+                if (noteService.CompareTo(note))
+                {
+                    
+                }
+            }
+        }
+
 
     }
 }
