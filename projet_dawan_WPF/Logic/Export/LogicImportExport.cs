@@ -11,19 +11,21 @@ using System.Windows;
 
 namespace projet_dawan_WPF.Logic.Export
 {
-    internal class LogicImportExport 
+    internal class LogicImportExport
     {
         private List<Serie> seriesList = new();
         private List<Episode> episodeList = new();
         private List<Acteur> acteurList = new();
         private List<Personnage> personnagesList = new();
         private List<Saison> saisonList = new();
+        private List<Note> noteList = new();
 
         private readonly SerieService serieService;
         private readonly PersonnageService personnageService;
         private readonly ActeurService acteurService;
         private readonly EpisodeService episodeService;
         private readonly SaisonService saisonService;
+        private readonly NoteService noteService;
 
         public WindowImportExport Window { get; set; }
 
@@ -35,6 +37,7 @@ namespace projet_dawan_WPF.Logic.Export
             episodeService = new();
             saisonService = new();
             personnageService = new();
+            noteService = new();
         }
 
         public void BtnExport_Click()
@@ -79,6 +82,17 @@ namespace projet_dawan_WPF.Logic.Export
                 windowExportActeur.Closed += ActeurClose;
                 windowExportActeur.ShowDialog();
                 Export(acteurList, "exportsActeurs", "Acteurs");
+            }
+
+            if (Window.checkBox_Notes.IsChecked == true)
+            {
+                WindowExportNote windowExportNote = new()
+                {
+                    Owner = Window
+                };
+                windowExportNote.Closed += NoteClose;
+                windowExportNote.ShowDialog();
+                Export(noteList, "exportsNote", "Notes");
             }
         }
 
@@ -149,7 +163,7 @@ namespace projet_dawan_WPF.Logic.Export
                     ImportActeur();
                     MessageBox.Show($"{acteurList.Count} ont été importées");
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
@@ -174,6 +188,11 @@ namespace projet_dawan_WPF.Logic.Export
         private void ActeurClose(object sender, EventArgs e)
         {
             acteurList = Properties.Settings.Default.ExportActeur;
+        }
+
+        private void NoteClose(object sender, EventArgs e)
+        {
+            noteList = Properties.Settings.Default.ExportNote;
         }
 
         private static void Export<T>(List<T> list, string defaultFileName, string title)

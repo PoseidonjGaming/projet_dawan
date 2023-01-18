@@ -72,8 +72,18 @@ namespace projet_dawan_WPF.Logic.Export
                         }
                     }
                 }
-
                 Close();
+            }
+            else if (Window.Owner.GetType() == typeof(WindowExportNote))
+            {
+                foreach (Note note in Properties.Settings.Default.ExportNote)
+                {
+                    Properties.Settings.Default.ExportSerie = new() { note.Serie };
+                    ExportSaison();
+                    ExportPerso();
+                    note.Serie = Properties.Settings.Default.ExportSerie[0];
+                }
+                OpenWindowPersonnage();
             }
         }
 

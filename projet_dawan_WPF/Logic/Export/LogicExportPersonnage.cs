@@ -3,6 +3,8 @@ using projet_dawan_WPF.Windows.Export;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
+using System.Collections.Generic;
+using System.Windows.Documents;
 
 namespace projet_dawan_WPF.Logic.Export
 {
@@ -52,13 +54,20 @@ namespace projet_dawan_WPF.Logic.Export
                 {
                     foreach (Serie serie in Properties.Settings.Default.ExportSerie)
                     {
-                        foreach (Personnage perso in serie.Personnages)
-                        {
-                            perso.ShouldExportSerie = false;
-                        }
+                        serie.Personnages = DownExportSerie(serie.Personnages);
                         Properties.Settings.Default.ExportPersonnage = serie.Personnages;
                         ExportActeur();
                         serie.Personnages = Properties.Settings.Default.ExportPersonnage;
+                    }
+                }
+                else if(Window.Owner.Owner.GetType()==typeof(WindowExportNote))
+                {
+                    foreach(Note note in Properties.Settings.Default.ExportNote)
+                    {
+                        note.Serie.Personnages = DownExportSerie(note.Serie.Personnages);
+                        Properties.Settings.Default.ExportPersonnage=note.Serie.Personnages;
+                        ExportActeur();
+                        note.Serie.Personnages = Properties.Settings.Default.ExportPersonnage;
                     }
                 }
             }
@@ -78,6 +87,15 @@ namespace projet_dawan_WPF.Logic.Export
                 OpenWindowSerie();
             }
             Window.Close();
+        }
+
+        private List<Personnage> DownExportSerie(List<Personnage> list)
+        {
+            foreach (Personnage perso in list)
+            {
+                perso.ShouldExportSerie = false;
+            }
+            return list;
         }
 
         private void ExportActeur()

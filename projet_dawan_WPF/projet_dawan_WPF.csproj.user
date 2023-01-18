@@ -10,6 +10,9 @@
     <Compile Update="Windows\Export\WindowExportActeur.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\Export\WindowExportNote.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Windows\Export\WindowImportExport.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -19,6 +22,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Export\WindowExportActeur.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Export\WindowExportNote.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Export\WindowImportExport.xaml">

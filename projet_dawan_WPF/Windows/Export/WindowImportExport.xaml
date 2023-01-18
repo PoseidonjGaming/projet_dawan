@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows.Export"
         mc:Ignorable="d"
-        Title="WindowImportExport" Height="250" Width="400" WindowStartupLocation="CenterOwner">
+        Title="WindowImportExport" Height="300" Width="400" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>
@@ -35,7 +35,12 @@
                 <CheckBox x:Name="checkBoxActeurs" Content="Exporter les acteurs" VerticalAlignment="Center"></CheckBox>
                 <Button x:Name="btnImport_Acteur" Content="Importer des acteurs" VerticalAlignment="Center" Margin="85,0,10,0" Click="btnImport_Acteur_Click"></Button>
             </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
+                <CheckBox x:Name="checkBox_Notes" Content="Exporter les Notes" VerticalAlignment="Center"></CheckBox>
+                <Button x:Name="btnImport_Notes" Content="Importer des notes" Margin="95,0,0,0"/>
+            </StackPanel>
         </StackPanel>
+       
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1">
             <Button x:Name="btnExport" Content="Exporter" Click="btnExport_Click"></Button>
         </StackPanel>

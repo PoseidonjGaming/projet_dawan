@@ -23,5 +23,8 @@
     <Setting Name="ExportSaison" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Saison&gt;" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="ExportNote" Type="System.Collections.Generic.List&lt;SerieDLL_EF.Models.Note&gt;" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>

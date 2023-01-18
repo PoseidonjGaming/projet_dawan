@@ -47,9 +47,5 @@ namespace projet_dawan_WPF.Windows.Export
         {
             logic.BtnImport_Acteur_Click();
         }
-
-       
-
-
     }
 }
