@@ -159,7 +159,7 @@ namespace projet_dawan_WPF.Logic.Export
             {
                 try
                 {
-                    noteList = JsonConvert.DeserializeObject<List<Note>>(fileDialog.FileName);
+                    noteList = JsonConvert.DeserializeObject<List<Note>>(File.ReadAllText(fileDialog.FileName));
                     ImportNote();
                 }
                 catch(Exception ex)
@@ -366,9 +366,14 @@ namespace projet_dawan_WPF.Logic.Export
         {
             foreach (Note note in noteList)
             {
-                MessageBox.Show(note.Serie.Nom);
-                if (noteService.CompareTo(note))
+                if (!noteService.CompareTo(note))
                 {
+                    if(note.Serie != null)
+                    {
+                        seriesList = new() { note.Serie };
+                        note.Serie = null;
+                        ImportSerie();
+                    }
                     
                 }
             }
