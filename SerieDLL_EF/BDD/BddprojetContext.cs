@@ -20,6 +20,7 @@ public partial class BddprojetContext : DbContext
 
 
 
+
     public virtual DbSet<Acteur> Acteurs { get; set; }
 
     public virtual DbSet<Episode> Episodes { get; set; }
@@ -33,6 +34,7 @@ public partial class BddprojetContext : DbContext
     public virtual DbSet<UserApp> UserApps { get; set; }
 
     public virtual DbSet<Note> Notes { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -53,7 +55,7 @@ public partial class BddprojetContext : DbContext
 
             entity.Property(n=>n.Commentaire).HasColumnName("commentaire");
 
-            entity.Property(n => n.nbNote).HasColumnName("note");
+            entity.Property(n => n.NbNote).HasColumnName("note");
 
             entity.Property(n => n.SerieId).HasColumnName("serie_id");
 

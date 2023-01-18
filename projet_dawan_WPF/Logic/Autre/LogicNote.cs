@@ -29,7 +29,7 @@ namespace projet_dawan_WPF.Logic.Autre
             if (note != null)
             {
                 Window.txtBoxCommentaire.Text = note.Commentaire;
-                switch (note.nbNote)
+                switch (note.NbNote)
                 {
                     case 1:
                         ChcBox1Checker(true);
@@ -91,7 +91,7 @@ namespace projet_dawan_WPF.Logic.Autre
                     SerieId = SerieId,
                     UserId = Properties.Settings.Default.UserRemain.Id,
                     Commentaire = Window.txtBoxCommentaire.Text,
-                    nbNote = nbNote
+                    NbNote = nbNote
                 };
                 if (service.CompareTo(note))
                 {

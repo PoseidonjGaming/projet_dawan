@@ -8,9 +8,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="28"></RowDefinition>
-            <RowDefinition Height="16*"></RowDefinition>
-            <RowDefinition Height="42*"></RowDefinition>
-            <RowDefinition Height="29*"></RowDefinition>
+            <RowDefinition Height="80*"></RowDefinition>
+            <RowDefinition Height="158*"></RowDefinition>
+            <RowDefinition Height="197*"></RowDefinition>
             <RowDefinition Height="10"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -30,8 +30,8 @@
         </Menu>
         <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="0,15,0,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="170"></RowDefinition>
+                <RowDefinition/>
+                <RowDefinition Height="188.04"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -41,15 +41,19 @@
         </Grid>
         <Label x:Name="lblSerie" Grid.Row="1" Grid.Column="2"
                HorizontalAlignment="Center" VerticalAlignment="Center"
-               FontSize="30" FontWeight="Bold" Content="Titre de la série" Height="48" Width="226"/>
-        <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Vertical" Margin="5,10,10,10" VerticalAlignment="Center">
-            <Label x:Name="lblDateSerie" Content="Date de 1ère diffusion" FontSize="15"></Label>
-            <Label x:Name="linkLblBASerie" Content="Bande annonce" FontSize="15"></Label>
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnCasting" Content="Casting" Margin="5,0,0,0" Click="btnCasting_Click"/>
+               FontSize="30" FontWeight="Bold" Content="Titre de la série"/>
+        <GroupBox Header="Détail de la série"  Grid.Row="2" Grid.Column="2">
+            <StackPanel Orientation="Vertical" Margin="5,0,10,0" VerticalAlignment="Center" Height="109">
+                <Label x:Name="lblDateSerie" Content="Date de 1ère diffusion" FontSize="15"></Label>
+                <Label x:Name="linkLblBASerie" Content="Bande annonce" FontSize="15"></Label>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnCasting" Content="Casting" Margin="5,0,0,0" Click="btnCasting_Click"/>
+                </StackPanel>
+                <Label x:Name="lblAvg" Content="Note Moyenne: " FontSize="15"></Label>
             </StackPanel>
-            <Label x:Name="lblAvg" Content="Note Moyenne: " FontSize="15"></Label>
-        </StackPanel>
-        <TextBlock x:Name="txtBoxResumeSerie" Grid.Row="3" Grid.Column="2" TextWrapping="Wrap" Margin="10,1,10,0"/>
+        </GroupBox>
+        <GroupBox Header="Résumé"  Grid.Row="3" Grid.Column="2">
+            <TextBlock x:Name="txtBoxResumeSerie" TextWrapping="Wrap" Margin="10,1,10,0"/>
+        </GroupBox>
     </Grid>
 </Window>

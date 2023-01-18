@@ -45,46 +45,10 @@ namespace projet_dawan_WPF.Windows.Export
 
         private void btnImport_Acteur_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog fileDialog = new();
-            if (fileDialog.ShowDialog() == true)
-            {
-                try
-                {
-                    Properties.Settings.Default.ExportActeur = JsonConvert.DeserializeObject<List<Acteur>>(File.ReadAllText(fileDialog.FileName));
-                    ImportActeur();
-                }
-                catch
-                {
-
-                }
-            }
+            logic.BtnImport_Acteur_Click();
         }
 
-        private void ImportSerie()
-        {
-
-        }
-
-        private void ImportPersonnages()
-        {
-
-
-        }
-
-        private void ImportActeur()
-        {
-
-        }
-
-        private void ImportEpisode()
-        {
-
-        }
-
-        private void ImportSaison()
-        {
-
-        }
+       
 
 
     }

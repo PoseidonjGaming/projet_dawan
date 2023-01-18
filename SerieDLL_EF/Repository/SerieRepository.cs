@@ -1,4 +1,5 @@
-﻿using SerieDLL_EF.BDD;
+﻿using Microsoft.EntityFrameworkCore;
+using SerieDLL_EF.BDD;
 using SerieDLL_EF.Interface;
 using SerieDLL_EF.Models;
 
@@ -79,7 +80,7 @@ namespace SerieDLL_EF.Repository
         public List<Serie> LastAdd()
         {
             using BddprojetContext context = new();
-            var list = context.Series;
+            var list = context.Series.AsNoTracking();
             if (list.Count()>4)
             {
                 return list.OrderByDescending(s => s.Id).Take(4).ToList();

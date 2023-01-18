@@ -16,7 +16,6 @@ namespace SerieDLL_EF.Service
          */
 
         protected TRepo repo;
-        protected string Cnx;
 
         public Service(TRepo repo)
         {
@@ -75,7 +74,7 @@ namespace SerieDLL_EF.Service
             return GetCompareTo(item);
         }
 
-        public TClass GetCompareTo(TClass serie)
+        public TClass? GetCompareTo(TClass serie)
         {
             return repo.GetCompareTo(serie);
         }

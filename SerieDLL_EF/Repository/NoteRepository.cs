@@ -43,7 +43,7 @@ namespace SerieDLL_EF.Repository
             double sum = 0.0;
             foreach (Note note in notes)
             {
-                sum += note.nbNote;
+                sum += note.NbNote;
             }
             return sum / notes.Count;
         }

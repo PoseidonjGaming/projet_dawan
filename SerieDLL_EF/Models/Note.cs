@@ -23,7 +23,7 @@ namespace SerieDLL_EF.Models
 
         public string Commentaire { get; set; } = string.Empty;
 
-        public int nbNote { get; set; }
+        public int NbNote { get; set; }
 
 
     }
