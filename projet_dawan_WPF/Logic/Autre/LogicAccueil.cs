@@ -144,8 +144,8 @@ namespace projet_dawan_WPF.Logic.Autre
             }
             else
             {
-                Image img = sender as Image;
-                Serie? serie = serieList.Find(s => s.Affiche == img.Source.ToString());
+                Image? img = sender as Image;
+                Serie? serie = serieList.Find(s => s.Affiche == img?.Source.ToString());
                 if (serie != null)
                 {
                     WindowSerie formSerie = new(serie)

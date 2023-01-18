@@ -5,6 +5,7 @@ using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Media.Imaging;
 
 namespace projet_dawan_WPF.Logic.Detail
@@ -27,7 +28,16 @@ namespace projet_dawan_WPF.Logic.Detail
             Window.lblDateSerie.Content = "Diffusé à partir du" + Serie.DateDiff.ToString();
             Window.linkLblBASerie.Content = Serie.UrlBa;
             Window.txtBoxResumeSerie.Text = Serie.Resume;
-            Window.lblAvg.Content += " " + new NoteService().GetNoteAverage(serie.Id).ToString() + "/5";
+            NoteService noteService = new();
+            double avg = noteService.GetNoteAverage(serie.Id);
+            if (!double.IsNaN(avg))
+            {
+                Window.lblAvg.Content += " " + avg + "/5";
+            }
+            else
+            {
+                Window.lblAvg.Content = "Il n'y a aucune note pour cette série";
+            }
             try
             {
                 Window.affiche.Source = new BitmapImage(new Uri(Serie.Affiche));
