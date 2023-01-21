@@ -34,6 +34,9 @@ namespace SerieDLL_EF.Models
         [DataMember]
         public int NbNote { get; set; }
 
+        [DataMember]
+        public DateTime Date { get; set; } = DateTime.Now;
+
         [NotMapped]
         public bool ShouldExportSerie { get; set; }
 
@@ -50,8 +53,10 @@ namespace SerieDLL_EF.Models
             return ShouldExportUser;
         }
 
-
-
+        public override string ToString()
+        {
+            return "Note du "+Date.ToShortDateString() + " par " + User.Login +" pour "+Serie.Nom;
+        }
 
     }
 }

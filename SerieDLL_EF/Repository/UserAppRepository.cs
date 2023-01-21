@@ -13,6 +13,12 @@ namespace SerieDLL_EF.Repository
             return context.UserApps.Where(u => u.Login == login && u.Password == password).SingleOrDefault();
         }
 
+        public UserApp GetByLogin(UserApp user)
+        {
+            using BddprojetContext context = new();
+            return context.UserApps.Where(u => u.Login == user.Login).FirstOrDefault();
+        }
+
         public List<UserApp> GetAll()
         {
             using BddprojetContext context = new();
@@ -57,7 +63,9 @@ namespace SerieDLL_EF.Repository
 
         public UserApp GetCompareTo(UserApp obj)
         {
-            throw new NotImplementedException();
+            using BddprojetContext context = new();
+            return context.UserApps.Where(u => u.Login == obj.Login && u.Password == obj.Password
+            && u.Roles == obj.Roles).FirstOrDefault();
         }
     }
 }

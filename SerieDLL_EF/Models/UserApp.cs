@@ -8,10 +8,10 @@ namespace SerieDLL_EF.Models;
 [DataContract]
 public partial class UserApp
 {
-    [DataMember]
     public int Id { get; set; }
 
     [DataMember]
+    [JsonIgnore]
     public string Login { get; set; } = null!;
 
     [DataMember]

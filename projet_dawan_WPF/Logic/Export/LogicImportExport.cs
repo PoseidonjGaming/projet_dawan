@@ -26,6 +26,7 @@ namespace projet_dawan_WPF.Logic.Export
         private readonly EpisodeService episodeService;
         private readonly SaisonService saisonService;
         private readonly NoteService noteService;
+        private readonly UserService userService;
 
         public WindowImportExport Window { get; set; }
 
@@ -38,6 +39,7 @@ namespace projet_dawan_WPF.Logic.Export
             saisonService = new();
             personnageService = new();
             noteService = new();
+            userService = new();
         }
 
         public void BtnExport_Click()
@@ -283,6 +285,7 @@ namespace projet_dawan_WPF.Logic.Export
                     personnage.SerieId = serieService.GetCompareTo(seriesList[0]).Id;
 
                 }
+
                 if (!personnageService.CompareTo(personnage))
                 {
                     personnageService.Add(personnage);
@@ -366,10 +369,25 @@ namespace projet_dawan_WPF.Logic.Export
         {
             foreach (Note note in noteList)
             {
-                MessageBox.Show(note.Serie.Nom);
-                if (noteService.CompareTo(note))
+                if(note.Serie!= null)
                 {
-                    
+                    seriesList= new() { note.Serie };
+                    note.Serie = null;
+                    ImportSerie();
+                    note.SerieId = serieService.GetCompareTo(note.Serie).Id;
+                }
+
+                UserApp user = note.User;
+                note.User = null;
+                if (!userService.CompareTo(user))
+                {
+                    userService.Add(user);
+                }
+
+                note.UserId = userService.GetCompareTo(user).Id;
+                if (!noteService.CompareTo(note))
+                {
+                    noteService.Add(note);
                 }
             }
         }

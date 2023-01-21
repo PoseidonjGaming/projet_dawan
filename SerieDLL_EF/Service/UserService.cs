@@ -14,6 +14,10 @@ namespace SerieDLL_EF.Service
             return repo.GetUser(userApp.Login, HashPassword(userApp).Password);
         }
 
+        public UserApp GetByLogin(UserApp user)
+        {
+            return repo.GetByLogin(user);
+        }
 
         public override void Add(UserApp item)
         {
