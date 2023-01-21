@@ -80,15 +80,7 @@ namespace projet_dawan_WPF.Windows.Autre
 
         private void menuItemNote_Click(object sender, RoutedEventArgs e)
         {
-            if(Properties.Settings.Default.UserRemain.IsGranted(Roles.SuperAdmin))
-            {
-
-                WindowManageNote window = new()
-                {
-                    Owner = this
-                };
-                window.ShowDialog();
-            }
+            logic.MenuItemNote_Click();
         }
     }
 }

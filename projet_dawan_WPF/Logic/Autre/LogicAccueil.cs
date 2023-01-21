@@ -344,5 +344,18 @@ namespace projet_dawan_WPF.Logic.Autre
                 Search_Click();
             }
         }
+
+        public void MenuItemNote_Click()
+        {
+            if (Properties.Settings.Default.UserRemain.IsGranted(Roles.SuperAdmin))
+            {
+
+                WindowManageNote window = new()
+                {
+                    Owner = Window
+                };
+                window.ShowDialog();
+            }
+        }
     }
 }
