@@ -20,6 +20,8 @@ namespace projet_dawan_WPF.Logic.Autre
         public void Load()
         {
             Note note = service.GetNote(SerieId, Properties.Settings.Default.UserRemain.Id);
+            SerieService serieService = new();
+            Window.Title = "Noter " + serieService.GetById(SerieId).Nom;
             if (note != null)
             {
                 Window.txtBoxCommentaire.Text = note.Commentaire;

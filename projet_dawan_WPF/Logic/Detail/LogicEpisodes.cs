@@ -18,7 +18,7 @@ namespace projet_dawan_WPF.Logic.Detail
         {
             Window = window;
             service = new();
-            service=new();
+            service = new();
         }
 
         public void Load(Saison saison)
@@ -27,7 +27,7 @@ namespace projet_dawan_WPF.Logic.Detail
             Saison.Episodes = service.GetBySaison(saison.Id);
             SerieService serieService = new();
             Saison.Serie = serieService.GetById(saison.SerieId);
-
+            Window.Title = "Liste des épisodes de " + Saison.Serie.Nom;
             BitmapImage bitImg = new();
             try
             {
@@ -64,7 +64,7 @@ namespace projet_dawan_WPF.Logic.Detail
 
         public void Casting_Click()
         {
-            
+
             PersonnageService personnage = new();
             WindowCasting casting = new(personnage.GetBySerie(Saison.SerieId))
             {
@@ -80,6 +80,6 @@ namespace projet_dawan_WPF.Logic.Detail
             Window.lblTitreEp.Content = "Détail l'épisode: " + ep.Nom;
         }
 
-        
+
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:projet_dawan_WPF.Windows.Manage"
         mc:Ignorable="d"
-        Title="WindowManageNote" Height="400" Width="600" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner">
+        Title="Gérer les notes" Height="400" Width="600" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="10"></RowDefinition>

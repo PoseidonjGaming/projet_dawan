@@ -24,6 +24,7 @@ namespace projet_dawan_WPF.Logic.Detail
             SerieService serieService = new();
             castList = list;
             serie = serieService.GetById(castList[0].SerieId);
+            Window.Title = "Casting de " + serie.Nom;
             Window.lblCasting.Content = "Casting " + serie.Nom;
             ActeurService acteurService = new();
 

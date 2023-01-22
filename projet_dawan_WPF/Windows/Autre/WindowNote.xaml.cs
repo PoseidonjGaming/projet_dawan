@@ -1,6 +1,4 @@
 ﻿using projet_dawan_WPF.Logic.Autre;
-using SerieDLL_EF.Models;
-using SerieDLL_EF.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,12 +20,16 @@ namespace projet_dawan_WPF.Windows.Autre
     /// </summary>
     public partial class WindowNote : Window
     {
-        private LogicNote logic;
+        private readonly LogicNote logic;
         public WindowNote(int serieId)
         {
             InitializeComponent();
-            logic=new(this, serieId);
-           
+            logic = new(this, serieId);
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            logic.Load();
         }
 
         private void btnValider_Click(object sender, RoutedEventArgs e)
@@ -60,9 +62,9 @@ namespace projet_dawan_WPF.Windows.Autre
             logic.ChcBox5_Click();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void chcBox5_Checked(object sender, RoutedEventArgs e)
         {
-            logic.Load();
+
         }
     }
 }
