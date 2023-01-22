@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerieDLL", "..\SerieDLL\Ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SerieDLL_EF", "..\SerieDLL_EF\SerieDLL_EF.csproj", "{6FEFA99E-C4A7-455E-82BA-EC11AEA72344}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projet_dawan_WPF", "..\projet_dawan_WPF\projet_dawan_WPF.csproj", "{58AA7841-9888-471A-97EE-BE2F3E9A6A77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "projet_dawan_WPF", "..\projet_dawan_WPF\projet_dawan_WPF.csproj", "{58AA7841-9888-471A-97EE-BE2F3E9A6A77}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test_SerieDLL_EF", "..\Test_SerieDLL_EF\Test_SerieDLL_EF.csproj", "{1C857BD7-147D-487A-B0AD-0C387CA77397}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{58AA7841-9888-471A-97EE-BE2F3E9A6A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58AA7841-9888-471A-97EE-BE2F3E9A6A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58AA7841-9888-471A-97EE-BE2F3E9A6A77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C857BD7-147D-487A-B0AD-0C387CA77397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C857BD7-147D-487A-B0AD-0C387CA77397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C857BD7-147D-487A-B0AD-0C387CA77397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C857BD7-147D-487A-B0AD-0C387CA77397}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

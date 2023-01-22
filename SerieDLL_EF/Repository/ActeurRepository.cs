@@ -10,6 +10,10 @@ namespace SerieDLL_EF.Repository
      */
     public class ActeurRepository : IRepoCRUD<Acteur>, IRepSpecials<Acteur>
     {
+        private BddprojetContext context;
+
+
+
         public List<Acteur> GetAll()
         {
             using BddprojetContext context = new BddprojetContext();
