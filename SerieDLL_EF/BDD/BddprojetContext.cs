@@ -9,7 +9,7 @@ public partial class BddprojetContext : DbContext
 
     public BddprojetContext()
     {
-        connection = new("P3570-7D6Q","serie_list");
+        connection = new("serie_list");
     }
 
     public BddprojetContext(DbContextOptions<BddprojetContext> options)
@@ -60,6 +60,8 @@ public partial class BddprojetContext : DbContext
             entity.Property(n => n.SerieId).HasColumnName("serie_id");
 
             entity.Property(n => n.UserId).HasColumnName("user_id");
+
+            entity.Property(n => n.Date).HasColumnName("date de parution");
 
             entity.HasOne(n=> n.Serie).WithMany(s => s.Notes)
                 .HasForeignKey(n => n.SerieId)

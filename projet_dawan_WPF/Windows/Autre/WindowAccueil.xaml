@@ -29,6 +29,7 @@
             <MenuItem x:Name="menuGestion" Header="_Menu">
                 <MenuItem Header="Gérer la base">
                     <MenuItem Header="Gérer les Series" Name="menuItemSeries" Click="menuItemSeries_Click"/>
+                    <MenuItem Header="Gérer les Notes" Name="menuItemNote" Click="menuItemNote_Click"/>
                     <MenuItem Header="Gérer les Episodes" Name="menuItemEpisodes" Click="menuItemEpisodes_Click"/>
                     <MenuItem Header="Gérer les Personnages" Name="menuItemPersonnages" Click="menuItemPersonnages_Click"/>
                     <MenuItem Header="Gérer les Acteurs" Name="menuItemActeurs" Click="menuItemActeurs_Click"/>

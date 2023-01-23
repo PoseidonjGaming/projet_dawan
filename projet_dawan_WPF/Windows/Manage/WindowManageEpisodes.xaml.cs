@@ -57,15 +57,7 @@ namespace projet_dawan_WPF.Windows.Manage
 
         private void numSaison_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Up)
-            {
-                logic.BtnAddNum_Click();
-            }
-            else if(e.Key == Key.Down)
-            {
-                logic.BtnSupNum_Click();
-            }
-          
+            logic.NumSaison_KeyUp(e.Key);
         }
     }
 }

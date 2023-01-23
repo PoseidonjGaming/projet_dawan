@@ -34,7 +34,7 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="0,10,0,10">
                         <Label Content="Saison: "></Label>
-                        <TextBox x:Name="numSaison" Width="260" IsReadOnly="true" MouseWheel="TextBox_MouseWheel" Margin="60,0,0,0" Text="0" TextAlignment="Center" VerticalContentAlignment="Center" KeyUp="numSaison_KeyUp" ></TextBox>
+                        <TextBox x:Name="numSaison" Width="260" IsReadOnly="true" MouseWheel="TextBox_MouseWheel" Margin="60,0,0,0" Text="0" TextAlignment="Center" VerticalContentAlignment="Center" KeyUp="numSaison_KeyUp" />
                         <StackPanel Orientation="Vertical">
                             <RepeatButton x:Name="btnAddNum" Content="+" Click="btnAddNum_Click"/>
                             <RepeatButton x:Name="btnSupNum" Content="-" Click="btnSupNum_Click"/>

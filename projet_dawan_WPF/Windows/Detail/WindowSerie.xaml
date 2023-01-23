@@ -26,7 +26,7 @@
                 </ItemsPanelTemplate>
             </Menu.ItemsPanel>
             <MenuItem x:Name="menuItemToWatch" Header="Ajouter à Ma Liste" Click="buttonToWatch_Click" HorizontalAlignment="Center"></MenuItem>
-            <MenuItem x:Name="menuItemNote" Header="Noter" HorizontalAlignment="Left" ></MenuItem>
+            <MenuItem x:Name="menuItemNote" Header="Noter" HorizontalAlignment="Left" Click="btnNote_Click"></MenuItem>
         </Menu>
         <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" Margin="0,15,0,0">
             <Grid.RowDefinitions>

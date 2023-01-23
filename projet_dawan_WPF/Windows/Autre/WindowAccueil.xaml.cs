@@ -1,4 +1,6 @@
 ﻿using projet_dawan_WPF.Logic.Autre;
+using projet_dawan_WPF.Windows.Manage;
+using SerieDLL_EF.Models;
 using System.Windows;
 using System.Windows.Input;
 
@@ -74,6 +76,11 @@ namespace projet_dawan_WPF.Windows.Autre
         private void txtRechercher_KeyDown(object sender, KeyEventArgs e)
         {
             logic.TxtRechercher_KeyUp(e);
+        }
+
+        private void menuItemNote_Click(object sender, RoutedEventArgs e)
+        {
+            logic.MenuItemNote_Click();
         }
     }
 }

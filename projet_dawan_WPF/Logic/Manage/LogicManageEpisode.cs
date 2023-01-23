@@ -1,10 +1,13 @@
-﻿using projet_dawan_WPF.Logic.Autre;
+﻿
+using Microsoft.VisualBasic.Logging;
+using projet_dawan_WPF.Logic.Autre;
 using projet_dawan_WPF.Windows.Manage;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Input;
 
 namespace projet_dawan_WPF.Logic.Manage
 {
@@ -86,6 +89,8 @@ namespace projet_dawan_WPF.Logic.Manage
             Window.txtBoxResume.Clear();
             Window.numSaison.Text = "0";
             Window.datePremDiff.SelectedDate = null;
+            Window.lstBoxEpisode.SelectedIndex = -1;
+            Window.cmbSerie.SelectedIndex = -1;
         }
 
         public void CmbSerie_SelectedIndexChanged()
@@ -97,7 +102,7 @@ namespace projet_dawan_WPF.Logic.Manage
 
         public void LstBoxEpisode_SelectedIndexChanged()
         {
-            if (Window.lstBoxEpisode.SelectedItems.Count != -1)
+            if (Window.lstBoxEpisode.SelectedIndex != -1)
             {
                 Episode ep = episodes[Window.lstBoxEpisode.SelectedIndex];
                 Window.txtBoxNom.Text = ep.Nom;
@@ -155,6 +160,18 @@ namespace projet_dawan_WPF.Logic.Manage
                 BtnAddNum_Click();
             }
             else
+            {
+                BtnSupNum_Click();
+            }
+        }
+
+        public void NumSaison_KeyUp(Key key)
+        {
+            if (key == Key.Up)
+            {
+                BtnAddNum_Click();
+            }
+            else if (key == Key.Down)
             {
                 BtnSupNum_Click();
             }

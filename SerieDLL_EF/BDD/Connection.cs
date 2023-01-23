@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SerieDLL_EF.BDD
-{
+{ 
     internal class Connection
     {
         public string DataSource { get; set; }
