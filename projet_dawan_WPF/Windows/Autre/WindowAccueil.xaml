@@ -43,7 +43,11 @@
                 <MenuItem x:Name="menuItemWatchlist" Header="WatchList"  Click="menuItemWatchlist_Click"/>
             </MenuItem>
             <MenuItem x:Name="menuItemBibli" Header="Bibliothèque" Click="menuItemBibli_Click"/>
-            <MenuItem x:Name="menuItemSeConnecter" HorizontalAlignment="Right" Header="Connexion"  Click="menuItemSeConnecter_Click"/>
+            <MenuItem x:Name="menuItemSeConnecter" HorizontalAlignment="Right" Header="Connexion"  Click="menuItemSeConnecter_Click">
+                <MenuItem.Icon>
+                    <Image Source="C:\Users\Admin Stagiaire\Downloads\utilisateur.png"/>
+                </MenuItem.Icon>
+            </MenuItem>
             <MenuItem x:Name="menuItemRegister" HorizontalAlignment="Right" Header="Créer un compte"/>
         </Menu>
         <GroupBox x:Name="LastAdd" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Header="Dernières Séries ajoutées" />
