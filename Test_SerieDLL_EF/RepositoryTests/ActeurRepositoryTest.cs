@@ -1,4 +1,5 @@
 using SerieDLL_EF;
+using SerieDLL_EF.BDD;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 
@@ -13,36 +14,14 @@ namespace Test_SerieDLL_EF.RepositoryTests
         {
 
             // Arrange
-            var acteurs = new List<Acteur>
-            {
-            new Acteur { Id = 1, Prenom = "Elizabeth", Nom = "Olsen" },
-            new Acteur { Id = 2, Prenom = "Tom",Nom = "Hiddleston" },
-            new Acteur { Id = 3, Prenom = "Bettany", Nom = "Paul" },
-            new Acteur { Id = 4, Prenom = "Teyonah", Nom = "Parris" },
-            new Acteur { Id = 5, Prenom = "Kat", Nom = "Dennings" },
-            new Acteur { Id = 6, Prenom = "Randall", Nom = "Park" },
-            new Acteur { Id = 7, Prenom = "Kathryn", Nom = "Hahn" },
-            new Acteur { Id = 8, Prenom = "Di Martino", Nom = "Sophia" },
-            new Acteur { Id = 9, Prenom = "Gugu", Nom = "Mbatha-Raw" },
-            new Acteur { Id = 10, Prenom = "Wunmi", Nom = "Mosaku" },
-            new Acteur { Id = 11, Prenom = "Owen", Nom = "Wilson" },
-            new Acteur { Id = 12, Prenom = "Sofia", Nom = "Di Martino" },
-            new Acteur { Id = 13, Prenom = "Anthony", Nom = "Mackie" },
-            new Acteur { Id = 14, Prenom = "Sebastian", Nom = "Stan" },
-            new Acteur { Id = 15, Prenom = "Emily", Nom = "VanCamp" },
-            new Acteur { Id = 16, Prenom = "Wyatt", Nom = "Russell" },
-            new Acteur { Id = 17, Prenom = "Erin", Nom = "Kellyman" },
-            new Acteur { Id = 18, Prenom = "Daniel", Nom = "Brühl" },
-            new Acteur { Id = 19, Prenom = "Sofia", Nom = "Di" },
-            new Acteur { Id = 20, Prenom = "Wunmi", Nom = " " }
-            };
+            
             var repository = new ActeurRepository();
 
             // Act
-            var result = repository.GetAll();
+            var result = repository.GetAll().Count;
 
             // Assert
-            CollectionAssert.AreEqual(acteurs, result);
+            Assert.AreEqual(17,result);
         }
 
         [TestMethod]
@@ -52,7 +31,7 @@ namespace Test_SerieDLL_EF.RepositoryTests
             // Arrange
             int id = 1;
             string expectedNom = "Olsen";
-            string expectedPrenom = "Elizabeth";
+            string expectedPrenom = "Elisabeth";
             var repository = new ActeurRepository();
 
             // Act

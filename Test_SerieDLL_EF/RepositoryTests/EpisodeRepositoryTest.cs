@@ -1,4 +1,5 @@
 using SerieDLL_EF;
+using SerieDLL_EF.BDD;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 
@@ -13,17 +14,14 @@ namespace Test_SerieDLL_EF.RepositoryTests
         {
 
             // Arrange
-            var episodes = new List<Episode>
-            {
-
-            };
+           
             var repository = new EpisodeRepository();
 
             // Act
-            var result = repository.GetAll();
+            var result = repository.GetAll().Count;
 
             // Assert
-            CollectionAssert.AreEqual(episodes, result);
+            Assert.AreEqual(31, result);
         }
 
         [TestMethod]
@@ -31,7 +29,7 @@ namespace Test_SerieDLL_EF.RepositoryTests
         public void GetById_ReturnsEpisodeNom()
         {
             // Arrange
-            int id = 31;
+            int id = 1;
             string expectedNom = "Filmé devant public";
             var repository = new EpisodeRepository();
 

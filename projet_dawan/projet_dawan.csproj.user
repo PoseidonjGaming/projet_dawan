@@ -28,45 +28,6 @@
     <Compile Update="Forms\Detail\FormSerie.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Forms\FormAccueil.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormBibliotheque.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormCasting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormCreerCompte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormEpisode.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormGererCompte.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormManageActeur.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormManageEpisode.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormManagePerso.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormManageSerie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormSerie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="Forms\FormWatchlist.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="Forms\Manage\FormManageActeur.cs">
       <SubType>Form</SubType>
     </Compile>

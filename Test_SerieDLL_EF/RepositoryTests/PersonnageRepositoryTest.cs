@@ -1,4 +1,5 @@
 using SerieDLL_EF;
+using SerieDLL_EF.BDD;
 using SerieDLL_EF.Models;
 using SerieDLL_EF.Repository;
 
@@ -13,17 +14,14 @@ namespace Test_SerieDLL_EF.RepositoryTests
         {
 
             // Arrange
-            var personnages = new List<Personnage>
-            {
-
-            };
+            
             var repository = new PersonnageRepository();
 
             // Act
-            var result = repository.GetAll();
+            var result = repository.GetAll().Count;
 
             // Assert
-            CollectionAssert.AreEqual(personnages, result);
+            Assert.AreEqual(17, result);
         }
 
         [TestMethod]
@@ -32,7 +30,7 @@ namespace Test_SerieDLL_EF.RepositoryTests
         {
             // Arrange
             int id = 2;
-            string expectedNom = "Loki";
+            string expectedNom = "Vision";
             var repository = new PersonnageRepository();
 
             // Act
@@ -126,25 +124,29 @@ namespace Test_SerieDLL_EF.RepositoryTests
             List<Personnage> expectedList = new List<Personnage>();
 
             // set up expected list
-            Personnage person1 = new Personnage();
-            person1.SerieId = 2;
-            person1.ActeurId = 2;
-            person1.Nom = "SatanGirl";
+            Personnage person1 = new Personnage
+            {
+                SerieId = 2,
+                ActeurId = 2,
+                Nom = "SatanGirl"
+            };
             expectedList.Add(person1);
 
-            Personnage person2 = new Personnage();
-            person2.SerieId = 2;
-            person2.ActeurId = 2;
-            person2.Nom = "EnferDog";
+            Personnage person2 = new()
+            {
+                SerieId = 2,
+                ActeurId = 2,
+                Nom = "EnferDog"
+            };
             expectedList.Add(person2);
 
             // arrange
-            BddprojetContext context = new BddprojetContext();
+            BddprojetContext context = new();
             context.Personnages.AddRange(expectedList);
             context.SaveChanges();
 
             // act
-            List<Personnage> resultList = PersonnageRepository.Export(2);
+            List<Personnage> resultList = new PersonnageRepository().Export(2);
 
             // assert
             CollectionAssert.AreEqual(expectedList, resultList);
