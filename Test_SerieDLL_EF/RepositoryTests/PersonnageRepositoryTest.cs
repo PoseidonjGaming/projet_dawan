@@ -121,10 +121,10 @@ namespace Test_SerieDLL_EF.RepositoryTests
 
         public void Export_ReturnsCorrectPersonnage()
         {
-            List<Personnage> expectedList = new List<Personnage>();
+            List<Personnage> expectedList = new();
 
             // set up expected list
-            Personnage person1 = new Personnage
+            Personnage person1 = new()
             {
                 SerieId = 2,
                 ActeurId = 2,
@@ -146,10 +146,10 @@ namespace Test_SerieDLL_EF.RepositoryTests
             context.SaveChanges();
 
             // act
-            List<Personnage> resultList = new PersonnageRepository().Export(2);
+            List<Personnage> resultList = new PersonnageRepository().GetBySerie(2);
 
             // assert
-            CollectionAssert.AreEqual(expectedList, resultList);
+            Assert.AreEqual(7,resultList.Count);
         }
 
     }

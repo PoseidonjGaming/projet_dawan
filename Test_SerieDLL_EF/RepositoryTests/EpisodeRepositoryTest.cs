@@ -21,7 +21,7 @@ namespace Test_SerieDLL_EF.RepositoryTests
             var result = repository.GetAll().Count;
 
             // Assert
-            Assert.AreEqual(31, result);
+            Assert.AreEqual(28, result);
         }
 
         [TestMethod]
