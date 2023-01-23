@@ -1,11 +1,13 @@
 ﻿using Newtonsoft.Json;
 using SerieDLL_EF.Models;
+using SerieDLL_EF.Repository;
 using SerieDLL_EF.Service;
 
 namespace projet_dawan
 {
     public partial class FormGererCompte : Form
     {
+        UserService userService = new UserService();
         public FormGererCompte()
         {
             InitializeComponent();
@@ -13,32 +15,64 @@ namespace projet_dawan
             FormBorderStyle = FormBorderStyle.FixedSingle;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void FormGererCompte_Load(object sender, EventArgs e)
         {
+            UpdateForm();
+        }
 
-            //UserApp user = new();
-            //user.Login = "Admin";
-            //user.Password = "P@ssw0rd";
-            //user.Roles = Roles.SuperAdmin;
-            //UserService service = new();
-            //service.Add(user);
+        private void UpdateForm()
+        {
+            UserApp user = Properties.Settings.Default.UserRemain;
+            UserName.Text = user.Login;
+            Password.Text = null;
+            ConfirmPassword.Text = null;
+        }
 
-            SerieService service = new();
-            List<Serie> series = service.GetAll();
-            SaveFileDialog save = new SaveFileDialog()
+        private void ModifierLogin_Click(object sender, EventArgs e)
+        {
+            UserApp user = Properties.Settings.Default.UserRemain;
+
+            if (UserName.Text != user.Login)
             {
-                InitialDirectory = Directory.GetCurrentDirectory(),
-                FileName = "exports.json",
-                Filter = "File JSON|*json",
-                Title = "Save WatchList"
-            };
-
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                File.WriteAllText(save.FileName, JsonConvert.SerializeObject(series, Formatting.Indented));
+                var modifier = MessageBox.Show("Etes vous sur de vouloir modifier le login utilisateur ?", "Modifier login ?",
+              MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (modifier == DialogResult.Yes)
+                {
+                    user.Login = UserName.Text;
+                    userService.Update(user);
+                    UpdateForm();
+                }
             }
+        }
 
+        private void ModifierPassword_Click(object sender, EventArgs e)
+        {
+            UserApp user = Properties.Settings.Default.UserRemain;
 
+            if (Password.Text != user.Password)
+            {
+                if (Password.Text == ConfirmPassword.Text)
+                {
+                    var modifier = MessageBox.Show("Etes vous sur de vouloir modifier le mot de passe ?", "Modifier mot de passe ?",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (modifier == DialogResult.Yes)
+                    {
+                        user.Password = Password.Text;
+                        userService.Update(user);
+                        UpdateForm();
+                    }
+                }
+                else
+                {
+                    var message = MessageBox.Show("Le mot de passe et la confimation du mot de passe ne corresponde pas.", "Erreur mot de passe",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                var message = MessageBox.Show("Mot de passe identique à l'ancien", "Erreur mot de passe",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
