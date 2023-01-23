@@ -8,10 +8,12 @@
 /projet_dawan/obj/
 /projet_dawan_WPF/bin/
 /projet_dawan_WPF/obj/
+/projet_dawan_WPF/Properties/PublishProfiles/
 /SerieDLL/bin/
 /SerieDLL/obj/
 /SerieDLL_EF/bin/
 /SerieDLL_EF/obj
-/projet_dawan_WPF/Properties/PublishProfiles/
 /Test_SerieDLL_EF/obj
 /TestProject_Dawan/obj
+/TestProject_Dawan/bin
+/Test_SerieDLL_EF/bin
