@@ -19,6 +19,9 @@
     <Compile Update="Windows\Manage\WindowManageNote.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Windows\Manage\WindowMangeUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Windows\Autre\WindowNote.xaml">
@@ -34,6 +37,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Windows\Manage\WindowManageNote.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Windows\Manage\WindowMangeUser.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

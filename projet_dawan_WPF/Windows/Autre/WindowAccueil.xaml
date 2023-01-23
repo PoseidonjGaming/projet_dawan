@@ -38,17 +38,14 @@
                 <MenuItem Header="Import/Export" Click="menuItemImport_Export_Click"/>
                 <MenuItem Header="Quitter" Click="MenuItem_Click"/>
             </MenuItem>
-            <MenuItem x:Name="menuItemCompte" Header="Compte">
-                <MenuItem Header="Mon Compte"/>
+           
+            <MenuItem x:Name="menuItemBibli" Header="Bibliothèque" Click="menuItemBibli_Click"/>
+            <MenuItem x:Name="menuItemCompte" Header="Compte" HorizontalAlignment="Right">
+                <MenuItem x:Name="menuItemSeConnecter" Header="Connexion"  Click="menuItemSeConnecter_Click"/>
+                <MenuItem x:Name="menuItemComptePerso" Header="Mon Compte" Click="menuItemComptePerso_Click"/>
                 <MenuItem x:Name="menuItemWatchlist" Header="WatchList"  Click="menuItemWatchlist_Click"/>
             </MenuItem>
-            <MenuItem x:Name="menuItemBibli" Header="Bibliothèque" Click="menuItemBibli_Click"/>
-            <MenuItem x:Name="menuItemSeConnecter" HorizontalAlignment="Right" Header="Connexion"  Click="menuItemSeConnecter_Click">
-                <MenuItem.Icon>
-                    <Image Source="C:\Users\Admin Stagiaire\Downloads\utilisateur.png"/>
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem x:Name="menuItemRegister" HorizontalAlignment="Right" Header="Créer un compte"/>
+            
         </Menu>
         <GroupBox x:Name="LastAdd" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Header="Dernières Séries ajoutées" />
         <Grid x:Name="GridTitle" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">

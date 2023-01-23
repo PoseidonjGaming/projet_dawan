@@ -82,5 +82,17 @@ namespace projet_dawan_WPF.Windows.Autre
         {
             logic.MenuItemNote_Click();
         }
+
+        private void menuItemComptePerso_Click(object sender, RoutedEventArgs e)
+        {
+            if(Properties.Settings.Default.UserRemain!= null)
+            {
+                WindowMangeUser window= new WindowMangeUser()
+                {
+                    Owner= this
+                };
+                window.ShowDialog();
+            }
+        }
     }
 }

@@ -51,13 +51,11 @@ namespace projet_dawan_WPF.Logic.Autre
                 else
                 {
                     Window.menuGestion.IsEnabled = false;
-                    Window.menuItemCompte.IsEnabled = false;
                 }
 
             }
             else
             {
-                Window.menuItemCompte.IsEnabled = false;
                 Window.menuGestion.IsEnabled = false;
                 Window.menuItemSeConnecter.Header = "Connexion";
             }
