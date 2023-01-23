@@ -8417,19 +8417,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Seb\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Seb\\Desktop\\Projets Csharp\\Projet Série\\Application\\Test_SerieDLL_EF\\Test_SerieDLL_EF.csproj",
+      "projectUniqueName": "C:\\Users\\Admin Stagiaire\\Desktop\\Formation dawan\\projet_dawan\\Test_SerieDLL_EF\\Test_SerieDLL_EF.csproj",
       "projectName": "Test_SerieDLL_EF",
-      "projectPath": "C:\\Users\\Seb\\Desktop\\Projets Csharp\\Projet Série\\Application\\Test_SerieDLL_EF\\Test_SerieDLL_EF.csproj",
-      "packagesPath": "C:\\Users\\Seb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Seb\\Desktop\\Projets Csharp\\Projet Série\\Application\\Test_SerieDLL_EF\\obj\\",
+      "projectPath": "C:\\Users\\Admin Stagiaire\\Desktop\\Formation dawan\\projet_dawan\\Test_SerieDLL_EF\\Test_SerieDLL_EF.csproj",
+      "packagesPath": "C:\\Users\\Admin Stagiaire\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin Stagiaire\\Desktop\\Formation dawan\\projet_dawan\\Test_SerieDLL_EF\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Seb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin Stagiaire\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8443,8 +8443,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Seb\\Desktop\\Projets Csharp\\Projet Série\\Application\\SerieDLL_EF\\SerieDLL_EF.csproj": {
-              "projectPath": "C:\\Users\\Seb\\Desktop\\Projets Csharp\\Projet Série\\Application\\SerieDLL_EF\\SerieDLL_EF.csproj"
+            "C:\\Users\\Admin Stagiaire\\Desktop\\Formation dawan\\projet_dawan\\SerieDLL_EF\\SerieDLL_EF.csproj": {
+              "projectPath": "C:\\Users\\Admin Stagiaire\\Desktop\\Formation dawan\\projet_dawan\\SerieDLL_EF\\SerieDLL_EF.csproj"
             }
           }
         }
@@ -8492,7 +8492,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
