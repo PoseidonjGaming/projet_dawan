@@ -87,7 +87,7 @@ namespace projet_dawan_WPF.Windows.Autre
         {
             if(Properties.Settings.Default.UserRemain!= null)
             {
-                WindowMangeUser window= new WindowMangeUser()
+                WindowMangeCompte window= new()
                 {
                     Owner= this
                 };

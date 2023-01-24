@@ -21,11 +21,11 @@ namespace projet_dawan_WPF.Windows.Manage
     /// <summary>
     /// Logique d'interaction pour WindowMangeUser.xaml
     /// </summary>
-    public partial class WindowMangeUser : Window
+    public partial class WindowMangeCompte : Window
     {
         private UserApp user;
         private UserService service;
-        public WindowMangeUser()
+        public WindowMangeCompte()
         {
             InitializeComponent();
             user = Properties.Settings.Default.UserRemain;

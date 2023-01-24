@@ -6,10 +6,10 @@ namespace SerieDLL_EF.BDD;
 public partial class BddprojetContext : DbContext
 {
     private readonly Connection connection;
-
+    
     public BddprojetContext()
     {
-        connection = new("P3570-7D6Q","serie_list");
+        connection = new("serie_list");
     }
 
     public BddprojetContext(DbContextOptions<BddprojetContext> options)
