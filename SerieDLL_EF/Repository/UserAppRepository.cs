@@ -4,6 +4,11 @@ using SerieDLL_EF.Models;
 
 namespace SerieDLL_EF.Repository
 {
+    /*
+     * Les Répositories sont les classes qui gèrent la bdd.
+     * Dans notre cas, elles implèmentent les interfaces du dossier Interface, pour plus de simplicité
+     * Cette classe implémente les interfaces IRepoCRUD et IRepSpecials pour gérer la table userApp
+     */
     public class UserAppRepository : IRepoCRUD<UserApp>
     {
         public UserApp GetUser(string login, string password)
