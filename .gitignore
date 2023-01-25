@@ -13,8 +13,9 @@
 /SerieDLL/obj/
 /SerieDLL_EF/bin/
 /SerieDLL_EF/obj
-/Test_SerieDLL_EF/obj/
 /TestProject_Dawan/obj/
 /TestProject_Dawan/bin/
 /Test_SerieDLL_EF/bin/
-/Test_SerieDLL_EF/obj/Debug/net6.0/Test_SerieDLL_EF.csproj.AssemblyReference.cache
+/Test_SerieDLL_EF/obj/Debug/net6.0/
+/Test_SerieDLL_EF/obj/Release/net6.0/
+/Test_SerieDLL_EF/obj/
