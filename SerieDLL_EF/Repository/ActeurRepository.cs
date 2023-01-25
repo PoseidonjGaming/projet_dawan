@@ -11,8 +11,6 @@ namespace SerieDLL_EF.Repository
      */
     public class ActeurRepository : IRepoCRUD<Acteur>, IRepSpecials<Acteur>
     {
-        private BddprojetContext context;
-
         /*
          *Récupère tous les acteurs depuis la base de donées
          */
