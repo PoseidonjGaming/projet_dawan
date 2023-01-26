@@ -118,6 +118,8 @@ namespace projet_dawan_WPF.Logic.Export
                     MessageBox.Show(ex.Message);
                 }
             }
+            Window.Hide();
+            Window.Show();
         }
 
         public void BtnImport_Episodes_Click()
