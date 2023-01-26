@@ -291,7 +291,6 @@ namespace projet_dawan_WPF.Logic.Autre
                     Properties.Settings.Default.UserRemain = null;
                     Properties.Settings.Default.Save();
                     Window.menuItemSeConnecter.Header = "Connexion";
-                    Window.menuItemCompte.IsEnabled = false;
                 }
             }
             else
@@ -312,7 +311,6 @@ namespace projet_dawan_WPF.Logic.Autre
             if (user != null)
             {
                 Window.menuItemSeConnecter.Header = "Déconnexion";
-                Window.menuItemCompte.IsEnabled = true;
                 if (user.IsGranted(Roles.SuperAdmin))
                 {
                     Window.menuGestion.IsEnabled = true;

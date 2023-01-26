@@ -3,6 +3,7 @@ using SerieDLL_EF.Models;
 using SerieDLL_EF.Service;
 using System;
 using System.Security.Cryptography;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -37,7 +38,6 @@ namespace projet_dawan_WPF.Logic.Autre
                     Login = Window.txtLogin.Text,
                     Password = Window.txtPwd.Password
                 };
-
                 user = service.GetUser(user);
 
                 Properties.Settings.Default.UserRemain = user;
@@ -63,6 +63,11 @@ namespace projet_dawan_WPF.Logic.Autre
                     Properties.Settings.Default.token = Convert.ToBase64String(bytesarray);
                 }
                 Window.Close();
+            }
+            else
+            {
+                MessageBox.Show("Le mot de passe ou le login sont incorrectes");
+                Window.txtPwd.Clear();
             }
 
         }
