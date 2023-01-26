@@ -64,6 +64,7 @@ namespace SerieDLL_EF.Service
             return repo.CompareTo(item);
         }
 
+        //Ajoute l'item de type Tclass dans la base de données si il n'existe pas
         public TClass Import(TClass item)
         {
             if (!CompareTo(item))
