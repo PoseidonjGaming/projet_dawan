@@ -35,9 +35,6 @@ namespace SerieDLL_EF.Service
             return repo.GetById(id);
         }
 
-
-
-
         //Ajoute l'objet de type TClass dans la bdd
         public virtual void Add(TClass item)
         {

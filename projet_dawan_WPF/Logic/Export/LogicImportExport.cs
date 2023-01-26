@@ -29,6 +29,7 @@ namespace projet_dawan_WPF.Logic.Export
         private readonly UserService userService;
 
         public WindowImportExport Window { get; set; }
+        private int nbItem = 0;
 
         public LogicImportExport(WindowImportExport window)
         {
@@ -100,14 +101,16 @@ namespace projet_dawan_WPF.Logic.Export
 
         public void BtnImport_Serie_Click()
         {
+            
             OpenFileDialog fileDialog = new();
             if (fileDialog.ShowDialog() == true)
             {
                 try
                 {
                     seriesList = JsonConvert.DeserializeObject<List<Serie>>(File.ReadAllText(fileDialog.FileName));
+                    nbItem = seriesList.Count;
                     ImportSerie();
-                    MessageBox.Show($"{seriesList.Count} ont été importées");
+                    MessageBox.Show($"{nbItem} séries ont été importées");
 
                 }
                 catch (Exception ex)
@@ -125,8 +128,9 @@ namespace projet_dawan_WPF.Logic.Export
                 try
                 {
                     episodeList = JsonConvert.DeserializeObject<List<Episode>>(File.ReadAllText(fileDialog.FileName));
+                    nbItem = seriesList.Count;
                     ImportEpisode();
-                    MessageBox.Show($"{episodeList.Count} ont été importées");
+                    MessageBox.Show($"{nbItem} épisode ont été importés");
 
                 }
                 catch (Exception ex)
@@ -144,8 +148,9 @@ namespace projet_dawan_WPF.Logic.Export
                 try
                 {
                     personnagesList = JsonConvert.DeserializeObject<List<Personnage>>(File.ReadAllText(fileDialog.FileName));
+                    nbItem = personnagesList.Count;
                     ImportPersonnages();
-                    MessageBox.Show($"{personnagesList.Count} ont été importées");
+                    MessageBox.Show($"{nbItem} personnages ont été importés");
                 }
                 catch
                 {
@@ -162,7 +167,9 @@ namespace projet_dawan_WPF.Logic.Export
                 try
                 {
                     noteList = JsonConvert.DeserializeObject<List<Note>>(File.ReadAllText(fileDialog.FileName));
+                    nbItem = noteList.Count;
                     ImportNote();
+                    MessageBox.Show($"{nbItem} notes ont été importées");
                 }
                 catch(Exception ex)
                 {
@@ -179,8 +186,9 @@ namespace projet_dawan_WPF.Logic.Export
                 try
                 {
                     acteurList = JsonConvert.DeserializeObject<List<Acteur>>(File.ReadAllText(fileDialog.FileName));
+                    nbItem = acteurList.Count;
                     ImportActeur();
-                    MessageBox.Show($"{acteurList.Count} ont été importées");
+                    MessageBox.Show($"{nbItem} acteurs ont été importées");
                 }
                 catch (Exception ex)
                 {
