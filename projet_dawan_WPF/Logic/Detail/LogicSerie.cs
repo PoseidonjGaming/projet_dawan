@@ -25,7 +25,7 @@ namespace projet_dawan_WPF.Logic.Detail
         {
             Serie = serie;
             Window.lblSerie.Content = Serie.Nom;
-            Window.lblDateSerie.Content = "Diffusé à partir du" + Serie.DateDiff.ToString();
+            Window.lblDateSerie.Content = "Diffusé à partir du " + Serie.DateDiff.Value.ToShortDateString();
             Window.linkLblBASerie.Content = Serie.UrlBa;
             Window.txtBoxResumeSerie.Text = Serie.Resume;
             Window.Title = Serie.Nom;
