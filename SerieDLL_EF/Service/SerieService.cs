@@ -22,6 +22,7 @@ namespace SerieDLL_EF.Service
             return repo.GetByTxt(text);
         }
 
+        //Récupère la liste des séries dans l'ordre des dernière ajoutées ddans la base de données
         public List<Serie> LastAdd()
         {
             return repo.LastAdd();
