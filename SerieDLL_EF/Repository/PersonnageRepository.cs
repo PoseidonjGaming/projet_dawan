@@ -110,5 +110,12 @@ namespace SerieDLL_EF.Repository
             using BddprojetContext context = new();
             return context.Personnages.Where(p => p.Nom == item.Nom).FirstOrDefault();
         }
+
+        public Personnage Export(int id)
+        {
+            using BddprojetContext context = new();
+            return context.Personnages.Where(p => p.Id == id).ToList().FirstOrDefault();
+
+        }
     }
 }

@@ -16,7 +16,7 @@ namespace SerieDLL_EF.Repository
      * Cette classe implémente les interfaces IRepoCRUD et IRepSpecials pour gérer la table note
      */
 
-    public class NoteRepository : IRepoCRUD<Note>
+    public class NoteRepository : IRepoCRUD<Note>, IRepSpecials<Note>
     {
         /*
          * Récupère toutes les notes depuis la base de données
@@ -128,7 +128,18 @@ namespace SerieDLL_EF.Repository
             return context.Notes.Where(n => n.SerieId == obj.SerieId && n.UserId == obj.UserId).FirstOrDefault();
         }
 
+        public List<Note> GetByTxt(string txt)
+        {
+            using BddprojetContext context = new();
+            return context.Notes.Where(n => n.Commentaire.Contains(txt)).ToList();
 
+        }
 
+        public Note Export(int id)
+        {
+            using BddprojetContext context = new();
+            return context.Notes.Where(n => n.Id == id).ToList().FirstOrDefault();
+
+        }
     }
 }

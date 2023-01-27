@@ -47,7 +47,7 @@ namespace SerieDLL_EF.Repository
         public Acteur Export(int acteur_id)
         {
             using BddprojetContext context = new();
-            return context.Acteurs.Where(a => a.Id == acteur_id).ToList()[0];
+            return context.Acteurs.Where(a => a.Id == acteur_id).ToList().FirstOrDefault();
         }
 
         /*

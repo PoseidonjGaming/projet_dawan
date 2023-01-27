@@ -103,5 +103,12 @@ namespace SerieDLL_EF.Repository
             return context.Episodes.Where(e => e.Nom == item.Nom
             && e.DatePremDiff == item.DatePremDiff && e.Resume == item.Resume).FirstOrDefault();
         }
+
+        public Episode Export(int id)
+        {
+            using BddprojetContext context = new();
+            return context.Episodes.Where(e => e.Id == id).ToList().FirstOrDefault();
+
+        }
     }
 }

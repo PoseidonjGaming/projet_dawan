@@ -106,5 +106,11 @@ namespace SerieDLL_EF.Repository
             return context.Saisons.Where(sa => sa.Numero == saison.Numero
             && sa.NbEpisode == saison.NbEpisode && sa.SerieId == saison.SerieId).FirstOrDefault();
         }
+
+        public Saison Export(int id)
+        {
+            using BddprojetContext context = new();
+            return context.Saisons.Where(s => s.Id == id).ToList().FirstOrDefault();
+        }
     }
 }

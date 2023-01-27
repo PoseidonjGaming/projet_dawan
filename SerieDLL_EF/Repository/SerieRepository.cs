@@ -133,5 +133,11 @@ namespace SerieDLL_EF.Repository
             }
             
         }
+
+        public Serie Export(int id)
+        {
+            using BddprojetContext context = new();
+            return context.Series.Where(s => s.Id == id).ToList().FirstOrDefault();
+        }
     }
 }
