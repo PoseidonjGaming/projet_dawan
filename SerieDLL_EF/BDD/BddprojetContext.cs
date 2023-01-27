@@ -133,7 +133,7 @@ public partial class BddprojetContext : DbContext
 
             entity.HasOne(d => d.Serie).WithMany(p => p.Personnages)
                 .HasForeignKey(d => d.SerieId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__personnag__serie__398D8EEE");
         });
 
@@ -150,7 +150,7 @@ public partial class BddprojetContext : DbContext
 
             entity.HasOne(d => d.Serie).WithMany(p => p.Saisons)
                 .HasForeignKey(d => d.SerieId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK__saison__serie_id__3C69FB99");
         });
 
