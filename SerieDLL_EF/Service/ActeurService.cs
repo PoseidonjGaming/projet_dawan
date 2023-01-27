@@ -8,7 +8,7 @@ namespace SerieDLL_EF.Service
      */
     public class ActeurService : Service<Acteur, ActeurRepository>
     {
-        public ActeurService() : base(new ActeurRepository())
+        public ActeurService() : base()
         {
             
         }

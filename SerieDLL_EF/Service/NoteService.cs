@@ -11,7 +11,7 @@ namespace SerieDLL_EF.Service
 {
     public class NoteService: Service<Note, NoteRepository>
     {
-        public NoteService():base(new NoteRepository()) { }
+        public NoteService():base() { }
 
         public Note GetNote(int serieId, int userId)
         {

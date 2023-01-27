@@ -8,7 +8,7 @@ namespace SerieDLL_EF.Service
      * -Update: update
      * -Delete: Delete* 
      */
-    public abstract class Service<TClass, TRepo> where TClass : class where TRepo : IRepoCRUD<TClass>
+    public abstract class Service<TClass, TRepo> where TClass : class where TRepo : IRepoCRUD<TClass>, new()
     {
 
         /*TClass: Représente la classe Model qui est manipulée
@@ -17,9 +17,9 @@ namespace SerieDLL_EF.Service
 
         protected TRepo repo;
 
-        public Service(TRepo repo)
+        public Service()
         {
-            this.repo = repo;
+            this.repo = new();
         }
 
         //Récupère la liste de tous objets de type TClass depuis la bdd
