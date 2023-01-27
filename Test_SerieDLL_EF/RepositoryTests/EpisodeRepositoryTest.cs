@@ -30,7 +30,7 @@ namespace Test_SerieDLL_EF.RepositoryTests
         {
             // Arrange
             int id = 1;
-            string expectedNom = "Filmé devant public";
+            string expectedNom = "Un destin exceptionnel";
             var repository = new EpisodeRepository();
 
             // Act

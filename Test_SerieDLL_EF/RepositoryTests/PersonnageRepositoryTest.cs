@@ -21,7 +21,7 @@ namespace Test_SerieDLL_EF.RepositoryTests
             var result = repository.GetAll().Count;
 
             // Assert
-            Assert.AreEqual(17, result);
+            Assert.AreEqual(20, result);
         }
 
         [TestMethod]
@@ -30,7 +30,7 @@ namespace Test_SerieDLL_EF.RepositoryTests
         {
             // Arrange
             int id = 2;
-            string expectedNom = "Vision";
+            string expectedNom = "Sylvie";
             var repository = new PersonnageRepository();
 
             // Act
@@ -149,7 +149,7 @@ namespace Test_SerieDLL_EF.RepositoryTests
             List<Personnage> resultList = new PersonnageRepository().GetBySerie(2);
 
             // assert
-            Assert.AreEqual(7,resultList.Count);
+            Assert.AreEqual(8,resultList.Count);
         }
 
     }

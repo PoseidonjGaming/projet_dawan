@@ -118,8 +118,7 @@ namespace projet_dawan_WPF.Logic.Export
                     MessageBox.Show(ex.Message);
                 }
             }
-            Window.Hide();
-            Window.Show();
+            Refresh();
         }
 
         public void BtnImport_Episodes_Click()
@@ -139,6 +138,7 @@ namespace projet_dawan_WPF.Logic.Export
                 {
                     MessageBox.Show(ex.Message);
                 }
+                Refresh();
             }
         }
 
@@ -158,6 +158,7 @@ namespace projet_dawan_WPF.Logic.Export
                 {
 
                 }
+                Refresh();
             }
         }
 
@@ -177,6 +178,7 @@ namespace projet_dawan_WPF.Logic.Export
                 {
                     MessageBox.Show(ex.Message);
                 }
+                Refresh();
             }
         }
 
@@ -196,6 +198,7 @@ namespace projet_dawan_WPF.Logic.Export
                 {
                     MessageBox.Show(ex.Message);
                 }
+                Refresh();
             }
         }
 
@@ -400,6 +403,12 @@ namespace projet_dawan_WPF.Logic.Export
                     noteService.Add(note);
                 }
             }
+        }
+
+        private void Refresh()
+        {
+            Window.Hide();
+            Window.Show();
         }
 
 
